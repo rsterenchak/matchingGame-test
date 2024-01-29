@@ -426,17 +426,17 @@ export default function PlayPage({
 
   }
 
-  console.log(activeShown);
+  // console.log(activeShown);
 
 
 // used for initial shuffle - runs once during cleanup
   useEffect(() => {
 
-    console.log('Runs effect - PlayPage');
+    // console.log('Runs effect - PlayPage');
 
     return () => {   
 
-      console.log('Runs cleanup - PlayPage');
+      // console.log('Runs cleanup - PlayPage');
       shuffleArray();
       
         
@@ -450,7 +450,7 @@ export default function PlayPage({
   useEffect(() => {
 
     setEffect(true);
-    console.log('Runs effect - card');
+    // console.log('Runs effect - card');
 
     const key = setInterval(() => {
 
@@ -462,7 +462,7 @@ export default function PlayPage({
 
     return () => {
       
-      console.log('Runs cleanup - card');
+      // console.log('Runs cleanup - card');
 
       // console.log('setSide false');
       setSide(false);
@@ -472,6 +472,11 @@ export default function PlayPage({
 
     };
   }, [activeShuffledArray]) 
+
+  console.log('Picked');
+  console.log(activePickedArray);
+  console.log('Shown');
+  console.log(activeShown);
 
 
   return (
