@@ -91,6 +91,8 @@ export default function PlayPage({
     }
   ];
 
+  // console.log(isActiveData);
+  console.log('Runs playpage');
   console.log(isActiveData);
 
   const [activeStandardArray, setActiveStandardArray] = useState(isActiveData); // regular array
