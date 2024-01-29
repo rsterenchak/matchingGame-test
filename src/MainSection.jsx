@@ -473,7 +473,7 @@ export default function MainSection() {
           }
 
           let forecast = await response.json();
-          setActiveData(forecast);
+          setActiveData(forecast.items);
 
             } 
 
@@ -488,7 +488,7 @@ export default function MainSection() {
     
       fetchData();      
 
-      console.log('Play cleanup - MainSection');
+      console.log(forecast);
       
 
         
