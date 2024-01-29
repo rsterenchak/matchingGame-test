@@ -255,10 +255,10 @@ export default function PlayPage({
 
         randomArrayPositions.push(newPos);
 
-        let result = verifyArray(randomArrayPositions, currentlyAvailablePositions);
+        let result = verifyArray(randomArrayPositions, activePositions);
 
         console.log(randomArrayPositions);
-        console.log(currentlyAvailablePositions);
+        console.log(activePositions);
 
         if((counter < ((activeStandardArray.length)/2) - 1) && (result === false)){
 
