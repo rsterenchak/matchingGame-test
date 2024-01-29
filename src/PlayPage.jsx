@@ -175,6 +175,8 @@ export default function PlayPage({
     while(counter < available.length){
 
       if(random.includes(available[counter])){
+        
+
 
         return true;
       }
@@ -254,6 +256,9 @@ export default function PlayPage({
         randomArrayPositions.push(newPos);
 
         let result = verifyArray(randomArrayPositions, currentlyAvailablePositions);
+
+        console.log(randomArrayPositions);
+        console.log(currentlyAvailablePositions);
 
         if((counter < ((activeStandardArray.length)/2) - 1) && (result === false)){
 
