@@ -511,11 +511,11 @@ export default function MainSection() {
 
         
     };
-  }, [activeData])
+  }, [isCurrentPage])
  
 
 
-  setActiveData(pulledData);
+  // setActiveData(pulledData); // 
 
 
   console.log(activeData);
