@@ -89,7 +89,7 @@ export default function Card({
       if(isPickedArray.includes(item)){
       
         // > end game  
-        // console.log('Game is over...exists in the picked array');
+        console.log('Game is over...exists in the picked array');
 
         // need to generate an 'end game retry screen'
         // include pop-up, You scored #/#. Would you like to play again?
@@ -160,7 +160,7 @@ export default function Card({
     else{
     
       // > end game  
-      // console.log('Game is over...card was never shown');
+      console.log('Game is over...card was never shown');
 
       // need to generate an 'end game retry screen'
       // startInitialTurn(false);
