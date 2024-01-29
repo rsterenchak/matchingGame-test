@@ -246,12 +246,6 @@ function HandlePausePlayAudio({
 
 export default function MainSection() {
 
-
-  const [isCurrentPage, setCurrentPage] = useState(true);
-  const [isCurrentAudio, setCurrentAudio] = useState(false);
-
-  const [activeData, setActiveData] = useState([]);
-
   const pulledData = [
     {
         "id": 1,
@@ -447,6 +441,11 @@ export default function MainSection() {
     }
 ]
 
+  const [isCurrentPage, setCurrentPage] = useState(true);
+  const [isCurrentAudio, setCurrentAudio] = useState(false);
+
+  const [activeData, setActiveData] = useState(pulledData);
+
 
 
 /*    useEffect(() => {
@@ -497,9 +496,9 @@ export default function MainSection() {
   }, [])
  */
 
- useEffect(() => {
+/*   useEffect(() => {
 
-    console.log('Runs effect');
+    console.log('Runs effect - MainSection');
 
     return () => {
 
@@ -511,7 +510,7 @@ export default function MainSection() {
 
         
     };
-  }, [isCurrentPage])
+  }, [isCurrentPage]) */
  
 
 
