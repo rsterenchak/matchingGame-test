@@ -21,7 +21,7 @@ export default function PlayPage({
 }) {
 
   
-
+  console.log('PlayPage re-rendered');
 
 
   const dataArray = [

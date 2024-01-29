@@ -13,7 +13,7 @@ export default function HomePage({
   activeCurrentAudio
 }) {
 
-
+  console.log('HomePage re-rendered');
 
 
   const boxStyle = {

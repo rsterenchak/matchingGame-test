@@ -27,7 +27,7 @@ export default function Card({
 
 }) {
 
-  console.log(item);
+  console.log('Cards re-rendered');
 
 /**
  * 'Card Generation Logic' - 1/23 - *** Currently working ***

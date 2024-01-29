@@ -516,8 +516,8 @@ export default function MainSection() {
 
   // setActiveData(forecast.items); 
 
-
-  console.log(activeData);
+  console.log('MainSection re-rendered');
+  // console.log(activeData); 
 
   return (
     
