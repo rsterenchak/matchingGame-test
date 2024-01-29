@@ -511,14 +511,14 @@ export default function MainSection() {
 
         
     };
-  }, [isCurrentAudio])
+  }, [activeData])
  
 
 
-/*   setActiveData(pulledData); */
+  setActiveData(pulledData);
 
 
- console.log(activeData);
+  console.log(activeData);
 
   return (
     
