@@ -92,8 +92,8 @@ export default function PlayPage({
   ];
 
   // console.log(isActiveData);
-  console.log('Runs playpage');
-  console.log(isActiveData);
+  // console.log('Runs playpage');
+  // console.log(isActiveData);
 
   const [activeStandardArray, setActiveStandardArray] = useState(isActiveData); // regular array
   const [activeShuffledArray, setActiveShuffledArray] = useState([]); // Regular Array
@@ -427,24 +427,26 @@ export default function PlayPage({
 
 
 // used for initial shuffle - runs once during cleanup
-  useEffect(() => {
+/*   useEffect(() => {
 
     console.log('Runs effect - PlayPage');
 
     return () => {   
 
-      console.log('Play cleanup - PlayPage');
+      console.log('Runs cleanup - PlayPage');
       shuffleArray();
       
         
     };
-  }, [])
+  }, []) */
 
+
+  shuffleArray();
 
 // used for card flip when shuffled array changes  
   useEffect(() => {
 
-    console.log('Play effect - card');
+    console.log('Runs effect - card');
 
     const key = setInterval(() => {
 
@@ -456,7 +458,7 @@ export default function PlayPage({
 
     return () => {
       
-      console.log('Play cleanup - card');
+      console.log('Runs cleanup - card');
 
       // console.log('setSide false');
       setSide(false);
