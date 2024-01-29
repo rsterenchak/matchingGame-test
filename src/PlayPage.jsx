@@ -426,6 +426,7 @@ export default function PlayPage({
 
   }
 
+  console.log(activeShown);
 
 
 // used for initial shuffle - runs once during cleanup
