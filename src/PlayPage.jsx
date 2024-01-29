@@ -429,9 +429,11 @@ export default function PlayPage({
 // used for initial shuffle - runs once during cleanup
   useEffect(() => {
 
+    console.log('Runs effect - PlayPage');
+
     return () => {   
 
-      // console.log('Play cleanup - PlayPage');
+      console.log('Play cleanup - PlayPage');
       shuffleArray();
       
         
@@ -441,7 +443,8 @@ export default function PlayPage({
 
 // used for card flip when shuffled array changes  
   useEffect(() => {
-    // console.log('Play effect - card');
+
+    console.log('Play effect - card');
 
     const key = setInterval(() => {
 
@@ -453,6 +456,8 @@ export default function PlayPage({
 
     return () => {
       
+      console.log('Play cleanup - card');
+
       // console.log('setSide false');
       setSide(false);
       clearInterval(key);
