@@ -259,9 +259,9 @@ export default function PlayPage({
 
         console.log(result);
 
-        console.log(randomArrayPositions);
+/*         console.log(randomArrayPositions);
         console.log(activePositions);
-        console.log(activeStandardArray);
+        console.log(activeStandardArray); */
 
         if((counter === (((activeStandardArray.length)/2) - 1)) && (result === false)){
 
@@ -301,7 +301,7 @@ export default function PlayPage({
 
 
     }
-
+    console.log(newlyShuffledArray);
 
     setActiveShuffledArray(newlyShuffledArray);
 

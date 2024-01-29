@@ -128,7 +128,8 @@ export default function Card({
           newPositions.splice(index, 1); // 2nd parameter means remove one item only
         }
 
-
+        console.log(newlyPickedArray);
+        console.log(newPositions);
 
         setPickedArray(newlyPickedArray);
         setPositions(newPositions);
