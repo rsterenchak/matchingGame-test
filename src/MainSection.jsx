@@ -486,28 +486,6 @@ export default function MainSection() {
   }, [])
 
 
-/*   useEffect(() => {
-
-    console.log('Runs effect - MainSection');
-
-    return () => {
-
-      setActiveData(pulledData);
-  
-
-      console.log('Play cleanup - MainSection');
-      
-
-        
-    };
-  }, [isCurrentPage]) */
- 
-
-
-  // setActiveData(forecast.items); 
-
-  console.log('MainSection re-rendered');
-  // console.log(activeData); 
 
   return (
     
