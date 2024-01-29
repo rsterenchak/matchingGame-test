@@ -257,11 +257,13 @@ export default function PlayPage({
 
         let result = verifyArray(randomArrayPositions, activePositions);
 
-        console.log(randomArrayPositions);
-        console.log(activePositions);
 
-        if((counter < ((activeStandardArray.length)/2) - 1) && (result === false)){
 
+        if((counter < ((activeStandardArray.length)/2)) && (result === false)){
+
+          console.log('Renew digits array');
+          console.log(randomArrayPositions);
+          console.log(activePositions);
 
           counter = 0;
           randomArrayPositions = [];
