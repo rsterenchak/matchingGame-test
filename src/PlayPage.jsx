@@ -121,6 +121,8 @@ export default function PlayPage({
 
   const [isOver, setOver] = useState(false);
 
+  const [isEffect, setEffect] = useState(false);
+
   const boxStyle = {
     backgroundImage: `url(${background})`,
     backgroundPosition: 'center',
@@ -438,7 +440,7 @@ export default function PlayPage({
       
         
     };
-  }, [])
+  }, [isEffect === false])
 
 
   // shuffleArray();
@@ -446,6 +448,7 @@ export default function PlayPage({
 // used for card flip when shuffled array changes  
   useEffect(() => {
 
+    setEffect(true);
     console.log('Runs effect - card');
 
     const key = setInterval(() => {
