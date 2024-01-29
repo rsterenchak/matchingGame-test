@@ -444,11 +444,11 @@ export default function MainSection() {
   const [isCurrentPage, setCurrentPage] = useState(true);
   const [isCurrentAudio, setCurrentAudio] = useState(false);
 
-  const [activeData, setActiveData] = useState(pulledData);
+  const [activeData, setActiveData] = useState([]);
 
 
 
-/*    useEffect(() => {
+   useEffect(() => {
 
     console.log('Runs effect');
 
@@ -473,7 +473,7 @@ export default function MainSection() {
           }
 
           let forecast = await response.json();
-          
+          setActiveData(forecast);
 
             } 
 
@@ -493,8 +493,8 @@ export default function MainSection() {
 
         
     };
-  }, [])
- */
+  }, [isCurrentPage])
+
 
 /*   useEffect(() => {
 
