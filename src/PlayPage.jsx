@@ -427,7 +427,7 @@ export default function PlayPage({
 
 
 // used for initial shuffle - runs once during cleanup
-/*   useEffect(() => {
+  useEffect(() => {
 
     console.log('Runs effect - PlayPage');
 
@@ -438,10 +438,10 @@ export default function PlayPage({
       
         
     };
-  }, []) */
+  }, [])
 
 
-  shuffleArray();
+  // shuffleArray();
 
 // used for card flip when shuffled array changes  
   useEffect(() => {
