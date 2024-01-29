@@ -263,7 +263,7 @@ export default function PlayPage({
         console.log(activePositions);
         console.log(activeStandardArray);
 
-        if((counter < ((activeStandardArray.length)/2)) && (result === false)){
+        if((counter === (((activeStandardArray.length)/2) - 1)) && (result === false)){
 
           console.log('Renew digits array');
 
