@@ -446,54 +446,44 @@ export default function MainSection() {
 
   const [activeData, setActiveData] = useState([]);
 
+  async function fetchData() {
+    let url = 'https://dragonball-api.com/api/characters?page=1&limit=16';
+    // let url = process.env.DBZ_KEY;
 
+    // issue getting new fetch calls
+
+    try {
+      let response = await fetch(url, {mode: 'cors'});
+    
+
+      if(!response.ok){
+      
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      
+      }
+
+      let forecast = await response.json();
+      setActiveData(forecast.items);
+
+      console.log(forecast.items);
+        } 
+
+    catch(err) {
+
+      console.log(err);
+
+
+    }
+
+  }
 
    useEffect(() => {
 
     console.log('Runs effect');
 
-    return () => {
+    fetchData();   
 
-      console.log('Runs cleanup');
-
-      async function fetchData() {
-        let url = 'https://dragonball-api.com/api/characters?page=1&limit=16';
-        // let url = process.env.DBZ_KEY;
-
-        // issue getting new fetch calls
-
-        try {
-          let response = await fetch(url, {mode: 'cors'});
-        
-
-          if(!response.ok){
-          
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          
-          }
-
-          let forecast = await response.json();
-          setActiveData(forecast.items);
-
-            } 
-
-        catch(err) {
-
-          console.log(err);
-
-
-        }
-
-      }
-    
-      fetchData();      
-
-      console.log(forecast);
-      
-
-        
-    };
-  }, [isCurrentPage])
+  }, [])
 
 
 /*   useEffect(() => {
