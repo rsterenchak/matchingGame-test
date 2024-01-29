@@ -473,7 +473,7 @@ export default function MainSection() {
           }
 
           let forecast = await response.json();
-          setActiveData(forecast.items);
+          
 
             } 
 
@@ -514,7 +514,7 @@ export default function MainSection() {
  
 
 
-  // setActiveData(pulledData); // 
+  // setActiveData(forecast.items); 
 
 
   console.log(activeData);

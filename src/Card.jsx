@@ -201,8 +201,8 @@ export default function Card({
             >
                         
               <div className='cardFront'>
-                {/* <img className='cardImage' src={item.image}></img> */}
-                <div className='cardImage'>{item.name}</div>
+                <img className='cardImage' src={item.image}></img>
+                {/* <div className='cardImage'>{item.name}</div> */}
               </div>
 
             </div>
