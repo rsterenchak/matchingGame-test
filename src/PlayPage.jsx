@@ -261,6 +261,7 @@ export default function PlayPage({
 
         console.log(randomArrayPositions);
         console.log(activePositions);
+        console.log(activeStandardArray);
 
         if((counter < ((activeStandardArray.length)/2)) && (result === false)){
 
