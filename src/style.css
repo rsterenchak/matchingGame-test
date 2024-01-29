@@ -17,6 +17,8 @@ body {
 
   margin: 0px;
   padding: 0px;
+  min-width: 100%;
+  width: 100%;
   font-family: system-ui, sans-serif;
   overflow: hidden;
 }
@@ -26,7 +28,8 @@ body {
   padding: 0px;  
   height: 100vh;
   position: relative;
-  
+  min-width: 100%;
+  width: 100%;
   z-index: 0;
   overflow: visible;
 }
@@ -772,6 +775,8 @@ body {
 .playSection {
   margin: 0px;
   padding: 0px;
+  min-width: 100%;
+  width: 100%;
   position: relative;
   border: 1px solid rgba(255, 0, 0, 0);
   z-index: 0;
