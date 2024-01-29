@@ -511,7 +511,7 @@ export default function MainSection() {
 
         
     };
-  }, [isCurrentPage])
+  }, [isCurrentAudio])
  
 
 
