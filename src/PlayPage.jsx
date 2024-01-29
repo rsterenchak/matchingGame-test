@@ -257,7 +257,7 @@ export default function PlayPage({
 
         let result = verifyArray(randomArrayPositions, activePositions);
 
-
+        console.log(result);
 
         if((counter < ((activeStandardArray.length)/2)) && (result === false)){
 
