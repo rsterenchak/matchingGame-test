@@ -122,7 +122,7 @@ export default function Card({
 
         newlyPickedArray.push(item); // pushes card to picked array
 
-        let index = newPositions.indexOf(item.id + 1); // 
+        let index = newPositions.indexOf(item.id - 1); // 
 
         if (index > -1) { // only splice array when item is found
           newPositions.splice(index, 1); // 2nd parameter means remove one item only
