@@ -259,11 +259,12 @@ export default function PlayPage({
 
         console.log(result);
 
+        console.log(randomArrayPositions);
+        console.log(activePositions);
+
         if((counter < ((activeStandardArray.length)/2)) && (result === false)){
 
           console.log('Renew digits array');
-          console.log(randomArrayPositions);
-          console.log(activePositions);
 
           counter = 0;
           randomArrayPositions = [];
