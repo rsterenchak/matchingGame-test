@@ -16,6 +16,7 @@
 html {
   margin: 0;
   padding: 0;
+  background-color: #4a90d9;
 }
 
 body {
@@ -29,6 +30,7 @@ body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
   min-height: 100dvh;
+  background-color: #4a90d9;
 }
 
 .homeSection {

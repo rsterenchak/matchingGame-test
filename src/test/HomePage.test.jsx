@@ -7,6 +7,7 @@ import HomePage from '../HomePage.jsx'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const css = readFileSync(resolve(__dirname, '../style.css'), 'utf8')
+const indexHtml = readFileSync(resolve(__dirname, '../../index.html'), 'utf8')
 
 describe('HomePage', () => {
   const defaultProps = {
@@ -59,5 +60,27 @@ describe('Global html and body baseline', () => {
     const htmlRule = htmlRuleMatch[1]
     expect(htmlRule).toMatch(/margin:\s*0/)
     expect(htmlRule).toMatch(/padding:\s*0/)
+  })
+})
+
+describe('Safari chrome meta tags and background blend', () => {
+  it('index.html viewport meta includes viewport-fit=cover so iOS Safari extends the page into the status-bar and home-indicator safe areas', () => {
+    expect(indexHtml).toContain('viewport-fit=cover')
+  })
+
+  it('index.html includes a theme-color meta tag so Safari tints the status-bar chrome to match the background instead of showing white', () => {
+    expect(indexHtml).toMatch(/<meta[^>]+name="theme-color"/)
+  })
+
+  it('html CSS rule has a background-color so the Safari safe-area inset blends with the background image rather than showing white', () => {
+    const htmlRuleMatch = css.match(/^html\s*\{([^}]+)\}/m)
+    expect(htmlRuleMatch).not.toBeNull()
+    expect(htmlRuleMatch[1]).toMatch(/background-color\s*:/)
+  })
+
+  it('body CSS rule has a background-color so the Safari safe-area inset blends with the background image rather than showing white', () => {
+    const bodyRuleMatch = css.match(/^body\s*\{([^}]+)\}/m)
+    expect(bodyRuleMatch).not.toBeNull()
+    expect(bodyRuleMatch[1]).toMatch(/background-color\s*:/)
   })
 })

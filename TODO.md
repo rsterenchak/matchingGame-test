@@ -84,8 +84,8 @@
   - File: `src/style.css`, `src/PlayPage.jsx`, `src/HomePage.jsx`
   - Completed: 2026-05-27
 
-- [ ] **[MEDIUM]** Extend background to Safari chrome edges and redesign score row
+- [x] **[MEDIUM]** Extend background to Safari chrome edges and redesign score row
   - Type: bug
   - Description: Two related visual issues on `HomePage` and `PlayPage`. (1) On iOS Safari, white strips show at the very top (above the status bar) and bottom (below the URL bar) because those areas are rendered by the browser chrome, not the page — the background image itself already reaches the web-view edges. Fix in `index.html` by adding `viewport-fit=cover` to the existing viewport meta tag and adding a `<meta name="theme-color" content="...">` tag with a sky-blend color (e.g. a mid sky-blue sampled from the background image) so Safari tints the status-bar area to match. In `src/style.css`, set the same blend color as `background-color` on `html` and `body` so any safe-area inset blends in instead of showing white, and zero `margin`/`padding` on `html, body` if not already. Verify the fix across all responsive breakpoints (320 / 481 / 641 / 961 / 1025 / 1281). (2) The "High Score" and "Current Score" elements on `PlayPage` visually clash — the score number overlaps or sits awkwardly against the label. Replace the current two-div layout with a single unified pill: one red rounded container holding both stats side-by-side, separated by a thin vertical divider, with compact uppercase labels ("High" / "Current") and bold numbers. Keep the existing red color and Shojumaru font. No new dependencies; all changes in `src/style.css` plus `index.html` for the meta tags and minimal markup adjustments in `PlayPage.jsx` for the new pill structure.
   - File: `src/style.css`, `src/PlayPage.jsx`, `src/HomePage.jsx`, `index.html`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-27
