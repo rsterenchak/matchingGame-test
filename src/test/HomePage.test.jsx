@@ -63,6 +63,16 @@ describe('Global html and body baseline', () => {
   })
 })
 
+describe('Background fade gradient', () => {
+  it('homeSection::before applies a linear-gradient overlay using the safari chrome blend color to soften the edge seam', () => {
+    const pseudoRuleMatch = css.match(/\.homeSection::before\s*\{([^}]+)\}/)
+    expect(pseudoRuleMatch).not.toBeNull()
+    const pseudoRule = pseudoRuleMatch[1]
+    expect(pseudoRule).toContain('linear-gradient')
+    expect(pseudoRule.toLowerCase()).toContain('#4a90d9')
+  })
+})
+
 describe('Safari chrome meta tags and background blend', () => {
   it('index.html viewport meta includes viewport-fit=cover so iOS Safari extends the page into the status-bar and home-indicator safe areas', () => {
     expect(indexHtml).toContain('viewport-fit=cover')
