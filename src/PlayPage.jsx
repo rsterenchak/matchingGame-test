@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './style.css';
 import Card from './Card.jsx'
 import CardBack from './CardBack.jsx';
@@ -16,12 +16,39 @@ export default function PlayPage({
   setAudioPause,
   setAudioPlay,
   activeCurrentAudio,
-  isActiveData
+  isActiveData,
+  isVolume,
+  onVolumeChange
 
 }) {
 
   
   console.log('PlayPage re-rendered');
+
+  const [sliderOpen, setSliderOpen] = useState(false);
+  const musicWrapperRef = useRef(null);
+
+  useEffect(() => {
+    if (!sliderOpen) return;
+
+    function handleOutsideClick(e) {
+      if (musicWrapperRef.current && !musicWrapperRef.current.contains(e.target)) {
+        setSliderOpen(false);
+      }
+    }
+
+    function handleEscape(e) {
+      if (e.key === 'Escape') setSliderOpen(false);
+    }
+
+    document.addEventListener('click', handleOutsideClick);
+    document.addEventListener('keydown', handleEscape);
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [sliderOpen]);
 
 
   const dataArray = [
@@ -504,23 +531,48 @@ export default function PlayPage({
 
             <div className='topColumn3'>
 
-                <div 
-                  className='musicBlock2'
-                  onClick={() => forMusicIcon()}
-                  style={popUpStyle}
-                >
-                  
-                  <img className='musicIcon2' src={musicIcon} ></img>
+                <div className='musicIconWrapper' ref={musicWrapperRef}>
+
+                  <div
+                    className='musicBlock2'
+                    onClick={() => forMusicIcon()}
+                    style={popUpStyle}
+                  >
+
+                    <img className='musicIcon2' src={musicIcon}></img>
+
+                  </div>
+
+                  <div
+                    className='volumeChevron'
+                    onClick={() => setSliderOpen(o => !o)}
+                    style={popUpStyle}
+                  >▾</div>
+
+                  {sliderOpen && (
+                    <div className='volumeSliderWrapper'>
+                      <input
+                        type="range"
+                        className="volumeSliderInput"
+                        min="0"
+                        max="1"
+                        step="0.005"
+                        value={isVolume}
+                        style={{background: `linear-gradient(to top, yellow ${isVolume * 100}%, #ccc ${isVolume * 100}%)`}}
+                        onChange={e => onVolumeChange(parseFloat(e.target.value))}
+                      />
+                    </div>
+                  )}
 
                 </div>
 
-                <div 
+                <div
                   className='musicBlock3'
                   onClick={() => setupPage()}
                   style={popUpStyle}
                 >
-                  
-                  <img className='musicIcon3' src={planetIcon} ></img>
+
+                  <img className='musicIcon3' src={planetIcon}></img>
 
                 </div>
 
