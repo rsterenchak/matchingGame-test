@@ -27,6 +27,46 @@ describe('PlayPage background layout', () => {
   })
 })
 
+describe('PlayPage score panel', () => {
+  const defaultProps = {
+    background: 'fake-bg.jpg',
+    setHomePage: vi.fn(),
+    setAudioPause: vi.fn(),
+    setAudioPlay: vi.fn(),
+    activeCurrentAudio: false,
+    isActiveData: [],
+    isVolume: 0.5,
+    onVolumeChange: vi.fn(),
+  }
+
+  beforeEach(() => {
+    localStorage.clear()
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    vi.clearAllTimers()
+    vi.useRealTimers()
+    localStorage.clear()
+  })
+
+  it('renders a unified scorePanel element instead of two separate score pills', () => {
+    render(<PlayPage {...defaultProps} />)
+    expect(document.querySelector('.scorePanel')).toBeInTheDocument()
+  })
+
+  it('scorePanel shows CURRENT and HIGH labels', () => {
+    render(<PlayPage {...defaultProps} />)
+    expect(screen.getByText('CURRENT')).toBeInTheDocument()
+    expect(screen.getByText('HIGH')).toBeInTheDocument()
+  })
+
+  it('scorePanel shows the initial score 0/16', () => {
+    render(<PlayPage {...defaultProps} />)
+    expect(screen.getByText('0/16')).toBeInTheDocument()
+  })
+})
+
 describe('PlayPage instructions modal', () => {
   const defaultProps = {
     background: 'fake-bg.jpg',
