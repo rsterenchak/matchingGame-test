@@ -1596,10 +1596,9 @@ body {
 
   .logoSection3 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    padding: 0 12px;
-    width: auto;
+    grid-template-columns: repeat(4, 55px);
+    gap: 6px;
+    justify-content: center;
     align-self: start;
   }
 
@@ -1629,10 +1628,9 @@ body {
 
   .logoSection4 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    padding: 0 12px;
-    width: auto;
+    grid-template-columns: repeat(4, 55px);
+    gap: 6px;
+    justify-content: center;
     align-self: start;
   }
 
@@ -1730,10 +1728,9 @@ body {
 
   .logoSection3 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    padding: 0 12px;
-    width: auto;
+    grid-template-columns: repeat(4, 68px);
+    gap: 8px;
+    justify-content: center;
     align-self: start;
   }
 
@@ -1763,10 +1760,9 @@ body {
 
   .logoSection4 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    padding: 0 12px;
-    width: auto;
+    grid-template-columns: repeat(4, 68px);
+    gap: 8px;
+    justify-content: center;
     align-self: start;
   }
 
