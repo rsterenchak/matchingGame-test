@@ -30,7 +30,7 @@
   - File: `src/MainSection.jsx`, `src/HomePage.jsx`, `src/PlayPage.jsx`, `src/MobileMenu.jsx`, `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[LOW]** Change "Matching" to "Memory" on home page cloud graphic
+- [x] **[LOW]** Change "Matching" to "Memory" on home page cloud graphic — Completed: 2026-05-27
   - Type: feature
   - Description: The center graphic on the home page (the Nimbus cloud sitting under the Dragon Ball Z logo) currently reads "Matching Game" in the stylized yellow DBZ font. Replace it with "Memory Game" â same font, same color, same cloud, just the one word swapped â to better describe the actual gameplay (clicking each character exactly once before any repeat is the memory mechanic, not pair-matching). Implementation is an asset swap: produce a new cloud PNG with "Memory Game" in place of "Matching Game" and drop it into `src/assets/`, then update the `<img>` `src` in `HomePage.jsx` (and rename the import if the filename changes). The page title and `index.html` `<title>` aren't in scope here â the title screen branding change is enough for now.
   - File: `src/HomePage.jsx`, `src/assets/`

@@ -424,7 +424,7 @@ body {
   position: absolute;
 
 
-  background-image: url('./assets/MatchingGameTitle.svg') ;
+  background-image: url('./assets/MemoryGameTitle.svg') ;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -636,7 +636,7 @@ body {
     position: relative;
     top: -20vh;
     left: 5vw;
-    background-image: url('./assets/MatchingGameTitle.svg') ;
+    background-image: url('./assets/MemoryGameTitle.svg') ;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -728,7 +728,7 @@ body {
     top: -19vh;
     
     left: 2vw;
-    background-image: url('./assets/MatchingGameTitle.svg') ;
+    background-image: url('./assets/MemoryGameTitle.svg') ;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -818,7 +818,7 @@ body {
     position: relative;
     top: -14vh;
     left: 1vw;
-    background-image: url('./assets/MatchingGameTitle.svg') ;
+    background-image: url('./assets/MemoryGameTitle.svg') ;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -903,7 +903,7 @@ body {
     position: relative;
     top: -17vh;
     left: 1vw;
-    background-image: url('./assets/MatchingGameTitle.svg') ;
+    background-image: url('./assets/MemoryGameTitle.svg') ;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;

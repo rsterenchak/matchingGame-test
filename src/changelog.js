@@ -2,8 +2,8 @@ export const changelog = [
   {
     version: '1.0',
     date: '2026-05-27',
-    added: [
-      'Top-left controls on mobile now collapse into a hamburger menu, keeping the header tidy at narrow screen widths.',
+    changed: [
+      'Title cloud graphic on the home screen now reads "Memory Game" to match the actual memory-based gameplay.',
     ],
     fixed: [
       'Character images now crop cleanly inside mobile cards instead of overflowing the card borders.',
