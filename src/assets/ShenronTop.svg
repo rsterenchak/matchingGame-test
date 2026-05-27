@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 280">
+  <defs>
+    <filter id="eyeGlowTop" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <radialGradient id="eyeGradTop" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#FFFF88"/>
+      <stop offset="45%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#FF8C00"/>
+    </radialGradient>
+    <linearGradient id="bodyGradTop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2db858"/>
+      <stop offset="40%" stop-color="#1a7a30"/>
+      <stop offset="100%" stop-color="#0f4f20"/>
+    </linearGradient>
+    <linearGradient id="headGradTop" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#259946"/>
+      <stop offset="50%" stop-color="#1a7a30"/>
+      <stop offset="100%" stop-color="#0f4f20"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ===== BODY – horizontal ribbon from left to neck ===== -->
+  <path d="M 0 112
+           C 180 98, 380 106, 580 112
+           C 780 118, 980 108, 1150 120
+           C 1175 124, 1192 130, 1202 142
+           L 1202 170
+           C 1192 176, 1175 180, 1150 182
+           C 980 192, 780 184, 580 175
+           C 380 166, 180 172, 0 162
+           Z"
+        fill="url(#bodyGradTop)"/>
+
+  <!-- Body upper highlight stripe -->
+  <path d="M 0 112
+           C 180 98, 380 106, 580 112
+           C 780 118, 980 108, 1150 120
+           L 1130 130
+           C 980 118, 780 126, 580 120
+           C 380 114, 180 106, 0 120
+           Z"
+        fill="#3acc60" opacity="0.35"/>
+
+  <!-- ===== SPINE RIDGES on body ===== -->
+  <path d="M 140 112 L 152 92 L 164 112" fill="#0a3515" opacity="0.7"/>
+  <path d="M 290 108 L 303 87 L 316 108" fill="#0a3515" opacity="0.65"/>
+  <path d="M 448 106 L 462 84 L 476 106" fill="#0a3515" opacity="0.6"/>
+  <path d="M 614 106 L 629 83 L 644 106" fill="#0a3515" opacity="0.55"/>
+  <path d="M 782 107 L 798 84 L 814 107" fill="#0a3515" opacity="0.5"/>
+  <path d="M 952 110 L 969 87 L 985 110" fill="#0a3515" opacity="0.45"/>
+  <path d="M 1108 116 L 1123 95 L 1137 116" fill="#0a3515" opacity="0.4"/>
+
+  <!-- ===== SCALE DIAMONDS on body ===== -->
+  <ellipse cx="480" cy="143" rx="32" ry="10" fill="#0f4f20" opacity="0.4"/>
+  <ellipse cx="640" cy="141" rx="35" ry="10" fill="#0f4f20" opacity="0.35"/>
+  <ellipse cx="810" cy="140" rx="37" ry="11" fill="#0f4f20" opacity="0.3"/>
+  <ellipse cx="980" cy="141" rx="38" ry="11" fill="#0f4f20" opacity="0.3"/>
+  <ellipse cx="1100" cy="146" rx="36" ry="10" fill="#0f4f20" opacity="0.25"/>
+
+  <!-- ===== HEAD (facing left) ===== -->
+  <!-- Main head outline -->
+  <path d="M 1205 148
+           C 1200 112, 1228 72, 1290 60
+           C 1345 50, 1402 75, 1422 115
+           C 1436 140, 1436 175, 1418 208
+           C 1398 238, 1352 252, 1295 252
+           C 1242 252, 1205 232, 1198 205
+           C 1192 182, 1196 165, 1205 148
+           Z"
+        fill="url(#headGradTop)"/>
+
+  <!-- Head lighter upper highlight -->
+  <path d="M 1212 140
+           C 1210 110, 1235 74, 1292 63
+           C 1343 53, 1398 77, 1418 115
+           C 1400 100, 1358 80, 1310 78
+           C 1262 76, 1228 100, 1218 130
+           Z"
+        fill="#3acc60" opacity="0.45"/>
+
+  <!-- Lower jaw / chin detail -->
+  <path d="M 1198 205
+           C 1198 225, 1215 248, 1260 255
+           C 1295 260, 1340 255, 1370 238
+           L 1360 248
+           C 1330 260, 1292 262, 1255 258
+           C 1210 252, 1194 228, 1194 210
+           Z"
+        fill="#0f4f20" opacity="0.7"/>
+
+  <!-- Snout tip (protruding left) -->
+  <path d="M 1200 148
+           C 1188 152, 1178 158, 1182 165
+           C 1185 172, 1195 175, 1202 170
+           Z"
+        fill="#1a7a30"/>
+
+  <!-- ===== HORNS ===== -->
+  <!-- Horn 1 – front, curving up-right from crown -->
+  <path d="M 1268 65
+           C 1285 40, 1320 18, 1360 8
+           C 1376 4, 1390 8, 1385 22
+           C 1370 40, 1338 58, 1295 70
+           Z"
+        fill="#0a3515"/>
+  <path d="M 1271 63
+           C 1288 40, 1320 20, 1357 10
+           C 1345 28, 1320 48, 1288 65
+           Z"
+        fill="#1f7035" opacity="0.55"/>
+
+  <!-- Horn 2 – rear, larger, curving up-right -->
+  <path d="M 1318 57
+           C 1342 30, 1385 12, 1428 5
+           C 1440 2, 1440 15, 1432 25
+           C 1412 45, 1372 62, 1332 68
+           Z"
+        fill="#0a3515"/>
+  <path d="M 1322 55
+           C 1345 30, 1386 13, 1428 7
+           C 1415 25, 1380 50, 1340 65
+           Z"
+        fill="#1f7035" opacity="0.55"/>
+
+  <!-- ===== EYE ===== -->
+  <!-- Outer glow -->
+  <circle cx="1248" cy="128" r="26" fill="#FFD700" opacity="0.22" filter="url(#eyeGlowTop)"/>
+  <!-- Eye socket / dark surround -->
+  <ellipse cx="1248" cy="130" rx="18" ry="16" fill="#0a2810"/>
+  <!-- Iris -->
+  <ellipse cx="1248" cy="130" rx="14" ry="12" fill="url(#eyeGradTop)"/>
+  <!-- Vertical slit pupil -->
+  <ellipse cx="1248" cy="130" rx="4" ry="10" fill="#120800"/>
+  <!-- Highlight -->
+  <circle cx="1243" cy="124" r="4" fill="white" opacity="0.85"/>
+  <!-- Pupil glint -->
+  <circle cx="1252" cy="135" r="2" fill="white" opacity="0.4"/>
+
+  <!-- ===== BROW RIDGE ===== -->
+  <path d="M 1228 112 C 1240 104, 1262 102, 1278 110"
+        stroke="#0a3515" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- ===== NOSTRIL ===== -->
+  <ellipse cx="1196" cy="158" rx="5" ry="3" fill="#0a3515" transform="rotate(-15, 1196, 158)"/>
+
+  <!-- ===== WHISKERS / TENDRILS (trailing left from snout) ===== -->
+  <!-- Whisker 1 – long upper -->
+  <path d="M 1195 148 C 1060 132, 860 138, 660 130 C 460 122, 260 128, 60 118"
+        stroke="#0a3515" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.9"/>
+  <!-- Whisker 2 – mid -->
+  <path d="M 1192 158 C 1048 150, 840 155, 630 150 C 430 145, 230 148, 30 140"
+        stroke="#0a3515" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.85"/>
+  <!-- Whisker 3 – lower -->
+  <path d="M 1190 168 C 1038 165, 820 168, 600 164 C 400 160, 200 162, 0 156"
+        stroke="#0f4f20" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+  <!-- Whisker 4 – thin upper accent -->
+  <path d="M 1196 143 C 1070 125, 880 128, 700 122 C 510 116, 300 120, 100 112"
+        stroke="#1a7a30" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- ===== BEARD / CHIN TENDRILS ===== -->
+  <path d="M 1200 208 C 1188 228, 1175 250, 1162 268 C 1155 278, 1145 282, 1136 278"
+        stroke="#0a3515" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+  <path d="M 1212 218 C 1198 240, 1182 262, 1168 278 C 1158 288, 1146 290, 1136 285"
+        stroke="#0a3515" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+  <path d="M 1194 205 C 1178 226, 1162 250, 1150 270 C 1142 282, 1132 284, 1122 280"
+        stroke="#0f4f20" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M 1224 225 C 1212 248, 1200 270, 1190 285"
+        stroke="#0f4f20" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+</svg>
