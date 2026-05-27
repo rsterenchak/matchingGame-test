@@ -1522,6 +1522,7 @@ body {
     margin: 0px;
     padding: 0px;
     gap: 10px;
+    align-content: space-evenly;
   }
   .musicBlock3 {
 
@@ -1652,13 +1653,13 @@ body {
 
   .highScoreElement {
     height: 40px;
-    width: 170px;
+    width: calc(50vw - 20px);
     font-size: 16px;
   }
 
   .currentScoreElement {
     height: 65px;
-    width: 160px;
+    width: calc(50vw - 20px);
     font-size: 16px;
   }
 
@@ -1674,6 +1675,7 @@ body {
     margin: 0px;
     padding: 0px;
     gap: 10px;
+    align-content: space-evenly;
   }
   .musicBlock3 {
 
@@ -1800,13 +1802,13 @@ body {
 
   .highScoreElement {
     height: 40px;
-    width: 170px;
+    width: calc(50vw - 20px);
     font-size: 16px;
   }
 
   .currentScoreElement {
     height: 65px;
-    width: 160px;
+    width: calc(50vw - 20px);
     font-size: 16px;
   }
 
