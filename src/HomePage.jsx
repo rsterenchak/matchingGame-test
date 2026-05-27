@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './style.css';
+import MobileMenu from './MobileMenu.jsx';
 import musicIcon from './assets/musical-notes.svg'
 import gitIcon from './assets/github.svg'
 import gokuGif from './assets/goku-gif.gif'
@@ -126,6 +127,14 @@ export default function HomePage({
 
                 </div>
 
+                <MobileMenu
+                  forMusicIcon={forMusicIcon}
+                  activeCurrentAudio={activeCurrentAudio}
+                  musicIcon={musicIcon}
+                  gitIcon={gitIcon}
+                  isVolume={isVolume}
+                  onVolumeChange={onVolumeChange}
+                />
 
             </div>
             <div className='topColumn2'>

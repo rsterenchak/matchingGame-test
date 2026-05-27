@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import './style.css';
 import Card from './Card.jsx'
 import CardBack from './CardBack.jsx';
+import MobileMenu from './MobileMenu.jsx';
 import musicIcon from './assets/musical-notes.svg'
 import planetIcon from './assets/planet.svg'
 import gitIcon from './assets/github.svg'
@@ -609,6 +610,18 @@ export default function PlayPage({
                   ?
                 </div>
 
+                <MobileMenu
+                  forMusicIcon={forMusicIcon}
+                  activeCurrentAudio={activeCurrentAudio}
+                  musicIcon={musicIcon}
+                  setupPage={setupPage}
+                  planetIcon={planetIcon}
+                  openInstructions={() => setActiveInstructionsModal(true)}
+                  gitIcon={gitIcon}
+                  isVolume={isVolume}
+                  onVolumeChange={onVolumeChange}
+                  popUpStyle={popUpStyle}
+                />
 
             </div>
             <div className='topColumn4'>
