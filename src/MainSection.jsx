@@ -560,13 +560,13 @@ export default function MainSection() {
       
           <HandlePlayAudio
             audioState={isCurrentAudio}
-            volumeLevel={isVolume}
+            volumeLevel={isVolume * 0.5}
           />
         ) : (
-  
+
           <HandlePausePlayAudio
             audioState={isCurrentAudio}
-            volumeLevel={isVolume}
+            volumeLevel={isVolume * 0.5}
           />
   
         )
