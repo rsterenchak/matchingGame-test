@@ -55,15 +55,27 @@ describe('PlayPage score panel', () => {
     expect(document.querySelector('.scorePanel')).toBeInTheDocument()
   })
 
-  it('scorePanel shows CURRENT and HIGH labels', () => {
+  it('scorePanel shows Score label and Best chip', () => {
     render(<PlayPage {...defaultProps} />)
-    expect(screen.getByText('CURRENT')).toBeInTheDocument()
-    expect(screen.getByText('HIGH')).toBeInTheDocument()
+    expect(screen.getByText('Score')).toBeInTheDocument()
+    expect(screen.getByText('Best 0')).toBeInTheDocument()
   })
 
-  it('scorePanel shows the initial score 0/16', () => {
+  it('scorePanel shows the initial score as "0 / 16"', () => {
     render(<PlayPage {...defaultProps} />)
-    expect(screen.getByText('0/16')).toBeInTheDocument()
+    expect(screen.getByText('0 / 16')).toBeInTheDocument()
+  })
+
+  it('scorePanel renders a progress bar element', () => {
+    render(<PlayPage {...defaultProps} />)
+    expect(document.querySelector('.scorePanelBar')).toBeInTheDocument()
+    expect(document.querySelector('.scorePanelBarFill')).toBeInTheDocument()
+  })
+
+  it('scorePanelBarFill starts at 0% width when score is 0', () => {
+    render(<PlayPage {...defaultProps} />)
+    const fill = document.querySelector('.scorePanelBarFill')
+    expect(fill.style.width).toBe('0%')
   })
 })
 

@@ -701,14 +701,18 @@ export default function PlayPage({
 {/*           <div className='currentScoreSection'></div> */}
 
           <div className='scorePanel'>
-            <div className='scorePanelSide'>
-              <div className='scorePanelLabel'>CURRENT</div>
-              <div className='scorePanelValue'>{activeScore}/16</div>
+            <div className='scorePanelRow'>
+              <div className='scorePanelScoreGroup'>
+                <span className='scorePanelLabel'>Score</span>
+                <span className='scorePanelValue'>{activeScore} / 16</span>
+              </div>
+              <div className='scorePanelBestChip'>Best {activeHighScore}</div>
             </div>
-            <div className='scorePanelDivider'></div>
-            <div className='scorePanelSide'>
-              <div className='scorePanelLabel'>HIGH</div>
-              <div className='scorePanelValue'>{activeHighScore}</div>
+            <div className='scorePanelBar'>
+              <div
+                className='scorePanelBarFill'
+                style={{width: `${(activeScore / 16) * 100}%`}}
+              ></div>
             </div>
           </div>
 
