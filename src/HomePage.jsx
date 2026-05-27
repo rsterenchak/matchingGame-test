@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './style.css';
 import musicIcon from './assets/musical-notes.svg'
 import gitIcon from './assets/github.svg'
@@ -10,10 +10,37 @@ export default function HomePage({
   setPlayPage,
   setAudioPause,
   setAudioPlay,
-  activeCurrentAudio
+  activeCurrentAudio,
+  isVolume,
+  onVolumeChange
 }) {
 
   console.log('HomePage re-rendered');
+
+  const [sliderOpen, setSliderOpen] = useState(false);
+  const musicWrapperRef = useRef(null);
+
+  useEffect(() => {
+    if (!sliderOpen) return;
+
+    function handleOutsideClick(e) {
+      if (musicWrapperRef.current && !musicWrapperRef.current.contains(e.target)) {
+        setSliderOpen(false);
+      }
+    }
+
+    function handleEscape(e) {
+      if (e.key === 'Escape') setSliderOpen(false);
+    }
+
+    document.addEventListener('click', handleOutsideClick);
+    document.addEventListener('keydown', handleEscape);
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [sliderOpen]);
 
 
   const boxStyle = {
@@ -64,12 +91,36 @@ export default function HomePage({
 
             <div className='topColumn1'>
 
-                <div 
-                  className='musicBlock'
-                  onClick={() => forMusicIcon()}
-                >
-                  
-                  <img className='musicIcon' src={musicIcon} ></img>
+                <div className='musicIconWrapper' ref={musicWrapperRef}>
+
+                  <div
+                    className='musicBlock'
+                    onClick={() => forMusicIcon()}
+                  >
+
+                    <img className='musicIcon' src={musicIcon}></img>
+
+                  </div>
+
+                  <div
+                    className='volumeChevron'
+                    onClick={() => setSliderOpen(o => !o)}
+                  >▾</div>
+
+                  {sliderOpen && (
+                    <div className='volumeSliderWrapper'>
+                      <input
+                        type="range"
+                        className="volumeSliderInput"
+                        min="0"
+                        max="1"
+                        step="0.005"
+                        value={isVolume}
+                        style={{background: `linear-gradient(to top, yellow ${isVolume * 100}%, #ccc ${isVolume * 100}%)`}}
+                        onChange={e => onVolumeChange(parseFloat(e.target.value))}
+                      />
+                    </div>
+                  )}
 
                 </div>
 

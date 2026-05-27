@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './style.css';
 import homeBackground from './assets/kame-house.jpg'
 import playBackground from './assets/namek-background.svg'
@@ -13,21 +13,26 @@ import playSong from './assets/NamekTheme.mp3'
 // create component responsible for controlling music
 
 function HandleHomeAudio({
-  audioState
+  audioState,
+  volumeLevel
 
 }){
 
+  const audioRef = useRef(null);
+  if (audioRef.current === null) {
+    const a = new Audio(homeSong);
+    a.loop = true;
+    a.volume = volumeLevel;
+    audioRef.current = a;
+  }
 
-  const audioElement = new Audio(homeSong);
-  audioElement.volume = 0.07;
-  audioElement.loop = true;
   let homeAudioSwitch = false;
 
-  
+
   /** Start re-thinking how this will work once music is played
    *  Seems as though, upon render, this runs the effect, cleanup,
    *  and then finally the effect once more. Contstruct based on that
-   * 
+   *
    */
 
   let cleanupMarker = true;
@@ -35,14 +40,14 @@ function HandleHomeAudio({
     useEffect(() => {
 
       cleanupMarker = true;
-   
 
-      var playPromise = audioElement.play();
+
+      var playPromise = audioRef.current.play();
 
       if (playPromise !== undefined) {
         playPromise.then(_ => {
           // Automatic playback started!
-          
+
           // Show playing UI.
         })
         .catch(error => {
@@ -60,34 +65,42 @@ function HandleHomeAudio({
 
         // console.log('Cleanup for useEffect');
 
-        audioElement.pause();
+        audioRef.current.pause();
 
 
 
-        
+
       };
     }, [audioState])
+
+    useEffect(() => {
+      audioRef.current.volume = volumeLevel;
+    }, [volumeLevel])
 
 
 }
 
 function HandlePauseAudio({
-  audioState
+  audioState,
+  volumeLevel
 
 }){
 
+  const audioRef = useRef(null);
+  if (audioRef.current === null) {
+    const a = new Audio(homeSong);
+    a.loop = true;
+    a.volume = volumeLevel;
+    audioRef.current = a;
+  }
 
-  const audioElement = new Audio(homeSong);
-  audioElement.volume = 0.07;
-  audioElement.loop = true;
   let homeAudioSwitch = false;
 
 
-  
   /** Start re-thinking how this will work once music is played
    *  Seems as though, upon render, this runs the effect, cleanup,
    *  and then finally the effect once more. Contstruct based on that
-   * 
+   *
    */
 
   let cleanupMarker = true;
@@ -95,9 +108,9 @@ function HandlePauseAudio({
     useEffect(() => {
 
       cleanupMarker = true;
-   
 
-      var playPromise = audioElement.pause();
+
+      var playPromise = audioRef.current.pause();
 
       if (playPromise !== undefined) {
         playPromise.then(_ => {
@@ -120,30 +133,39 @@ function HandlePauseAudio({
         // console.log('Cleanup for useEffect');
 
 
-        
+
       };
     }, [audioState])
+
+    useEffect(() => {
+      audioRef.current.volume = volumeLevel;
+    }, [volumeLevel])
 
 
 }
 
 function HandlePlayAudio({
-  audioState
+  audioState,
+  volumeLevel
 
 }){
 
+  const audioRef = useRef(null);
+  if (audioRef.current === null) {
+    const a = new Audio(playSong);
+    a.loop = true;
+    a.volume = volumeLevel;
+    a.currentTime = 1;
+    audioRef.current = a;
+  }
 
-  const audioElement2 = new Audio(playSong);
-  audioElement2.volume = 0.07;
-  audioElement2.currentTime = 1;
-  audioElement2.loop = true;
   let playAudioSwitch = false;
 
-  
+
   /** Start re-thinking how this will work once music is played
    *  Seems as though, upon render, this runs the effect, cleanup,
    *  and then finally the effect once more. Contstruct based on that
-   * 
+   *
    */
 
   let cleanupMarker = true;
@@ -151,14 +173,14 @@ function HandlePlayAudio({
     useEffect(() => {
 
       cleanupMarker = true;
-   
 
-      var playPromise = audioElement2.play();
+
+      var playPromise = audioRef.current.play();
 
       if (playPromise !== undefined) {
         playPromise.then(_ => {
           // Automatic playback started!
-          
+
           // Show playing UI.
         })
         .catch(error => {
@@ -176,33 +198,42 @@ function HandlePlayAudio({
 
         // console.log('Play - cleanup');
 
-        audioElement2.pause();
+        audioRef.current.pause();
 
 
 
-        
+
       };
     }, [audioState])
+
+    useEffect(() => {
+      audioRef.current.volume = volumeLevel;
+    }, [volumeLevel])
 
 
 }
 
 function HandlePausePlayAudio({
-  audioState
+  audioState,
+  volumeLevel
 
 }){
 
+  const audioRef = useRef(null);
+  if (audioRef.current === null) {
+    const a = new Audio(playSong);
+    a.loop = true;
+    a.volume = volumeLevel;
+    audioRef.current = a;
+  }
 
-  const audioElement2 = new Audio(playSong);
-  audioElement2.volume = 0.07;
-  audioElement2.loop = true;
   let playAudioSwitch = false;
 
-  
+
   /** Start re-thinking how this will work once music is played
    *  Seems as though, upon render, this runs the effect, cleanup,
    *  and then finally the effect once more. Contstruct based on that
-   * 
+   *
    */
 
   let cleanupMarker = true;
@@ -210,9 +241,9 @@ function HandlePausePlayAudio({
     useEffect(() => {
 
       cleanupMarker = true;
-   
 
-      var playPromise = audioElement2.pause();
+
+      var playPromise = audioRef.current.pause();
 
       if (playPromise !== undefined) {
         playPromise.then(_ => {
@@ -235,9 +266,13 @@ function HandlePausePlayAudio({
         // console.log('PlayPause - cleanup');
 
 
-        
+
       };
     }, [audioState])
+
+    useEffect(() => {
+      audioRef.current.volume = volumeLevel;
+    }, [volumeLevel])
 
 
 }
@@ -443,8 +478,17 @@ export default function MainSection() {
 
   const [isCurrentPage, setCurrentPage] = useState(true);
   const [isCurrentAudio, setCurrentAudio] = useState(false);
+  const [isVolume, setVolume] = useState(() => {
+    const saved = localStorage.getItem('matchingGame_volume');
+    return saved !== null ? parseFloat(saved) : 0.035;
+  });
 
   const [activeData, setActiveData] = useState([]);
+
+  function handleVolumeChange(newVolume) {
+    setVolume(newVolume);
+    localStorage.setItem('matchingGame_volume', String(newVolume));
+  }
 
   async function fetchData() {
     let url = 'https://dragonball-api.com/api/characters?page=1&limit=16';
@@ -498,11 +542,13 @@ export default function MainSection() {
       
         <HandleHomeAudio
           audioState={isCurrentAudio}
+          volumeLevel={isVolume}
         />
       ) : (
 
         <HandlePauseAudio
           audioState={isCurrentAudio}
+          volumeLevel={isVolume}
         />
 
       )
@@ -514,11 +560,13 @@ export default function MainSection() {
       
           <HandlePlayAudio
             audioState={isCurrentAudio}
+            volumeLevel={isVolume}
           />
         ) : (
   
           <HandlePausePlayAudio
             audioState={isCurrentAudio}
+            volumeLevel={isVolume}
           />
   
         )
@@ -529,12 +577,14 @@ export default function MainSection() {
 
     {isCurrentPage ? (
     
-      <HomePage 
+      <HomePage
         background={homeBackground}
         setPlayPage={() => setCurrentPage(false)}
         setAudioPause={() => setCurrentAudio(false)}
         setAudioPlay={() => setCurrentAudio(true)}
         activeCurrentAudio={isCurrentAudio}
+        isVolume={isVolume}
+        onVolumeChange={handleVolumeChange}
       />
       
       ) : (
@@ -546,6 +596,8 @@ export default function MainSection() {
         setAudioPlay={() => setCurrentAudio(true)}
         activeCurrentAudio={isCurrentAudio}
         isActiveData={activeData}
+        isVolume={isVolume}
+        onVolumeChange={handleVolumeChange}
       />  
     )}
 
