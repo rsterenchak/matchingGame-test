@@ -1505,6 +1505,165 @@ body {
 
 
 
+/* Hamburger mobile menu */
+
+.mobileMenuWrapper {
+  display: none;
+  position: relative;
+}
+
+.hamburgerButton {
+  display: flex;
+  border-radius: 50%;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  border: 2.5px solid black;
+  background-color: #FFD700;
+  cursor: pointer;
+  user-select: none;
+}
+
+.hamburgerButton:before {
+  content: '';
+  background: linear-gradient(45deg, yellow, rgb(179, 179, 0), yellow, rgb(179, 179, 0), yellow, rgb(179, 179, 0));
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowingHamburger 20s linear infinite;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+  border-radius: 15px;
+}
+
+.hamburgerButton:hover:before {
+  opacity: 1;
+}
+
+.hamburgerButton:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 20px;
+}
+
+@keyframes glowingHamburger {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+.mobileMenuDropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  background-color: #FFD700;
+  border: 2px solid black;
+  border-radius: 12px;
+  min-width: 170px;
+  z-index: 50;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.mobileMenuRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 10px;
+  width: 100%;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  box-sizing: border-box;
+}
+
+.mobileMenuRow:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.mobileMenuSliderRow {
+  cursor: default;
+  justify-content: center;
+  padding: 6px 12px;
+}
+
+.mobileMenuSliderRow:hover {
+  background-color: transparent;
+}
+
+.mobileMenuDivider {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+}
+
+.mobileMenuIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.mobileMenuLabel {
+  font-family: 'customFont1';
+  font-size: 13px;
+  color: black;
+  white-space: nowrap;
+}
+
+.mobileMenuIconText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  font-weight: bold;
+  font-size: 15px;
+  font-family: system-ui, sans-serif;
+  flex-shrink: 0;
+}
+
+.mobileMenuVolumeSlider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  width: 140px;
+  cursor: pointer;
+  outline: none;
+}
+
+.mobileMenuVolumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  background: black;
+  border: 2px solid #FFD700;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.mobileMenuVolumeSlider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: black;
+  border: 2px solid #FFD700;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
 /** Mobile HomePage Warping */
 
 
@@ -1677,6 +1836,39 @@ body {
     margin-bottom: 4px;
   }
 
+  .mobileMenuWrapper {
+    display: block;
+  }
+
+  .hamburgerButton {
+    width: min(7vw, 24px);
+    height: min(7vw, 24px);
+    margin-top: 8px;
+    margin-left: 10px;
+  }
+
+  .topColumn3 {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .topColumn3 > .musicIconWrapper,
+  .topColumn3 > .musicBlock3,
+  .topColumn3 > .helpButton {
+    display: none;
+  }
+
+  .portfolioIcon2 {
+    display: none;
+  }
+
+  .topColumn1 > .musicIconWrapper {
+    display: none;
+  }
+
+  .portfolioIcon {
+    display: none;
+  }
 
 }
 
@@ -1843,6 +2035,12 @@ body {
     margin-bottom: 4px;
   }
 
+  .hamburgerButton {
+    width: min(6vw, 26px);
+    height: min(6vw, 26px);
+    margin-top: 8px;
+    margin-left: 10px;
+  }
 
 }
 
@@ -2001,11 +2199,45 @@ body {
   .currentScoreElement {
     height: 100px;
     width: 280px;
-    font-size: 26px;  
+    font-size: 26px;
 
   }
-  
-  
+
+  .mobileMenuWrapper {
+    display: none;
+  }
+
+  .topColumn3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 28fr;
+    grid-template-areas: 'musicBlock2 . musicBlock3 helpBlock .';
+  }
+
+  .topColumn3 > .musicIconWrapper {
+    display: flex;
+  }
+
+  .topColumn3 > .musicBlock3 {
+    display: flex;
+  }
+
+  .topColumn3 > .helpButton {
+    display: flex;
+  }
+
+  .portfolioIcon2 {
+    display: block;
+  }
+
+  .topColumn1 > .musicIconWrapper {
+    display: flex;
+  }
+
+  .portfolioIcon {
+    display: block;
+  }
+
+
   }
 
 /* tablet, landscape iPad, lo-res laptops ands desktops */
