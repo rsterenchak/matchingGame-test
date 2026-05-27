@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🐉 Dragon Ball Z Matching Game ⭐
+# 🐉 Dragon Ball Z Memory Game ⭐
 
 <img src="src/assets/dragon-ball-image.png" alt="Dragon Ball Z" width="500" />
 
