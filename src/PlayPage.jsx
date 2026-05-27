@@ -29,9 +29,8 @@ export default function PlayPage({
   const [sliderOpen, setSliderOpen] = useState(false);
   const musicWrapperRef = useRef(null);
 
-  const [activeInstructionsModal, setActiveInstructionsModal] = useState(() => {
-    return !localStorage.getItem('matchingGame_seenInstructions');
-  });
+  const [activeInstructionsModal, setActiveInstructionsModal] = useState(true);
+  const modalInteractiveRef = useRef(false);
 
   useEffect(() => {
     if (!sliderOpen) return;
@@ -58,15 +57,25 @@ export default function PlayPage({
   useEffect(() => {
     if (!activeInstructionsModal) return;
 
+    // Absorb ghost clicks: iOS synthesizes a click ~300ms after touchend on the
+    // previous element, which lands on the backdrop and immediately dismisses the
+    // modal. Disallow closure until the ghost-click window has passed.
+    modalInteractiveRef.current = false;
+    const guardTimer = setTimeout(() => {
+      modalInteractiveRef.current = true;
+    }, 400);
+
     function handleEscape(e) {
-      if (e.key === 'Escape') {
-        localStorage.setItem('matchingGame_seenInstructions', 'true');
+      if (e.key === 'Escape' && modalInteractiveRef.current) {
         setActiveInstructionsModal(false);
       }
     }
 
     document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      clearTimeout(guardTimer);
+    };
   }, [activeInstructionsModal]);
 
 
@@ -208,7 +217,7 @@ export default function PlayPage({
 
 
   function closeInstructions() {
-    localStorage.setItem('matchingGame_seenInstructions', 'true');
+    if (!modalInteractiveRef.current) return;
     setActiveInstructionsModal(false);
   }
 
