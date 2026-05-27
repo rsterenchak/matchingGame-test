@@ -36,7 +36,7 @@
   - File: `src/HomePage.jsx`, `src/assets/`
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[MEDIUM]** Fix instructions modal not auto-opening on mobile when play page loads
+- [x] **[MEDIUM]** Fix instructions modal not auto-opening on mobile when play page loads — Completed: 2026-05-27
   - Type: bug
   - Description: The instructions modal is supposed to auto-open every time the play page loads on both desktop and mobile, but on mobile it doesn't appear â the player lands on the board with no prompt explaining the click-each-character-once rule. Expected behavior is identical to desktop: modal opens automatically on every `PlayPage` mount, dismissed via the standard close routes. Likely cause sits in `PlayPage.jsx` around whatever effect or state initializer triggers the popup (the same area that owns the end-game `popup` state) â check whether the auto-show is gated on a viewport check, a `window`/`matchMedia` reference that resolves differently on mobile, a hover/pointer media query, or a `useEffect` dependency that doesn't fire on the mobile mount path. Also worth confirming the modal isn't opening but immediately being dismissed by a stray `touchstart`/synthetic-click on mount â `Card` uses `onClick` for mobile taps, so an outside-tap-to-close listener attached too eagerly could swallow it on the first frame.
   - File: `src/PlayPage.jsx`, `src/style.css`
