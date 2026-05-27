@@ -79,6 +79,16 @@ describe('PlayPage score panel', () => {
   })
 })
 
+describe('PlayPage background fade gradient', () => {
+  it('playSection::before applies a linear-gradient overlay using the safari chrome blend color to soften the edge seam', () => {
+    const pseudoRuleMatch = css.match(/\.playSection::before\s*\{([^}]+)\}/)
+    expect(pseudoRuleMatch).not.toBeNull()
+    const pseudoRule = pseudoRuleMatch[1]
+    expect(pseudoRule).toContain('linear-gradient')
+    expect(pseudoRule.toLowerCase()).toContain('#4a90d9')
+  })
+})
+
 describe('PlayPage instructions modal', () => {
   const defaultProps = {
     background: 'fake-bg.jpg',
