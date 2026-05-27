@@ -1512,6 +1512,13 @@ body {
 @media (min-width:320px)  {
   .playSection {
     overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .portfolioBlock2 {
+    width: auto;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .outerSection2 {
@@ -1652,13 +1659,13 @@ body {
   }
 
   .highScoreElement {
-    height: 40px;
+    height: 50px;
     width: calc(50vw - 20px);
     font-size: 16px;
   }
 
   .currentScoreElement {
-    height: 65px;
+    height: 50px;
     width: calc(50vw - 20px);
     font-size: 16px;
   }
@@ -1667,6 +1674,16 @@ body {
 }
 
 @media (min-width:481px)  {
+  .playSection {
+    overflow-x: hidden;
+  }
+
+  .portfolioBlock2 {
+    width: auto;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
   .outerSection2 {
     display: grid;
     grid-template-rows: auto auto auto auto;
@@ -1801,13 +1818,13 @@ body {
   }
 
   .highScoreElement {
-    height: 40px;
+    height: 50px;
     width: calc(50vw - 20px);
     font-size: 16px;
   }
 
   .currentScoreElement {
-    height: 65px;
+    height: 50px;
     width: calc(50vw - 20px);
     font-size: 16px;
   }
