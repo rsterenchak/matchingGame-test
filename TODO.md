@@ -48,7 +48,7 @@
   - File: `src/assets/`, `src/HomePage.jsx`
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[LOW]** Fix white borders above and below background image on play screen
+- [x] **[LOW]** Fix white borders above and below background image on play screen — Completed: 2026-05-27
   - Type: bug
   - Description: The play screen shows thin white strips above the green sky and below the blue water because the background image doesn't extend to the viewport edges â visible in the screenshot near the status bar and just above the Safari tab bar. Extend the background to cover the full viewport: switch the background container to `100dvh` (or `min-height: 100vh` with `background-size: cover` and `background-position: center`), and verify the image scales without leaving gaps at the top/bottom safe-area edges. Touches the play-screen background rule in `src/style.css`; check the inline `boxStyle` background-image write in `src/PlayPage.jsx` to make sure it isn't constraining height.
   - File: `src/style.css`, `src/PlayPage.jsx`
