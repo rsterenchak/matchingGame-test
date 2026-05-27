@@ -78,8 +78,8 @@
   - File: `src/style.css`, `src/PlayPage.jsx`, `src/HomePage.jsx`
   - Completed: 2026-05-27
 
-- [ ] **[MEDIUM]** Extend background image to viewport edges and redesign score row
+- [x] **[MEDIUM]** Extend background image to viewport edges and redesign score row
   - Type: bug
   - Description: Two related visual issues on `HomePage` and `PlayPage`. (1) A white strip still shows at the top and bottom of the screen even after switching to `background-size: cover` — this is the default `<body>`/`<html>` margin and the background-applying element not reaching the viewport edges. Fix in `src/style.css` by zeroing `margin` and `padding` on `html, body`, setting `min-height: 100vh` (and `min-height: 100dvh` for mobile Safari URL-bar handling) on the background-applying element, and ensuring the background is set on a full-viewport element (likely `body` or the top-level app wrapper) — not on a child that's constrained by content height. Verify the fix across all responsive breakpoints (320 / 481 / 641 / 961 / 1025 / 1281). (2) The "High Score" and "Current Score" elements on `PlayPage` visually clash — the score number overlaps or sits awkwardly against the label. Replace the current two-div layout with a single unified pill: one red rounded container holding both stats side-by-side, separated by a thin vertical divider, with compact uppercase labels ("High" / "Current") and bold numbers. Keep the existing red color and Shojumaru font. No new dependencies; all changes in `src/style.css` plus minimal markup adjustments in `PlayPage.jsx` for the new pill structure.
   - File: `src/style.css`, `src/PlayPage.jsx`, `src/HomePage.jsx`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-27
