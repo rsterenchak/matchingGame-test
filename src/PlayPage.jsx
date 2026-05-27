@@ -28,6 +28,10 @@ export default function PlayPage({
   const [sliderOpen, setSliderOpen] = useState(false);
   const musicWrapperRef = useRef(null);
 
+  const [activeInstructionsModal, setActiveInstructionsModal] = useState(() => {
+    return !localStorage.getItem('matchingGame_seenInstructions');
+  });
+
   useEffect(() => {
     if (!sliderOpen) return;
 
@@ -49,6 +53,20 @@ export default function PlayPage({
       document.removeEventListener('keydown', handleEscape);
     };
   }, [sliderOpen]);
+
+  useEffect(() => {
+    if (!activeInstructionsModal) return;
+
+    function handleEscape(e) {
+      if (e.key === 'Escape') {
+        localStorage.setItem('matchingGame_seenInstructions', 'true');
+        setActiveInstructionsModal(false);
+      }
+    }
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [activeInstructionsModal]);
 
 
   const dataArray = [
@@ -187,6 +205,11 @@ export default function PlayPage({
   }
 
 
+
+  function closeInstructions() {
+    localStorage.setItem('matchingGame_seenInstructions', 'true');
+    setActiveInstructionsModal(false);
+  }
 
   function randomIntFromInterval(min, max) { // min and max included
 
@@ -578,6 +601,14 @@ export default function PlayPage({
 
                 </div>
 
+                <div
+                  className='helpButton'
+                  onClick={() => setActiveInstructionsModal(true)}
+                  style={popUpStyle}
+                >
+                  ?
+                </div>
+
 
             </div>
             <div className='topColumn4'>
@@ -718,6 +749,21 @@ export default function PlayPage({
       )
     
     }
+
+    {activeInstructionsModal && (
+      <div className='instructionsBackdrop' onClick={closeInstructions}>
+        <div className='instructionsCard' onClick={e => e.stopPropagation()}>
+          <div className='instructionsTitle'>How to Play</div>
+          <ul className='instructionsList'>
+            <li>Pick a Z Fighter you haven't picked before.</li>
+            <li>Cards reshuffle after every turn.</li>
+            <li>Picking a repeated fighter ends the game.</li>
+            <li>Pick all 16 unique fighters to win!</li>
+          </ul>
+          <div className='gotItButton' onClick={closeInstructions}>Got it!</div>
+        </div>
+      </div>
+    )}
 
   </>
   );
