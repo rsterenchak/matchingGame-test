@@ -72,8 +72,8 @@
   - File: `src/style.css`, `src/PlayPage.jsx`
   - Completed: 2026-05-27
 
-- [ ] **[MEDIUM]** Fix white viewport borders and redesign score row
+- [x] **[MEDIUM]** Fix white viewport borders and redesign score row
   - Type: bug
   - Description: Two related visual issues on both `HomePage` and `PlayPage`. (1) White borders show around the background image on all four edges because the background is currently sized to preserve aspect ratio (likely `background-size: contain` or a fixed width/height in `src/style.css`). Switch to `background-size: cover` with `background-position: center` so the image always fills the viewport — minor edge cropping is acceptable. Apply across all responsive breakpoints (320 / 481 / 641 / 961 / 1025 / 1281) so behavior is consistent. (2) The "High Score" and "Current Score" elements on `PlayPage` visually clash — the score number overlaps or sits awkwardly against the label. Replace the current two-div layout with a single unified pill: one red rounded container holding both stats side-by-side, separated by a thin vertical divider, with compact uppercase labels ("High" / "Current") and bold numbers. Keep the existing red color and Shojumaru font. No new dependencies; all changes in `src/style.css` plus minimal markup adjustments in `PlayPage.jsx` for the new pill structure.
   - File: `src/style.css`, `src/PlayPage.jsx`, `src/HomePage.jsx`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-27

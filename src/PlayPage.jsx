@@ -700,30 +700,16 @@ export default function PlayPage({
           {/* Delete Section - no longer needed */}
 {/*           <div className='currentScoreSection'></div> */}
 
-          <div className='highScoreSection'>
-
-            <div className='scoreSection1'>
-              <div className='highScoreElement'>
-
-                <div className='highScoreText'>High Score: </div>
-                <div className='highScoreValue'>&nbsp;{activeHighScore}</div>
-
-              </div>
+          <div className='scorePanel'>
+            <div className='scorePanelSide'>
+              <div className='scorePanelLabel'>CURRENT</div>
+              <div className='scorePanelValue'>{activeScore}/16</div>
             </div>
-
-            <div className='scoreSection2'>
-
-              <div className='currentScoreElement'>
-
-                <div className='currentScoreText'>Current <br></br>Score:</div>
-                <div className='currentScoreValue'>&nbsp;{activeScore}/16</div>
-
-              </div>
-
+            <div className='scorePanelDivider'></div>
+            <div className='scorePanelSide'>
+              <div className='scorePanelLabel'>HIGH</div>
+              <div className='scorePanelValue'>{activeHighScore}</div>
             </div>
-
-
-
           </div>
 
 
