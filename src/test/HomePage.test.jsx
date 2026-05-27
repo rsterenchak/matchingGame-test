@@ -44,3 +44,20 @@ describe('HomePage background layout', () => {
     expect(baseRule).toContain('-webkit-fill-available')
   })
 })
+
+describe('Global html and body baseline', () => {
+  it('body rule includes min-height: 100dvh so the body always covers the full dynamic viewport and leaves no white strips at the edges', () => {
+    const bodyRuleMatch = css.match(/^body\s*\{([^}]+)\}/m)
+    expect(bodyRuleMatch).not.toBeNull()
+    const bodyRule = bodyRuleMatch[1]
+    expect(bodyRule).toContain('min-height: 100dvh')
+  })
+
+  it('html rule explicitly zeros margin and padding to prevent browser-default whitespace at viewport edges', () => {
+    const htmlRuleMatch = css.match(/^html\s*\{([^}]+)\}/m)
+    expect(htmlRuleMatch).not.toBeNull()
+    const htmlRule = htmlRuleMatch[1]
+    expect(htmlRule).toMatch(/margin:\s*0/)
+    expect(htmlRule).toMatch(/padding:\s*0/)
+  })
+})
