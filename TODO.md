@@ -6,7 +6,7 @@
   - File: `toDoList_main/src/main.js`
   - Completed: 2026-05-26
 
-- [ ] **[LOW]** Replace tab favicon with 1-star dragonball and rename tab to "DBZ Memory Game"
+- [x] **[LOW]** Replace tab favicon with 1-star dragonball and rename tab to "DBZ Memory Game"
   - Type: feature
   - Description: Swap the default Vite favicon for a custom 1-star dragonball (orange sphere, single bold red star ÃÂ¢ÃÂÃÂ chosen for legibility at 16px) and update the document title from `matchingGame-test` to `DBZ Memory Game`. Implement the favicon as an inline SVG data URI on the existing `<link rel="icon">` in `index.html` so no new asset file needs to be tracked ÃÂ¢ÃÂÃÂ orange fill `#F59E2C` with a `#9A4A0E` 2px outline, single `#C92020` 5-point star centered on a 64ÃÂÃÂ64 viewBox. Update the `<title>` in the same file. Delete the orphaned `public/vite.svg` (or the root-level `vite.svg` reference, wherever it currently resolves) as part of the same change so the old asset isn't left dangling. No new dependencies, no build-config changes ÃÂ¢ÃÂÃÂ purely an `index.html` edit per `CLAUDE.md`'s "don't touch `vite.config.js`/`package.json`" rule.
   - File: `index.html`
