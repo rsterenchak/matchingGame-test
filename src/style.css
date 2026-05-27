@@ -1510,10 +1510,15 @@ body {
 
 /* smartphones, iPhone, portrait 480x320 phones */
 @media (min-width:320px)  {
+  .playSection {
+    overflow-y: auto;
+  }
+
   .outerSection2 {
     display: grid;
-    grid-template-rows: 1fr 2fr 2fr 1fr;
-    height: 100%;
+    grid-template-rows: auto auto auto auto;
+    height: auto;
+    min-height: 100%;
     margin: 0px;
     padding: 0px;
     gap: 10px;
@@ -1552,13 +1557,13 @@ body {
     from {
       background-color: yellow;
     }
-  
+
     to {
-  
+
       width: 53px;
-      height: 48px;    
+      height: 48px;
       background-color: yellow;
-  
+
     }
   }
   .musicBlock2 {
@@ -1573,13 +1578,13 @@ body {
     from {
       background-color: yellow;
     }
-  
+
     to {
-  
+
       width: 53px;
-      height: 48px;    
+      height: 48px;
       background-color: yellow;
-  
+
     }
   }
 
@@ -1587,61 +1592,52 @@ body {
     width: 30px;
     height: 30px;
 
-  }  
+  }
 
   .logoSection3 {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap-reverse;
-    align-self: center;
-    justify-self: center;
-    justify-content: center;
-    align-items: center;
-    object-fit: contain;
-    gap: 20px;
-    width: 270px;
-
-
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 0 12px;
+    width: auto;
+    align-self: start;
   }
-  
+
   .card {
     display: flex;
-    
     flex-direction: row;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
-    height: 105px;
-    width: 55px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2/3;
     cursor: pointer;
+    overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  
+
   }
 
   .cardBack {
-    height: 125px;
-    width: 75px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2/3;
     border-radius: 7px;
     border: 1px solid blue;
-  
+
   }
 
   .logoSection4 {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-self: center;
-    justify-self: center;
-    justify-content: center;
-    align-items: center;
-    object-fit: contain;
-    gap: 20px;
-    width: 270px;
-    
-
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 0 12px;
+    width: auto;
+    align-self: start;
   }
+
   .highScoreElement {
-    height: 40px;  
+    height: 40px;
     width: 170px;
     font-size: 16px;
   }
@@ -1651,15 +1647,16 @@ body {
     width: 160px;
     font-size: 16px;
   }
-  
+
 
 }
 
 @media (min-width:481px)  {
   .outerSection2 {
     display: grid;
-    grid-template-rows: 1fr 1.4fr 1.4fr 1fr;
-    height: 100%;
+    grid-template-rows: auto auto auto auto;
+    height: auto;
+    min-height: 100%;
     margin: 0px;
     padding: 0px;
     gap: 10px;
@@ -1721,69 +1718,60 @@ body {
     from {
       background-color: yellow;
     }
-  
+
     to {
-  
+
       width: 53px;
-      height: 48px;    
+      height: 48px;
       background-color: yellow;
-  
+
     }
   }
 
   .logoSection3 {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap-reverse;
-    align-self: center;
-    justify-self: center;
-    justify-content: center;
-    align-items: center;
-    object-fit: contain;
-    gap: 20px;
-    width: 410px;
-
-
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 0 12px;
+    width: auto;
+    align-self: start;
   }
-  
+
   .card {
     display: flex;
-    
     flex-direction: row;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
-    height: 125px;
-    width: 75px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2/3;
     cursor: pointer;
+    overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  
+
   }
 
   .cardBack {
-    height: 125px;
-    width: 75px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2/3;
     border-radius: 7px;
     border: 1px solid blue;
-  
+
   }
 
   .logoSection4 {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-self: center;
-    justify-self: center;
-    justify-content: center;
-    align-items: center;
-    object-fit: contain;
-    gap: 20px;
-    width: 410px;
-    
-
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 0 12px;
+    width: auto;
+    align-self: start;
   }
+
   .highScoreElement {
-    height: 40px;  
+    height: 40px;
     width: 170px;
     font-size: 16px;
   }
@@ -1793,12 +1781,16 @@ body {
     width: 160px;
     font-size: 16px;
   }
-  
+
 
 }
 
 @media (min-width:641px)  {
    /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+
+  .playSection {
+    overflow-y: visible;
+  }
 
   .speakerButton {
     display: none;
