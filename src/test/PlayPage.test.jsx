@@ -1,6 +1,23 @@
 import { render, screen, fireEvent, act } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { readFileSync } from 'fs'
+import { resolve, dirname } from 'path'
+import { fileURLToPath } from 'url'
 import PlayPage from '../PlayPage.jsx'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const css = readFileSync(resolve(__dirname, '../style.css'), 'utf8')
+
+describe('PlayPage background layout', () => {
+  it('playSection base rule uses min-height: 100dvh so the background fills the full dynamic viewport without white strips on mobile', () => {
+    // Extract the first (base) .playSection rule — the one before any @media block
+    const baseRuleMatch = css.match(/\.playSection\s*\{([^}]+)\}/)
+    expect(baseRuleMatch).not.toBeNull()
+    const baseRule = baseRuleMatch[1]
+    expect(baseRule).toContain('min-height: 100dvh')
+    expect(baseRule).not.toContain('height: 100vh')
+  })
+})
 
 describe('PlayPage instructions modal', () => {
   const defaultProps = {
