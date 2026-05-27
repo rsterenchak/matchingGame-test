@@ -42,7 +42,7 @@
   - File: `src/PlayPage.jsx`, `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[LOW]** Fix "Memory Game" text off-center on home page cloud graphic
+- [x] **[LOW]** Fix "Memory Game" text off-center on home page cloud graphic — Completed: 2026-05-27
   - Type: bug
   - Description: After swapping "Matching" Ã¢ÂÂ "Memory" on the home page Nimbus cloud, the two-line "MEMORY GAME" text sits visibly left of the cloud's visual center Ã¢ÂÂ there's a large stretch of empty cloud body to the right of "MEMORY" and the right wisp/tail of the cloud feels orphaned. Expected behavior is the text centered on the puffy body of the cloud (matching how "MATCHING GAME" was balanced on the original asset). Fix by re-exporting the cloud PNG in `src/assets/` with the text horizontally recentered on the cloud body rather than CSS-nudging the `<img>` in `HomePage.jsx` Ã¢ÂÂ a baked-in offset would need per-breakpoint overrides at 320 / 481 / 641 / 961 / 1025 / 1281 and would still drift on zoom. Filename should stay the same so the import in `HomePage.jsx` doesn't need to change.
   - File: `src/assets/`, `src/HomePage.jsx`
