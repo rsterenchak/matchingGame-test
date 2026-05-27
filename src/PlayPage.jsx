@@ -180,6 +180,7 @@ export default function PlayPage({
 
   const boxStyle = {
     backgroundImage: `url(${background})`,
+    backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     filter: activePopUp ? 'blur(5px)' : 'blur(0px)'
