@@ -200,10 +200,14 @@ body {
   border-radius: 16px;
   width: 28px;
   height: 76px;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   z-index: 10;
+}
+
+.volumeSliderWrapper.sliderOpen {
+  display: flex;
 }
 
 .volumeSliderInput {
@@ -1751,6 +1755,20 @@ body {
 
 @media (min-width:641px)  {
    /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+
+  .speakerButton {
+    display: none;
+  }
+
+  .volumeSliderWrapper {
+    display: flex;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin-top: 4px;
+  }
+
    .outerSection2 {
     display: grid;
     grid-template-rows: 1fr 1.4fr 1.4fr 1fr;

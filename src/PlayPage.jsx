@@ -553,20 +553,18 @@ export default function PlayPage({
                     </svg>
                   </div>
 
-                  {sliderOpen && (
-                    <div className='volumeSliderWrapper'>
-                      <input
-                        type="range"
-                        className="volumeSliderInput"
-                        min="0"
-                        max="1"
-                        step="0.005"
-                        value={isVolume}
-                        style={{background: `linear-gradient(to top, yellow ${isVolume * 100}%, #ccc ${isVolume * 100}%)`}}
-                        onChange={e => onVolumeChange(parseFloat(e.target.value))}
-                      />
-                    </div>
-                  )}
+                  <div className={`volumeSliderWrapper${sliderOpen ? ' sliderOpen' : ''}`}>
+                    <input
+                      type="range"
+                      className="volumeSliderInput"
+                      min="0"
+                      max="1"
+                      step="0.005"
+                      value={isVolume}
+                      style={{background: `linear-gradient(to top, yellow ${isVolume * 100}%, #ccc ${isVolume * 100}%)`}}
+                      onChange={e => onVolumeChange(parseFloat(e.target.value))}
+                    />
+                  </div>
 
                 </div>
 
