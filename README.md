@@ -10,6 +10,7 @@
 
 </div>
 
+![Tests](https://github.com/rsterenchak/matchingGame-test/actions/workflows/test.yml/badge.svg)
 ---
 
 ## ⚡ What is this?
