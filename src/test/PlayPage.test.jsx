@@ -15,7 +15,15 @@ describe('PlayPage background layout', () => {
     expect(baseRuleMatch).not.toBeNull()
     const baseRule = baseRuleMatch[1]
     expect(baseRule).toContain('min-height: 100dvh')
-    expect(baseRule).not.toContain('height: 100vh')
+    // Must not use bare `height: 100vh` (without min-) as that misaligns on mobile Safari
+    expect(baseRule).not.toMatch(/^\s*height:\s*100vh\b/m)
+  })
+
+  it('playSection base rule includes -webkit-fill-available fallback so older iOS Safari fills the visible area below the browser chrome', () => {
+    const baseRuleMatch = css.match(/\.playSection\s*\{([^}]+)\}/)
+    expect(baseRuleMatch).not.toBeNull()
+    const baseRule = baseRuleMatch[1]
+    expect(baseRule).toContain('-webkit-fill-available')
   })
 })
 

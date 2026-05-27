@@ -933,6 +933,8 @@ body {
   position: relative;
   border: 1px solid rgba(255, 0, 0, 0);
   z-index: 0;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
   min-height: 100dvh;
 
   overflow: visible;
