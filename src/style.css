@@ -13,6 +13,11 @@
 
 }
 
+html {
+  margin: 0;
+  padding: 0;
+}
+
 body {
 
   margin: 0px;
@@ -21,6 +26,9 @@ body {
   width: 100%;
   font-family: system-ui, sans-serif;
   overflow: hidden;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  min-height: 100dvh;
 }
 
 .homeSection {
