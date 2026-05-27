@@ -48,7 +48,7 @@
   - File: `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[MEDIUM]** Fix oversized mobile cards by switching to single 4×2 grid layout
+- [x] **[MEDIUM]** Fix oversized mobile cards by switching to single 4×2 grid layout
   - Type: bug
   - Description: At mobile widths (320 and 481 breakpoints) the card grid currently renders cards far too large — the wrap-reverse/wrap behavior in `.logoSection3` / `.logoSection4` is producing a tall layout where the 8 displayed cards eat the full viewport height and shove the score bar (`High Score` / `Current Score` in `.highScoreSection`) off-screen entirely. Restructure the mobile layout so all 8 cards render as a single 4-wide × 2-tall grid centered in the viewport, with cards small enough (~50–55px wide at 320, ~65–70px wide at 481, portrait ~2:3 aspect ratio preserved) to leave room for the score bar pinned at the bottom of `.outerSection2` as designed. The 8 cards are split across `.logoSection3` (top 4) and `.logoSection4` (bottom 4) in `PlayPage.jsx` — keep that JSX split intact and style each section as a flex/grid row of 4 cards at mobile widths so the two sections together render visually as 4×2. Apply only at the existing 320 and 481 breakpoints; leave 641+ alone since the tablet/desktop card sizing is fine. Reuse the existing breakpoint set (320/481/641/961/1025/1281) — do not introduce new ones. Also note that the existing pending entry "Improve mobile layout to fill screen with larger cards in 2×4 grid" pushes the opposite direction (bigger cards in a 2×4 column-major grid) and should be removed or marked obsolete when this lands, since both can't coexist. Pure CSS change in `src/style.css`; no JSX restructure, no new deps, no Tailwind.
   - File: `src/style.css`
