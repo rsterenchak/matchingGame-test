@@ -23,7 +23,7 @@
 </defs>
 <rect width="597" height="322" fill="url(#pattern0)"/>
 <g filter="url(#shadow)">
-<text x="298" y="150" text-anchor="middle" font-family="Shojumaru, serif" font-size="52" fill="#EAE100" stroke="black" stroke-width="8" paint-order="stroke fill">Memory</text>
-<text x="298" y="210" text-anchor="middle" font-family="Shojumaru, serif" font-size="52" fill="#EAE100" stroke="black" stroke-width="8" paint-order="stroke fill">Game</text>
+<text x="225" y="150" text-anchor="middle" font-family="Shojumaru, serif" font-size="52" fill="#EAE100" stroke="black" stroke-width="8" paint-order="stroke fill">Memory</text>
+<text x="225" y="210" text-anchor="middle" font-family="Shojumaru, serif" font-size="52" fill="#EAE100" stroke="black" stroke-width="8" paint-order="stroke fill">Game</text>
 </g>
 </svg>
