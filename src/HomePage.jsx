@@ -103,9 +103,13 @@ export default function HomePage({
                   </div>
 
                   <div
-                    className='volumeChevron'
+                    className='speakerButton'
                     onClick={() => setSliderOpen(o => !o)}
-                  >▾</div>
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="black">
+                      <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                    </svg>
+                  </div>
 
                   {sliderOpen && (
                     <div className='volumeSliderWrapper'>
