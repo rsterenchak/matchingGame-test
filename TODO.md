@@ -42,8 +42,8 @@
   - File: `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[MEDIUM]** Replace mobile hamburger side dropdown with a centered modal
+- [x] **[MEDIUM]** Replace mobile hamburger side dropdown with a centered modal
   - Type: feature
   - Description: On mobile, tapping the hamburger button currently opens the `.mobileMenuDropdown` anchored to the top-left under the button (`MobileMenu.jsx`); replace this with a centered overlay modal instead. Render a dimmed full-screen backdrop (plain dark dim, matching the How-to-Play instructions modal — no blur) with the menu panel floating in the screen center. Keep the existing structure intact: the same yellow DBZ card look (yellow background, thick black border, rounded corners), the same rows in the same order (Music with on/off label, volume slider, Background, How to Play, GitHub), the same `.mobileMenuDivider` separators between them, and the Shojumaru `.mobileMenuLabel` text — just re-anchor the panel from the top-left dropdown position to a centered overlay. The volume slider row (`.mobileMenuSliderRow` / `.mobileMenuVolumeSlider`) stays in place and keeps its current wiring to `onVolumeChange`. Add a title (e.g. "Menu") with a close (X) affordance at the top of the card. Per the project's modal convention, it must close three ways: the X button, backdrop tap, and Escape — the Escape and outside-tap listeners already exist in the `MobileMenu` `useEffect` (currently `pointerdown`/`touchstart`/`keydown`), so repoint the outside-dismiss to a backdrop click on the new overlay. Scope this to mobile only — the hamburger is already hidden at 641px+ via `.mobileMenuWrapper { display: none }`, so reuse the existing 320/481/641 breakpoints and leave the desktop nav untouched; don't introduce new breakpoints. Pure markup + CSS — no new deps, all styling stays in `src/style.css`.
   - File: `src/MobileMenu.jsx`, `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-28

@@ -1666,17 +1666,57 @@ body {
   100% { background-position: 0 0; }
 }
 
-.mobileMenuDropdown {
-  position: absolute;
-  top: calc(100% + 4px);
+.mobileMenuBackdrop {
+  position: fixed;
+  top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.mobileMenuModal {
   background-color: #FFD700;
-  border: 2px solid black;
+  border: 3px solid black;
   border-radius: 12px;
-  min-width: 170px;
-  z-index: 50;
+  width: min(85vw, 280px);
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.mobileMenuModalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+}
+
+.mobileMenuModalTitle {
+  font-family: 'customFont1';
+  font-size: 16px;
+  color: black;
+}
+
+.mobileMenuCloseButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  font-family: system-ui, sans-serif;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.mobileMenuCloseButton:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .mobileMenuRow {
