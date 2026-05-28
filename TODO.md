@@ -54,8 +54,8 @@
   - File: title logo asset (e.g. `src/assets/` Memory Game title PNG) + original layered source
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[LOW]** Fix hamburger button yellow to match the audio button exactly
+- [x] **[LOW]** Fix hamburger button yellow to match the audio button exactly
   - Type: bug
   - Description: On desktop the hamburger button and the audio/music button are two visibly different shades of yellow — the audio button is a deeper, more saturated yellow while the hamburger renders paler/lighter. They sit right next to each other in the top-left, so the mismatch is obvious. This is almost certainly two different color declarations (e.g. the CSS keyword `yellow` / `#ffff00` on one and a gold like `#ffd700` on the other, or two different hex values). Make the hamburger use the exact same yellow as the audio button: find the `background-color` the audio button (`.musicBlock3`/`.musicBlock2`, or whichever rule paints the music circle) uses and apply that identical value to `.hamburgerButton` so they match pixel-for-pixel. Don't eyeball a new value — copy the audio button's. While there, confirm the black border color/width also matches so the two read as a set. Scope strictly to desktop — gate behind the existing 961/1281 breakpoints and leave the 320/481/641 mobile/tablet hamburger color untouched; reuse the existing breakpoints, don't add new ones. Pure CSS in `src/style.css`, no markup changes, no new deps.
   - File: `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-28
