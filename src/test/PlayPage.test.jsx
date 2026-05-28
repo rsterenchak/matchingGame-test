@@ -258,6 +258,48 @@ describe('Mobile layout: score panel pushed to viewport bottom with safe-area ga
   })
 })
 
+describe('Volume slider styled to match glow button family', () => {
+  it('CSS .volumeSliderWrapper has yellow background matching the DBZ button family', () => {
+    expect(css).toMatch(/\.volumeSliderWrapper\s*\{[^}]*background:\s*yellow/)
+  })
+
+  it('CSS .volumeSliderWrapper has 3px solid black border matching the DBZ button family', () => {
+    expect(css).toMatch(/\.volumeSliderWrapper\s*\{[^}]*border:\s*3px solid black/)
+  })
+
+  it('CSS .volumeSliderWrapper:before exists with a glow animation', () => {
+    expect(css).toMatch(/\.volumeSliderWrapper:before\s*\{[^}]*animation:/)
+  })
+
+  it('CSS .volumeSliderWrapper:hover:before sets opacity to 1 so glow appears on hover', () => {
+    expect(css).toMatch(/\.volumeSliderWrapper:hover:before\s*\{[^}]*opacity:\s*1/)
+  })
+
+  it('CSS slider thumb background is black so it is visible against the yellow wrapper', () => {
+    expect(css).toMatch(/\.volumeSliderInput::-webkit-slider-thumb\s*\{[^}]*background:\s*black/)
+  })
+
+  it('PlayPage volume slider input uses black-based fill gradient on yellow wrapper background', () => {
+    const props = {
+      background: 'fake-bg.jpg',
+      setHomePage: vi.fn(),
+      setAudioPause: vi.fn(),
+      setAudioPlay: vi.fn(),
+      activeCurrentAudio: false,
+      isActiveData: [],
+      isVolume: 0.5,
+      onVolumeChange: vi.fn(),
+    }
+    vi.useFakeTimers()
+    render(<PlayPage {...props} />)
+    const sliderInput = document.querySelector('.volumeSliderInput')
+    expect(sliderInput.style.background).toContain('black')
+    expect(sliderInput.style.background).not.toContain('#ccc')
+    vi.clearAllTimers()
+    vi.useRealTimers()
+  })
+})
+
 describe('PlayPage instructions modal', () => {
   const defaultProps = {
     background: 'fake-bg.jpg',

@@ -117,6 +117,15 @@ describe('Safari chrome meta tags and background blend', () => {
   })
 })
 
+describe('HomePage volume slider inline gradient', () => {
+  it('volume slider input uses black-based fill gradient on yellow wrapper background', () => {
+    render(<HomePage {...defaultProps} isVolume={0.5} onVolumeChange={vi.fn()} />)
+    const sliderInput = document.querySelector('.volumeSliderInput')
+    expect(sliderInput.style.background).toContain('black')
+    expect(sliderInput.style.background).not.toContain('#ccc')
+  })
+})
+
 describe('DBZ logo drop shadow', () => {
   it('base .logoContainer rule applies a directional drop-shadow filter to lift the logo off the background', () => {
     const baseLogoMatch = css.match(/\.logoContainer\s*\{([^}]+)\}/)

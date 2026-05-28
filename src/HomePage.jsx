@@ -120,7 +120,7 @@ export default function HomePage({
                       max="1"
                       step="0.005"
                       value={isVolume}
-                      style={{background: `linear-gradient(to top, yellow ${isVolume * 100}%, #ccc ${isVolume * 100}%)`}}
+                      style={{background: `linear-gradient(to top, black ${isVolume * 100}%, rgba(0,0,0,0.15) ${isVolume * 100}%)`}}
                       onChange={e => onVolumeChange(parseFloat(e.target.value))}
                     />
                   </div>
