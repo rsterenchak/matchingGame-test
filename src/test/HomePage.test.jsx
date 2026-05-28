@@ -166,6 +166,14 @@ describe('Fight button prominence', () => {
     expect(match).not.toBeNull()
     expect(match[1]).toMatch(/opacity:\s*1\b/)
   })
+
+  it('base .fightButton rule keeps font-size modest (≤ 22px) so text does not crowd the larger box', () => {
+    const match = css.match(/\.fightButton\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    const fontSizeMatch = match[1].match(/font-size:\s*(\d+)px/)
+    expect(fontSizeMatch).not.toBeNull()
+    expect(parseInt(fontSizeMatch[1], 10)).toBeLessThanOrEqual(22)
+  })
 })
 
 describe('Volume slider border and glow halo', () => {
