@@ -100,30 +100,6 @@ body {
 
 }
 
-.shenronTop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 28vh;
-  object-fit: cover;
-  object-position: right center;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.shenronBottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 24vh;
-  object-fit: cover;
-  object-position: left center;
-  pointer-events: none;
-  z-index: -1;
-}
-
 .navSection {
   display: flex;
   flex-direction: row;
@@ -620,9 +596,6 @@ body {
 
 @media (min-width:320px){
 
-  .shenronTop { height: 14vh; }
-  .shenronBottom { height: 8vh; }
-
   .homeSection {
     margin: 0px;
     padding: 0px;
@@ -706,9 +679,6 @@ body {
 }
 
 @media (min-width:481px) {
-
-  .shenronTop { height: 16vh; }
-  .shenronBottom { height: 10vh; }
 
   .homeSection {
     margin: 0px;
@@ -799,18 +769,12 @@ body {
 }
 
 @media (min-width:641px) {
-  .shenronTop { height: 22vh; }
-  .shenronBottom { height: 14vh; }
-
   .inputSection {
     padding-bottom: 5vh;
   }
 }
 
 @media (min-width:961px) {
-
-  .shenronTop { height: 26vh; }
-  .shenronBottom { height: 18vh; }
 
   .homeSection {
     margin: 0px;
@@ -898,18 +862,12 @@ body {
 }
 
 @media (min-width:1025px) {
-  .shenronTop { height: 27vh; }
-  .shenronBottom { height: 20vh; }
-
   .inputSection {
     padding-bottom: 7vh;
   }
 }
 
 @media (min-width:1281px) {
-
-  .shenronTop { height: 28vh; }
-  .shenronBottom { height: 22vh; }
 
   .homeSection {
     margin: 0px;
