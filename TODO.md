@@ -24,7 +24,7 @@
   - File: `src/PlayPage.jsx`, `src/style.css`, `src/MobileMenu.jsx`
   - Completed: 2026-05-28
 
-- [ ] **[LOW]** Add subtle 3D tilt-and-lift hover effect to cards on desktop
+- [x] **[LOW]** Add subtle 3D tilt-and-lift hover effect to cards on desktop
   - Type: feature
   - Description: Give the face-up character cards a subtle three-dimensional hover effect on desktop to make the board feel more alive. On `.card:hover`, apply a gentle `transform: perspective(700px) rotateX(8deg) rotateY(-10deg) scale(1.05)` with a deeper drop shadow (e.g. `0 18px 26px rgba(0,0,0,0.45)`) and a `transition: transform 0.25s ease, box-shadow 0.25s ease` on the base `.card` rule so it eases in and out smoothly. Scope strictly to desktop Ã¢ÂÂ hover is a pointer-only interaction with no touch equivalent, so gate the effect behind the existing 961/1281 breakpoints and leave the 320/481/641 mobile/tablet card rules flat and untouched; reuse the existing breakpoints, don't add new ones. Wrap the effect in `@media (prefers-reduced-motion: reduce)` to disable the transform/transition for motion-sensitive users, matching the existing Nimbus-cloud pattern. Note the cards already have `overflow: hidden` and the image fills the card, so the tilt applies to the card as a whole (no inner-layer parallax needed). Pure CSS in `src/style.css`, no new deps and no JSX changes.
   - File: `src/style.css`
