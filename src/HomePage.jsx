@@ -7,6 +7,7 @@ import gokuGif from './assets/goku-gif.gif'
 import guyGif from './assets/dbzMoving.png'
 import shenronTopSvg from './assets/ShenronTop.svg'
 import shenronBottomSvg from './assets/ShenronBottom.svg'
+import memoryGameTitleSvg from './assets/MemoryGameTitle.svg'
 
 export default function HomePage({
   background,
@@ -170,7 +171,7 @@ export default function HomePage({
           
           <div className='logoSection2'>
 
-            <div className='logoContainer2'></div>
+            <img className='logoContainer2' src={memoryGameTitleSvg} alt="Memory Game" />
 
 
           </div>

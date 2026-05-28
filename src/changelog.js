@@ -1,10 +1,14 @@
 export const changelog = [
   {
     version: '1.0',
-    date: '2026-05-27',
+    date: '2026-05-28',
     added: [
-      'Shenron now frames the home screen with his head looming over the top band and his tail curling up from the bottom.',
+      'The Nimbus cloud on the home screen is now larger on wider screens with a warm golden glow and a gentle floating animation.',
     ],
+  },
+  {
+    version: '1.0',
+    date: '2026-05-27',
     fixed: [
       'Home-screen background now fills the full viewport on mobile, and the score display is redesigned as a single unified panel showing current score and high score side by side.',
       'Background on both the home and play screens now covers the full viewport edges, eliminating white strips at the top and bottom of the screen.',
