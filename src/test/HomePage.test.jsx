@@ -9,15 +9,15 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const css = readFileSync(resolve(__dirname, '../style.css'), 'utf8')
 const indexHtml = readFileSync(resolve(__dirname, '../../index.html'), 'utf8')
 
-const defaultProps = {
-  background: 'fake-bg.jpg',
-  setPlayPage: vi.fn(),
-  setAudioPause: vi.fn(),
-  setAudioPlay: vi.fn(),
-  activeCurrentAudio: false,
-}
-
 describe('HomePage', () => {
+  const defaultProps = {
+    background: 'fake-bg.jpg',
+    setPlayPage: vi.fn(),
+    setAudioPause: vi.fn(),
+    setAudioPlay: vi.fn(),
+    activeCurrentAudio: false,
+  }
+
   it('renders the Fight button', () => {
     render(<HomePage {...defaultProps} />)
     expect(screen.getByText('Fight')).toBeInTheDocument()
@@ -26,46 +26,6 @@ describe('HomePage', () => {
   it('renders the portfolio handle', () => {
     render(<HomePage {...defaultProps} />)
     expect(screen.getByText('@rsterenchak')).toBeInTheDocument()
-  })
-})
-
-describe('Shenron framing images', () => {
-  it('renders a shenronTop img so the dragon head appears at the top of the home screen', () => {
-    render(<HomePage {...defaultProps} />)
-    const topImg = document.querySelector('img.shenronTop')
-    expect(topImg).not.toBeNull()
-  })
-
-  it('renders a shenronBottom img so the dragon tail appears at the bottom of the home screen', () => {
-    render(<HomePage {...defaultProps} />)
-    const bottomImg = document.querySelector('img.shenronBottom')
-    expect(bottomImg).not.toBeNull()
-  })
-
-  it('shenronTop and shenronBottom imgs have aria-hidden so they are invisible to assistive technology', () => {
-    render(<HomePage {...defaultProps} />)
-    const topImg = document.querySelector('img.shenronTop')
-    const bottomImg = document.querySelector('img.shenronBottom')
-    expect(topImg.getAttribute('aria-hidden')).toBe('true')
-    expect(bottomImg.getAttribute('aria-hidden')).toBe('true')
-  })
-
-  it('shenronTop CSS rule sets position absolute and pointer-events none so it does not interfere with clicks', () => {
-    expect(css).toMatch(/\.shenronTop\s*\{[^}]*position:\s*absolute/)
-    expect(css).toMatch(/\.shenronTop\s*\{[^}]*pointer-events:\s*none/)
-  })
-
-  it('shenronBottom CSS rule sets position absolute and pointer-events none', () => {
-    expect(css).toMatch(/\.shenronBottom\s*\{[^}]*position:\s*absolute/)
-    expect(css).toMatch(/\.shenronBottom\s*\{[^}]*pointer-events:\s*none/)
-  })
-
-  it('shenronTop base CSS height is 28vh as specified for desktop', () => {
-    expect(css).toMatch(/\.shenronTop\s*\{[^}]*height:\s*28vh/)
-  })
-
-  it('shenronBottom base CSS height is 24vh as specified for desktop', () => {
-    expect(css).toMatch(/\.shenronBottom\s*\{[^}]*height:\s*24vh/)
   })
 })
 

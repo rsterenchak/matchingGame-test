@@ -5,8 +5,6 @@ import musicIcon from './assets/musical-notes.svg'
 import gitIcon from './assets/github.svg'
 import gokuGif from './assets/goku-gif.gif'
 import guyGif from './assets/dbzMoving.png'
-import shenronTopSvg from './assets/ShenronTop.svg'
-import shenronBottomSvg from './assets/ShenronBottom.svg'
 
 export default function HomePage({
   background,
@@ -81,14 +79,12 @@ export default function HomePage({
 
 
 
-      <div
+      <div 
         className='homeSection'
         style={boxStyle}
-
+        
       >
 
-        <img className='shenronTop' src={shenronTopSvg} alt="" aria-hidden="true" />
-        <img className='shenronBottom' src={shenronBottomSvg} alt="" aria-hidden="true" />
 
         <div className='outerSection'>
           
