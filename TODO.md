@@ -30,7 +30,7 @@
   - File: `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[HIGH]** Scale up desktop hamburger button and menu modal sizing
+- [x] **[HIGH]** Scale up desktop hamburger button and menu modal sizing
   - Type: feature
   - Description: After collapsing the desktop PlayPage nav into a hamburger + shared menu modal, both render at their mobile sizes on desktop and look undersized — the hamburger uses `min(7vw, 24px)` with a 14px&times;14px icon, and the modal is phone-width so it floats small in the viewport center. Bump both up at desktop widths only. For the hamburger (`.hamburgerButton` in `style.css`, SVG in `MobileMenu.jsx`): size it to ~40px with thicker ~3px bars (medium, between the current tiny size and the old 60&times;55 control circles) — increase the button width/height and the inline SVG `width`/`height` (currently 14) plus the bar stroke so the lines read clearly. For the modal: widen the menu panel to ~360px (medium) and increase the `Menu` title, row text (`.mobileMenuLabel`), icon, and row padding proportionally so the rows fill the wider panel deliberately rather than looking sparse. Scope strictly to desktop — gate the size bumps behind the existing 961/1281 breakpoints and leave the 320/481/641 mobile/tablet sizing exactly as-is; reuse the existing breakpoints, don't add new ones. Keep the existing yellow/black DBZ styling, Shojumaru font, rounded corners, and the three close affordances (X / backdrop / Escape) intact. Pure markup + CSS, no new deps.
   - File: `src/MobileMenu.jsx`, `src/style.css`

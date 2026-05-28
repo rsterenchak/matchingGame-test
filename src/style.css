@@ -2469,6 +2469,56 @@ body {
     border-radius: 4px;
   }
 
+  .hamburgerButton {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  .hamburgerButton svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mobileMenuModal {
+    width: min(85vw, 360px);
+  }
+
+  .mobileMenuModalHeader {
+    padding: 12px 16px;
+  }
+
+  .mobileMenuModalTitle {
+    font-size: 20px;
+  }
+
+  .mobileMenuCloseButton {
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+  }
+
+  .mobileMenuRow {
+    padding: 12px 16px;
+    gap: 14px;
+  }
+
+  .mobileMenuIcon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .mobileMenuIconText {
+    width: 22px;
+    height: 22px;
+    font-size: 18px;
+  }
+
+  .mobileMenuLabel {
+    font-size: 16px;
+  }
+
   .musicBlock3 {
     display: flex;
     border-radius: 50%;
