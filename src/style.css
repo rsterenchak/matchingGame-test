@@ -1787,11 +1787,16 @@ body {
     display: grid;
     grid-template-rows: auto 1fr 1fr auto;
     height: 100%;
-    min-height: 100%;
+    min-height: 100dvh;
     margin: 0px;
     padding: 0px;
     gap: 10px;
   }
+
+  .scorePanel {
+    margin-bottom: calc(env(safe-area-inset-bottom) + 16px);
+  }
+
   .musicBlock3 {
 
     width: min(7vw, 24px);
@@ -1989,11 +1994,16 @@ body {
     display: grid;
     grid-template-rows: auto 1fr 1fr auto;
     height: 100%;
-    min-height: 100%;
+    min-height: 100dvh;
     margin: 0px;
     padding: 0px;
     gap: 10px;
   }
+
+  .scorePanel {
+    margin-bottom: calc(env(safe-area-inset-bottom) + 16px);
+  }
+
   .musicBlock3 {
 
     width: min(6vw, 26px);
@@ -2169,10 +2179,16 @@ body {
     display: grid;
     grid-template-rows: auto 1fr 1fr auto;
     height: 100%;
+    min-height: 100dvh;
     margin: 0px;
     padding: 0px;
     gap: 10px;
   }
+
+  .scorePanel {
+    margin-bottom: calc(env(safe-area-inset-bottom) + 16px);
+  }
+
    .musicBlock3 {
 
     width: 60px;
