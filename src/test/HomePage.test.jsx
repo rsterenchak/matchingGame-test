@@ -29,43 +29,25 @@ describe('HomePage', () => {
   })
 })
 
-describe('Shenron framing images', () => {
-  it('renders a shenronTop img so the dragon head appears at the top of the home screen', () => {
+describe('Shenron framing images removed', () => {
+  it('does not render a shenronTop img after removal', () => {
     render(<HomePage {...defaultProps} />)
     const topImg = document.querySelector('img.shenronTop')
-    expect(topImg).not.toBeNull()
+    expect(topImg).toBeNull()
   })
 
-  it('renders a shenronBottom img so the dragon tail appears at the bottom of the home screen', () => {
+  it('does not render a shenronBottom img after removal', () => {
     render(<HomePage {...defaultProps} />)
     const bottomImg = document.querySelector('img.shenronBottom')
-    expect(bottomImg).not.toBeNull()
+    expect(bottomImg).toBeNull()
   })
 
-  it('shenronTop and shenronBottom imgs have aria-hidden so they are invisible to assistive technology', () => {
-    render(<HomePage {...defaultProps} />)
-    const topImg = document.querySelector('img.shenronTop')
-    const bottomImg = document.querySelector('img.shenronBottom')
-    expect(topImg.getAttribute('aria-hidden')).toBe('true')
-    expect(bottomImg.getAttribute('aria-hidden')).toBe('true')
+  it('CSS has no .shenronTop rule after removal', () => {
+    expect(css).not.toMatch(/\.shenronTop\s*\{/)
   })
 
-  it('shenronTop CSS rule sets position absolute and pointer-events none so it does not interfere with clicks', () => {
-    expect(css).toMatch(/\.shenronTop\s*\{[^}]*position:\s*absolute/)
-    expect(css).toMatch(/\.shenronTop\s*\{[^}]*pointer-events:\s*none/)
-  })
-
-  it('shenronBottom CSS rule sets position absolute and pointer-events none', () => {
-    expect(css).toMatch(/\.shenronBottom\s*\{[^}]*position:\s*absolute/)
-    expect(css).toMatch(/\.shenronBottom\s*\{[^}]*pointer-events:\s*none/)
-  })
-
-  it('shenronTop base CSS height is 28vh as specified for desktop', () => {
-    expect(css).toMatch(/\.shenronTop\s*\{[^}]*height:\s*28vh/)
-  })
-
-  it('shenronBottom base CSS height is 24vh as specified for desktop', () => {
-    expect(css).toMatch(/\.shenronBottom\s*\{[^}]*height:\s*24vh/)
+  it('CSS has no .shenronBottom rule after removal', () => {
+    expect(css).not.toMatch(/\.shenronBottom\s*\{/)
   })
 })
 
