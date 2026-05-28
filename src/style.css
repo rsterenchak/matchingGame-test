@@ -492,6 +492,7 @@ body {
   justify-content: center;
   align-items: center;
   grid-area: inputSection;
+  padding-bottom: calc(3vh + env(safe-area-inset-bottom));
 }
 
 
@@ -706,7 +707,7 @@ body {
     justify-content: center;
     align-items: center;
     grid-area: inputSection;
-    padding-bottom: 3vh;
+    padding-bottom: calc(3vh + env(safe-area-inset-bottom) + 12px);
   }
 
 
@@ -794,7 +795,7 @@ body {
     justify-content: center;
     align-items: center;
     grid-area: inputSection;
-    padding-bottom: 4vh;
+    padding-bottom: calc(4vh + env(safe-area-inset-bottom) + 12px);
   }
 
 
