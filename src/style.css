@@ -783,7 +783,7 @@ body {
     min-height: 200px;
     width: 55vw;
     position: relative;
-    top: -19vh;
+    top: -10vh;
 
     left: 2vw;
     object-fit: contain;
@@ -813,7 +813,7 @@ body {
     width: 70vw;
     max-width: 540px;
     position: relative;
-    top: -8vh;
+    top: -5vh;
     left: 0;
     object-fit: contain;
   }
@@ -975,7 +975,7 @@ body {
     height: 500px;
     width: 860px;
     position: relative;
-    top: -22vh;
+    top: -15vh;
     left: 1vw;
     object-fit: contain;
   }

@@ -319,3 +319,32 @@ describe('Nimbus cloud 641–960px position fix (regression: drifted up and over
     expect(ruleMatch[1]).toMatch(/left:\s*0\b/)
   })
 })
+
+describe('Nimbus cloud letterform overlap fix (regression: cloud covered DBZ letters at 481px, 641px, 1281px breakpoints)', () => {
+  it('481px .logoContainer2 top offset is at most 12vh so the cloud sits below the DBZ title letters rather than across them', () => {
+    const media481Block = css.match(/@media\s*\(min-width:\s*481px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
+    const ruleMatch = media481Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    const topMatch = ruleMatch[1].match(/top:\s*-(\d+(?:\.\d+)?)vh/)
+    expect(topMatch).not.toBeNull()
+    expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(12)
+  })
+
+  it('641px .logoContainer2 top offset is at most 6vh so the cloud clears the letter baseline at the start of the 641px range', () => {
+    const media641Block = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
+    const ruleMatch = media641Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    const topMatch = ruleMatch[1].match(/top:\s*-(\d+(?:\.\d+)?)vh/)
+    expect(topMatch).not.toBeNull()
+    expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(6)
+  })
+
+  it('1281px .logoContainer2 top offset is at most 18vh so the enlarged cloud does not cover the DBZ letters on wide viewports', () => {
+    const media1281Block = css.match(/@media\s*\(min-width:\s*1281px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
+    const ruleMatch = media1281Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    const topMatch = ruleMatch[1].match(/top:\s*-(\d+(?:\.\d+)?)vh/)
+    expect(topMatch).not.toBeNull()
+    expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(18)
+  })
+})
