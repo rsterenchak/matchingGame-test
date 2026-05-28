@@ -72,7 +72,7 @@
   - File: `src/style.css`
   - Completed: 2026-05-28
 
-- [ ] **[MEDIUM]** Increase Fight button prominence with larger box, border, and always-on glow
+- [x] **[MEDIUM]** Increase Fight button prominence with larger box, border, and always-on glow
   - Type: feature
   - Description: The Fight button (`.fightButton` in `HomePage.jsx`) is the home screen's only call-to-action but sits small and low at the bottom edge, so the eye lands on the glowing Nimbus cloud first and then has to hunt for the actual button. Give it presence: scale up the button box roughly 40% (raise the base `height`/`width` and the per-breakpoint sizes), bump the border from `1.5px` to `3px solid black` to match the other chrome, and nudge the `.inputSection` bottom padding so the button lifts cleanly off the viewport edge. Keep the `font-size` modest relative to the larger box â do NOT scale the text up proportionally with the button, as that crowds the word against the edges; size it so "Fight" sits with comfortable horizontal padding (roughly the current text scale, not enlarged to match the box). Then make the existing glow `:before` halo always-on instead of hover-only â set its `opacity` to 1 by default (keeping the `glowing` keyframe) so the CTA visibly draws the eye at rest. Pure CSS in `src/style.css` against the existing rules; apply across the existing breakpoints (320/481/641/961/1025/1281) â reuse them, don't add new ones â and keep the yellow background, Shojumaru font, and rounded corners intact.
   - File: `src/style.css`

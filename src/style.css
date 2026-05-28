@@ -509,15 +509,15 @@ body {
   position: relative;
   font-family: 'customFont1';
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-  font-size: 27px;
+  font-size: 19px;
 
 }
 
 .fightButton:hover, .svg-text:hover {
 
-  
-  animation: 0.5s change-color 1 normal forwards; 
-  
+
+  animation: 0.5s change-color 1 normal forwards;
+
 }
 
 @keyframes change-color {
@@ -528,7 +528,7 @@ body {
   to {
     height: 89px;
     width: 283px;
-    font-size: 29px;
+    font-size: 21px;
     background-color: yellow;
     fill: rgb(0, 0, 0)
 
