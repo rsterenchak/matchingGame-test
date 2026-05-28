@@ -500,16 +500,16 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 60px;
-  width: 195px;
+  height: 84px;
+  width: 273px;
   border-radius: 20px;
   background-color: yellow;
   cursor: pointer;
-  border: 1.5px solid black;
+  border: 3px solid black;
   position: relative;
   font-family: 'customFont1';
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-  font-size: 19px;
+  font-size: 27px;
 
 }
 
@@ -526,9 +526,9 @@ body {
   }
 
   to {
-    height: 65px;
-    width: 205px;
-    font-size: 21px;
+    height: 89px;
+    width: 283px;
+    font-size: 29px;
     background-color: yellow;
     fill: rgb(0, 0, 0)
 
@@ -552,10 +552,10 @@ body {
   animation: glowing 20s linear infinite;
 
 
-  opacity: 0;
+  opacity: 1;
   transition: opacity .2s ease-in-out;
   border-radius: 15px;
-  
+
 }
 
 .fightButton:active {
@@ -706,7 +706,7 @@ body {
     justify-content: center;
     align-items: center;
     grid-area: inputSection;
-    padding-bottom: 2vh;
+    padding-bottom: 3vh;
   }
 
 
@@ -794,7 +794,7 @@ body {
     justify-content: center;
     align-items: center;
     grid-area: inputSection;
-    padding-bottom: 3vh;
+    padding-bottom: 4vh;
   }
 
 
@@ -804,7 +804,7 @@ body {
 
 @media (min-width:641px) {
   .inputSection {
-    padding-bottom: 5vh;
+    padding-bottom: 6vh;
   }
 }
 
@@ -888,7 +888,7 @@ body {
     justify-content: center;
     align-items: center;
     grid-area: inputSection;
-    padding-bottom: 6vh;
+    padding-bottom: 7vh;
   }
 
 
@@ -897,7 +897,7 @@ body {
 
 @media (min-width:1025px) {
   .inputSection {
-    padding-bottom: 7vh;
+    padding-bottom: 8vh;
   }
 }
 
@@ -975,7 +975,7 @@ body {
     justify-content: center;
     align-items: center;
     grid-area: inputSection;
-    padding-bottom: 8vh;
+    padding-bottom: 9vh;
   }
 
 }

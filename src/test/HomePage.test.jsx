@@ -126,6 +126,36 @@ describe('HomePage volume slider inline gradient', () => {
   })
 })
 
+describe('Fight button prominence', () => {
+  it('base .fightButton rule uses 3px solid black border to match the button family', () => {
+    const match = css.match(/\.fightButton\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/border:\s*3px solid black/)
+  })
+
+  it('base .fightButton rule has height >= 80px so the button is visually prominent', () => {
+    const match = css.match(/\.fightButton\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    const heightMatch = match[1].match(/height:\s*(\d+)px/)
+    expect(heightMatch).not.toBeNull()
+    expect(parseInt(heightMatch[1], 10)).toBeGreaterThanOrEqual(80)
+  })
+
+  it('base .fightButton rule has width >= 250px so the button is visually prominent', () => {
+    const match = css.match(/\.fightButton\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    const widthMatch = match[1].match(/width:\s*(\d+)px/)
+    expect(widthMatch).not.toBeNull()
+    expect(parseInt(widthMatch[1], 10)).toBeGreaterThanOrEqual(250)
+  })
+
+  it('.fightButton:before has opacity: 1 so the glow halo is always visible', () => {
+    const match = css.match(/\.fightButton:before\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/opacity:\s*1\b/)
+  })
+})
+
 describe('DBZ logo drop shadow', () => {
   it('base .logoContainer rule applies a directional drop-shadow filter to lift the logo off the background', () => {
     const baseLogoMatch = css.match(/\.logoContainer\s*\{([^}]+)\}/)
