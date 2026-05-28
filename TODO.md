@@ -48,7 +48,7 @@
   - File: `src/MobileMenu.jsx`, `src/style.css`
   - Completed: 2026-05-28
 
-- [ ] **[MEDIUM]** Add directional drop shadow to DBZ logo on home screen
+- [x] **[MEDIUM]** Add directional drop shadow to DBZ logo on home screen
   - Type: feature
   - Description: On the home screen the DBZ logo (`.logoContainer2`... note: this is the Memory Game cloud; the DBZ logo is the `.logoContainer` background-image div in `.logoSection`) currently sits flat against the busy Kame House sky, where a diagonal yellow speed-line in the background art cuts straight through the wordmark and reads as an accidental collision. Lift the logo off the scene with a directional `filter: drop-shadow(0 6px 5px rgba(0,0,0,0.6))` on the `.logoContainer` rule, reusing the same shadow shape already applied to the Nimbus cloud (`.logoContainer2`) at the 961px breakpoint so the logo and cloud read as a matched pair. Pure CSS in `src/style.css`; apply across the existing breakpoints (320/481/641/961/1025/1281) — reuse them, don't introduce new ones — and tune the offset/blur per breakpoint only if the logo scale makes it necessary.
   - File: `src/style.css`
