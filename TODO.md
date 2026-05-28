@@ -60,8 +60,13 @@
   - File: `src/style.css`
   - Completed: 2026-05-28
 
-- [ ] **[MEDIUM]** Fix Nimbus cloud (and adjacent elements) drifting in the ~641–960px range
+- [x] **[MEDIUM]** Fix Nimbus cloud (and adjacent elements) drifting in the ~641–960px range
   - Type: bug
   - Description: At a ~938&times;1273 viewport the home-page Nimbus cloud — which carries the "Memory Game" text — drifts up and to the left, overlapping the "Dragon Ball Z" title logo and covering its middle letters instead of sitting cleanly centered below the title. The cause is breakpoint coverage: ~938px falls just under the 961px desktop breakpoint, so this width is styled by the 641px (tablet) rule, whose absolute cloud coordinates don't hold up at the taller/wider end of that range. Primary fix: adjust the Nimbus cloud's position within the existing 641 media-query rule (`.logoContainer2` / cloud positioning) so it sits correctly across the full 641–960px span — re-center it under the DBZ logo and clear the title letters at the top of that range (~938px) without breaking how it looks at the low end (~641px). Prefer position values that scale across the range (relative/centered offsets, max-width, transforms) over a single fixed px coordinate that only looks right at one width. Secondary: while in this media query, audit the other home-page elements that are also off at this width (title logo, Fight button, music/hamburger cluster, Goku art) and nudge them so the whole ~641–960px layout holds together — note any that need their own follow-up if they can't be resolved with simple position tweaks. Stay within the existing 641 breakpoint; reuse the existing breakpoints, do NOT add a new one or move the 961 boundary. Leave the 320/481 small-mobile and 961/1281 desktop layouts untouched. Pure CSS in `src/style.css`, no markup changes, no new deps.
   - File: `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-28
+
+- [ ] **[LOW]** Audit remaining home-page elements at ~641–960px after Nimbus cloud fix
+  - Type: feature
+  - Description: The Nimbus cloud position fix addressed the primary overlap issue but did not visually verify other home-page elements at 641–960px widths. Check at ~938×1273px that the DBZ title logo (.logoContainer min-height), the Fight button (.fightButton), the music/hamburger cluster, and the Goku art (.gokuGif) all sit correctly after the cloud repositioning. Apply any further nudges within the existing 641 breakpoint if needed; do not add new breakpoints.
+  - File: `src/style.css`

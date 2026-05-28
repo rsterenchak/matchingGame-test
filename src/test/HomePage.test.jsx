@@ -296,3 +296,26 @@ describe('Fight button Safari bottom bar clearance (regression: was missing safe
     expect(inputMatch[1]).toContain('env(safe-area-inset-bottom)')
   })
 })
+
+describe('Nimbus cloud 641–960px position fix (regression: drifted up and overlapped DBZ title at tall viewport heights)', () => {
+  it('641px breakpoint defines a .logoContainer2 rule so the cloud has its own positioning instead of falling through to the over-aggressive 481px values', () => {
+    const media641Block = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
+    expect(media641Block).toMatch(/\.logoContainer2\s*\{/)
+  })
+
+  it('641px .logoContainer2 top offset is at most 12vh so the cloud does not push up into the DBZ title at tall viewport heights (like 938x1273)', () => {
+    const media641Block = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
+    const ruleMatch = media641Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    const topMatch = ruleMatch[1].match(/top:\s*-(\d+(?:\.\d+)?)vh/)
+    expect(topMatch).not.toBeNull()
+    expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(12)
+  })
+
+  it('641px .logoContainer2 has left: 0 so the parent flex centering keeps the cloud centered without a positional offset drifting it sideways', () => {
+    const media641Block = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
+    const ruleMatch = media641Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/left:\s*0\b/)
+  })
+})
