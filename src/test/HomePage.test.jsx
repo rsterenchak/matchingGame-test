@@ -117,6 +117,14 @@ describe('Safari chrome meta tags and background blend', () => {
   })
 })
 
+describe('DBZ logo drop shadow', () => {
+  it('logoContainer base rule has a directional drop-shadow filter to lift the logo off the background', () => {
+    const baseRuleMatch = css.match(/\.logoContainer\s*\{([^}]+)\}/)
+    expect(baseRuleMatch).not.toBeNull()
+    expect(baseRuleMatch[1]).toMatch(/filter\s*:.*drop-shadow/)
+  })
+})
+
 describe('Nimbus cloud upsize and float animation', () => {
   it('renders logoContainer2 as an img element so filter: drop-shadow traces the cloud silhouette', () => {
     render(<HomePage {...defaultProps} />)
