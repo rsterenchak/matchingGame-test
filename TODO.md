@@ -78,7 +78,7 @@
   - File: `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[MEDIUM]** Fix volume slider rendering as dark blob instead of white-track yellow-fill
+- [x] **[MEDIUM]** Fix volume slider rendering as dark blob instead of white-track yellow-fill
   - Type: bug
   - Description: The volume slider currently renders as a dark capsule — yellow wrapper with a black fill line and black thumb — making the level hard to read against the thick black border, instead of the intended white-track / yellow-fill design. The 3px black border and glow halo on `.volumeSliderWrapper` are correct and should stay; only the fill colors are wrong. Revert three things: (1) in both `src/HomePage.jsx` and `src/PlayPage.jsx`, change the inline `.volumeSliderInput` background back to `linear-gradient(to top, yellow ${isVolume * 100}%, #ccc ${isVolume * 100}%)`; (2) in `src/style.css`, set `.volumeSliderWrapper` `background` from `yellow` back to `white` so the yellow fill shows against a light track (keep the `border: 3px solid black` and the `:before`/`:after` glow); (3) in `src/style.css`, flip both `.volumeSliderInput::-webkit-slider-thumb` and `::-moz-range-thumb` from `background: black; border: 2px solid yellow` back to `background: yellow; border: 2px solid black` so the thumb reads on the white track. End result: white capsule interior, yellow fill + yellow thumb, 3px black border, glow halo — the button-family match without the dark look. Pure CSS + the two inline gradient strings; no new deps.
   - File: `src/style.css`, `src/HomePage.jsx`, `src/PlayPage.jsx`

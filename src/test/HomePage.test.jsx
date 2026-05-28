@@ -117,12 +117,24 @@ describe('Safari chrome meta tags and background blend', () => {
   })
 })
 
-describe('HomePage volume slider inline gradient', () => {
-  it('volume slider input uses black-based fill gradient on yellow wrapper background', () => {
+describe('Volume slider correct fill colors (regression: was dark blob)', () => {
+  it('CSS .volumeSliderWrapper has white background so the yellow fill shows against a light track', () => {
+    expect(css).toMatch(/\.volumeSliderWrapper\s*\{[^}]*background:\s*white/)
+  })
+
+  it('CSS .volumeSliderInput::-webkit-slider-thumb has yellow background so the thumb is readable on the white track', () => {
+    expect(css).toMatch(/\.volumeSliderInput::-webkit-slider-thumb\s*\{[^}]*background:\s*yellow/)
+  })
+
+  it('CSS .volumeSliderInput::-webkit-slider-thumb border is 2px solid black so the thumb contrasts against yellow', () => {
+    expect(css).toMatch(/\.volumeSliderInput::-webkit-slider-thumb\s*\{[^}]*border:\s*2px solid black/)
+  })
+
+  it('HomePage volume slider input uses yellow-on-grey fill gradient matching the white-track design', () => {
     render(<HomePage {...defaultProps} isVolume={0.5} onVolumeChange={vi.fn()} />)
     const sliderInput = document.querySelector('.volumeSliderInput')
-    expect(sliderInput.style.background).toContain('black')
-    expect(sliderInput.style.background).not.toContain('#ccc')
+    expect(sliderInput.style.background).toContain('yellow')
+    expect(sliderInput.style.background).not.toContain('rgba(0,0,0')
   })
 })
 

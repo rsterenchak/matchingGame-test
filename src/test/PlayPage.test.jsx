@@ -258,9 +258,9 @@ describe('Mobile layout: score panel pushed to viewport bottom with safe-area ga
   })
 })
 
-describe('Volume slider styled to match glow button family', () => {
-  it('CSS .volumeSliderWrapper has yellow background matching the DBZ button family', () => {
-    expect(css).toMatch(/\.volumeSliderWrapper\s*\{[^}]*background:\s*yellow/)
+describe('Volume slider correct fill colors (regression: was dark blob)', () => {
+  it('CSS .volumeSliderWrapper has white background so the yellow fill shows against a light track', () => {
+    expect(css).toMatch(/\.volumeSliderWrapper\s*\{[^}]*background:\s*white/)
   })
 
   it('CSS .volumeSliderWrapper has 3px solid black border matching the DBZ button family', () => {
@@ -275,11 +275,11 @@ describe('Volume slider styled to match glow button family', () => {
     expect(css).toMatch(/\.volumeSliderWrapper:hover:before\s*\{[^}]*opacity:\s*1/)
   })
 
-  it('CSS slider thumb background is black so it is visible against the yellow wrapper', () => {
-    expect(css).toMatch(/\.volumeSliderInput::-webkit-slider-thumb\s*\{[^}]*background:\s*black/)
+  it('CSS slider thumb background is yellow so the thumb is readable on the white track', () => {
+    expect(css).toMatch(/\.volumeSliderInput::-webkit-slider-thumb\s*\{[^}]*background:\s*yellow/)
   })
 
-  it('PlayPage volume slider input uses black-based fill gradient on yellow wrapper background', () => {
+  it('PlayPage volume slider input uses yellow-on-grey fill gradient matching the white-track design', () => {
     const props = {
       background: 'fake-bg.jpg',
       setHomePage: vi.fn(),
@@ -293,8 +293,8 @@ describe('Volume slider styled to match glow button family', () => {
     vi.useFakeTimers()
     render(<PlayPage {...props} />)
     const sliderInput = document.querySelector('.volumeSliderInput')
-    expect(sliderInput.style.background).toContain('black')
-    expect(sliderInput.style.background).not.toContain('#ccc')
+    expect(sliderInput.style.background).toContain('yellow')
+    expect(sliderInput.style.background).not.toContain('rgba(0,0,0')
     vi.clearAllTimers()
     vi.useRealTimers()
   })
