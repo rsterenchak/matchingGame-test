@@ -60,7 +60,7 @@
   - File: `src/style.css`, `src/HomePage.jsx`, `src/PlayPage.jsx`
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[MEDIUM]** Increase Fight button prominence with size, border, and always-on glow
+- [x] **[MEDIUM]** Increase Fight button prominence with size, border, and always-on glow
   - Type: feature
   - Description: The Fight button (`.fightButton` in `HomePage.jsx`) is the home screen's only call-to-action but sits small and low at the bottom edge, so the eye lands on the glowing Nimbus cloud first and then has to hunt for the actual button. Give it presence: scale it up roughly 40% (e.g. raise the base `height`/`width`/`font-size` and the per-breakpoint sizes), bump the border from `1.5px` to `3px solid black` to match the other chrome, and nudge the `.inputSection` bottom padding so the button lifts cleanly off the viewport edge. Then make the existing glow `:before` halo always-on instead of hover-only â set its `opacity` to 1 by default (keeping the `glowing` keyframe) so the CTA visibly draws the eye at rest. Pure CSS in `src/style.css` against the existing rules; apply across the existing breakpoints (320/481/641/961/1025/1281) â reuse them, don't add new ones â and keep the yellow background, Shojumaru font, and rounded corners intact.
   - File: `src/style.css`
