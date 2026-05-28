@@ -6,11 +6,11 @@
  - File: `src/HomePage.jsx`, `src/style.css`, `src/assets/`
  - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[MEDIUM]** Redesign score panel to merge high score and current score into one panel
+- [x] **[MEDIUM]** Redesign score panel to merge high score and current score into one panel
   - Type: feature
   - Description: The current layout puts "High Score" and "Current Score" in two side-by-side red pills, and on mobile the "Current Score:" label collides with the "0/16" value inside its pill. Replace both pills with a single full-width red panel: large "Score" label with the current score as the headline value (e.g. `0 / 16`), a small pill-shaped "Best 7" chip aligned to the right, and a thin white progress bar below the headline filling proportionally to `currentScore / 16`. Keep the existing red panel color, Shojumaru font, and rounded corners so it matches the rest of the UI. No new deps â pure CSS in `src/style.css`. Markup for the panel lives in `src/PlayPage.jsx` (current score + high score are already in scope there); replace the existing two-pill markup with the new single-panel structure.
   - File: `src/PlayPage.jsx`, `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-28
 
 - [ ] **[MEDIUM]** Upsize Nimbus cloud on home page with glow and float animation (desktop only)
   - Type: feature
