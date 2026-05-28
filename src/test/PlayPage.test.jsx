@@ -344,3 +344,35 @@ describe('PlayPage instructions modal', () => {
     expect(screen.queryByText('How to Play')).not.toBeInTheDocument()
   })
 })
+
+describe('Desktop layout: hamburger replaces individual nav controls at 641px+', () => {
+  function get641Section() {
+    const marker = '@media (min-width:641px)  {'
+    const idx = css.indexOf(marker)
+    const nextMedia = css.indexOf('@media', idx + 1)
+    return css.slice(idx, nextMedia === -1 ? undefined : nextMedia)
+  }
+
+  it('mobileMenuWrapper uses display: block (not none) at 641px so the hamburger is visible on desktop', () => {
+    const section = get641Section()
+    const match = section.match(/\.mobileMenuWrapper\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('display: block')
+    expect(match[1]).not.toContain('display: none')
+  })
+
+  it('topColumn3 > .musicIconWrapper is hidden at 641px so the music+slider cluster does not show on desktop', () => {
+    const section = get641Section()
+    expect(section).toMatch(/\.topColumn3\s*>\s*\.musicIconWrapper\s*\{[^}]*display:\s*none/)
+  })
+
+  it('topColumn3 > .musicBlock3 is hidden at 641px so the background-switch button does not show on desktop', () => {
+    const section = get641Section()
+    expect(section).toMatch(/\.topColumn3\s*>\s*\.musicBlock3\s*\{[^}]*display:\s*none/)
+  })
+
+  it('topColumn3 > .helpButton is hidden at 641px so the how-to-play button does not show on desktop', () => {
+    const section = get641Section()
+    expect(section).toMatch(/\.topColumn3\s*>\s*\.helpButton\s*\{[^}]*display:\s*none/)
+  })
+})

@@ -18,11 +18,11 @@
   - File: `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[MEDIUM]** Collapse desktop PlayPage nav controls into a single hamburger modal
+- [x] **[MEDIUM]** Collapse desktop PlayPage nav controls into a single hamburger modal
   - Type: feature
   - Description: On desktop the PlayPage top-left nav shows three loose yellow circles (music toggle, background/planet, help/?) plus a volume slider dangling awkwardly below the music button, which reads as scattered rather than an intentional control cluster. Replace all of them on desktop with a single hamburger button (reusing the existing `MobileMenu` component, which already wires up music on/off, the volume slider, background switch, how-to-play, and GitHub) that opens the shared centered menu modal. In `style.css`, flip the desktop visibility: at the 641/961/1281 breakpoints the nav currently hides `.mobileMenuWrapper` (`display: none`) and shows `.topColumn3 > .musicIconWrapper`, `.musicBlock3`, and `.helpButton` â invert that so the individual circles/slider are hidden and `.mobileMenuWrapper` is shown at desktop widths. Leave the right-hand `@rsterenchak` + GitHub block in `.topColumn4` untouched, and leave the 320/481 mobile layout (which already uses the hamburger) as-is; reuse the existing breakpoints, don't add new ones. Depends on the pending "Replace mobile hamburger side dropdown with a centered modal" item â this entry assumes `MobileMenu` opens a centered overlay modal (not the top-left dropdown), so the desktop hamburger gets the same modal for free; if that item isn't done yet, sequence it first. Accept the tradeoff that muting music becomes a two-tap action on desktop (open menu â toggle), since the help and background controls are rarely-used and the cluster cleanup is the priority. Pure markup + CSS, no new deps; `MobileMenu` is already imported into `PlayPage.jsx`.
   - File: `src/PlayPage.jsx`, `src/style.css`, `src/MobileMenu.jsx`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-28
 
 - [ ] **[LOW]** Add subtle 3D tilt-and-lift hover effect to cards on desktop
   - Type: feature
