@@ -12,7 +12,7 @@
   - File: `src/PlayPage.jsx`, `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[LOW]** Soften Nimbus cloud float to a gentle vertical bob on desktop
+- [x] **[LOW]** Soften Nimbus cloud float to a gentle vertical bob on desktop
   - Type: feature
   - Description: The home-page Nimbus cloud currently floats with a `nimbus-float` keyframe that combines an 8px vertical rise with a 1&deg; tilt, which reads as a bit much. Dial it down to a calmer, pure-vertical bob: redefine the `nimbus-float` keyframe to translateY ~5px at the 50% mark with no rotation (0% and 100% at translateY(0)), and slow the cycle to ~5s ease-in-out infinite on `.logoContainer2`. Keep the existing warm golden `filter: drop-shadow(...)` glow on the cloud untouched &mdash; only the motion changes. Stay scoped to desktop: the animation is already gated behind the `min-width: 961px` breakpoint, so leave the 320/481/641 mobile/tablet rules without any float, and reuse the existing breakpoints rather than adding new ones. The existing `@media (prefers-reduced-motion: reduce) { .logoContainer2 { animation: none; } }` block stays as-is so motion-sensitive users still get a static cloud. Pure CSS in `src/style.css`, no new deps.
   - File: `src/style.css`
