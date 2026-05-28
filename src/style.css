@@ -2472,15 +2472,20 @@ body {
   }
 
   .hamburgerButton {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 55px;
+    border: 3px solid black;
     margin-top: 10px;
     margin-left: 10px;
   }
 
+  .hamburgerButton:hover {
+    animation: 0.5s change-color4 1 normal forwards;
+  }
+
   .hamburgerButton svg {
-    width: 20px;
-    height: 20px;
+    width: 28px;
+    height: 28px;
   }
 
   .mobileMenuModal {
