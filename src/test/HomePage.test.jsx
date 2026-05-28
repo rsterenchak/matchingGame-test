@@ -274,3 +274,25 @@ describe('Nimbus cloud upsize and float animation', () => {
     expect(mediaBlock).toMatch(/\.logoContainer2\s*\{[^}]*animation:\s*nimbus-float\s+5s/)
   })
 })
+
+describe('Fight button Safari bottom bar clearance (regression: was missing safe-area inset)', () => {
+  it('base .inputSection rule includes env(safe-area-inset-bottom) so the Fight button clears the Safari home-indicator bar', () => {
+    const baseRuleMatch = css.match(/^\.inputSection\s*\{([^}]+)\}/m)
+    expect(baseRuleMatch).not.toBeNull()
+    expect(baseRuleMatch[1]).toContain('env(safe-area-inset-bottom)')
+  })
+
+  it('320px breakpoint .inputSection padding-bottom includes env(safe-area-inset-bottom) for phone-portrait Safari clearance', () => {
+    const media320Block = css.match(/@media\s*\(min-width:\s*320px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? ''
+    const inputMatch = media320Block.match(/\.inputSection\s*\{([^}]+)\}/)
+    expect(inputMatch).not.toBeNull()
+    expect(inputMatch[1]).toContain('env(safe-area-inset-bottom)')
+  })
+
+  it('481px breakpoint .inputSection padding-bottom includes env(safe-area-inset-bottom) for larger phone Safari clearance', () => {
+    const media481Block = css.match(/@media\s*\(min-width:\s*481px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? ''
+    const inputMatch = media481Block.match(/\.inputSection\s*\{([^}]+)\}/)
+    expect(inputMatch).not.toBeNull()
+    expect(inputMatch[1]).toContain('env(safe-area-inset-bottom)')
+  })
+})
