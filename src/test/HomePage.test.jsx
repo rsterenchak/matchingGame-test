@@ -134,3 +134,48 @@ describe('Safari chrome meta tags and background blend', () => {
     expect(bodyRuleMatch[1]).toMatch(/background-color\s*:/)
   })
 })
+
+describe('Nimbus cloud upsize and float animation', () => {
+  it('renders logoContainer2 as an img element so filter: drop-shadow traces the cloud silhouette', () => {
+    render(<HomePage {...defaultProps} />)
+    const img = document.querySelector('img.logoContainer2')
+    expect(img).not.toBeNull()
+  })
+
+  it('logoContainer2 img src includes the MemoryGameTitle asset', () => {
+    render(<HomePage {...defaultProps} />)
+    const img = document.querySelector('img.logoContainer2')
+    expect(img.getAttribute('src')).toMatch(/MemoryGameTitle/)
+  })
+
+  it('logoContainer2 img has alt text so it is accessible', () => {
+    render(<HomePage {...defaultProps} />)
+    const img = document.querySelector('img.logoContainer2')
+    expect(img.getAttribute('alt')).toBeTruthy()
+  })
+
+  it('CSS defines the nimbus-float keyframe for the hover animation', () => {
+    expect(css).toMatch(/@keyframes\s+nimbus-float/)
+  })
+
+  it('961px breakpoint logoContainer2 rule applies the nimbus-float animation', () => {
+    const mediaBlock = css.match(/@media\s*\(min-width:\s*961px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
+    expect(mediaBlock).toMatch(/\.logoContainer2\s*\{[^}]*animation:\s*nimbus-float/)
+  })
+
+  it('961px breakpoint logoContainer2 rule applies a drop-shadow filter for the golden glow', () => {
+    const mediaBlock = css.match(/@media\s*\(min-width:\s*961px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
+    expect(mediaBlock).toMatch(/\.logoContainer2\s*\{[^}]*filter:\s*drop-shadow/)
+  })
+
+  it('961px breakpoint logoContainer2 has an upsized width larger than the pre-upsize 55vw', () => {
+    const mediaBlock = css.match(/@media\s*\(min-width:\s*961px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
+    const widthMatch = mediaBlock.match(/\.logoContainer2\s*\{[^}]*width:\s*([^;]+)/)
+    expect(widthMatch).not.toBeNull()
+    expect(widthMatch[1].trim()).not.toBe('55vw')
+  })
+
+  it('prefers-reduced-motion block disables logoContainer2 animation to respect motion sensitivity', () => {
+    expect(css).toMatch(/@media\s*\(prefers-reduced-motion:\s*reduce\)[^{]*\{[^}]*\.logoContainer2[^}]*animation:\s*none/)
+  })
+})

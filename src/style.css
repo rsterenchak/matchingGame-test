@@ -473,11 +473,7 @@ body {
   width: 55vw;
   position: absolute;
 
-
-  background-image: url('./assets/MemoryGameTitle.svg') ;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  object-fit: contain;
 }
 
 .inputSection {
@@ -612,10 +608,15 @@ body {
 }
 
 .svg-text:hover {
-  
+
 
 }
 
+@keyframes nimbus-float {
+  0%   { transform: translateY(0) rotate(0deg); }
+  50%  { transform: translateY(-8px) rotate(1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
 
 @media (min-width:320px){
 
@@ -689,10 +690,7 @@ body {
     position: relative;
     top: -20vh;
     left: 5vw;
-    background-image: url('./assets/MemoryGameTitle.svg') ;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    object-fit: contain;
   }
 
   .inputSection {
@@ -781,12 +779,9 @@ body {
     width: 55vw;
     position: relative;
     top: -19vh;
-    
+
     left: 2vw;
-    background-image: url('./assets/MemoryGameTitle.svg') ;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    object-fit: contain;
   }
 
   .inputSection {
@@ -879,15 +874,14 @@ body {
   }
   
   .logoContainer2 {
-    min-height: 210px;
-    width: 55vw;
+    min-height: 315px;
+    width: 82vw;
     position: relative;
-    top: -14vh;
+    top: -18vh;
     left: 1vw;
-    background-image: url('./assets/MemoryGameTitle.svg') ;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    object-fit: contain;
+    filter: drop-shadow(0 0 12px rgba(255, 220, 0, 0.85)) drop-shadow(0 8px 6px rgba(0, 0, 0, 0.4));
+    animation: nimbus-float 4.5s ease-in-out infinite;
   }
 
   .inputSection {
@@ -975,15 +969,12 @@ body {
   }
   
   .logoContainer2 {
-    height: 330px;
-    width: 575px;
+    height: 500px;
+    width: 860px;
     position: relative;
-    top: -17vh;
+    top: -22vh;
     left: 1vw;
-    background-image: url('./assets/MemoryGameTitle.svg') ;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    object-fit: contain;
   }
 
   .inputSection {
@@ -3057,3 +3048,7 @@ body {
 
 }
  */
+
+@media (prefers-reduced-motion: reduce) {
+  .logoContainer2 { animation: none; }
+}

@@ -12,11 +12,11 @@
   - File: `src/PlayPage.jsx`, `src/style.css`
   - Completed: 2026-05-28
 
-- [ ] **[MEDIUM]** Upsize Nimbus cloud on home page with glow and float animation (desktop only)
+- [x] **[MEDIUM]** Upsize Nimbus cloud on home page with glow and float animation (desktop only)
   - Type: feature
   - Description: The "Memory Game" Nimbus cloud on the home page renders too small relative to the DBZ logo and Kame House behind it, getting lost in the busy sky background Ã¢ÂÂ but only fix this on desktop; leave the 320 and 481 breakpoints untouched so mobile sizing stays as-is. Scale the cloud roughly +50% at the desktop breakpoints (961 Ã¢ÂÂ ~860px from 575px at height 500px, with a proportional bump at 1281), nudge the `top` offsets slightly more negative at those same breakpoints so the larger cloud still sits cleanly between the logo and the house, and add a warm yellow glow plus a soft contact shadow via a double `filter: drop-shadow(...)`. Also add a `nimbus-float` keyframe (4Ã¢ÂÂ5s ease-in-out infinite, ~8px vertical + ~1ÃÂ° tilt) so the cloud feels like it's hovering, and gate the entire visual treatment (size bump, glow, float) behind `min-width: 961px` so mobile renders exactly as before. Because `filter: drop-shadow` on a `background-image` div is inconsistent across browsers (Safari shadows the bounding box instead of the cloud silhouette), convert `.logoContainer2` from a background-image div to an `<img>` element in `HomePage.jsx`, importing `MemoryGameTitle.svg` and rendering it with `className="logoContainer2"`; remove the `background-image`/`background-repeat`/`background-position`/`background-size` declarations from each `.logoContainer2` breakpoint rule and replace with `object-fit: contain`. Reuse the existing 961/1281 breakpoints Ã¢ÂÂ don't introduce new ones. Wrap the animation in `@media (prefers-reduced-motion: reduce) { .logoContainer2 { animation: none; } }` to respect motion sensitivity.
   - File: `src/HomePage.jsx`, `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-28
 
 - [ ] **[MEDIUM]** Remove Shenron framing images from home page entirely
   - Type: feature
