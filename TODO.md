@@ -66,11 +66,11 @@
   - File: `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[MEDIUM]** Add black border and glow halo to volume slider to match button family
+- [x] **[MEDIUM]** Add black border and glow halo to volume slider to match button family
   - Type: feature
   - Description: The volume control (`.volumeSliderWrapper` + `.volumeSliderInput`) is the one piece of nav chrome that doesn't match the rest of the UI â it renders as a plain white rounded capsule with a thin yellow fill, while every other button (music note, fight, retry, help) uses the project's signature 3px black border + glow-pulse `:before` halo. Bring it into the family without touching the fill: keep the white track and the existing yellow-on-white level indicator (the inline `linear-gradient` background on the input and the `::-webkit-slider-thumb`/`::-moz-range-thumb` colors stay as-is â do not darken them), change `.volumeSliderWrapper` border from `1.5px` to `3px solid black`, and add the shared glow `:before` pseudo-element using the existing `glowing` keyframe pattern (opacity 0 â 1 on hover, like `.musicBlock`). Pure CSS in `src/style.css`; no markup change needed since the fill is untouched. No new deps; reuse the existing glow keyframes rather than adding new ones.
   - File: `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-28
 
 - [ ] **[MEDIUM]** Increase Fight button prominence with larger box, border, and always-on glow
   - Type: feature
