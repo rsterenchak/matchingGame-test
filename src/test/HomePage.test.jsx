@@ -156,6 +156,32 @@ describe('Fight button prominence', () => {
   })
 })
 
+describe('Volume slider border and glow halo', () => {
+  it('.volumeSliderWrapper base rule has border: 3px solid black to match the button family', () => {
+    const match = css.match(/\.volumeSliderWrapper\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/border:\s*3px solid black/)
+  })
+
+  it('.volumeSliderWrapper:before rule has opacity: 0 so the glow is hidden by default', () => {
+    const match = css.match(/\.volumeSliderWrapper:before\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/opacity:\s*0/)
+  })
+
+  it('.volumeSliderWrapper:hover:before rule has opacity: 1 so the glow appears on hover', () => {
+    const match = css.match(/\.volumeSliderWrapper:hover:before\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/opacity:\s*1/)
+  })
+
+  it('.volumeSliderWrapper:before uses an animation that reuses an existing glowing keyframe', () => {
+    const match = css.match(/\.volumeSliderWrapper:before\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/animation:\s*glowing/)
+  })
+})
+
 describe('DBZ logo drop shadow', () => {
   it('base .logoContainer rule applies a directional drop-shadow filter to lift the logo off the background', () => {
     const baseLogoMatch = css.match(/\.logoContainer\s*\{([^}]+)\}/)
