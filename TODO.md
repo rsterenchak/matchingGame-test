@@ -30,7 +30,7 @@
   - File: `src/style.css`
   - Completed: 2026-05-28
 
-- [ ] **[MEDIUM]** Move score panel to bottom and center card grid on mobile
+- [x] **[MEDIUM]** Move score panel to bottom and center card grid on mobile
   - Type: feature
   - Description: On mobile, the score panel currently sits in the content flow directly under the card grid, with the cards hugging the top of the screen. Rework the mobile layout to match the desktop treatment: place the score panel (`.scorePanel`, full-bleed at its current full width) at the bottom of the content flow and center the 8-card grid as a block in the space above it (both horizontally and vertically). Keep the score bar in normal content flow (not fixed to the viewport) so it behaves correctly with the existing `overflow-y: auto` scrolling on `.playSection`. Scope this to mobile/tablet only — apply the changes within the existing 320/481/641 breakpoints and leave the 961/1281 desktop layout untouched. The score panel markup (`.scorePanel`) and card rows (`.logoSection3` / `.logoSection4`) live in `PlayPage.jsx`, but this is a pure CSS layout change in `src/style.css` against the `.outerSection2` grid (currently `grid-template-rows: auto auto auto auto` with `align-content: space-evenly` on mobile) — reuse the existing breakpoints, don't introduce new ones, and keep the existing `.scorePanel` red color, Shojumaru font, and rounded corners.
   - File: `src/style.css`

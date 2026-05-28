@@ -133,6 +133,77 @@ describe('Desktop layout: score panel pinned to bottom, card grid centered', () 
   })
 })
 
+describe('Mobile layout: score panel at bottom, card grid centered', () => {
+  function getMediaSection(minWidth) {
+    // Find the play-page mobile block for the given min-width.
+    // The play-page mobile blocks use double-space before `{` (e.g. "@media (min-width:320px)  {")
+    // while the home-page block uses single-space. Use the doubled-space form for 320/481.
+    const marker = minWidth === 641
+      ? '@media (min-width:641px)  {'
+      : `@media (min-width:${minWidth}px)  {`
+    const idx = css.indexOf(marker)
+    if (idx === -1) return ''
+    const nextMedia = css.indexOf('@media', idx + 1)
+    return css.slice(idx, nextMedia === -1 ? undefined : nextMedia)
+  }
+
+  it('outerSection2 uses auto 1fr 1fr auto rows at 320px so the card rows expand into available space', () => {
+    const section = getMediaSection(320)
+    const match = section.match(/\.outerSection2\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('grid-template-rows: auto 1fr 1fr auto')
+  })
+
+  it('outerSection2 uses height: 100% at 320px so 1fr rows have a reference height', () => {
+    const section = getMediaSection(320)
+    const match = section.match(/\.outerSection2\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('height: 100%')
+  })
+
+  it('logoSection3 aligns to end at 320px so the top card row clusters toward the vertical center', () => {
+    const section = getMediaSection(320)
+    const match = section.match(/\.logoSection3\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('align-self: end')
+  })
+
+  it('outerSection2 uses auto 1fr 1fr auto rows at 481px', () => {
+    const section = getMediaSection(481)
+    const match = section.match(/\.outerSection2\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('grid-template-rows: auto 1fr 1fr auto')
+  })
+
+  it('logoSection3 aligns to end at 481px', () => {
+    const section = getMediaSection(481)
+    const match = section.match(/\.logoSection3\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('align-self: end')
+  })
+
+  it('outerSection2 uses auto 1fr 1fr auto rows at 641px', () => {
+    const section = getMediaSection(641)
+    const match = section.match(/\.outerSection2\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('grid-template-rows: auto 1fr 1fr auto')
+  })
+
+  it('logoSection3 aligns to end at 641px so the top card row clusters toward the vertical center', () => {
+    const section = getMediaSection(641)
+    const match = section.match(/\.logoSection3\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('align-self: end')
+  })
+
+  it('logoSection4 aligns to start at 641px so the bottom card row clusters toward the vertical center', () => {
+    const section = getMediaSection(641)
+    const match = section.match(/\.logoSection4\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('align-self: start')
+  })
+})
+
 describe('PlayPage instructions modal', () => {
   const defaultProps = {
     background: 'fake-bg.jpg',
