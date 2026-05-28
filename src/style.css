@@ -2400,25 +2400,31 @@ body {
   }
 
   .mobileMenuWrapper {
-    display: none;
+    display: block;
+  }
+
+  .hamburgerButton {
+    width: 55px;
+    height: 55px;
+    margin-top: 10px;
+    margin-left: 10px;
   }
 
   .topColumn3 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 28fr;
-    grid-template-areas: 'musicBlock2 . musicBlock3 helpBlock .';
+    display: flex;
+    align-items: flex-start;
   }
 
   .topColumn3 > .musicIconWrapper {
-    display: flex;
+    display: none;
   }
 
   .topColumn3 > .musicBlock3 {
-    display: flex;
+    display: none;
   }
 
   .topColumn3 > .helpButton {
-    display: flex;
+    display: none;
   }
 
   .portfolioIcon2 {
