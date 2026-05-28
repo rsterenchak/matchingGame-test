@@ -6,7 +6,7 @@
   - File: `src/style.css`, `src/HomePage.jsx`, `src/PlayPage.jsx`
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[MEDIUM]** Convert desktop score panel to a centered floating pip tracker
+- [x] **[MEDIUM]** Convert desktop score panel to a centered floating pip tracker
   - Type: feature
   - Description: On desktop the score panel is currently a full-bleed red bar pinned flush to the bottom edge with a thin continuous white progress bar, and stretching that bar across a ~1280px viewport looks absurdly long. Rework the desktop panel into a contained game-HUD widget: cap `.scorePanel` to a fixed `max-width` (~480px), center it horizontally, and float it just above the bottom edge with a margin all around (instead of `margin: 0` full-bleed). Replace the continuous `.scorePanelBar`/`.scorePanelBarFill` with a 16-segment pip tracker Ã¢ÂÂ 16 equal-flex pips with a small gap between them, where each pip lights white as a fighter is picked and unfilled pips sit at `rgba(0,0,0,0.2)`; keep the existing `activeScore` value driving how many are lit (`activeScore` pips filled out of 16). Keep "Score `n / 16`" on the left and the "Best `n`" chip on the right in the row above the pips, and preserve the existing red panel color (`#f84040`), Shojumaru font, rounded corners, and box-shadow. Scope strictly to desktop Ã¢ÂÂ gate all changes behind the existing 961/1281 breakpoints and leave the 320/481/641 mobile/tablet layouts (continuous bar, full-bleed, safe-area margin) untouched; reuse the existing breakpoints, don't introduce new ones. The pip markup lives in `PlayPage.jsx` (replacing the `.scorePanelBar` div) and styling in `src/style.css`; pure markup + CSS, no new deps.
   - File: `src/PlayPage.jsx`, `src/style.css`

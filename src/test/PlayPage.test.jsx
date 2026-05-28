@@ -66,16 +66,17 @@ describe('PlayPage score panel', () => {
     expect(screen.getByText('0 / 16')).toBeInTheDocument()
   })
 
-  it('scorePanel renders a progress bar element', () => {
+  it('scorePanel renders 16 pip tracker elements', () => {
     render(<PlayPage {...defaultProps} />)
-    expect(document.querySelector('.scorePanelBar')).toBeInTheDocument()
-    expect(document.querySelector('.scorePanelBarFill')).toBeInTheDocument()
+    expect(document.querySelector('.scorePanelPips')).toBeInTheDocument()
+    const pips = document.querySelectorAll('.scorePanelPip')
+    expect(pips).toHaveLength(16)
   })
 
-  it('scorePanelBarFill starts at 0% width when score is 0', () => {
+  it('no scorePanelPip has the lit class when score is 0', () => {
     render(<PlayPage {...defaultProps} />)
-    const fill = document.querySelector('.scorePanelBarFill')
-    expect(fill.style.width).toBe('0%')
+    const litPips = document.querySelectorAll('.scorePanelPip.lit')
+    expect(litPips).toHaveLength(0)
   })
 })
 
@@ -111,11 +112,12 @@ describe('Desktop layout: score panel pinned to bottom, card grid centered', () 
     expect(match[1]).toContain('height: 100dvh')
   })
 
-  it('scorePanel has margin: 0 at 961px making it full-bleed at the bottom edge', () => {
+  it('scorePanel has max-width at 961px for a contained floating widget instead of full-bleed', () => {
     const section = get961Section()
     const match = section.match(/\.scorePanel\s*\{([^}]+)\}/)
     expect(match).not.toBeNull()
-    expect(match[1]).toContain('margin: 0')
+    expect(match[1]).toContain('max-width')
+    expect(match[1]).not.toMatch(/margin:\s*0;/)
   })
 
   it('logoSection3 aligns to end at 961px so the top card row clusters toward the vertical center', () => {
