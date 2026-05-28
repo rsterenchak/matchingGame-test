@@ -18,11 +18,11 @@
   - File: `src/HomePage.jsx`, `src/style.css`
   - Completed: 2026-05-28
 
-- [ ] **[MEDIUM]** Remove Shenron framing images from home page entirely
+- [x] **[MEDIUM]** Remove Shenron framing images from home page entirely
   - Type: feature
   - Description: Remove the two decorative Shenron dragon images that frame the top and bottom of the home screen. In `HomePage.jsx`, delete the `shenronTopSvg` and `shenronBottomSvg` imports and the two `<img className='shenronTop' .../>` and `<img className='shenronBottom' .../>` elements. In `style.css`, delete the base `.shenronTop` / `.shenronBottom` rules and their per-breakpoint `height` overrides at the 320/481/641/961/1025/1281 breakpoints. Also delete the now-unused `ShenronTop.svg` and `ShenronBottom.svg` asset files from `src/assets/`. Update `src/test/HomePage.test.jsx` â the "Shenron framing images" describe block asserts these elements and their CSS rules exist, so remove those assertions or they'll fail. Leave the `.homeSection::before` fade-gradient and the `overflow: visible` on `.homeSection` as-is.
   - File: `src/HomePage.jsx`, `src/style.css`, `src/assets/`, `src/test/HomePage.test.jsx`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-28
 
 - [ ] **[MEDIUM]** Move score panel to bottom and center card grid on desktop
   - Type: feature
