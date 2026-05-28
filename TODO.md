@@ -36,7 +36,7 @@
   - File: `src/MobileMenu.jsx`, `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[LOW]** Match desktop hamburger button to audio button size and yellow
+- [x] **[LOW]** Match desktop hamburger button to audio button size and yellow
   - Type: feature
   - Description: After collapsing the desktop PlayPage nav into a hamburger + shared menu modal, the hamburger is undersized and its shade reads as jarring next to the audio/music button. Match it to that button exactly: at desktop the audio button (`.musicBlock3`/`.musicBlock2`) is 60&times;55px with `background-color: yellow` (`#ffd700`) and a 3px black border, so set `.hamburgerButton` to the same 60&times;55 footprint (up from the current `min(7vw, 24px)`), the same yellow fill and 3px black border, and scale the inline SVG `width`/`height` (currently 14) and bar stroke up proportionally (~28px wide, ~4px thick, black) so the icon fills the larger button. Keep the modal panel yellow/black to match the hamburger and bump it to a comfortable desktop width (~300px) with larger title and row text. Scope strictly to desktop â gate the size change behind the existing 961/1281 breakpoints and leave the 320/481/641 mobile/tablet hamburger sizing untouched; reuse the existing breakpoints, don't add new ones. Keep the Shojumaru font, rounded corners, the DBZ button glow/hover treatment consistent with the audio button, and the three close affordances (X / backdrop / Escape) intact. Pure markup + CSS, no new deps.
   - File: `src/MobileMenu.jsx`, `src/style.css`
