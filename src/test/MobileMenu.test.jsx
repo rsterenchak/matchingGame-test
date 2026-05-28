@@ -1,5 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect, vi } from 'vitest'
+import { readFileSync } from 'fs'
+import { join } from 'path'
 import MobileMenu from '../MobileMenu.jsx'
 
 const defaultProps = {
@@ -78,5 +80,24 @@ describe('MobileMenu modal', () => {
     render(<MobileMenu {...defaultProps} />)
     fireEvent.click(document.querySelector('.hamburgerButton'))
     expect(document.querySelector('.mobileMenuDropdown')).toBeNull()
+  })
+})
+
+describe('hamburgerButton desktop color matches musicBlock3', () => {
+  const cssPath = join(__dirname, '../style.css')
+  const css = readFileSync(cssPath, 'utf8')
+
+  it('hamburgerButton has background-color: yellow inside a min-width:961px breakpoint so it matches musicBlock3', () => {
+    // Split on @media boundaries; collect every block that targets min-width:961px
+    const blocks = css.split(/(?=@media)/)
+    const media961Blocks = blocks.filter(b => /min-width:961px/.test(b))
+    expect(media961Blocks.length).toBeGreaterThan(0)
+
+    // At least one 961px block must contain a .hamburgerButton rule with background-color: yellow
+    const hasMatch = media961Blocks.some(block => {
+      const ruleMatch = block.match(/\.hamburgerButton\s*\{([^}]*)\}/)
+      return ruleMatch && ruleMatch[1].includes('background-color: yellow')
+    })
+    expect(hasMatch).toBe(true)
   })
 })
