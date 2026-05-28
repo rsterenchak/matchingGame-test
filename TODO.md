@@ -42,8 +42,8 @@
   - File: `src/MobileMenu.jsx`, `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[MEDIUM]** Lift Fight button on home screen to clear Safari bottom bar
+- [x] **[MEDIUM]** Lift Fight button on home screen to clear Safari bottom bar
   - Type: bug
   - Description: On mobile Safari the Fight button (`.fightButton` inside `.inputSection`) sits too low and clashes with the browser's bottom URL bar, leaving it partially obscured and awkward to tap. The home screen's `.inputSection` uses plain `vh` bottom padding and never received the `env(safe-area-inset-bottom)` treatment that `.scorePanel` already has on the play screen. Fix by folding the safe-area inset into the bottom padding for a comfortable clearance: base `.inputSection` → `padding-bottom: calc(3vh + env(safe-area-inset-bottom));`, the `@media (min-width:320px)` `.inputSection` → `padding-bottom: calc(3vh + env(safe-area-inset-bottom) + 12px);`, and the `@media (min-width:481px)` `.inputSection` → `padding-bottom: calc(4vh + env(safe-area-inset-bottom) + 12px);`. Reuse the existing fixed breakpoints (320 / 481) rather than adding new ones. The inset only resolves if the viewport meta tag opts in, so also ensure `index.html`'s viewport meta includes `viewport-fit=cover` (`<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />`) — without it `env(safe-area-inset-bottom)` computes to 0 and the clearance does nothing. No regression expected on tablet/desktop breakpoints.
   - File: `src/style.css`, `index.html`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-28
