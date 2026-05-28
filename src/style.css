@@ -1785,13 +1785,12 @@ body {
 
   .outerSection2 {
     display: grid;
-    grid-template-rows: auto auto auto auto;
-    height: auto;
+    grid-template-rows: auto 1fr 1fr auto;
+    height: 100%;
     min-height: 100%;
     margin: 0px;
     padding: 0px;
     gap: 10px;
-    align-content: space-evenly;
   }
   .musicBlock3 {
 
@@ -1869,7 +1868,7 @@ body {
     grid-template-columns: repeat(4, calc((100vw - 32px) / 4));
     gap: 4px;
     justify-content: center;
-    align-self: start;
+    align-self: end;
     position: relative;
     z-index: 11;
   }
@@ -1988,13 +1987,12 @@ body {
 
   .outerSection2 {
     display: grid;
-    grid-template-rows: auto auto auto auto;
-    height: auto;
+    grid-template-rows: auto 1fr 1fr auto;
+    height: 100%;
     min-height: 100%;
     margin: 0px;
     padding: 0px;
     gap: 10px;
-    align-content: space-evenly;
   }
   .musicBlock3 {
 
@@ -2068,7 +2066,7 @@ body {
     grid-template-columns: repeat(4, calc((100vw - 32px) / 4));
     gap: 4px;
     justify-content: center;
-    align-self: start;
+    align-self: end;
     position: relative;
     z-index: 11;
   }
@@ -2169,7 +2167,7 @@ body {
 
    .outerSection2 {
     display: grid;
-    grid-template-rows: 1fr 1.4fr 1.4fr 1fr;
+    grid-template-rows: auto 1fr 1fr auto;
     height: 100%;
     margin: 0px;
     padding: 0px;
@@ -2245,20 +2243,20 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap-reverse;
-    align-self: center;
+    align-self: end;
     justify-self: center;
     justify-content: center;
     align-items: center;
     object-fit: contain;
     gap: 20px;
     width: 650px;
-    
+
 
   }
-  
+
   .card {
     display: flex;
-    
+
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -2267,7 +2265,7 @@ body {
     width: 125px;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  
+
   }
 
   .cardBack {
@@ -2275,21 +2273,21 @@ body {
     width: 125px;
     border-radius: 7px;
     border: 1px solid blue;
-  
+
   }
 
   .logoSection4 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-self: center;
+    align-self: start;
     justify-self: center;
     justify-content: center;
     align-items: center;
     object-fit: contain;
     gap: 20px;
     width: 650px;
-    
+
 
   }
 
