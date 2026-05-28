@@ -204,6 +204,60 @@ describe('Mobile layout: score panel at bottom, card grid centered', () => {
   })
 })
 
+describe('Mobile layout: score panel pushed to viewport bottom with safe-area gap', () => {
+  function getMediaSection(minWidth) {
+    const marker = minWidth === 641
+      ? '@media (min-width:641px)  {'
+      : `@media (min-width:${minWidth}px)  {`
+    const idx = css.indexOf(marker)
+    if (idx === -1) return ''
+    const nextMedia = css.indexOf('@media', idx + 1)
+    return css.slice(idx, nextMedia === -1 ? undefined : nextMedia)
+  }
+
+  it('outerSection2 has min-height: 100dvh at 320px so 1fr rows fill viewport when card content is shorter', () => {
+    const section = getMediaSection(320)
+    const match = section.match(/\.outerSection2\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('min-height: 100dvh')
+  })
+
+  it('outerSection2 has min-height: 100dvh at 481px', () => {
+    const section = getMediaSection(481)
+    const match = section.match(/\.outerSection2\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('min-height: 100dvh')
+  })
+
+  it('outerSection2 has min-height: 100dvh at 641px', () => {
+    const section = getMediaSection(641)
+    const match = section.match(/\.outerSection2\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('min-height: 100dvh')
+  })
+
+  it('scorePanel has env(safe-area-inset-bottom) margin-bottom at 320px to clear mobile Safari home indicator', () => {
+    const section = getMediaSection(320)
+    const match = section.match(/\.scorePanel\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('env(safe-area-inset-bottom)')
+  })
+
+  it('scorePanel has env(safe-area-inset-bottom) margin-bottom at 481px', () => {
+    const section = getMediaSection(481)
+    const match = section.match(/\.scorePanel\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('env(safe-area-inset-bottom)')
+  })
+
+  it('scorePanel has env(safe-area-inset-bottom) margin-bottom at 641px', () => {
+    const section = getMediaSection(641)
+    const match = section.match(/\.scorePanel\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('env(safe-area-inset-bottom)')
+  })
+})
+
 describe('PlayPage instructions modal', () => {
   const defaultProps = {
     background: 'fake-bg.jpg',
