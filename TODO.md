@@ -24,8 +24,8 @@
   - File: `src/HomePage.jsx`, `src/style.css`, `src/assets/`, `src/test/HomePage.test.jsx`
   - Completed: 2026-05-28
 
-- [ ] **[MEDIUM]** Move score panel to bottom and center card grid on desktop
+- [x] **[MEDIUM]** Move score panel to bottom and center card grid on desktop
   - Type: feature
   - Description: On desktop, the score panel currently sits mid-screen directly under the card grid with a large empty stretch of background below it, and the 8-card grid hugs the top. Rework the desktop layout so the score panel is pinned flush to the bottom edge of the viewport (full-bleed, matching its current full width) and the card grid is centered as a block in the space above it (both horizontally and vertically). Scope this to desktop only — gate the changes behind the existing 961/1281 breakpoints and leave the 320/481/641 mobile/tablet layouts untouched. The score panel markup (`.scorePanel`) and card rows (`.logoSection3` / `.logoSection4`) live in `PlayPage.jsx`, but this is a pure CSS layout change in `src/style.css` against the `.outerSection2` grid — reuse the existing breakpoints, don't introduce new ones, and keep the existing `.scorePanel` red color, Shojumaru font, and rounded corners.
   - File: `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-28
