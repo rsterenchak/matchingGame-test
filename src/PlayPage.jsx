@@ -708,11 +708,10 @@ export default function PlayPage({
               </div>
               <div className='scorePanelBestChip'>Best {activeHighScore}</div>
             </div>
-            <div className='scorePanelBar'>
-              <div
-                className='scorePanelBarFill'
-                style={{width: `${(activeScore / 16) * 100}%`}}
-              ></div>
+            <div className='scorePanelPips'>
+              {Array.from({length: 16}, (_, i) => (
+                <div key={i} className={`scorePanelPip${i < activeScore ? ' lit' : ''}`}></div>
+              ))}
             </div>
           </div>
 

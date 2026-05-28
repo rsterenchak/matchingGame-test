@@ -1498,19 +1498,24 @@ body {
   white-space: nowrap;
 }
 
-.scorePanelBar {
+.scorePanelPips {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
   width: 100%;
-  height: 4px;
-  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 2px;
   overflow: hidden;
 }
 
-.scorePanelBarFill {
-  height: 100%;
+.scorePanelPip {
+  flex: 1;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.scorePanelPip.lit {
   background-color: white;
-  border-radius: 2px;
-  transition: width 0.3s ease;
 }
 
 .endGame {
@@ -2442,7 +2447,20 @@ body {
   }
 
   .scorePanel {
-    margin: 0;
+    max-width: 480px;
+    width: calc(100% - 32px);
+    margin: 0 auto 16px;
+  }
+
+  .scorePanelPips {
+    gap: 4px;
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  .scorePanelPip {
+    height: 8px;
+    border-radius: 4px;
   }
 
   .musicBlock3 {
