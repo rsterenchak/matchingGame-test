@@ -89,6 +89,50 @@ describe('PlayPage background fade gradient', () => {
   })
 })
 
+describe('Desktop layout: score panel pinned to bottom, card grid centered', () => {
+  function get961Section() {
+    // The play-page 961px block uses double-space before `{`, distinguishing it from the home-page 961px block
+    const idx = css.indexOf('@media (min-width:961px)  {')
+    const nextMedia = css.indexOf('@media', idx + 1)
+    return css.slice(idx, nextMedia)
+  }
+
+  it('outerSection2 uses auto 1fr 1fr auto rows at 961px so the score panel sits at the viewport bottom', () => {
+    const section = get961Section()
+    const match = section.match(/\.outerSection2\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('grid-template-rows: auto 1fr 1fr auto')
+  })
+
+  it('outerSection2 sets height to 100dvh at 961px so the grid fills the full viewport', () => {
+    const section = get961Section()
+    const match = section.match(/\.outerSection2\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('height: 100dvh')
+  })
+
+  it('scorePanel has margin: 0 at 961px making it full-bleed at the bottom edge', () => {
+    const section = get961Section()
+    const match = section.match(/\.scorePanel\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('margin: 0')
+  })
+
+  it('logoSection3 aligns to end at 961px so the top card row clusters toward the vertical center', () => {
+    const section = get961Section()
+    const match = section.match(/\.logoSection3\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('align-self: end')
+  })
+
+  it('logoSection4 aligns to start at 961px so the bottom card row clusters toward the vertical center', () => {
+    const section = get961Section()
+    const match = section.match(/\.logoSection4\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('align-self: start')
+  })
+})
+
 describe('PlayPage instructions modal', () => {
   const defaultProps = {
     background: 'fake-bg.jpg',
