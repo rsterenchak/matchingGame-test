@@ -54,7 +54,7 @@
   - File: `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
 
-- [ ] **[MEDIUM]** Restyle volume slider to match the yellow/black glow button family
+- [x] **[MEDIUM]** Restyle volume slider to match the yellow/black glow button family
   - Type: feature
   - Description: The volume control (`.volumeSliderWrapper` + `.volumeSliderInput`) is the one piece of nav chrome that doesn't match the rest of the UI — it renders as a plain white rounded capsule with a thin yellow fill, while every other button (music note, fight, retry, help) uses the project's signature yellow background + 3px black border + glow-pulse `:before` halo. Bring it into the family: change `.volumeSliderWrapper` to `background: yellow` with `border: 3px solid black`, flip the slider fill from yellow-on-white to black-on-yellow so the level stays readable against the new background (update the inline `linear-gradient` background written on the input in markup, plus the `::-webkit-slider-thumb`/`::-moz-range-thumb` colors in CSS), and add the shared glow `:before` pseudo-element using the existing `glowing` keyframe pattern, opacity 0 → 1 on hover like `.musicBlock`. The slider markup is shared across both pages, so update the inline gradient in both `HomePage.jsx` and `PlayPage.jsx`; styling stays in `src/style.css`. No new deps; reuse the existing glow keyframes rather than adding new ones.
   - File: `src/style.css`, `src/HomePage.jsx`, `src/PlayPage.jsx`
