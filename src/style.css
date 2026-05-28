@@ -623,9 +623,9 @@ body {
 }
 
 @keyframes nimbus-float {
-  0%   { transform: translateY(0) rotate(0deg); }
-  50%  { transform: translateY(-8px) rotate(1deg); }
-  100% { transform: translateY(0) rotate(0deg); }
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
 }
 
 @media (min-width:320px){
@@ -879,7 +879,7 @@ body {
     left: 1vw;
     object-fit: contain;
     filter: drop-shadow(0 0 12px rgba(255, 220, 0, 0.85)) drop-shadow(0 8px 6px rgba(0, 0, 0, 0.4));
-    animation: nimbus-float 4.5s ease-in-out infinite;
+    animation: nimbus-float 5s ease-in-out infinite;
   }
 
   .inputSection {

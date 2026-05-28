@@ -253,4 +253,24 @@ describe('Nimbus cloud upsize and float animation', () => {
   it('prefers-reduced-motion block disables logoContainer2 animation to respect motion sensitivity', () => {
     expect(css).toMatch(/@media\s*\(prefers-reduced-motion:\s*reduce\)[^{]*\{[^}]*\.logoContainer2[^}]*animation:\s*none/)
   })
+
+  it('nimbus-float keyframe 50% frame uses only translateY with no rotation so the cloud bobs vertically', () => {
+    const start = css.indexOf('@keyframes nimbus-float')
+    const end = css.indexOf('\n}', start) + 2
+    const keyframeBlock = css.slice(start, end)
+    expect(keyframeBlock).toMatch(/50%\s*\{\s*transform:\s*translateY\([^)]+\)\s*;\s*\}/)
+    expect(keyframeBlock).not.toMatch(/rotate/)
+  })
+
+  it('nimbus-float keyframe 50% frame uses translateY(-5px) for the gentle 5px bob', () => {
+    const start = css.indexOf('@keyframes nimbus-float')
+    const end = css.indexOf('\n}', start) + 2
+    const keyframeBlock = css.slice(start, end)
+    expect(keyframeBlock).toContain('translateY(-5px)')
+  })
+
+  it('961px breakpoint logoContainer2 animation duration is 5s for a slower, calmer cycle', () => {
+    const mediaBlock = css.match(/@media\s*\(min-width:\s*961px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
+    expect(mediaBlock).toMatch(/\.logoContainer2\s*\{[^}]*animation:\s*nimbus-float\s+5s/)
+  })
 })
