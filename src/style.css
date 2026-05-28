@@ -807,6 +807,16 @@ body {
   .inputSection {
     padding-bottom: 6vh;
   }
+
+  .logoContainer2 {
+    min-height: 220px;
+    width: 70vw;
+    max-width: 540px;
+    position: relative;
+    top: -8vh;
+    left: 0;
+    object-fit: contain;
+  }
 }
 
 @media (min-width:961px) {
