@@ -1,15 +1,16 @@
 <div align="center">
 
-# 🐉 Dragon Ball Z Matching Game ⭐
+# 🐉 Dragon Ball Z Memory Game ⭐
 
 <img src="src/assets/dragon-ball-image.png" alt="Dragon Ball Z" width="500" />
 
 ### *Can you remember every Z Fighter without picking the same one twice?* 💥
 
-[**🎮 Play the Game**](https://matching-game-test-61nu2hvky-rsterenchaks-projects.vercel.app/) · [**🐙 GitHub**](https://github.com/rsterenchak)
+[**🎮 Play the Game**](https://rsterenchak.github.io/matchingGame-test/) · [**🐙 GitHub**](https://github.com/rsterenchak)
 
 </div>
 
+![Tests](https://github.com/rsterenchak/matchingGame-test/actions/workflows/test.yml/badge.svg)
 ---
 
 ## ⚡ What is this?

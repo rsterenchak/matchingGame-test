@@ -2,12 +2,15 @@ name: Tests
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'TODO.md'
   pull_request:
+    paths-ignore:
+      - 'TODO.md'
   workflow_dispatch:
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: false
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

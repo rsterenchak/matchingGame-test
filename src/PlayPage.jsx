@@ -1,8 +1,9 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './style.css';
 import Card from './Card.jsx'
 import CardBack from './CardBack.jsx';
+import MobileMenu from './MobileMenu.jsx';
 import musicIcon from './assets/musical-notes.svg'
 import planetIcon from './assets/planet.svg'
 import gitIcon from './assets/github.svg'
@@ -16,12 +17,66 @@ export default function PlayPage({
   setAudioPause,
   setAudioPlay,
   activeCurrentAudio,
-  isActiveData
+  isActiveData,
+  isVolume,
+  onVolumeChange
 
 }) {
 
   
   console.log('PlayPage re-rendered');
+
+  const [sliderOpen, setSliderOpen] = useState(false);
+  const musicWrapperRef = useRef(null);
+
+  const [activeInstructionsModal, setActiveInstructionsModal] = useState(true);
+  const modalInteractiveRef = useRef(false);
+
+  useEffect(() => {
+    if (!sliderOpen) return;
+
+    function handleOutsideClick(e) {
+      if (musicWrapperRef.current && !musicWrapperRef.current.contains(e.target)) {
+        setSliderOpen(false);
+      }
+    }
+
+    function handleEscape(e) {
+      if (e.key === 'Escape') setSliderOpen(false);
+    }
+
+    document.addEventListener('click', handleOutsideClick);
+    document.addEventListener('keydown', handleEscape);
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [sliderOpen]);
+
+  useEffect(() => {
+    if (!activeInstructionsModal) return;
+
+    // Absorb ghost clicks: iOS synthesizes a click ~300ms after touchend on the
+    // previous element, which lands on the backdrop and immediately dismisses the
+    // modal. Disallow closure until the ghost-click window has passed.
+    modalInteractiveRef.current = false;
+    const guardTimer = setTimeout(() => {
+      modalInteractiveRef.current = true;
+    }, 400);
+
+    function handleEscape(e) {
+      if (e.key === 'Escape' && modalInteractiveRef.current) {
+        setActiveInstructionsModal(false);
+      }
+    }
+
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      clearTimeout(guardTimer);
+    };
+  }, [activeInstructionsModal]);
 
 
   const dataArray = [
@@ -125,6 +180,7 @@ export default function PlayPage({
 
   const boxStyle = {
     backgroundImage: `url(${background})`,
+    backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     filter: activePopUp ? 'blur(5px)' : 'blur(0px)'
@@ -160,6 +216,11 @@ export default function PlayPage({
   }
 
 
+
+  function closeInstructions() {
+    if (!modalInteractiveRef.current) return;
+    setActiveInstructionsModal(false);
+  }
 
   function randomIntFromInterval(min, max) { // min and max included
 
@@ -504,26 +565,73 @@ export default function PlayPage({
 
             <div className='topColumn3'>
 
-                <div 
-                  className='musicBlock2'
-                  onClick={() => forMusicIcon()}
-                  style={popUpStyle}
-                >
-                  
-                  <img className='musicIcon2' src={musicIcon} ></img>
+                <div className='musicIconWrapper' ref={musicWrapperRef}>
+
+                  <div
+                    className='musicBlock2'
+                    onClick={() => forMusicIcon()}
+                    style={popUpStyle}
+                  >
+
+                    <img className='musicIcon2' src={musicIcon}></img>
+
+                  </div>
+
+                  <div
+                    className='speakerButton'
+                    onClick={() => setSliderOpen(o => !o)}
+                    style={popUpStyle}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="black">
+                      <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                    </svg>
+                  </div>
+
+                  <div className={`volumeSliderWrapper${sliderOpen ? ' sliderOpen' : ''}`}>
+                    <input
+                      type="range"
+                      className="volumeSliderInput"
+                      min="0"
+                      max="1"
+                      step="0.005"
+                      value={isVolume}
+                      style={{background: `linear-gradient(to top, yellow ${isVolume * 100}%, #ccc ${isVolume * 100}%)`}}
+                      onChange={e => onVolumeChange(parseFloat(e.target.value))}
+                    />
+                  </div>
 
                 </div>
 
-                <div 
+                <div
                   className='musicBlock3'
                   onClick={() => setupPage()}
                   style={popUpStyle}
                 >
-                  
-                  <img className='musicIcon3' src={planetIcon} ></img>
+
+                  <img className='musicIcon3' src={planetIcon}></img>
 
                 </div>
 
+                <div
+                  className='helpButton'
+                  onClick={() => setActiveInstructionsModal(true)}
+                  style={popUpStyle}
+                >
+                  ?
+                </div>
+
+                <MobileMenu
+                  forMusicIcon={forMusicIcon}
+                  activeCurrentAudio={activeCurrentAudio}
+                  musicIcon={musicIcon}
+                  setupPage={setupPage}
+                  planetIcon={planetIcon}
+                  openInstructions={() => setActiveInstructionsModal(true)}
+                  gitIcon={gitIcon}
+                  isVolume={isVolume}
+                  onVolumeChange={onVolumeChange}
+                  popUpStyle={popUpStyle}
+                />
 
             </div>
             <div className='topColumn4'>
@@ -592,30 +700,19 @@ export default function PlayPage({
           {/* Delete Section - no longer needed */}
 {/*           <div className='currentScoreSection'></div> */}
 
-          <div className='highScoreSection'>
-
-            <div className='scoreSection1'>
-              <div className='highScoreElement'>
-
-                <div className='highScoreText'>High Score: </div>
-                <div className='highScoreValue'>&nbsp;{activeHighScore}</div>
-
+          <div className='scorePanel'>
+            <div className='scorePanelRow'>
+              <div className='scorePanelScoreGroup'>
+                <span className='scorePanelLabel'>Score</span>
+                <span className='scorePanelValue'>{activeScore} / 16</span>
               </div>
+              <div className='scorePanelBestChip'>Best {activeHighScore}</div>
             </div>
-
-            <div className='scoreSection2'>
-
-              <div className='currentScoreElement'>
-
-                <div className='currentScoreText'>Current <br></br>Score:</div>
-                <div className='currentScoreValue'>&nbsp;{activeScore}/16</div>
-
-              </div>
-
+            <div className='scorePanelPips'>
+              {Array.from({length: 16}, (_, i) => (
+                <div key={i} className={`scorePanelPip${i < activeScore ? ' lit' : ''}`}></div>
+              ))}
             </div>
-
-
-
           </div>
 
 
@@ -664,6 +761,21 @@ export default function PlayPage({
       )
     
     }
+
+    {activeInstructionsModal && (
+      <div className='instructionsBackdrop' onClick={closeInstructions}>
+        <div className='instructionsCard' onClick={e => e.stopPropagation()}>
+          <div className='instructionsTitle'>How to Play</div>
+          <ul className='instructionsList'>
+            <li>Pick a Z Fighter you haven't picked before.</li>
+            <li>Cards reshuffle after every turn.</li>
+            <li>Picking a repeated fighter ends the game.</li>
+            <li>Pick all 16 unique fighters to win!</li>
+          </ul>
+          <div className='gotItButton' onClick={closeInstructions}>Got it!</div>
+        </div>
+      </div>
+    )}
 
   </>
   );
