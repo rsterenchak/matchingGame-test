@@ -958,32 +958,32 @@ body {
   }
 
   .logoContainer {
-    
-    min-height: 320px;
-    
+
+    min-height: 220px;
+
 
     background-image: url('./assets/dragon-ball-image.png') ;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-  
+
   }
-  
+
   .logoSection2 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-  
+
     object-fit: contain;
     grid-area: logoSection2;
   }
-  
+
   .logoContainer2 {
-    height: 500px;
-    width: 860px;
+    min-height: 315px;
+    width: 82vw;
     position: relative;
-    top: -15vh;
+    top: -18vh;
     left: 1vw;
     object-fit: contain;
   }
@@ -994,7 +994,7 @@ body {
     justify-content: center;
     align-items: center;
     grid-area: inputSection;
-    padding-bottom: 9vh;
+    padding-bottom: 8vh;
   }
 
 }

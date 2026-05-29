@@ -368,3 +368,32 @@ describe('Nimbus cloud letterform overlap fix (regression: cloud covered DBZ let
     expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(18)
   })
 })
+
+describe('Home screen fits within the viewport at 1281px (regression: stacked column overflowed below the fold)', () => {
+  const media1281Block = css.match(/@media\s*\(min-width:\s*1281px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
+
+  it('1281px .logoContainer min-height does not exceed the working 1025px value of 220px', () => {
+    const ruleMatch = media1281Block.match(/\.logoContainer\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    const minHeightMatch = ruleMatch[1].match(/min-height:\s*([\d.]+)px/)
+    expect(minHeightMatch).not.toBeNull()
+    expect(parseFloat(minHeightMatch[1])).toBeLessThanOrEqual(220)
+  })
+
+  it('1281px .logoContainer2 does not pin a fixed pixel height taller than the working 1025px cloud (315px)', () => {
+    const ruleMatch = media1281Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    const fixedHeightMatch = ruleMatch[1].match(/(?<![\w-])height:\s*([\d.]+)px/)
+    if (fixedHeightMatch) {
+      expect(parseFloat(fixedHeightMatch[1])).toBeLessThanOrEqual(315)
+    }
+  })
+
+  it('1281px .inputSection bottom padding does not exceed the working 1025px value of 8vh', () => {
+    const ruleMatch = media1281Block.match(/\.inputSection\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    const padMatch = ruleMatch[1].match(/padding-bottom:\s*([\d.]+)vh/)
+    expect(padMatch).not.toBeNull()
+    expect(parseFloat(padMatch[1])).toBeLessThanOrEqual(8)
+  })
+})

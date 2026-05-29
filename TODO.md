@@ -6,8 +6,8 @@
   - File: `src/style.css`, `src/HomePage.jsx`
   - Completed: 2026-05-28
 
-- [ ] **[HIGH]** Fix home screen content overflowing below the fold at the 1281px breakpoint
+- [x] **[HIGH]** Fix home screen content overflowing below the fold at the 1281px breakpoint
   - Type: bug
   - Description: At the widest desktop breakpoint (`@media (min-width:1281px)`), the home screen no longer fits the viewport — the DBZ logo and the enlarged "Memory Game" nimbus title cloud push the lower content (Kame House, Goku, and the Fight button) below the fold, so on first load only the top of the title cloud is visible. This is a regression from the recent nimbus/title scale-up (the ~50% upsize that was applied at the 961 and 1281 breakpoints). At the next breakpoint down (`min-width:1025px`) the same elements still fit and show the intended layout (full title cloud, house, Goku, Fight button), so the fix is to bring the 1281px rules back in line with the working 1025px proportions, not to redesign. Investigate the `min-width:1281px` block in style.css and diff it against the `min-width:1025px` block: compare `.logoContainer` (DBZ logo) and `.logoContainer2` (Memory Game nimbus cloud) sizing plus the vertical margins/gaps and `.inputSection` (Fight button) spacing — the combined stacked height of the centered `.homeSection` column (which uses `min-height: 100dvh`) is exceeding the viewport. Reduce the oversized element sizing and/or inter-element spacing at 1281 so the full column fits within 100dvh, matching the 1025px result. Keep this CSS-only (markup unchanged), reuse the existing fixed breakpoints (no new ones), and regression-check that 961 and 1025 still fit since the same scale-up touched 961.
   - File: `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-29
