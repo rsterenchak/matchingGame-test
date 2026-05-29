@@ -57,7 +57,7 @@ jobs:
           # Set to true only while debugging a run end-to-end — it surfaces the
           # agent's full turn-by-turn trace. Leave false for normal operation;
           # the routine's one-paragraph summary is enough when runs are clean.
-          show_full_output: false
+          show_full_output: True
           prompt: |
             You are running an automated code-development routine for this repository.
             Run mode: ${{ inputs.mode }}
