@@ -808,14 +808,6 @@ body {
     padding-bottom: 6vh;
   }
 
-  .logoContainer {
-    min-height: 200px;
-  }
-
-  .outerSection {
-    grid-template-rows: 0.8fr 1.5fr 1fr 0.8fr;
-  }
-
   .logoContainer2 {
     min-height: 220px;
     width: 70vw;

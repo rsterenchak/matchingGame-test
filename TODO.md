@@ -66,7 +66,7 @@
   - File: `src/style.css`
   - Completed: 2026-05-28
 
-- [x] **[LOW]** Audit remaining home-page elements at ~641â960px after Nimbus cloud fix â Completed: 2026-05-29
+- [ ] **[LOW]** Audit remaining home-page elements at ~641â960px after Nimbus cloud fix
   - Type: feature
   - Description: The Nimbus cloud position fix addressed the primary overlap issue but did not visually verify other home-page elements at 641â960px widths. Check at ~938Ã1273px that the DBZ title logo (.logoContainer min-height), the Fight button (.fightButton), the music/hamburger cluster, and the Goku art (.gokuGif) all sit correctly after the cloud repositioning. Apply any further nudges within the existing 641 breakpoint if needed; do not add new breakpoints.
   - File: `src/style.css`

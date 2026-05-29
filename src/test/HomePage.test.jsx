@@ -320,26 +320,6 @@ describe('Nimbus cloud 641–960px position fix (regression: drifted up and over
   })
 })
 
-describe('Home page 641–960px layout audit (DBZ logo min-height and grid row)', () => {
-  it('641px breakpoint .logoContainer has min-height >= 200px so the DBZ title has adequate height across the wide tablet range', () => {
-    const media641Block = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
-    const ruleMatch = media641Block.match(/\.logoContainer\s*\{([^}]+)\}/)
-    expect(ruleMatch).not.toBeNull()
-    const minHeightMatch = ruleMatch[1].match(/min-height:\s*(\d+)px/)
-    expect(minHeightMatch).not.toBeNull()
-    expect(parseInt(minHeightMatch[1], 10)).toBeGreaterThanOrEqual(200)
-  })
-
-  it('641px breakpoint .outerSection grid-template-rows logo fraction exceeds the 481px 1.4fr so proportions widen with the viewport', () => {
-    const media641Block = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
-    const ruleMatch = media641Block.match(/\.outerSection\s*\{([^}]+)\}/)
-    expect(ruleMatch).not.toBeNull()
-    const rowsMatch = ruleMatch[1].match(/grid-template-rows:\s*\S+\s+(\S+)/)
-    expect(rowsMatch).not.toBeNull()
-    expect(parseFloat(rowsMatch[1])).toBeGreaterThan(1.4)
-  })
-})
-
 describe('Nimbus cloud letterform overlap fix (regression: cloud covered DBZ letters at 481px, 641px, 1281px breakpoints)', () => {
   it('481px .logoContainer2 top offset is at most 12vh so the cloud sits below the DBZ title letters rather than across them', () => {
     const media481Block = css.match(/@media\s*\(min-width:\s*481px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
