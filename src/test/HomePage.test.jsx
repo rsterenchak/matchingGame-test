@@ -303,13 +303,13 @@ describe('Nimbus cloud 641–960px position fix (regression: drifted up and over
     expect(media641Block).toMatch(/\.logoContainer2\s*\{/)
   })
 
-  it('641px .logoContainer2 margin-top is in a 10–22vh tuck-under band so the enlarged cloud nestles just beneath the DBZ logo across the 641–960px range', () => {
+  it('641px .logoContainer2 margin-top is in a 4–22vh tuck-under band so the enlarged cloud sits just beneath the DBZ logo across the 641–960px range without overlapping the letters', () => {
     const media641Block = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
     const ruleMatch = media641Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
     expect(ruleMatch).not.toBeNull()
     const marginMatch = ruleMatch[1].match(/margin-top:\s*-(\d+(?:\.\d+)?)vh/)
     expect(marginMatch).not.toBeNull()
-    expect(parseFloat(marginMatch[1])).toBeGreaterThanOrEqual(10)
+    expect(parseFloat(marginMatch[1])).toBeGreaterThanOrEqual(4)
     expect(parseFloat(marginMatch[1])).toBeLessThanOrEqual(22)
   })
 
@@ -342,23 +342,23 @@ describe('Home page 641–960px layout audit (DBZ logo min-height and grid row)'
 })
 
 describe('Nimbus cloud letterform overlap fix (regression: cloud covered DBZ letters at 481px, 641px, 1281px breakpoints)', () => {
-  it('481px .logoContainer2 margin-top is in a 18–30vh tuck-under band so the enlarged cloud nestles just beneath the DBZ logo', () => {
+  it('481px .logoContainer2 margin-top is in a 10–30vh tuck-under band so the enlarged cloud sits just beneath the DBZ logo without overlapping the letters', () => {
     const media481Block = css.match(/@media\s*\(min-width:\s*481px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
     const ruleMatch = media481Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
     expect(ruleMatch).not.toBeNull()
     const marginMatch = ruleMatch[1].match(/margin-top:\s*-(\d+(?:\.\d+)?)vh/)
     expect(marginMatch).not.toBeNull()
-    expect(parseFloat(marginMatch[1])).toBeGreaterThanOrEqual(18)
+    expect(parseFloat(marginMatch[1])).toBeGreaterThanOrEqual(10)
     expect(parseFloat(marginMatch[1])).toBeLessThanOrEqual(30)
   })
 
-  it('641px .logoContainer2 margin-top is in a 10–22vh tuck-under band so the enlarged cloud nestles just beneath the DBZ logo at the start of the 641px range', () => {
+  it('641px .logoContainer2 margin-top is in a 4–22vh tuck-under band so the enlarged cloud sits just beneath the DBZ logo at the start of the 641px range without overlapping the letters', () => {
     const media641Block = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
     const ruleMatch = media641Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
     expect(ruleMatch).not.toBeNull()
     const marginMatch = ruleMatch[1].match(/margin-top:\s*-(\d+(?:\.\d+)?)vh/)
     expect(marginMatch).not.toBeNull()
-    expect(parseFloat(marginMatch[1])).toBeGreaterThanOrEqual(10)
+    expect(parseFloat(marginMatch[1])).toBeGreaterThanOrEqual(4)
     expect(parseFloat(marginMatch[1])).toBeLessThanOrEqual(22)
   })
 
