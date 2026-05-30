@@ -303,14 +303,14 @@ describe('Nimbus cloud 641–960px position fix (regression: drifted up and over
     expect(media641Block).toMatch(/\.logoContainer2\s*\{/)
   })
 
-  it('641px .logoContainer2 top offset is in a 10–22vh tuck-under band so the enlarged cloud nestles just beneath the DBZ logo across the 641–960px range', () => {
+  it('641px .logoContainer2 margin-top is in a 10–22vh tuck-under band so the enlarged cloud nestles just beneath the DBZ logo across the 641–960px range', () => {
     const media641Block = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
     const ruleMatch = media641Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
     expect(ruleMatch).not.toBeNull()
-    const topMatch = ruleMatch[1].match(/top:\s*-(\d+(?:\.\d+)?)vh/)
-    expect(topMatch).not.toBeNull()
-    expect(parseFloat(topMatch[1])).toBeGreaterThanOrEqual(10)
-    expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(22)
+    const marginMatch = ruleMatch[1].match(/margin-top:\s*-(\d+(?:\.\d+)?)vh/)
+    expect(marginMatch).not.toBeNull()
+    expect(parseFloat(marginMatch[1])).toBeGreaterThanOrEqual(10)
+    expect(parseFloat(marginMatch[1])).toBeLessThanOrEqual(22)
   })
 
   it('641px .logoContainer2 has left: 0 so the parent flex centering keeps the cloud centered without a positional offset drifting it sideways', () => {
@@ -342,24 +342,24 @@ describe('Home page 641–960px layout audit (DBZ logo min-height and grid row)'
 })
 
 describe('Nimbus cloud letterform overlap fix (regression: cloud covered DBZ letters at 481px, 641px, 1281px breakpoints)', () => {
-  it('481px .logoContainer2 top offset is in a 18–30vh tuck-under band so the enlarged cloud nestles just beneath the DBZ logo', () => {
+  it('481px .logoContainer2 margin-top is in a 18–30vh tuck-under band so the enlarged cloud nestles just beneath the DBZ logo', () => {
     const media481Block = css.match(/@media\s*\(min-width:\s*481px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
     const ruleMatch = media481Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
     expect(ruleMatch).not.toBeNull()
-    const topMatch = ruleMatch[1].match(/top:\s*-(\d+(?:\.\d+)?)vh/)
-    expect(topMatch).not.toBeNull()
-    expect(parseFloat(topMatch[1])).toBeGreaterThanOrEqual(18)
-    expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(30)
+    const marginMatch = ruleMatch[1].match(/margin-top:\s*-(\d+(?:\.\d+)?)vh/)
+    expect(marginMatch).not.toBeNull()
+    expect(parseFloat(marginMatch[1])).toBeGreaterThanOrEqual(18)
+    expect(parseFloat(marginMatch[1])).toBeLessThanOrEqual(30)
   })
 
-  it('641px .logoContainer2 top offset is in a 10–22vh tuck-under band so the enlarged cloud nestles just beneath the DBZ logo at the start of the 641px range', () => {
+  it('641px .logoContainer2 margin-top is in a 10–22vh tuck-under band so the enlarged cloud nestles just beneath the DBZ logo at the start of the 641px range', () => {
     const media641Block = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
     const ruleMatch = media641Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
     expect(ruleMatch).not.toBeNull()
-    const topMatch = ruleMatch[1].match(/top:\s*-(\d+(?:\.\d+)?)vh/)
-    expect(topMatch).not.toBeNull()
-    expect(parseFloat(topMatch[1])).toBeGreaterThanOrEqual(10)
-    expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(22)
+    const marginMatch = ruleMatch[1].match(/margin-top:\s*-(\d+(?:\.\d+)?)vh/)
+    expect(marginMatch).not.toBeNull()
+    expect(parseFloat(marginMatch[1])).toBeGreaterThanOrEqual(10)
+    expect(parseFloat(marginMatch[1])).toBeLessThanOrEqual(22)
   })
 
   it('1281px .logoContainer2 top offset is at most 18vh so the enlarged cloud does not cover the DBZ letters on wide viewports', () => {
@@ -369,6 +369,34 @@ describe('Nimbus cloud letterform overlap fix (regression: cloud covered DBZ let
     const topMatch = ruleMatch[1].match(/top:\s*-(\d+(?:\.\d+)?)vh/)
     expect(topMatch).not.toBeNull()
     expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(18)
+  })
+})
+
+describe('Nimbus cloud mobile overflow fix (regression: relative top offset reserved its grid slot and pushed the Fight button off-screen)', () => {
+  // The cloud must be pulled up with a NEGATIVE margin-top, not a relative top
+  // offset. A relative top shifts the cloud visually but leaves its grid slot
+  // reserved, so the stacked column overflows the viewport and the Fight button
+  // gets clipped by body { overflow: hidden }. Negative margin-top collapses the
+  // reserved space as well, keeping the column within the viewport.
+  const breakpoints = [320, 481, 641]
+
+  breakpoints.forEach((bp) => {
+    const mediaBlock = () =>
+      css.match(new RegExp(`@media\\s*\\(min-width:\\s*${bp}px\\)[^{]*\\{([\\s\\S]*?)(?=@media|\\*\\/|$)`))?.[1] ?? ''
+
+    it(`${bp}px .logoContainer2 does NOT use a relative top offset (would reserve its grid slot and overflow the column)`, () => {
+      const ruleMatch = mediaBlock().match(/\.logoContainer2\s*\{([^}]+)\}/)
+      expect(ruleMatch).not.toBeNull()
+      expect(ruleMatch[1]).not.toMatch(/(?<![\w-])top:/)
+    })
+
+    it(`${bp}px .logoContainer2 uses a negative margin-top so the cloud is pulled up AND its reserved space collapses`, () => {
+      const ruleMatch = mediaBlock().match(/\.logoContainer2\s*\{([^}]+)\}/)
+      expect(ruleMatch).not.toBeNull()
+      const marginMatch = ruleMatch[1].match(/margin-top:\s*-(\d+(?:\.\d+)?)vh/)
+      expect(marginMatch).not.toBeNull()
+      expect(parseFloat(marginMatch[1])).toBeGreaterThan(0)
+    })
   })
 })
 
