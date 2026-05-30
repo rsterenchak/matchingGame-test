@@ -19,7 +19,7 @@
   - File: `src/style.css`, `src/test/HomePage.test.jsx`
   - Completed: 2026-05-30
 
-- [ ] **[HIGH]** Fix mobile nimbus cloud overflow pushing the Fight button off-screen (use margin-top, not top)
+- [x] **[HIGH]** Fix mobile nimbus cloud overflow pushing the Fight button off-screen (use margin-top, not top)
   - Type: bug
   - Description: After the "enlarge/recenter/tuck" change (PR #58), the home screen overflows on mobile: the "Memory Game" nimbus cloud detaches and sits low on the screen and the Fight button is pushed off the bottom (clipped by `body { overflow: hidden }`), so the primary call-to-action is unreachable on portrait phones. Root cause: `.logoContainer2` is pulled up with `position: relative; top: -Nvh`, but a relative `top` offset shifts the element only visually and does NOT collapse the space it leaves behind — the grid still reserves the cloud's full slot lower in the column. At the new larger magnitudes (`-33vh`/`-24vh`/`-16vh`) plus the 82vw box, the reserved gap makes the stacked column taller than the viewport and the bottom row (`.inputSection` / Fight button) gets clipped. The earlier small offsets (`-20/-10/-5vh`) stayed under that threshold, which is why this only appeared after the upsize. Fix by pulling the cloud up with a NEGATIVE `margin-top` instead of `top` — negative margin both shifts the cloud up and collapses the reserved space, so the column no longer overflows and the Fight button stays on screen. Preserve the intended look (82vw, text-centered via `transform: translateX(12.3%)`, tucked just under the DBZ logo).
     - CSS changes (`src/style.css`), per mobile breakpoint — replace the `top` offset with `margin-top`, keep everything else:
@@ -34,4 +34,4 @@
       - The three existing nimbus-position band assertions added in PR #58 currently match `top:\s*-(\d+)vh`; this task supersedes them — update each to match `margin-top:\s*-(\d+)vh` instead (same magnitude bands: ~18–30vh at 320/481, ~10–22vh at 641), and update their titles/comments to say `margin-top`. Call out each updated assertion in the commit message and PR body per the routine's test-update rule.
       - Do not touch the 1281px assertion or the 641px `left: 0` / `min-height` / grid-row assertions.
   - File: `src/style.css`, `src/test/HomePage.test.jsx`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-30
