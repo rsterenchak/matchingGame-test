@@ -696,7 +696,7 @@ body {
     min-height: 220px;
     width: 82vw;
     position: relative;
-    top: -33vh;
+    margin-top: -33vh;
     left: 0;
     transform: translateX(12.3%);
     object-fit: contain;
@@ -784,7 +784,7 @@ body {
     min-height: 200px;
     width: 82vw;
     position: relative;
-    top: -24vh;
+    margin-top: -24vh;
 
     left: 0;
     transform: translateX(12.3%);
@@ -823,7 +823,7 @@ body {
     width: 82vw;
     max-width: 540px;
     position: relative;
-    top: -16vh;
+    margin-top: -16vh;
     left: 0;
     transform: translateX(12.3%);
     object-fit: contain;
