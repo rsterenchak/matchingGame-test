@@ -47,8 +47,8 @@
   - File: `src/style.css`, `src/test/HomePage.test.jsx`
   - Completed: 2026-05-30
 
-- [ ] **[HIGH]** Revert mobile nimbus cloud changes (PRs #58/#59/#60) to restore the working home screen
+- [x] **[HIGH]** Revert mobile nimbus cloud changes (PRs #58/#59/#60) to restore the working home screen
   - Type: bug
   - Description: The mobile nimbus cloud rework shipped across PRs #58 (enlarge/recenter/tuck), #59 (margin-top overflow fix), and #60 (reduce margin-top) never converged on a usable layout: depending on the magnitude the cloud either overlaps the DBZ logo letters or sits too low while the Fight button gets clipped behind the browser chrome. Restore the last known-good home screen by reverting all three. Specifically, restore the three mobile `.logoContainer2` rules in `src/style.css` (320/481/641 breakpoints) to their pre-#58 values: `320px` → `height: 200px; width: 55vw; position: relative; top: -20vh; left: 5vw; object-fit: contain` (no margin-top, no transform); `481px` → `min-height: 200px; width: 55vw; position: relative; top: -10vh; left: 2vw; object-fit: contain`; `641px` → `min-height: 220px; width: 70vw; max-width: 540px; position: relative; top: -5vh; left: 0; object-fit: contain`. Leave the 961/1025/1281 desktop rules as they are (they were never touched by #58–#60). Also revert the nimbus-position assertions in `src/test/HomePage.test.jsx` that #58–#60 introduced/rewrote (the margin-top band and "uses margin-top not top" assertions for 320/481/641) back to their pre-#58 form (the `top`-based ≤12vh/≤6vh letterform-overlap and tall-viewport regression assertions), so the test suite again guards the original below-the-letters behavior. Easiest path: `git revert` the three merge commits (#58 `1e57c9f`, #59 `767060a`, #60 `9d07676`) in reverse order onto a branch, or hand-restore the rules above and diff against commit `1cb43e8` to confirm the home-screen CSS/tests match that known-good state exactly. Do not revert anything unrelated to the nimbus cloud.
   - File: `src/style.css`, `src/test/HomePage.test.jsx`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-30
