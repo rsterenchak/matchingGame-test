@@ -303,13 +303,14 @@ describe('Nimbus cloud 641–960px position fix (regression: drifted up and over
     expect(media641Block).toMatch(/\.logoContainer2\s*\{/)
   })
 
-  it('641px .logoContainer2 top offset is at most 12vh so the cloud does not push up into the DBZ title at tall viewport heights (like 938x1273)', () => {
+  it('641px .logoContainer2 top offset is in a 10–22vh tuck-under band so the enlarged cloud nestles just beneath the DBZ logo across the 641–960px range', () => {
     const media641Block = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
     const ruleMatch = media641Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
     expect(ruleMatch).not.toBeNull()
     const topMatch = ruleMatch[1].match(/top:\s*-(\d+(?:\.\d+)?)vh/)
     expect(topMatch).not.toBeNull()
-    expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(12)
+    expect(parseFloat(topMatch[1])).toBeGreaterThanOrEqual(10)
+    expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(22)
   })
 
   it('641px .logoContainer2 has left: 0 so the parent flex centering keeps the cloud centered without a positional offset drifting it sideways', () => {
@@ -341,22 +342,24 @@ describe('Home page 641–960px layout audit (DBZ logo min-height and grid row)'
 })
 
 describe('Nimbus cloud letterform overlap fix (regression: cloud covered DBZ letters at 481px, 641px, 1281px breakpoints)', () => {
-  it('481px .logoContainer2 top offset is at most 12vh so the cloud sits below the DBZ title letters rather than across them', () => {
+  it('481px .logoContainer2 top offset is in a 18–30vh tuck-under band so the enlarged cloud nestles just beneath the DBZ logo', () => {
     const media481Block = css.match(/@media\s*\(min-width:\s*481px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
     const ruleMatch = media481Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
     expect(ruleMatch).not.toBeNull()
     const topMatch = ruleMatch[1].match(/top:\s*-(\d+(?:\.\d+)?)vh/)
     expect(topMatch).not.toBeNull()
-    expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(12)
+    expect(parseFloat(topMatch[1])).toBeGreaterThanOrEqual(18)
+    expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(30)
   })
 
-  it('641px .logoContainer2 top offset is at most 6vh so the cloud clears the letter baseline at the start of the 641px range', () => {
+  it('641px .logoContainer2 top offset is in a 10–22vh tuck-under band so the enlarged cloud nestles just beneath the DBZ logo at the start of the 641px range', () => {
     const media641Block = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
     const ruleMatch = media641Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
     expect(ruleMatch).not.toBeNull()
     const topMatch = ruleMatch[1].match(/top:\s*-(\d+(?:\.\d+)?)vh/)
     expect(topMatch).not.toBeNull()
-    expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(6)
+    expect(parseFloat(topMatch[1])).toBeGreaterThanOrEqual(10)
+    expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(22)
   })
 
   it('1281px .logoContainer2 top offset is at most 18vh so the enlarged cloud does not cover the DBZ letters on wide viewports', () => {
