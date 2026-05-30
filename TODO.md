@@ -36,7 +36,7 @@
   - File: `src/style.css`, `src/test/HomePage.test.jsx`
   - Completed: 2026-05-30
 
-- [ ] **[HIGH]** Reduce mobile nimbus cloud margin-top so it sits just below the DBZ logo instead of overlapping it
+- [x] **[HIGH]** Reduce mobile nimbus cloud margin-top so it sits just below the DBZ logo instead of overlapping it
   - Type: bug
   - Description: After the margin-top overflow fix (PR #59), the mobile nimbus cloud overshoots upward and overlaps the center of the DBZ logo (covers "DRAGON BALL Z" between the "D" and the "Z") on the 320px breakpoint. Cause: switching from `top` to negative `margin-top` both shifts the cloud up and collapses the reserved space, so the same `-33vh` magnitude that previously left the cloud too low now pulls it up onto the logo. The Fight button is correctly on screen now (do not regress that). Fix by reducing the negative `margin-top` magnitude so the cloud's top edge sits just beneath the DBZ logo's baseline, keeping the partial-overlap-with-padding look but off the letterforms. Keep margin-top (not top); keep width 82vw, transform translateX(12.3%), min-height, left: 0.
     - CSS changes (`src/style.css`), starting estimates — confirm each on a real device:
@@ -45,4 +45,4 @@
       - Because vh-based pull is viewport-height-sensitive, sanity-check at both a short and a tall phone height that (a) the cloud clears the logo letters and (b) the Fight button stays fully visible above the browser chrome.
     - Test changes (`src/test/HomePage.test.jsx`): the three nimbus `margin-top` band assertions from PR #59 currently expect ~18–30vh (320/481) and ~10–22vh (641); the new smaller magnitudes fall below those bands, so widen each band's lower bound to admit the final committed values (e.g. 320/481 → ~10–30vh, 641 → ~4–22vh) and keep asserting `margin-top:` (not `top:`). Preserve the PR #59 structural assertion that each mobile breakpoint uses negative `margin-top` and no `top` offset. Call out the band changes in the commit message and PR body.
   - File: `src/style.css`, `src/test/HomePage.test.jsx`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-30
