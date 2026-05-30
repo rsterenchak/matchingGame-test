@@ -7,6 +7,7 @@ export const changelog = [
     ],
     fixed: [
       'Fight button is now fully visible on mobile portrait phones, where the enlarged Memory Game title cloud previously pushed it off the bottom of the screen.',
+      'Memory Game title cloud no longer overlaps the Dragon Ball Z logo on mobile phones, now sitting just below it.',
     ],
   },
   {
@@ -17,13 +18,6 @@ export const changelog = [
     ],
     fixed: [
       'Home screen now fits the viewport on the widest desktop displays, so the Kame House, Goku, and Fight button are visible on load instead of being pushed below the fold.',
-    ],
-  },
-  {
-    version: '1.0',
-    date: '2026-05-28',
-    fixed: [
-      'Memory Game title cloud now tucks below the Dragon Ball Z letter outlines at narrow and wide screen sizes.',
     ],
   },
 ];
