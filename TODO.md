@@ -1,6 +1,6 @@
 # TODO LIST
 
-- [ ] **[LOW]** Enlarge, recenter, and tuck the Memory Game nimbus cloud under the DBZ logo across mobile breakpoints (320/481/641)
+- [x] **[LOW]** Enlarge, recenter, and tuck the Memory Game nimbus cloud under the DBZ logo across mobile breakpoints (320/481/641)
   - Type: feature
   - Description: Apply a consistent enlarged, text-centered, tucked-under-the-logo treatment to `.logoContainer2` (the "Memory Game" nimbus cloud) across the three mobile breakpoints, and update the now-superseded nimbus position regression tests to match the new design. The cloud grows to 82vw, is shifted via `transform: translateX(12.3%)` so its baked-in "MEMORY GAME" text — anchored at x=225 in the 597-wide `MemoryGameTitle.svg`, ~12.3% left of the image's bounding-box center because of the rightward tail — lands on true horizontal center (percentage is relative to the element's own width, so it auto-scales even under the 641px max-width cap), and is pulled up so the cloud body nestles just beneath the DBZ logo. This intentionally reverses the earlier "keep the cloud below the letters" bug fixes: a slight bounding-box overlap with the logo is now the desired look, since the SVG's transparent padding means the puffy shape does not actually collide with the letterforms.
     - CSS changes (`src/style.css`), per breakpoint:
@@ -17,4 +17,4 @@
       - Reuse the existing 320/481/641 breakpoints; leave the 961/1025/1281 rules untouched.
       - Per the routine's test-update rule, call out each rewritten assertion in the commit message and PR body, e.g. "test updated: 481px nimbus top — supersedes prior below-the-letters spec per the new tuck-under design", and note in the PR body that this intentionally reverses the earlier letterform-overlap bug fixes.
   - File: `src/style.css`, `src/test/HomePage.test.jsx`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-30

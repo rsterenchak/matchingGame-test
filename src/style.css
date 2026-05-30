@@ -693,11 +693,12 @@ body {
   }
   
   .logoContainer2 {
-    height: 200px;
-    width: 55vw;
+    min-height: 220px;
+    width: 82vw;
     position: relative;
-    top: -20vh;
-    left: 5vw;
+    top: -33vh;
+    left: 0;
+    transform: translateX(12.3%);
     object-fit: contain;
   }
 
@@ -781,11 +782,12 @@ body {
   
   .logoContainer2 {
     min-height: 200px;
-    width: 55vw;
+    width: 82vw;
     position: relative;
-    top: -10vh;
+    top: -24vh;
 
-    left: 2vw;
+    left: 0;
+    transform: translateX(12.3%);
     object-fit: contain;
   }
 
@@ -818,11 +820,12 @@ body {
 
   .logoContainer2 {
     min-height: 220px;
-    width: 70vw;
+    width: 82vw;
     max-width: 540px;
     position: relative;
-    top: -5vh;
+    top: -16vh;
     left: 0;
+    transform: translateX(12.3%);
     object-fit: contain;
   }
 }
