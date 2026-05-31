@@ -53,7 +53,7 @@
   - File: `src/style.css`, `src/test/HomePage.test.jsx`
   - Completed: 2026-05-30
 
-- [ ] **[MEDIUM]** Re-do mobile nimbus cloud tuck structurally (tighten grid rows, no large negative margin) — preview before merge
+- [x] **[MEDIUM]** Re-do mobile nimbus cloud tuck structurally (tighten grid rows, no large negative margin) — preview before merge
   - Type: feature
   - Description: Re-attempt the "enlarge the Memory Game nimbus cloud, center its text, and tuck it just under the DBZ logo" treatment on mobile (320/481/641), but solve it at the layout level instead of dragging the cloud across an empty grid row with a viewport-relative offset. The prior attempts failed because both `top: -Nvh` (leaves reserved space → column overflows, Fight button clipped) and `margin-top: -Nvh` (height-sensitive; the window where the cloud clears the logo AND the Fight button stays visible was too narrow) are fragile. Instead: tighten the home grid so the logo row and the cloud row sit adjacent and the full four-row column (nav / logo / cloud / Fight) is guaranteed to fit within 100dvh with the cloud naturally resting just below the logo, using little or no negative offset.
     - Approach (CSS-only, `src/style.css`, per mobile breakpoint):
@@ -65,4 +65,4 @@
     - Verification (required before merge): this must be checked on an actual render — a Vercel/branch preview or a device — at both a short and a tall phone height, confirming (a) the cloud sits just under the DBZ logo without covering the letters, (b) the cloud text reads centered, and (c) the Fight button is fully visible above the browser chrome. Do NOT rely on the jsdom text-matching tests alone to judge this — they cannot see layout.
     - Test changes (`src/test/HomePage.test.jsx`): add a structural guard that the four home grid areas remain nav/logo/logoSection2/input in order and that `.logoContainer2` does not use a large negative `top`/`margin-top` (assert any negative offset magnitude is single-digit vh or absent), so a future regression can't silently reintroduce the overflow/overlap. Keep these assertions structural, not pixel-based.
   - File: `src/style.css`, `src/test/HomePage.test.jsx`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-05-31

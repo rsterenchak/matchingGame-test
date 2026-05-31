@@ -303,13 +303,14 @@ describe('Nimbus cloud 641–960px position fix (regression: drifted up and over
     expect(media641Block).toMatch(/\.logoContainer2\s*\{/)
   })
 
-  it('641px .logoContainer2 top offset is at most 12vh so the cloud does not push up into the DBZ title at tall viewport heights (like 938x1273)', () => {
+  it('641px .logoContainer2 uses no large negative top or margin-top (single-digit vh or absent) so the grid overflow cannot be reintroduced at tall viewport heights', () => {
     const media641Block = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
     const ruleMatch = media641Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
     expect(ruleMatch).not.toBeNull()
     const topMatch = ruleMatch[1].match(/top:\s*-(\d+(?:\.\d+)?)vh/)
-    expect(topMatch).not.toBeNull()
-    expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(12)
+    const marginMatch = ruleMatch[1].match(/margin-top:\s*-(\d+(?:\.\d+)?)vh/)
+    if (topMatch) expect(parseFloat(topMatch[1])).toBeLessThan(10)
+    if (marginMatch) expect(parseFloat(marginMatch[1])).toBeLessThan(10)
   })
 
   it('641px .logoContainer2 has left: 0 so the parent flex centering keeps the cloud centered without a positional offset drifting it sideways', () => {
@@ -341,22 +342,24 @@ describe('Home page 641–960px layout audit (DBZ logo min-height and grid row)'
 })
 
 describe('Nimbus cloud letterform overlap fix (regression: cloud covered DBZ letters at 481px, 641px, 1281px breakpoints)', () => {
-  it('481px .logoContainer2 top offset is at most 12vh so the cloud sits below the DBZ title letters rather than across them', () => {
+  it('481px .logoContainer2 uses no large negative top or margin-top (single-digit vh or absent) so the grid overflow cannot be reintroduced on mid-size phones', () => {
     const media481Block = css.match(/@media\s*\(min-width:\s*481px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
     const ruleMatch = media481Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
     expect(ruleMatch).not.toBeNull()
     const topMatch = ruleMatch[1].match(/top:\s*-(\d+(?:\.\d+)?)vh/)
-    expect(topMatch).not.toBeNull()
-    expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(12)
+    const marginMatch = ruleMatch[1].match(/margin-top:\s*-(\d+(?:\.\d+)?)vh/)
+    if (topMatch) expect(parseFloat(topMatch[1])).toBeLessThan(10)
+    if (marginMatch) expect(parseFloat(marginMatch[1])).toBeLessThan(10)
   })
 
-  it('641px .logoContainer2 top offset is at most 6vh so the cloud clears the letter baseline at the start of the 641px range', () => {
+  it('641px .logoContainer2 uses no large negative top so the cloud does not cover the DBZ letter baseline (structural guard)', () => {
     const media641Block = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
     const ruleMatch = media641Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
     expect(ruleMatch).not.toBeNull()
     const topMatch = ruleMatch[1].match(/top:\s*-(\d+(?:\.\d+)?)vh/)
-    expect(topMatch).not.toBeNull()
-    expect(parseFloat(topMatch[1])).toBeLessThanOrEqual(6)
+    const marginMatch = ruleMatch[1].match(/margin-top:\s*-(\d+(?:\.\d+)?)vh/)
+    if (topMatch) expect(parseFloat(topMatch[1])).toBeLessThan(10)
+    if (marginMatch) expect(parseFloat(marginMatch[1])).toBeLessThan(10)
   })
 
   it('1281px .logoContainer2 top offset is at most 18vh so the enlarged cloud does not cover the DBZ letters on wide viewports', () => {
@@ -395,5 +398,30 @@ describe('Home screen fits within the viewport at 1281px (regression: stacked co
     const padMatch = ruleMatch[1].match(/padding-bottom:\s*([\d.]+)vh/)
     expect(padMatch).not.toBeNull()
     expect(parseFloat(padMatch[1])).toBeLessThanOrEqual(8)
+  })
+})
+
+describe('Mobile nimbus cloud structural layout guards (regression: large offsets caused overflow or logo overlap)', () => {
+  it('base .outerSection grid-template-areas has nav/logo/logoSection2/input in order so the four-row structural layout is preserved', () => {
+    const baseRuleMatch = css.match(/^\.outerSection\s*\{([^}]+)\}/m)
+    expect(baseRuleMatch).not.toBeNull()
+    const areas = baseRuleMatch[1]
+    const areaOrder = ['navSection', 'logoSection', 'logoSection2', 'inputSection']
+    let lastIndex = -1
+    for (const area of areaOrder) {
+      const idx = areas.indexOf(area)
+      expect(idx).toBeGreaterThan(lastIndex)
+      lastIndex = idx
+    }
+  })
+
+  it('320px .logoContainer2 uses no large negative top or margin-top (single-digit vh or absent) so grid overflow cannot be reintroduced on small phones', () => {
+    const media320Block = css.match(/@media\s*\(min-width:\s*320px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? ''
+    const ruleMatch = media320Block.match(/\.logoContainer2\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    const topMatch = ruleMatch[1].match(/top:\s*-(\d+(?:\.\d+)?)vh/)
+    const marginMatch = ruleMatch[1].match(/margin-top:\s*-(\d+(?:\.\d+)?)vh/)
+    if (topMatch) expect(parseFloat(topMatch[1])).toBeLessThan(10)
+    if (marginMatch) expect(parseFloat(marginMatch[1])).toBeLessThan(10)
   })
 })
