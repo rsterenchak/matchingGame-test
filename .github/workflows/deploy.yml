@@ -5,7 +5,7 @@ on:
       - main
     paths-ignore:
       - 'TODO.md'
-  workflow_dispatch:      
+  workflow_dispatch:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -20,6 +20,10 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+      - name: Generate source manifest
+        run: node scripts/gen-src-manifest.js
+        env:
+          GITHUB_SHA: ${{ github.sha }}
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
