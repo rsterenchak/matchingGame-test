@@ -1,8 +1,15 @@
 {
-  "generatedAt": "2026-06-01T09:18:09.645Z",
-  "sha": "bd3c8c09630c311df39db92f09b6eaf834719251",
+  "generatedAt": "2026-06-01T09:47:56.202Z",
+  "sha": "ad4b07bfc4c64c171d27e2307efd29fc1ce2f7ab",
   "files": [
+    "Card.jsx",
+    "CardBack.jsx",
+    "HomePage.jsx",
+    "MainSection.jsx",
+    "MobileMenu.jsx",
+    "PlayPage.jsx",
     "changelog.js",
+    "index.jsx",
     "style.css"
   ]
 }
