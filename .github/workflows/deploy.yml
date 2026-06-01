@@ -21,7 +21,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Generate source manifest
-        run: node scripts/gen-src-manifest.js
+        run: node scripts/gen-src-manifest.cjs
         env:
           GITHUB_SHA: ${{ github.sha }}
       - name: Deploy to GitHub Pages
