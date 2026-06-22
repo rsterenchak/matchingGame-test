@@ -2045,10 +2045,15 @@ body {
   }
 
   .hamburgerButton {
-    width: min(7vw, 24px);
-    height: min(7vw, 24px);
+    width: 40px;
+    height: 34px;
     margin-top: 8px;
     margin-left: 10px;
+  }
+
+  .hamburgerButton svg {
+    width: 22px;
+    height: 22px;
   }
 
   .topColumn3 {
@@ -2244,10 +2249,15 @@ body {
   }
 
   .hamburgerButton {
-    width: min(6vw, 26px);
-    height: min(6vw, 26px);
+    width: 44px;
+    height: 36px;
     margin-top: 8px;
     margin-left: 10px;
+  }
+
+  .hamburgerButton svg {
+    width: 26px;
+    height: 26px;
   }
 
 }
@@ -2428,6 +2438,11 @@ body {
     margin-left: 10px;
   }
 
+  .hamburgerButton svg {
+    width: 30px;
+    height: 30px;
+  }
+
   .topColumn3 {
     display: flex;
     align-items: flex-start;
@@ -2501,8 +2516,8 @@ body {
   }
 
   .hamburgerButton svg {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
   }
 
   .mobileMenuModal {
