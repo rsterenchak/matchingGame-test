@@ -642,16 +642,40 @@ body {
   .outerSection {
     display: grid;
     height: 100%;
-    grid-template-rows: 0.8fr 1.2fr auto 0.8fr;
+    grid-template-rows: 0.8fr 1.2fr auto auto 0.8fr;
     grid-template-columns: 1fr;
     grid-template-areas:
     'navSection'
     'logoSection'
     'logoSection2'
+    'animationSection'
     'inputSection'
     ;
 
 
+  }
+
+  /* On mobile the Goku nimbus gif moves into the grid flow directly beneath
+     the title block, pushing the Fight button below it (restored to its
+     absolute bottom-right position at the 961px desktop breakpoint). */
+  .animationSection {
+    position: static;
+    grid-area: animationSection;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    justify-self: stretch;
+    align-self: stretch;
+    bottom: auto;
+    z-index: auto;
+  }
+
+  .gokuGif {
+    position: relative;
+    width: auto;
+    height: 20vh;
+    max-width: 90vw;
+    object-fit: contain;
   }
 
   .navSection {
@@ -726,12 +750,13 @@ body {
   .outerSection {
     display: grid;
     height: 100%;
-    grid-template-rows: 0.8fr 1.4fr auto 0.8fr;
+    grid-template-rows: 0.8fr 1.4fr auto auto 0.8fr;
     grid-template-columns: 1fr;
     grid-template-areas:
     'navSection'
     'logoSection'
     'logoSection2'
+    'animationSection'
     'inputSection'
     ;
 
@@ -811,7 +836,7 @@ body {
   }
 
   .outerSection {
-    grid-template-rows: 0.8fr 1.5fr auto 0.8fr;
+    grid-template-rows: 0.8fr 1.5fr auto auto 0.8fr;
   }
 
   .logoContainer2 {
@@ -906,6 +931,22 @@ body {
     align-items: center;
     grid-area: inputSection;
     padding-bottom: 7vh;
+  }
+
+  .animationSection {
+    position: absolute;
+    bottom: 0px;
+    justify-self: end;
+    align-self: end;
+    z-index: -1;
+  }
+
+  .gokuGif {
+    position: relative;
+    width: 600px;
+    height: auto;
+    max-width: none;
+    object-fit: unset;
   }
 
 
