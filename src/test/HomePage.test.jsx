@@ -425,3 +425,94 @@ describe('Mobile nimbus cloud structural layout guards (regression: large offset
     if (marginMatch) expect(parseFloat(marginMatch[1])).toBeLessThan(10)
   })
 })
+
+describe('Goku nimbus gif relocated beneath the DBZ title on mobile (Option A)', () => {
+  const media320 = css.match(/@media\s*\(min-width:\s*320px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? ''
+  const media481 = css.match(/@media\s*\(min-width:\s*481px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? ''
+  const media641 = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
+  const media961 = css.match(/@media\s*\(min-width:\s*961px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
+
+  function areaOrderHolds(block) {
+    const ruleMatch = block.match(/\.outerSection\s*\{([^}]+)\}/)
+    if (!ruleMatch) return false
+    const areas = ruleMatch[1]
+    const order = ['navSection', 'logoSection', 'logoSection2', 'animationSection', 'inputSection']
+    let last = -1
+    for (const a of order) {
+      const idx = areas.indexOf(a)
+      if (idx <= last) return false
+      last = idx
+    }
+    return true
+  }
+
+  function rowTrackCount(block) {
+    const ruleMatch = block.match(/\.outerSection\s*\{([^}]+)\}/)
+    if (!ruleMatch) return 0
+    const rowsMatch = ruleMatch[1].match(/grid-template-rows:\s*([^;]+);/)
+    if (!rowsMatch) return 0
+    return rowsMatch[1].trim().split(/\s+/).length
+  }
+
+  it('320px outerSection places animationSection between logoSection2 and inputSection so the gif sits beneath the title', () => {
+    expect(areaOrderHolds(media320)).toBe(true)
+  })
+
+  it('481px outerSection places animationSection between logoSection2 and inputSection so the gif sits beneath the title', () => {
+    expect(areaOrderHolds(media481)).toBe(true)
+  })
+
+  it('320px outerSection grid-template-rows has five tracks for the added gif row', () => {
+    expect(rowTrackCount(media320)).toBe(5)
+  })
+
+  it('481px outerSection grid-template-rows has five tracks for the added gif row', () => {
+    expect(rowTrackCount(media481)).toBe(5)
+  })
+
+  it('641px outerSection grid-template-rows has five tracks so the inherited animationSection area has a track', () => {
+    expect(rowTrackCount(media641)).toBe(5)
+  })
+
+  it('320px animationSection joins the grid flow (grid-area + non-absolute position) instead of floating bottom-right', () => {
+    const ruleMatch = media320.match(/\.animationSection\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/grid-area:\s*animationSection/)
+    expect(ruleMatch[1]).toMatch(/position:\s*static/)
+    expect(ruleMatch[1]).not.toMatch(/position:\s*absolute/)
+  })
+
+  it('320px gokuGif is height- and width-bounded so the relocated gif cannot overflow the column or hide the Fight button', () => {
+    const ruleMatch = media320.match(/\.gokuGif\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/height:\s*\d+(?:\.\d+)?vh/)
+    expect(ruleMatch[1]).toMatch(/max-width:\s*\d+(?:\.\d+)?vw/)
+    expect(ruleMatch[1]).not.toMatch(/width:\s*600px/)
+  })
+
+  it('961px desktop restores animationSection to its absolute bottom-right position so the desktop layout is unchanged', () => {
+    const ruleMatch = media961.match(/\.animationSection\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/position:\s*absolute/)
+    expect(ruleMatch[1]).toMatch(/z-index:\s*-1/)
+  })
+
+  it('961px desktop restores gokuGif to its 600px width so the desktop gif size is unchanged', () => {
+    const ruleMatch = media961.match(/\.gokuGif\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/width:\s*600px/)
+  })
+
+  it('base .outerSection grid stays four rows (animationSection relocation is mobile-only)', () => {
+    const baseRuleMatch = css.match(/^\.outerSection\s*\{([^}]+)\}/m)
+    expect(baseRuleMatch).not.toBeNull()
+    expect(baseRuleMatch[1]).not.toMatch(/animationSection/)
+  })
+
+  it('renders the gokuGif as a decorative img with no click handler so it adds no new interaction', () => {
+    render(<HomePage {...defaultProps} />)
+    const gif = document.querySelector('img.gokuGif')
+    expect(gif).not.toBeNull()
+    expect(gif.getAttribute('role')).toBeNull()
+  })
+})
