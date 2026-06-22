@@ -80,3 +80,10 @@
   - File: `src/MobileMenu.jsx`, `src/style.css`
   - Completed: 2026-06-22
   <!-- id: 64f75b4a-23a6-4b93-81ae-ade584fb31aa -->
+
+- [ ] **[MEDIUM]** Move the Goku nimbus gif to sit directly under the DBZ title on mobile
+  - Type: feature
+  - Description: On mobile widths only, relocate the Goku-on-nimbus gif on `HomePage` so it sits directly beneath the Dragon Ball Z title/logo, with a clear gap before the Fight button (Option A layout — full-size nimbus, Fight button drops below it). Desktop layout must remain unchanged: the gif keeps its current position at widths above the mobile breakpoints. Implement via the existing responsive breakpoints (320px / 481px / 641px) in `style.css` — prefer CSS ordering/positioning over a JSX reorder so non-mobile widths are untouched. Acceptance: the Fight button and music toggle must stay fully visible and tappable with no overlap with the relocated gif; the logo's sizing must not change; the gif remains decorative (no new click behavior added).
+  - File: `src/style.css`, `src/HomePage.jsx`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: fb17d723-a58d-483c-92f6-6bc267b7fb08 -->
