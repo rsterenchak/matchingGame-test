@@ -5,6 +5,9 @@ export const changelog = [
     fixed: [
       'Background music now starts at half its previous loudness on both the home and play screens.',
     ],
+    changed: [
+      'The menu button is now a bigger, bolder tap target with thicker bars on both the home and play screens, scaling down gracefully on the narrowest phones.',
+    ],
   },
   {
     version: '1.0',
@@ -17,7 +20,6 @@ export const changelog = [
     version: '1.0',
     date: '2026-05-30',
     fixed: [
-      'Fight button is now fully visible on mobile portrait phones, where the enlarged Memory Game title cloud previously pushed it off the bottom of the screen.',
       'Memory Game title cloud no longer overlaps the Dragon Ball Z logo on mobile phones, now sitting just below it.',
       'Restored the original mobile home screen layout, so the Memory Game title cloud sits just below the Dragon Ball Z logo and the Fight button stays fully on screen.',
     ],

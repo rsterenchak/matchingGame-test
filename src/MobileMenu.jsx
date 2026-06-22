@@ -36,7 +36,7 @@ export default function MobileMenu({
           onClick={() => setIsOpen(o => !o)}
           style={popUpStyle}
         >
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="black">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="black">
             <path d="M3 19h18v-3H3v3zm0-5h18v-3H3v3zm0-5h18v-3H3v3z"/>
           </svg>
         </div>
