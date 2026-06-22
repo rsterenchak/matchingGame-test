@@ -73,3 +73,10 @@
   - Behavior: Both `DragonBallZ.mp3` (home) and `NamekTheme.mp3` (play) play at roughly half their current loudness on load, with the music toggle still working as before.
   - File: src/MainSection.jsx
   <!-- id: 8bc63ab7-a6c2-4242-9f17-d2c9edae768e -->
+
+- [ ] **[MEDIUM]** Enlarge hamburger menu to a bold tap target on the home and play pages
+  - Type: feature
+  - Description: The hamburger menu toggle is currently small and easy to overlook on both the HomePage title screen and the PlayPage game screen. Roughly double the hamburger icon and its tap-target box (Option B — ~44x36px button with thicker bars) so it's an unmistakable, thumb-friendly control on both pages. Scale it down gracefully at the existing responsive breakpoints (320px, 481px, 641px, 961px, 1025px, 1281px) so it stays usable at the 320px width without overlapping the logo, score, or music toggle.
+  - File: `src/MobileMenu.jsx`, `src/style.css`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: 64f75b4a-23a6-4b93-81ae-ade584fb31aa -->
