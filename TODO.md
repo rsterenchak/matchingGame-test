@@ -67,7 +67,7 @@
   - File: `src/style.css`, `src/test/HomePage.test.jsx`
   - Completed: 2026-05-31
 
-- [ ] **[MEDIUM]** Lower default audio volume by half
+- [x] **[MEDIUM]** Lower default audio volume by half — Completed: 2026-06-22
   - Type: bug
   - Description: The background music plays roughly 2x louder than intended. The volume is hardcoded to 0.07 on each `new Audio(...)` instance inside the `Handle*Audio` components in `MainSection.jsx`. Reduce it to about 0.035 (half) so both the home and play tracks start at a comfortable level.
   - Behavior: Both `DragonBallZ.mp3` (home) and `NamekTheme.mp3` (play) play at roughly half their current loudness on load, with the music toggle still working as before.
