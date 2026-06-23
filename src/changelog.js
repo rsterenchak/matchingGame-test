@@ -9,7 +9,7 @@ export const changelog = [
       'On phones, the Goku-on-nimbus animation now sits flush against the top of the Fight button with no gap between them.',
     ],
     changed: [
-      'On phones, the Goku-on-nimbus animation now sits directly beneath the Dragon Ball Z title above the Fight button, while keeping its original position on larger screens.',
+      'On phones, the Goku-on-nimbus animation now sits centered behind the Fight button as a backdrop and is shifted up so more of it peeks above the button.',
     ],
   },
 ];

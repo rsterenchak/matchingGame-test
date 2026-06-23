@@ -519,12 +519,14 @@ describe('Goku nimbus gif relocated beneath the DBZ title on mobile (Option A)',
     expect(rowTrackCount(media641)).toBe(5)
   })
 
-  it('320px animationSection joins the grid flow (grid-area + non-absolute position) instead of floating bottom-right', () => {
+  it('320px animationSection sits behind the Fight button as an absolute, centered, lowered-z-index backdrop instead of in the grid flow', () => {
     const ruleMatch = media320.match(/\.animationSection\s*\{([^}]+)\}/)
     expect(ruleMatch).not.toBeNull()
-    expect(ruleMatch[1]).toMatch(/grid-area:\s*animationSection/)
-    expect(ruleMatch[1]).toMatch(/position:\s*static/)
-    expect(ruleMatch[1]).not.toMatch(/position:\s*absolute/)
+    expect(ruleMatch[1]).toMatch(/position:\s*absolute/)
+    expect(ruleMatch[1]).toMatch(/transform:\s*translateX\(-50%\)/)
+    const z = ruleMatch[1].match(/z-index:\s*(-?\d+)/)
+    expect(z).not.toBeNull()
+    expect(parseInt(z[1], 10)).toBeLessThan(0)
   })
 
   it('320px gokuGif is height- and width-bounded so the relocated gif cannot overflow the column or hide the Fight button', () => {
@@ -559,5 +561,40 @@ describe('Goku nimbus gif relocated beneath the DBZ title on mobile (Option A)',
     const gif = document.querySelector('img.gokuGif')
     expect(gif).not.toBeNull()
     expect(gif.getAttribute('role')).toBeNull()
+  })
+})
+
+describe('Goku gif layered behind the Fight button as a centered backdrop on mobile', () => {
+  const media320 = css.match(/@media\s*\(min-width:\s*320px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? ''
+  const media961 = css.match(/@media\s*\(min-width:\s*961px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
+
+  it('320px gokuGif backdrop has a lowered z-index so the Fight button renders in front', () => {
+    const ruleMatch = media320.match(/\.animationSection\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    const z = ruleMatch[1].match(/z-index:\s*(-?\d+)/)
+    expect(z).not.toBeNull()
+    expect(parseInt(z[1], 10)).toBeLessThan(0)
+  })
+
+  it('320px gokuGif backdrop is horizontally centered behind the button', () => {
+    const ruleMatch = media320.match(/\.animationSection\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/left:\s*50%/)
+    expect(ruleMatch[1]).toMatch(/transform:\s*translateX\(-50%\)/)
+  })
+
+  it('320px gokuGif backdrop is lifted up off the floor so more of it peeks above the button', () => {
+    const ruleMatch = media320.match(/\.animationSection\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    const bottom = ruleMatch[1].match(/bottom:\s*([\d.]+)vh/)
+    expect(bottom).not.toBeNull()
+    expect(parseFloat(bottom[1])).toBeGreaterThan(0)
+  })
+
+  it('961px desktop gif stays at its absolute bottom-right position behind content (z-index -1) so the desktop layering is unchanged', () => {
+    const ruleMatch = media961.match(/\.animationSection\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/position:\s*absolute/)
+    expect(ruleMatch[1]).toMatch(/z-index:\s*-1/)
   })
 })
