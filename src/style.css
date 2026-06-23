@@ -670,11 +670,13 @@ body {
     z-index: auto;
   }
 
+  /* Sit the nimbus directly beneath the title with a tight ~4px gap. */
   .gokuGif {
     position: relative;
     width: auto;
     height: 20vh;
     max-width: 90vw;
+    margin-top: 4px;
     object-fit: contain;
   }
 
@@ -731,7 +733,8 @@ body {
     justify-content: center;
     align-items: center;
     grid-area: inputSection;
-    padding-bottom: calc(3vh + env(safe-area-inset-bottom) + 12px);
+    /* Lift the Fight button clear of Safari's bottom browser chrome. */
+    padding-bottom: calc(4vh + env(safe-area-inset-bottom) + 32px);
   }
 
 
@@ -818,7 +821,8 @@ body {
     justify-content: center;
     align-items: center;
     grid-area: inputSection;
-    padding-bottom: calc(4vh + env(safe-area-inset-bottom) + 12px);
+    /* Lift the Fight button clear of Safari's bottom browser chrome. */
+    padding-bottom: calc(5vh + env(safe-area-inset-bottom) + 32px);
   }
 
 
