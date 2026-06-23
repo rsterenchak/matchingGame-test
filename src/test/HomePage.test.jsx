@@ -322,6 +322,26 @@ describe('Fight button lifted up beneath the Nimbus on mobile (regression: butto
   })
 })
 
+describe('Goku gif base sits flush against the Fight button on mobile (zero gap, no overlap)', () => {
+  it('320px .inputSection has zero top padding so the Fight button sits flush against the Nimbus base above it', () => {
+    const media320Block = css.match(/@media\s*\(min-width:\s*320px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? ''
+    const inputMatch = media320Block.match(/\.inputSection\s*\{([^}]+)\}/)
+    expect(inputMatch).not.toBeNull()
+    const padTop = inputMatch[1].match(/padding-top:\s*([\d.]+)px/)
+    expect(padTop).not.toBeNull()
+    expect(parseFloat(padTop[1])).toBe(0)
+  })
+
+  it('481px .inputSection has zero top padding so the Fight button sits flush against the Nimbus base above it', () => {
+    const media481Block = css.match(/@media\s*\(min-width:\s*481px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? ''
+    const inputMatch = media481Block.match(/\.inputSection\s*\{([^}]+)\}/)
+    expect(inputMatch).not.toBeNull()
+    const padTop = inputMatch[1].match(/padding-top:\s*([\d.]+)px/)
+    expect(padTop).not.toBeNull()
+    expect(parseFloat(padTop[1])).toBe(0)
+  })
+})
+
 describe('Nimbus cloud 641–960px position fix (regression: drifted up and overlapped DBZ title at tall viewport heights)', () => {
   it('641px breakpoint defines a .logoContainer2 rule so the cloud has its own positioning instead of falling through to the over-aggressive 481px values', () => {
     const media641Block = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''

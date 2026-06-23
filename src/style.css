@@ -733,11 +733,11 @@ body {
     justify-content: flex-start;
     align-items: center;
     grid-area: inputSection;
-    /* Sit the Fight button just below the Nimbus with a tight ~8px gap, lifting
-       it out of the lower portion where Safari's bottom chrome overlaps it.
-       Keep env(safe-area-inset-bottom) in the bottom spacing so the empty
-       margin below still adapts across iPhone/Safari devices. */
-    padding-top: 8px;
+    /* Sit the Fight button flush against the Nimbus base above it (zero top gap,
+       no overlap), keeping it out of the lower portion where Safari's bottom
+       chrome overlaps it. Keep env(safe-area-inset-bottom) in the bottom spacing
+       so the empty margin below still adapts across iPhone/Safari devices. */
+    padding-top: 0px;
     padding-bottom: calc(env(safe-area-inset-bottom) + 16px);
   }
 
@@ -825,11 +825,11 @@ body {
     justify-content: flex-start;
     align-items: center;
     grid-area: inputSection;
-    /* Sit the Fight button just below the Nimbus with a tight ~8px gap, lifting
-       it out of the lower portion where Safari's bottom chrome overlaps it.
-       Keep env(safe-area-inset-bottom) in the bottom spacing so the empty
-       margin below still adapts across iPhone/Safari devices. */
-    padding-top: 8px;
+    /* Sit the Fight button flush against the Nimbus base above it (zero top gap,
+       no overlap), keeping it out of the lower portion where Safari's bottom
+       chrome overlaps it. Keep env(safe-area-inset-bottom) in the bottom spacing
+       so the empty margin below still adapts across iPhone/Safari devices. */
+    padding-top: 0px;
     padding-bottom: calc(env(safe-area-inset-bottom) + 16px);
   }
 
