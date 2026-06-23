@@ -968,6 +968,7 @@ body {
     object-fit: contain;
     filter: drop-shadow(0 0 12px rgba(255, 220, 0, 0.85)) drop-shadow(0 8px 6px rgba(0, 0, 0, 0.4));
     animation: nimbus-float 5s ease-in-out infinite;
+    scale: 0.9;
   }
 
   .inputSection {
@@ -1080,6 +1081,7 @@ body {
     top: -18vh;
     left: 1vw;
     object-fit: contain;
+    scale: 0.9;
   }
 
   .inputSection {
