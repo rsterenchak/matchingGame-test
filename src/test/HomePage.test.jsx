@@ -628,14 +628,14 @@ describe('Fight button shifted down relative to the Goku gif so more of the gif 
   const media320 = css.match(/@media\s*\(min-width:\s*320px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? ''
   const media961 = css.match(/@media\s*\(min-width:\s*961px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
 
-  it('320px .fightButton uses a small positive downward top offset (~15% of the 20vh gif) so it sits lower behind the gif', () => {
+  it('320px .fightButton uses a positive downward top offset (~30% of the 20vh gif, a cumulative two-nudge shift) so it sits lower behind the gif', () => {
     const ruleMatch = media320.match(/\.fightButton\s*\{([^}]+)\}/)
     expect(ruleMatch).not.toBeNull()
     const top = ruleMatch[1].match(/top:\s*([\d.]+)vh/)
     expect(top).not.toBeNull()
     const v = parseFloat(top[1])
-    expect(v).toBeGreaterThan(0)
-    expect(v).toBeLessThanOrEqual(6)
+    expect(v).toBeGreaterThan(3)
+    expect(v).toBeLessThanOrEqual(9)
   })
 
   it('961px desktop resets the .fightButton top offset so the desktop button position is unchanged (gif sits in the corner there)', () => {

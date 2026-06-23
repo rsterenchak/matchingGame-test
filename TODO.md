@@ -126,7 +126,7 @@
   - File: `src/HomePage.jsx`, `src/style.css`
   <!-- id: c9d5176d-d99f-4535-b250-df0f7ce575bc -->
 
-- [ ] **[LOW]** Move Fight button down another ~15% relative to the Goku gif
+- [x] **[LOW]** Move Fight button down another ~15% relative to the Goku gif — Completed: 2026-06-23
   - Type: feature
   - Description: On the HomePage title screen, shift the Fight button down by roughly another 15% relative to the Goku gif (cumulative with the prior ~15% nudge), so even more of the gif shows above the button. The gif stays positioned behind the button (lower z-index, centered) as established previously; only the button's vertical offset changes. The Fight button's appearance, glow, and click/page-switch behavior must remain unchanged, and the button must stay layered in front of the gif rather than dropping into a separate row.
   - File: `src/HomePage.jsx`, `src/style.css`
