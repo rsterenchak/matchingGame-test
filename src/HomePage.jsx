@@ -172,27 +172,31 @@ export default function HomePage({
           </div>
           
           <div className='inputSection'
-            onClick={() => setupPage()}  
+            onClick={() => setupPage()}
           >
 
-            <div className='fightButton'>
+            {/* Shared positioned container: the Goku gif is layered BEHIND the
+                Fight button (lower z-index) within the same box so the two
+                overlap on the z-axis instead of stacking as separate rows. */}
+            <div className='fightStage'>
 
-            <svg className='svg-element' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 30">
-              <text x="50%" y="50%" className="svg-text" alignmentBaseline="middle" textAnchor="middle">Fight</text>
-            </svg>
+              <div className='animationSection'>
+
+                {/* <img className='guyGif' src={guyGif}></img>
+ */}
+                <img className='gokuGif' src={gokuGif}></img>
+
+              </div>
+
+              <div className='fightButton'>
+
+              <svg className='svg-element' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 30">
+                <text x="50%" y="50%" className="svg-text" alignmentBaseline="middle" textAnchor="middle">Fight</text>
+              </svg>
+
+              </div>
 
             </div>
-
-          </div>
-
-
-          
-          <div className='animationSection'>
-
-            {/* <img className='guyGif' src={guyGif}></img>
- */}
-            <img className='gokuGif' src={gokuGif}></img>
-
 
           </div>
 

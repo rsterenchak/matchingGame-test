@@ -78,12 +78,27 @@ body {
 }
 
 .animationSection {
-  
+
   position: absolute;
   bottom: 0px;
   justify-self: end;
   align-self: end;
   z-index: -1;
+  /* Purely decorative backdrop — never intercept clicks even when it overlaps
+     the Fight button's hit area. */
+  pointer-events: none;
+}
+
+/* Shared positioned container holding the Goku gif and the Fight button. Being
+   position: relative makes it the containing block for the absolutely-positioned
+   gif, so the gif anchors to the button area and layers behind it (lower
+   z-index) rather than stacking in a separate row. */
+.fightStage {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .gokuGif {
@@ -656,15 +671,17 @@ body {
   }
 
   /* On mobile the Goku nimbus gif sits fully behind the Fight button as a
-     centered backdrop: it is taken out of the grid flow (absolute), centered
-     horizontally, lifted up off the floor so more of it peeks above the
-     button, and given a lowered z-index so the Fight button renders in front.
-     The desktop bottom-right placement is restored at the 961px breakpoint. */
+     centered backdrop. It is absolutely positioned WITHIN the shared
+     .fightStage container (its containing block), so it anchors to the button
+     area itself rather than the page: centered horizontally over the button,
+     lifted just off the button's base so most of it peeks above, and given a
+     lowered z-index so the Fight button renders in front. The desktop
+     bottom-right placement is restored at the 961px breakpoint. */
   .animationSection {
     position: absolute;
     grid-area: animationSection;
     left: 50%;
-    bottom: 8vh;
+    bottom: 2vh;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
@@ -945,11 +962,16 @@ body {
     padding-bottom: 7vh;
   }
 
+  .fightStage {
+    position: static;
+  }
+
   .animationSection {
     position: absolute;
+    right: 0;
     bottom: 0px;
-    justify-self: end;
-    align-self: end;
+    left: auto;
+    transform: none;
     z-index: -1;
   }
 
