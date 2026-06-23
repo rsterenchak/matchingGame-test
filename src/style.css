@@ -655,28 +655,28 @@ body {
 
   }
 
-  /* On mobile the Goku nimbus gif moves into the grid flow directly beneath
-     the title block, pushing the Fight button below it (restored to its
-     absolute bottom-right position at the 961px desktop breakpoint). */
+  /* On mobile the Goku nimbus gif sits fully behind the Fight button as a
+     centered backdrop: it is taken out of the grid flow (absolute), centered
+     horizontally, lifted up off the floor so more of it peeks above the
+     button, and given a lowered z-index so the Fight button renders in front.
+     The desktop bottom-right placement is restored at the 961px breakpoint. */
   .animationSection {
-    position: static;
+    position: absolute;
     grid-area: animationSection;
+    left: 50%;
+    bottom: 8vh;
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    justify-self: stretch;
-    align-self: stretch;
-    bottom: auto;
-    z-index: auto;
+    align-items: flex-end;
+    z-index: -1;
   }
 
-  /* Sit the nimbus directly beneath the title with a tight ~4px gap. */
   .gokuGif {
     position: relative;
     width: auto;
     height: 20vh;
     max-width: 90vw;
-    margin-top: 4px;
     object-fit: contain;
   }
 

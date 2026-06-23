@@ -108,7 +108,7 @@
   - File: `src/style.css`, `src/HomePage.jsx`
   <!-- id: 4a6c8f93-c8e9-4297-bf3a-2fb234948a24 -->
 
-- [ ] **[LOW]** Move Goku gif behind the Fight button and shift it up ~20%
+- [x] **[LOW]** Move Goku gif behind the Fight button and shift it up ~20% — Completed: 2026-06-22
   - Type: feature
   - Description: On the HomePage title screen, the Goku gif should sit fully behind the Fight button as a centered backdrop rather than beside/above it. Lower the gif's stacking order (z-index) so the Fight button renders in front of it, and raise the gif's vertical position by roughly 20% of its current offset so it sits higher behind the button (more of the gif peeks above the button while staying centered). The Fight button's appearance, glow, and click/page-switch behavior must remain unchanged — this is a layering and positioning tweak only.
   - File: `src/HomePage.jsx`, `src/style.css`
