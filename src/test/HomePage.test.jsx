@@ -298,6 +298,36 @@ describe('Nimbus cloud upsize and float animation', () => {
     const mediaBlock = css.match(/@media\s*\(min-width:\s*961px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
     expect(mediaBlock).toMatch(/\.logoContainer2\s*\{[^}]*animation:\s*nimbus-float\s+5s/)
   })
+
+  // Extract a media block by index so inline /* ... */ comments (which contain
+  // `*/`) inside a rule do not truncate the captured block.
+  const sliceMediaBlock = (startNeedle) => {
+    const start = css.indexOf(startNeedle)
+    if (start === -1) return ''
+    const next = css.indexOf('@media', start + startNeedle.length)
+    return css.slice(start, next === -1 ? css.length : next)
+  }
+
+  it('961px breakpoint logoContainer2 shifts the nimbus 10% left and 10% down via translate(-10% -10%)', () => {
+    const ruleMatch = sliceMediaBlock('@media (min-width:961px)').match(/\.logoContainer2\s*\{([\s\S]*?)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/translate:\s*-10%\s+-10%/)
+  })
+
+  it('1281px breakpoint logoContainer2 shifts the nimbus 10% left and 10% down via translate(-10% -10%)', () => {
+    const ruleMatch = sliceMediaBlock('@media (min-width:1281px)').match(/\.logoContainer2\s*\{([\s\S]*?)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/translate:\s*-10%\s+-10%/)
+  })
+
+  it('desktop nimbus shift keeps the Y at -10% (base -20% lift plus a 10% downward nudge)', () => {
+    const ruleMatch = sliceMediaBlock('@media (min-width:961px)').match(/\.logoContainer2\s*\{([\s\S]*?)\}/)
+    expect(ruleMatch).not.toBeNull()
+    const translateMatch = ruleMatch[1].match(/translate:\s*(-?\d+(?:\.\d+)?%)\s+(-?\d+(?:\.\d+)?%)/)
+    expect(translateMatch).not.toBeNull()
+    expect(translateMatch[1]).toBe('-10%')
+    expect(translateMatch[2]).toBe('-10%')
+  })
 })
 
 describe('Fight button Safari bottom bar clearance (regression: was missing safe-area inset)', () => {
