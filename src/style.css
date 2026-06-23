@@ -730,11 +730,15 @@ body {
   .inputSection {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     grid-area: inputSection;
-    /* Lift the Fight button clear of Safari's bottom browser chrome. */
-    padding-bottom: calc(4vh + env(safe-area-inset-bottom) + 32px);
+    /* Sit the Fight button just below the Nimbus with a tight ~8px gap, lifting
+       it out of the lower portion where Safari's bottom chrome overlaps it.
+       Keep env(safe-area-inset-bottom) in the bottom spacing so the empty
+       margin below still adapts across iPhone/Safari devices. */
+    padding-top: 8px;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 16px);
   }
 
 
@@ -818,11 +822,15 @@ body {
   .inputSection {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     grid-area: inputSection;
-    /* Lift the Fight button clear of Safari's bottom browser chrome. */
-    padding-bottom: calc(5vh + env(safe-area-inset-bottom) + 32px);
+    /* Sit the Fight button just below the Nimbus with a tight ~8px gap, lifting
+       it out of the lower portion where Safari's bottom chrome overlaps it.
+       Keep env(safe-area-inset-bottom) in the bottom spacing so the empty
+       margin below still adapts across iPhone/Safari devices. */
+    padding-top: 8px;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 16px);
   }
 
 
