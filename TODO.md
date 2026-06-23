@@ -137,3 +137,9 @@
   - Description: On the HomePage title screen, shift the nimbus cloud (in `logoContainer2`) up by roughly 20% relative to the background. All other HomePage elements — logo, Fight button, Goku gif, and music toggle — must remain in their exact current positions; only the nimbus moves. Adjust the nimbus's vertical offset in its `logoContainer2` styling without altering the layout or stacking of any sibling element.
   - File: `src/HomePage.jsx`, `src/style.css`
   <!-- id: e0e60326-b6b2-4ce5-ab83-d242ec54dd3e -->
+
+- [ ] **[LOW]** Shrink nimbus cloud 10% on desktop only
+  - Type: feature
+  - Description: On the HomePage title screen, reduce the nimbus cloud (in `logoContainer2`) size by 10% for desktop viewports only. Scope the change to the existing desktop breakpoints (961px and up — 961px / 1025px / 1281px) so mobile and narrow-width sizing is unaffected. Only the nimbus dimensions change; its position relative to the background and all other elements must remain as currently set.
+  - File: `src/style.css`
+  <!-- id: 49abccfd-75ee-4f48-b5e0-bb018c081f3e -->
