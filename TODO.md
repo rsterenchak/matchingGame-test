@@ -150,7 +150,7 @@
   - File: `src/style.css`
   <!-- id: 9dc71bf3-2cbe-4beb-b0f7-13f0b20d47f3 -->
 
-- [ ] **[LOW]** Hide Goku gif below the 1281px breakpoint
+- [x] **[LOW]** Hide Goku gif below the 1281px breakpoint — Completed: 2026-06-23
   - Type: feature
   - Description: On the HomePage title screen, hide the Goku gif for all viewports below 1281px (mobile and smaller-desktop widths), where it's hard to position as the screen shrinks. The gif should be visible only at the 1281px breakpoint and up. Apply `display: none` to the gif in the responsive rules below 1281px while leaving its large-desktop styling intact; no other HomePage elements change.
   - File: `src/style.css`

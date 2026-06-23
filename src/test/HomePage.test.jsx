@@ -699,3 +699,45 @@ describe('Fight button shifted down relative to the Goku gif so more of the gif 
     expect(ruleMatch[1]).toMatch(/top:\s*0/)
   })
 })
+
+describe('Goku gif hidden below the 1281px breakpoint (visible only on large desktop)', () => {
+  const media320 = css.match(/@media\s*\(min-width:\s*320px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? ''
+  const media961 = css.match(/@media\s*\(min-width:\s*961px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
+
+  // The 1281px block is the last @media in the file before the PlayPage section,
+  // so slice from its start to the next @media (or the PlayPage marker / EOF).
+  const sliceMediaBlock = (startNeedle) => {
+    const start = css.indexOf(startNeedle)
+    if (start === -1) return ''
+    const next = css.indexOf('@media', start + startNeedle.length)
+    return css.slice(start, next === -1 ? css.length : next)
+  }
+  const media1281 = sliceMediaBlock('@media (min-width:1281px)')
+
+  it('320px .gokuGif is hidden with display: none so the gif does not show on mobile/narrow widths', () => {
+    const ruleMatch = media320.match(/\.gokuGif\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/display:\s*none/)
+  })
+
+  it('961px .gokuGif stays hidden with display: none through the smaller-desktop range (961–1280px)', () => {
+    const ruleMatch = media961.match(/\.gokuGif\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/display:\s*none/)
+  })
+
+  it('1281px .gokuGif restores a visible display value so the gif reappears only at large-desktop widths', () => {
+    const ruleMatch = media1281.match(/\.gokuGif\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/display:\s*[^;]+/)
+    expect(ruleMatch[1]).not.toMatch(/display:\s*none/)
+  })
+
+  it('1281px desktop gif keeps its 600px sizing inherited from the 961px block (sizing untouched)', () => {
+    // The 1281px block only flips display back on; the 600px width still lives
+    // in the 961px rule and is not overridden here.
+    const ruleMatch = media961.match(/\.gokuGif\s*\{([^}]+)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/width:\s*600px/)
+  })
+})
