@@ -229,6 +229,31 @@ describe('Nimbus cloud upsize and float animation', () => {
     expect(img.getAttribute('alt')).toBeTruthy()
   })
 
+  it('base logoContainer2 rule lifts the nimbus up via a negative Y translate so it sits ~20% higher without reflowing siblings', () => {
+    const baseRuleMatch = css.match(/^\.logoContainer2\s*\{([^}]+)\}/m)
+    expect(baseRuleMatch).not.toBeNull()
+    const translateMatch = baseRuleMatch[1].match(/translate:\s*\S+\s+-(\d+(?:\.\d+)?)%/)
+    expect(translateMatch).not.toBeNull()
+    expect(parseFloat(translateMatch[1])).toBeGreaterThan(0)
+  })
+
+  it('base logoContainer2 nimbus lift magnitude is roughly 20% (10–40% band) so the upward nudge stays a nudge', () => {
+    const baseRuleMatch = css.match(/^\.logoContainer2\s*\{([^}]+)\}/m)
+    expect(baseRuleMatch).not.toBeNull()
+    const translateMatch = baseRuleMatch[1].match(/translate:\s*\S+\s+-(\d+(?:\.\d+)?)%/)
+    expect(translateMatch).not.toBeNull()
+    const magnitude = parseFloat(translateMatch[1])
+    expect(magnitude).toBeGreaterThanOrEqual(10)
+    expect(magnitude).toBeLessThanOrEqual(40)
+  })
+
+  it('base logoContainer2 nimbus lift uses translate (not top/margin-top) so no sibling layout shifts', () => {
+    const baseRuleMatch = css.match(/^\.logoContainer2\s*\{([^}]+)\}/m)
+    expect(baseRuleMatch).not.toBeNull()
+    expect(baseRuleMatch[1]).not.toMatch(/(?<!-)\btop:\s*-/)
+    expect(baseRuleMatch[1]).not.toMatch(/margin-top:/)
+  })
+
   it('CSS defines the nimbus-float keyframe for the hover animation', () => {
     expect(css).toMatch(/@keyframes\s+nimbus-float/)
   })
