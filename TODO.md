@@ -88,9 +88,9 @@
   - Completed: 2026-06-22
   <!-- id: fb17d723-a58d-483c-92f6-6bc267b7fb08 -->
 
-- [ ] **[MEDIUM]** Reposition home page Fight button above Safari chrome and move Nimbus GIF directly under the title
+- [x] **[MEDIUM]** Reposition home page Fight button above Safari chrome and move Nimbus GIF directly under the title
   - Type: bug
   - Description: On mobile, the Fight button on the home page is overlaid by Safari's bottom browser chrome, making it hard or impossible to tap. Lift the Fight button up so it clears the bottom unsafe area using `padding-bottom`/`margin-bottom` with `env(safe-area-inset-bottom)` on its container so it adapts across iPhone/Safari devices. Separately, move the Goku-on-Nimbus GIF `<img>` so it sits just below and nearly touching the Dragon Ball Z title (roughly a 4px gap), keeping the existing Title → Nimbus → Fight visual order. The button's existing behavior must be preserved: its `onClick` still toggles `isCurrentPage` in `MainSection.jsx` to switch to PlayPage, the home→play audio handoff still fires, and the `.fightButton` glow `:before` pseudo-element/`glowing*` keyframe animation still renders correctly in the new position.
   - File: `src/HomePage.jsx`, `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-06-22
   <!-- id: 7ea43c56-5b08-4782-bf12-aa02e0372127 -->
