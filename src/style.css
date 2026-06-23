@@ -697,6 +697,10 @@ body {
   }
 
   .gokuGif {
+    /* Hidden below the 1281px breakpoint — the gif is hard to position as the
+       viewport shrinks, so it only appears at large-desktop widths. Restored in
+       the 1281px block. */
+    display: none;
     position: relative;
     width: auto;
     height: 20vh;
@@ -995,6 +999,7 @@ body {
   }
 
   .gokuGif {
+    display: none;
     position: relative;
     width: 600px;
     height: auto;
@@ -1093,6 +1098,13 @@ body {
     align-items: center;
     grid-area: inputSection;
     padding-bottom: 8vh;
+  }
+
+  /* Re-show the Goku gif at large-desktop widths (the cascaded display: none
+     from the 320px/961px blocks is flipped back on here). It keeps its inherited
+     600px desktop sizing/position. */
+  .gokuGif {
+    display: inline;
   }
 
 }
