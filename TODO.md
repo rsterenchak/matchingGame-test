@@ -132,7 +132,7 @@
   - File: `src/HomePage.jsx`, `src/style.css`
   <!-- id: cb1f31c1-3699-4488-9ef1-7617147e93f4 -->
 
-- [ ] **[LOW]** Move nimbus cloud up ~20% relative to the background on HomePage
+- [x] **[LOW]** Move nimbus cloud up ~20% relative to the background on HomePage — Completed: 2026-06-23
   - Type: feature
   - Description: On the HomePage title screen, shift the nimbus cloud (in `logoContainer2`) up by roughly 20% relative to the background. All other HomePage elements — logo, Fight button, Goku gif, and music toggle — must remain in their exact current positions; only the nimbus moves. Adjust the nimbus's vertical offset in its `logoContainer2` styling without altering the layout or stacking of any sibling element.
   - File: `src/HomePage.jsx`, `src/style.css`
