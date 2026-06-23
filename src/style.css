@@ -498,6 +498,13 @@ body {
   width: 55vw;
   position: absolute;
 
+  /* Lift the nimbus cloud up ~20% of its own height relative to the background.
+     Using the independent `translate` property (not `top`/`margin-top`) means
+     the shift reflows nothing, so every sibling stays in its exact position and
+     it composes with the mobile `transform: translateX(...)` centering and the
+     961px+ `nimbus-float` transform animation. */
+  translate: 0 -20%;
+
   object-fit: contain;
 }
 
