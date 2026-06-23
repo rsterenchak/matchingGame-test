@@ -107,3 +107,9 @@
   - Description: On the HomePage title screen the Goku gif currently has a visible gap between its bottom edge and the top of the Fight button. Adjust the gif's positioning so its base sits flush against the Fight button's top edge with zero gap between them, no overlap. This is a CSS-only change — the gif is purely presentational with no click handlers or state, so adjust the relevant margin/padding/positioning rule (likely the gif and `.fightButton` spacing) in `style.css`; verify the flush alignment holds across the existing responsive breakpoints (320px, 481px, 641px, 961px, 1025px, 1281px) since the gif and button sizes shift per breakpoint.
   - File: `src/style.css`, `src/HomePage.jsx`
   <!-- id: 4a6c8f93-c8e9-4297-bf3a-2fb234948a24 -->
+
+- [ ] **[LOW]** Move Goku gif behind the Fight button and shift it up ~20%
+  - Type: feature
+  - Description: On the HomePage title screen, the Goku gif should sit fully behind the Fight button as a centered backdrop rather than beside/above it. Lower the gif's stacking order (z-index) so the Fight button renders in front of it, and raise the gif's vertical position by roughly 20% of its current offset so it sits higher behind the button (more of the gif peeks above the button while staying centered). The Fight button's appearance, glow, and click/page-switch behavior must remain unchanged — this is a layering and positioning tweak only.
+  - File: `src/HomePage.jsx`, `src/style.css`
+  <!-- id: 99d28179-a879-4c67-ba61-b30a94fe3982 -->
