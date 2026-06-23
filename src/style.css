@@ -697,6 +697,16 @@ body {
     object-fit: contain;
   }
 
+  /* Nudge the Fight button down ~15% of the 20vh gif height (≈3vh) relative to
+     the gif so more of the gif peeks above the button. The button stays in
+     normal flow within .fightStage (so the absolutely-positioned gif still
+     anchors to it and renders behind it via the lowered z-index); a relative
+     top offset shifts only the button, not the gif. Reset at 961px where the
+     gif moves to the desktop bottom-right corner. */
+  .fightButton {
+    top: 3vh;
+  }
+
   .navSection {
     display: flex;
     flex-direction: row;
@@ -981,6 +991,10 @@ body {
     height: auto;
     max-width: none;
     object-fit: unset;
+  }
+
+  .fightButton {
+    top: 0;
   }
 
 
