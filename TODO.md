@@ -131,3 +131,9 @@
   - Description: On the HomePage title screen, shift the Fight button down by roughly another 15% relative to the Goku gif (cumulative with the prior ~15% nudge), so even more of the gif shows above the button. The gif stays positioned behind the button (lower z-index, centered) as established previously; only the button's vertical offset changes. The Fight button's appearance, glow, and click/page-switch behavior must remain unchanged, and the button must stay layered in front of the gif rather than dropping into a separate row.
   - File: `src/HomePage.jsx`, `src/style.css`
   <!-- id: cb1f31c1-3699-4488-9ef1-7617147e93f4 -->
+
+- [ ] **[LOW]** Move nimbus cloud up ~20% relative to the background on HomePage
+  - Type: feature
+  - Description: On the HomePage title screen, shift the nimbus cloud (in `logoContainer2`) up by roughly 20% relative to the background. All other HomePage elements — logo, Fight button, Goku gif, and music toggle — must remain in their exact current positions; only the nimbus moves. Adjust the nimbus's vertical offset in its `logoContainer2` styling without altering the layout or stacking of any sibling element.
+  - File: `src/HomePage.jsx`, `src/style.css`
+  <!-- id: e0e60326-b6b2-4ce5-ab83-d242ec54dd3e -->
