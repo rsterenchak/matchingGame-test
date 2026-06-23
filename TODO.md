@@ -101,3 +101,9 @@
   - File: `src/HomePage.jsx`, `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: ab921164-03a5-4f5c-8254-727c47f60c60 -->
+
+- [ ] **[LOW]** Move Goku gif down so its base sits flush against the Fight button with no gap
+  - Type: bug
+  - Description: On the HomePage title screen the Goku gif currently has a visible gap between its bottom edge and the top of the Fight button. Adjust the gif's positioning so its base sits flush against the Fight button's top edge with zero gap between them, no overlap. This is a CSS-only change — the gif is purely presentational with no click handlers or state, so adjust the relevant margin/padding/positioning rule (likely the gif and `.fightButton` spacing) in `style.css`; verify the flush alignment holds across the existing responsive breakpoints (320px, 481px, 641px, 961px, 1025px, 1281px) since the gif and button sizes shift per breakpoint.
+  - File: `src/style.css`, `src/HomePage.jsx`
+  <!-- id: 4a6c8f93-c8e9-4297-bf3a-2fb234948a24 -->
