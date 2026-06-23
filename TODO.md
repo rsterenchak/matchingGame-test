@@ -143,3 +143,9 @@
   - Description: On the HomePage title screen, reduce the nimbus cloud (in `logoContainer2`) size by 10% for desktop viewports only. Scope the change to the existing desktop breakpoints (961px and up — 961px / 1025px / 1281px) so mobile and narrow-width sizing is unaffected. Only the nimbus dimensions change; its position relative to the background and all other elements must remain as currently set.
   - File: `src/style.css`
   <!-- id: 49abccfd-75ee-4f48-b5e0-bb018c081f3e -->
+
+- [ ] **[LOW]** Move nimbus cloud 10% left and 10% down on desktop only
+  - Type: feature
+  - Description: On the HomePage title screen, shift the nimbus cloud (in `logoContainer2`) 10% to the left and 10% down for desktop viewports only. Scope the change to the existing desktop breakpoints (961px and up — 961px / 1025px / 1281px) so mobile and narrow-width positioning is unaffected. Only the nimbus position changes; its size and all other HomePage elements must remain in their current positions.
+  - File: `src/style.css`
+  <!-- id: 9dc71bf3-2cbe-4beb-b0f7-13f0b20d47f3 -->
