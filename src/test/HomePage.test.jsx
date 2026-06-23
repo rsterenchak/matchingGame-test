@@ -297,6 +297,31 @@ describe('Fight button Safari bottom bar clearance (regression: was missing safe
   })
 })
 
+describe('Fight button lifted up beneath the Nimbus on mobile (regression: button sat in the lower portion over Safari chrome)', () => {
+  it('320px .inputSection aligns content to the top so the Fight button sits just below the Nimbus instead of centered in the lower portion', () => {
+    const media320Block = css.match(/@media\s*\(min-width:\s*320px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? ''
+    const inputMatch = media320Block.match(/\.inputSection\s*\{([^}]+)\}/)
+    expect(inputMatch).not.toBeNull()
+    expect(inputMatch[1]).toMatch(/justify-content:\s*flex-start/)
+  })
+
+  it('320px .inputSection has a small top gap (≤12px) so the Fight button nearly touches the Nimbus above it', () => {
+    const media320Block = css.match(/@media\s*\(min-width:\s*320px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? ''
+    const inputMatch = media320Block.match(/\.inputSection\s*\{([^}]+)\}/)
+    expect(inputMatch).not.toBeNull()
+    const padTop = inputMatch[1].match(/padding-top:\s*([\d.]+)px/)
+    expect(padTop).not.toBeNull()
+    expect(parseFloat(padTop[1])).toBeLessThanOrEqual(12)
+  })
+
+  it('481px .inputSection aligns content to the top so the Fight button is lifted up beneath the Nimbus', () => {
+    const media481Block = css.match(/@media\s*\(min-width:\s*481px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? ''
+    const inputMatch = media481Block.match(/\.inputSection\s*\{([^}]+)\}/)
+    expect(inputMatch).not.toBeNull()
+    expect(inputMatch[1]).toMatch(/justify-content:\s*flex-start/)
+  })
+})
+
 describe('Nimbus cloud 641–960px position fix (regression: drifted up and overlapped DBZ title at tall viewport heights)', () => {
   it('641px breakpoint defines a .logoContainer2 rule so the cloud has its own positioning instead of falling through to the over-aggressive 481px values', () => {
     const media641Block = css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
