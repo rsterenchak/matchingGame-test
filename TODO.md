@@ -149,3 +149,9 @@
   - Description: On the HomePage title screen, shift the nimbus cloud (in `logoContainer2`) 10% to the left and 10% down for desktop viewports only. Scope the change to the existing desktop breakpoints (961px and up — 961px / 1025px / 1281px) so mobile and narrow-width positioning is unaffected. Only the nimbus position changes; its size and all other HomePage elements must remain in their current positions.
   - File: `src/style.css`
   <!-- id: 9dc71bf3-2cbe-4beb-b0f7-13f0b20d47f3 -->
+
+- [ ] **[LOW]** Hide Goku gif below the 1281px breakpoint
+  - Type: feature
+  - Description: On the HomePage title screen, hide the Goku gif for all viewports below 1281px (mobile and smaller-desktop widths), where it's hard to position as the screen shrinks. The gif should be visible only at the 1281px breakpoint and up. Apply `display: none` to the gif in the responsive rules below 1281px while leaving its large-desktop styling intact; no other HomePage elements change.
+  - File: `src/style.css`
+  <!-- id: 39a0eb32-4369-4890-8a11-0bb22f70df9d -->
