@@ -119,3 +119,9 @@
   - Description: A prior change meant to place the Goku gif behind the Fight button instead broke the HomePage layout — the gif and button now render as vertically stacked siblings in normal flow rather than overlapping on the z-axis. The gif must be positioned (e.g. `position: absolute`) within a shared positioned container so it sits centered BEHIND the Fight button via a lower z-index, with the gif raised ~20% higher than the button's center. The Fight button must render in front, retain its glow and click/page-switch behavior, and the two must overlap in the same space rather than occupy separate rows.
   - File: `src/HomePage.jsx`, `src/style.css`
   <!-- id: a8ec71cf-2a60-4a17-baea-f5cd6925d47a -->
+
+- [ ] **[LOW]** Move Fight button down ~15% relative to the Goku gif
+  - Type: feature
+  - Description: On the HomePage title screen, shift the Fight button down by roughly 15% relative to the Goku gif so more of the gif shows above the button. The gif stays positioned behind the button (lower z-index, centered) as established previously; only the button's vertical offset changes. The Fight button's appearance, glow, and click/page-switch behavior must remain unchanged, and the button must stay layered in front of the gif rather than dropping into a separate row.
+  - File: `src/HomePage.jsx`, `src/style.css`
+  <!-- id: c9d5176d-d99f-4535-b250-df0f7ce575bc -->
