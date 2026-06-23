@@ -114,7 +114,7 @@
   - File: `src/HomePage.jsx`, `src/style.css`
   <!-- id: 99d28179-a879-4c67-ba61-b30a94fe3982 -->
 
-- [ ] **[HIGH]** Fix Fight button and Goku gif rendering as vertical stack instead of layered
+- [x] **[HIGH]** Fix Fight button and Goku gif rendering as vertical stack instead of layered — Completed: 2026-06-23
   - Type: bug
   - Description: A prior change meant to place the Goku gif behind the Fight button instead broke the HomePage layout — the gif and button now render as vertically stacked siblings in normal flow rather than overlapping on the z-axis. The gif must be positioned (e.g. `position: absolute`) within a shared positioned container so it sits centered BEHIND the Fight button via a lower z-index, with the gif raised ~20% higher than the button's center. The Fight button must render in front, retain its glow and click/page-switch behavior, and the two must overlap in the same space rather than occupy separate rows.
   - File: `src/HomePage.jsx`, `src/style.css`

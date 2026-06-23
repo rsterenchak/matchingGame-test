@@ -598,3 +598,28 @@ describe('Goku gif layered behind the Fight button as a centered backdrop on mob
     expect(ruleMatch[1]).toMatch(/z-index:\s*-1/)
   })
 })
+
+describe('Goku gif and Fight button share one positioned container (regression: rendered as stacked rows, not z-layered)', () => {
+  it('the Goku gif lives inside the same .fightStage container as the Fight button so it layers behind it instead of occupying a separate row', () => {
+    render(<HomePage {...defaultProps} />)
+    const gif = document.querySelector('img.gokuGif')
+    const button = document.querySelector('.fightButton')
+    expect(gif).not.toBeNull()
+    expect(button).not.toBeNull()
+    const stage = button.closest('.fightStage')
+    expect(stage).not.toBeNull()
+    expect(stage.contains(gif)).toBe(true)
+  })
+
+  it('.fightStage is a positioned container so the absolutely-positioned gif anchors to the button area rather than the page', () => {
+    const match = css.match(/\.fightStage\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/position:\s*relative/)
+  })
+
+  it('the gif is non-interactive (pointer-events: none) so layering it over the button area adds no new click target', () => {
+    const match = css.match(/\.animationSection\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/pointer-events:\s*none/)
+  })
+})
