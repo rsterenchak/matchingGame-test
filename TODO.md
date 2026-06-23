@@ -138,7 +138,7 @@
   - File: `src/HomePage.jsx`, `src/style.css`
   <!-- id: e0e60326-b6b2-4ce5-ab83-d242ec54dd3e -->
 
-- [ ] **[LOW]** Shrink nimbus cloud 10% on desktop only
+- [x] **[LOW]** Shrink nimbus cloud 10% on desktop only — Completed: 2026-06-23
   - Type: feature
   - Description: On the HomePage title screen, reduce the nimbus cloud (in `logoContainer2`) size by 10% for desktop viewports only. Scope the change to the existing desktop breakpoints (961px and up — 961px / 1025px / 1281px) so mobile and narrow-width sizing is unaffected. Only the nimbus dimensions change; its position relative to the background and all other elements must remain as currently set.
   - File: `src/style.css`
