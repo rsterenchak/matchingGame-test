@@ -41,13 +41,20 @@ function HandleHomeAudio({
 
       cleanupMarker = true;
 
+      // Guards against the play()/pause() race: if this helper unmounts (page or
+      // audio toggle) before the autoplay promise resolves, the pending play would
+      // otherwise start the track *after* cleanup paused it, leaving an orphaned
+      // instance stacking on top of the active track. We pause again on resolve.
+      let cancelled = false;
 
       var playPromise = audioRef.current.play();
 
       if (playPromise !== undefined) {
         playPromise.then(_ => {
           // Automatic playback started!
-
+          if (cancelled) {
+            audioRef.current.pause();
+          }
           // Show playing UI.
         })
         .catch(error => {
@@ -65,6 +72,7 @@ function HandleHomeAudio({
 
         // console.log('Cleanup for useEffect');
 
+        cancelled = true;
         audioRef.current.pause();
 
 
@@ -174,13 +182,20 @@ function HandlePlayAudio({
 
       cleanupMarker = true;
 
+      // Guards against the play()/pause() race: if this helper unmounts (page or
+      // audio toggle) before the autoplay promise resolves, the pending play would
+      // otherwise start the track *after* cleanup paused it, leaving an orphaned
+      // instance stacking on top of the active track. We pause again on resolve.
+      let cancelled = false;
 
       var playPromise = audioRef.current.play();
 
       if (playPromise !== undefined) {
         playPromise.then(_ => {
           // Automatic playback started!
-
+          if (cancelled) {
+            audioRef.current.pause();
+          }
           // Show playing UI.
         })
         .catch(error => {
@@ -198,6 +213,7 @@ function HandlePlayAudio({
 
         // console.log('Play - cleanup');
 
+        cancelled = true;
         audioRef.current.pause();
 
 

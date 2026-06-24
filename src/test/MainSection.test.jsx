@@ -69,3 +69,30 @@ describe('Persistent Audio instances (overlapping-instance fix)', () => {
     expect(source).toMatch(/\.catch\(/)
   })
 })
+
+describe('No overlapping playback (play()/pause() race fix)', () => {
+  // Regression guard for the bug where switching pages or toggling audio could
+  // leave a track playing on top of the active one. Each "play" helper calls
+  // audioRef.current.play(), which returns a promise. If the helper unmounted
+  // before that promise resolved, the cleanup's pause() ran first and the pending
+  // play then started the instance again — an orphaned, stacked track that nothing
+  // paused. The fix tracks a `cancelled` flag: cleanup sets it, and the resolved
+  // play promise pauses the instance when it sees the helper was cancelled.
+
+  it('arms a cancellation flag in each play helper before awaiting play()', () => {
+    // Both play helpers (home + play tracks) declare the guard.
+    const armed = source.match(/let cancelled = false/g) || []
+    expect(armed.length).toBe(2)
+  })
+
+  it('flips the flag in cleanup so a late-resolving play() is undone', () => {
+    const flipped = source.match(/cancelled = true/g) || []
+    expect(flipped.length).toBe(2)
+  })
+
+  it('pauses the instance when a play() resolves after cancellation', () => {
+    // The resolved-play handler must re-pause when cancelled, killing the orphan.
+    const guarded = source.match(/if \(cancelled\) \{\s*audioRef\.current\.pause\(\)/g) || []
+    expect(guarded.length).toBe(2)
+  })
+})
