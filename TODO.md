@@ -155,3 +155,9 @@
   - Description: On the HomePage title screen, hide the Goku gif for all viewports below 1281px (mobile and smaller-desktop widths), where it's hard to position as the screen shrinks. The gif should be visible only at the 1281px breakpoint and up. Apply `display: none` to the gif in the responsive rules below 1281px while leaving its large-desktop styling intact; no other HomePage elements change.
   - File: `src/style.css`
   <!-- id: 39a0eb32-4369-4890-8a11-0bb22f70df9d -->
+
+- [ ] **[LOW]** Lower background music volume to ~0.035 on both pages
+  - Type: feature
+  - Description: The background music is too loud. Reduce the hardcoded volume from 0.07 to roughly half (~0.035) for both tracks — `DragonBallZ.mp3` (home) and `NamekTheme.mp3` (play) — in the `Handle*Audio` components. Apply the same value to all relevant `Handle*Audio` helpers so both pages match. Do not refactor the audio construction or the `useEffect`/`.then/.catch` autoplay handling as part of this change.
+  - File: `src/MainSection.jsx`
+  <!-- id: e40448b5-f70b-43f5-851b-7d8efd90579f -->
