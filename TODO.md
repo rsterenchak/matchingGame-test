@@ -156,7 +156,7 @@
   - File: `src/style.css`
   <!-- id: 39a0eb32-4369-4890-8a11-0bb22f70df9d -->
 
-- [ ] **[LOW]** Lower background music volume to ~0.035 on both pages
+- [x] **[LOW]** Lower background music volume to ~0.035 on both pages — Completed: 2026-06-23
   - Type: feature
   - Description: The background music is too loud. Reduce the hardcoded volume from 0.07 to roughly half (~0.035) for both tracks — `DragonBallZ.mp3` (home) and `NamekTheme.mp3` (play) — in the `Handle*Audio` components. Apply the same value to all relevant `Handle*Audio` helpers so both pages match. Do not refactor the audio construction or the `useEffect`/`.then/.catch` autoplay handling as part of this change.
   - File: `src/MainSection.jsx`
