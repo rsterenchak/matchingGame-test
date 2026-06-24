@@ -167,3 +167,9 @@
   - Description: The background music is still too loud at ~0.035. Reduce the hardcoded volume to roughly a quarter of that (~0.009) for both tracks — `DragonBallZ.mp3` (home) and `NamekTheme.mp3` (play) — in the `Handle*Audio` components. Apply the same value to all relevant `Handle*Audio` helpers so both pages match. Do not refactor the audio construction or the `useEffect`/`.then/.catch` autoplay handling as part of this change.
   - File: `src/MainSection.jsx`
   <!-- id: bc72cb09-8d19-4ca3-826d-83cbc364b36c -->
+
+- [ ] **[HIGH]** Fix overlapping Audio instances ignoring volume changes
+  - Type: bug
+  - Description: Lowering the hardcoded volume constant has little effect because `MainSection` re-instantiates `new Audio(...)` on every render of each `Handle*Audio` component, and the `useEffect` cleanup only pauses the instance captured in that render — stale instances from prior renders keep playing, stacking multiple tracks and making the music far louder than the set volume. Move the `Audio` construction into a `useRef` so each track has exactly one persistent instance across re-renders, set `.volume` on that single instance, and have the `useEffect` cleanup pause the same ref. Preserve the `.play()` `.then/.catch` autoplay guard and the looping behavior; this is the audio refactor the project notes already anticipate.
+  - File: `src/MainSection.jsx`
+  <!-- id: 4825e6e5-e592-4b04-88b4-4cc49a4461ad -->
