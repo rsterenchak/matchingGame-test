@@ -480,7 +480,7 @@ export default function MainSection() {
   const [isCurrentAudio, setCurrentAudio] = useState(false);
   const [isVolume, setVolume] = useState(() => {
     const saved = localStorage.getItem('matchingGame_volume');
-    return saved !== null ? parseFloat(saved) : 0.0175;
+    return saved !== null ? parseFloat(saved) : 0.035;
   });
 
   const [activeData, setActiveData] = useState([]);
@@ -560,13 +560,13 @@ export default function MainSection() {
       
           <HandlePlayAudio
             audioState={isCurrentAudio}
-            volumeLevel={isVolume * 0.5}
+            volumeLevel={isVolume}
           />
         ) : (
 
           <HandlePausePlayAudio
             audioState={isCurrentAudio}
-            volumeLevel={isVolume * 0.5}
+            volumeLevel={isVolume}
           />
   
         )
