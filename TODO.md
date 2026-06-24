@@ -193,3 +193,10 @@
   - File: `src/MainSection.jsx`, `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: 75bf4fc4-0df9-4b4d-a0c9-4afae391fa2e -->
+
+- [ ] **[HIGH]** Stop overlapping background-music instances so only the active track plays
+  - Type: bug
+  - Description: Background music sounds loud even with the slider at a low value because four separate `Audio` instances (one per `Handle*Audio` helper in `MainSection.jsx`) can play simultaneously; their volumes stack, so four instances at `0.005` are far louder than one, and identical tracks also phase. Dragging the slider to zero silences all of them, confirming the volume value path is correct and the bug is concurrent playback, not volume level. The media panel shows 4 active players. Fix so that at any moment only the instance matching the current page (`isCurrentPage`) and audio-on state (`isCurrentAudio`) is playing, and the other three are reliably `.pause()`d — including stale instances left by re-renders or the StrictMode double-mount. Keep each helper's `audioRef`/`useRef` Audio construction, the per-helper volume-sync `useEffect`, the looping behavior, and the `.play().then/.catch` autoplay guard; do not consolidate the helpers into a new manager/service file and do not lift game state. Acceptance: only one track is audible at a time; switching between Home and Play swaps tracks without leaving the previous one playing; toggling audio off pauses all instances; the media panel never shows more than one actively-playing instance; the existing volume tests still pass.
+  - File: `src/MainSection.jsx`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: 40af6595-26ed-432a-977d-e978bd8343c4 -->
