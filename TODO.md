@@ -180,3 +180,9 @@
   - File: `src/MainSection.jsx`
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: 76f21433-b5d3-4c69-8d81-6ee69354fcff -->
+
+- [ ] **[MEDIUM]** Lower the default music volume below the current 0.009
+  - Type: feature
+  - Description: The background music is still too loud at the current default. The volume is slider-driven and persisted to `localStorage` under `matchingGame_volume`; the default lives in the `isVolume` state initializer in `MainSection.jsx` (`return saved !== null ? parseFloat(saved) : 0.009;`). Lower that fallback literal from `0.009` to `0.005` so first-time sessions and players who haven't touched the slider start quieter. Only the default changes — the slider must still set and persist any value, and returning users with a saved `matchingGame_volume` value keep their existing setting (do not clear or override stored values).
+  - File: `src/MainSection.jsx`
+  <!-- id: 98f7ba07-a26d-4533-99c5-2fc6dac83119 -->
