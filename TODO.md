@@ -173,3 +173,10 @@
   - Description: Lowering the hardcoded volume constant has little effect because `MainSection` re-instantiates `new Audio(...)` on every render of each `Handle*Audio` component, and the `useEffect` cleanup only pauses the instance captured in that render — stale instances from prior renders keep playing, stacking multiple tracks and making the music far louder than the set volume. Move the `Audio` construction into a `useRef` so each track has exactly one persistent instance across re-renders, set `.volume` on that single instance, and have the `useEffect` cleanup pause the same ref. Preserve the `.play()` `.then/.catch` autoplay guard and the looping behavior; this is the audio refactor the project notes already anticipate.
   - File: `src/MainSection.jsx`
   <!-- id: 4825e6e5-e592-4b04-88b4-4cc49a4461ad -->
+
+- [ ] **[LOW]** Lower background music volume from 0.07 to 0.03
+  - Type: feature
+  - Description: The home and play background tracks are still too loud after the useRef audio refactor (PR #79). Lower the hardcoded volume level from 0.07 to 0.03 across all four `Handle*Audio` helper components so both `DragonBallZ.mp3` (home) and `NamekTheme.mp3` (play) play quieter. The value is set on the single persistent `audioRef.current.volume` instance in each helper, so update each of the four assignments. Keep looping, the `.then/.catch` autoplay guard, and the single-instance useRef pattern intact.
+  - File: `src/MainSection.jsx`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: 76f21433-b5d3-4c69-8d81-6ee69354fcff -->
