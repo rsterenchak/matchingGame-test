@@ -29,6 +29,25 @@ describe('HomePage', () => {
   })
 })
 
+describe('HomePage volume slider range', () => {
+  const sliderProps = { ...defaultProps, isVolume: 0.005, onVolumeChange: vi.fn() }
+
+  it('maps the slider to the Audio 0–1 range via min="0" and max="1"', () => {
+    render(<HomePage {...sliderProps} />)
+    const slider = document.querySelector('.volumeSliderInput')
+    expect(slider).not.toBeNull()
+    expect(slider.getAttribute('min')).toBe('0')
+    expect(slider.getAttribute('max')).toBe('1')
+  })
+
+  it('uses a fractional step="0.001" so the slider emits a smooth low-end ramp instead of jumping to full volume', () => {
+    render(<HomePage {...sliderProps} />)
+    const slider = document.querySelector('.volumeSliderInput')
+    expect(slider.getAttribute('step')).toBe('0.001')
+    expect(parseFloat(slider.getAttribute('step'))).toBeLessThanOrEqual(0.005)
+  })
+})
+
 describe('Shenron framing images removed', () => {
   it('does not render a shenronTop img after removal', () => {
     render(<HomePage {...defaultProps} />)

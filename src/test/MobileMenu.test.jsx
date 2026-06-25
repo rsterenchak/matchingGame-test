@@ -83,6 +83,25 @@ describe('MobileMenu modal', () => {
   })
 })
 
+describe('MobileMenu volume slider range', () => {
+  it('maps the slider to the Audio 0–1 range via min="0" and max="1"', () => {
+    render(<MobileMenu {...defaultProps} />)
+    fireEvent.click(document.querySelector('.hamburgerButton'))
+    const slider = document.querySelector('.mobileMenuVolumeSlider')
+    expect(slider).not.toBeNull()
+    expect(slider.getAttribute('min')).toBe('0')
+    expect(slider.getAttribute('max')).toBe('1')
+  })
+
+  it('uses a fractional step="0.001" so the slider emits a smooth low-end ramp instead of jumping to full volume', () => {
+    render(<MobileMenu {...defaultProps} />)
+    fireEvent.click(document.querySelector('.hamburgerButton'))
+    const slider = document.querySelector('.mobileMenuVolumeSlider')
+    expect(slider.getAttribute('step')).toBe('0.001')
+    expect(parseFloat(slider.getAttribute('step'))).toBeLessThanOrEqual(0.005)
+  })
+})
+
 describe('hamburgerButton desktop color matches musicBlock3', () => {
   const cssPath = join(__dirname, '../style.css')
   const css = readFileSync(cssPath, 'utf8')

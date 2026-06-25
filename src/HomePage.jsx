@@ -118,7 +118,7 @@ export default function HomePage({
                       className="volumeSliderInput"
                       min="0"
                       max="1"
-                      step="0.005"
+                      step="0.001"
                       value={isVolume}
                       style={{background: `linear-gradient(to top, yellow ${isVolume * 100}%, #ccc ${isVolume * 100}%)`}}
                       onChange={e => onVolumeChange(parseFloat(e.target.value))}
