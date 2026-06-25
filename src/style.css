@@ -651,6 +651,24 @@ body {
   100% { transform: translateY(0); }
 }
 
+/* Gentle vertical bob for the Nimbus cloud (.logoContainer2) on mobile viewports.
+   Mobile centers the cloud with `transform: translateX(12.3%)`, and an animation's
+   transform keyframes override that base transform while running — so the 12.3%
+   centering is baked into every keyframe to keep the cloud horizontally placed
+   while it bobs ~10px vertically. -webkit- prefixed alongside the standard rules
+   so the animation runs in Safari (WebKit). */
+@-webkit-keyframes floatCloud {
+  0%   { -webkit-transform: translateX(12.3%) translateY(0);     transform: translateX(12.3%) translateY(0); }
+  50%  { -webkit-transform: translateX(12.3%) translateY(-10px); transform: translateX(12.3%) translateY(-10px); }
+  100% { -webkit-transform: translateX(12.3%) translateY(0);     transform: translateX(12.3%) translateY(0); }
+}
+
+@keyframes floatCloud {
+  0%   { -webkit-transform: translateX(12.3%) translateY(0);     transform: translateX(12.3%) translateY(0); }
+  50%  { -webkit-transform: translateX(12.3%) translateY(-10px); transform: translateX(12.3%) translateY(-10px); }
+  100% { -webkit-transform: translateX(12.3%) translateY(0);     transform: translateX(12.3%) translateY(0); }
+}
+
 @media (min-width:320px){
 
   .homeSection {
@@ -763,6 +781,11 @@ body {
     transform: translateX(12.3%);
     margin-top: -5vh;
     object-fit: contain;
+
+    /* Mobile-only gentle bob; cascades up to the 961px block, where
+       `nimbus-float` re-declares the animation for desktop. */
+    -webkit-animation: floatCloud 3s ease-in-out infinite;
+    animation: floatCloud 3s ease-in-out infinite;
   }
 
   .inputSection {

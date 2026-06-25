@@ -7,17 +7,11 @@ export const changelog = [
     ],
     added: [
       'Face-up cards now tilt in 3D toward your cursor as you hover over them.',
+      'On mobile-sized screens, the nimbus cloud on the title screen now gently bobs up and down.',
     ],
     changed: [
       'On desktop screens, the nimbus cloud on the title screen now sits slightly further to the right.',
       'On desktop screens, the nimbus cloud on the title screen now sits slightly further to the left.',
-    ],
-  },
-  {
-    version: '1.0',
-    date: '2026-06-23',
-    fixed: [
-      'Background music no longer stacks overlapping copies of a track when switching screens or toggling sound, so only one track plays at a time at the set volume.',
     ],
   },
 ];
