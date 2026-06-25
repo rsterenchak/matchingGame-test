@@ -65,7 +65,56 @@ export default function Card({
 
   const myStyle = {
     border: '1px solid red'
-    
+
+  }
+
+  // Inline transform that tilts the card in 3D toward the cursor. Reset to {}
+  // (identity) on mouse leave so the card snaps back flat.
+  const [tiltStyle, setTiltStyle] = useState({});
+
+  function handleCardMouseMove(e){
+
+    // Don't tilt while the end-game popup is up — the board is blurred/disabled.
+    if(isPopUp){
+      return;
+    }
+
+    // Respect a reduced-motion preference, mirroring the CSS guard in style.css.
+    if(typeof window !== 'undefined' && window.matchMedia &&
+       window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      return;
+    }
+
+    let rect = e.currentTarget.getBoundingClientRect();
+
+    // Guard against a zero-size rect (avoids NaN rotations).
+    if(rect.width === 0 || rect.height === 0){
+      return;
+    }
+
+    // Normalized cursor offset from the card center, -1 to 1 on each axis.
+    let offsetX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    let offsetY = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+
+    // The smallest cards (320px breakpoint) use a gentler tilt so the lift
+    // doesn't clip into neighboring cards.
+    let isSmallest = typeof window !== 'undefined' && window.matchMedia &&
+      window.matchMedia('(max-width: 480px)').matches;
+    let maxRotate = isSmallest ? 8 : 15;
+
+    let rotateY = offsetX * maxRotate;   // horizontal cursor position rotates around Y
+    let rotateX = -offsetY * maxRotate;  // vertical cursor position rotates around X
+
+    setTiltStyle({
+      transform: `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+    });
+
+  }
+
+  function handleCardMouseLeave(){
+
+    setTiltStyle({});
+
   }
 
 
@@ -195,10 +244,12 @@ export default function Card({
 
    <>
 
-            <div 
+            <div
               className='card'
               onClick={() => handleCardClick()}
-              style={style}
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={handleCardMouseLeave}
+              style={{ ...style, ...(isPopUp ? {} : tiltStyle) }}
             >
                         
               <div className='cardFront'>
