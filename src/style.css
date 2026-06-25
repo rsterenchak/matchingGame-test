@@ -968,7 +968,7 @@ body {
     width: 82vw;
     position: relative;
     top: -18vh;
-    left: 1vw;
+    left: calc(1vw + 10%);
     object-fit: contain;
     filter: drop-shadow(0 0 12px rgba(255, 220, 0, 0.85)) drop-shadow(0 8px 6px rgba(0, 0, 0, 0.4));
     animation: nimbus-float 5s ease-in-out infinite;
@@ -1085,7 +1085,7 @@ body {
     width: 82vw;
     position: relative;
     top: -18vh;
-    left: 1vw;
+    left: calc(1vw + 10%);
     object-fit: contain;
     scale: 0.9;
     translate: -10% -10%;
