@@ -34,3 +34,10 @@
   - File: `src/style.css`
   - Completed: 2026-06-25
   <!-- id: 55db3218-c1de-4550-aba6-cf8190984c25 -->
+
+- [ ] **[LOW]** Shift nimbus cloud 5% to the left relative to the background on desktop only
+  - Type: feature
+  - Description: On the HomePage, the nimbus cloud should be repositioned 5% further left relative to its background container, but only at desktop breakpoints (≥961px) — all smaller breakpoints remain unchanged. Locate the nimbus cloud's current positioning rule in `style.css` (likely `left`, `right`, `transform: translateX`, or `background-position` on the cloud or its wrapper element) and decrease its horizontal offset by 5% of the background container's width within the appropriate media query (≥961px breakpoint block). If no desktop-specific rule exists for the cloud, add one inside the existing `@media (min-width: 961px)` block rather than modifying the base rule. Do not adjust vertical position, size, or any other property.
+  - File: `src/style.css`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: 4341e4f8-0ff7-4d55-9009-5d88385a8e75 -->
