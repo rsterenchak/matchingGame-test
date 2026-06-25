@@ -781,3 +781,52 @@ describe('Goku gif hidden below the 1281px breakpoint (visible only on large des
     expect(ruleMatch[1]).toMatch(/width:\s*600px/)
   })
 })
+
+describe('logoContainer mobile float animation', () => {
+  // Mirror the sliceMediaBlock helper so inline /* ... */ comments do not
+  // truncate the captured block at the first `*/`.
+  const sliceMediaBlock = (startNeedle) => {
+    const start = css.indexOf(startNeedle)
+    if (start === -1) return ''
+    const next = css.indexOf('@media', start + startNeedle.length)
+    return css.slice(start, next === -1 ? css.length : next)
+  }
+
+  it('defines a floatCloud keyframe so the cloud has a named animation', () => {
+    expect(css).toMatch(/@keyframes\s+floatCloud/)
+  })
+
+  it('defines a -webkit- prefixed floatCloud keyframe so the animation runs in Safari', () => {
+    expect(css).toMatch(/@-webkit-keyframes\s+floatCloud/)
+  })
+
+  it('floatCloud 50% frame bobs the cloud up ~10px via translateY with no rotation', () => {
+    const start = css.indexOf('@keyframes floatCloud')
+    const end = css.indexOf('}', css.indexOf('100%', start))
+    const keyframeBlock = css.slice(start, end)
+    expect(keyframeBlock).toContain('translateY(-10px)')
+    expect(keyframeBlock).not.toMatch(/rotate/)
+  })
+
+  it('320px breakpoint .logoContainer applies floatCloud at ~3s ease-in-out infinite', () => {
+    const ruleMatch = sliceMediaBlock('@media (min-width:320px)').match(/\.logoContainer\s*\{([\s\S]*?)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/animation:\s*floatCloud\s+3s\s+ease-in-out\s+infinite/)
+  })
+
+  it('320px breakpoint .logoContainer also sets the -webkit- prefixed animation for Safari', () => {
+    const ruleMatch = sliceMediaBlock('@media (min-width:320px)').match(/\.logoContainer\s*\{([\s\S]*?)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/-webkit-animation:\s*floatCloud\s+3s\s+ease-in-out\s+infinite/)
+  })
+
+  it('961px desktop breakpoint disables the float so the bob is mobile-only', () => {
+    const ruleMatch = sliceMediaBlock('@media (min-width:961px)').match(/\.logoContainer\s*\{([\s\S]*?)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/animation:\s*none/)
+  })
+
+  it('prefers-reduced-motion block disables the logoContainer float to respect motion sensitivity', () => {
+    expect(css).toMatch(/@media\s*\(prefers-reduced-motion:\s*reduce\)[^}]*\{[\s\S]*?\.logoContainer\s*\{[^}]*animation:\s*none/)
+  })
+})
