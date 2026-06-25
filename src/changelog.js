@@ -8,6 +8,9 @@ export const changelog = [
     added: [
       'Face-up cards now tilt in 3D toward your cursor as you hover over them.',
     ],
+    changed: [
+      'On desktop screens, the nimbus cloud on the title screen now sits slightly further to the right.',
+    ],
   },
   {
     version: '1.0',
@@ -15,9 +18,6 @@ export const changelog = [
     fixed: [
       'On phones, the Goku-on-nimbus animation now layers directly behind the Fight button as intended instead of appearing in a separate row above it.',
       'Background music no longer stacks overlapping copies of a track when switching screens or toggling sound, so only one track plays at a time at the set volume.',
-    ],
-    changed: [
-      'New sessions now start with the background music at an even quieter default volume.',
     ],
   },
 ];
