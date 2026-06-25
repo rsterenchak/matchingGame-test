@@ -651,6 +651,20 @@ body {
   100% { transform: translateY(0); }
 }
 
+/* Gentle vertical bob for the nimbus cloud / logo area on mobile viewports.
+   -webkit- prefixed alongside the standard rules so the animation runs in Safari. */
+@-webkit-keyframes floatCloud {
+  0%   { -webkit-transform: translateY(0); transform: translateY(0); }
+  50%  { -webkit-transform: translateY(-10px); transform: translateY(-10px); }
+  100% { -webkit-transform: translateY(0); transform: translateY(0); }
+}
+
+@keyframes floatCloud {
+  0%   { -webkit-transform: translateY(0); transform: translateY(0); }
+  50%  { -webkit-transform: translateY(-10px); transform: translateY(-10px); }
+  100% { -webkit-transform: translateY(0); transform: translateY(0); }
+}
+
 @media (min-width:320px){
 
   .homeSection {
@@ -742,6 +756,8 @@ body {
     background-position: center;
     background-size: contain;
 
+    -webkit-animation: floatCloud 3s ease-in-out infinite;
+    animation: floatCloud 3s ease-in-out infinite;
 
   }
 
@@ -942,15 +958,18 @@ body {
   }
 
   .logoContainer {
-    
+
     min-height: 220px;
-    
+
 
     background-image: url('./assets/dragon-ball-image.png') ;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-  
+
+    -webkit-animation: none;
+    animation: none;
+
   }
   
   .logoSection2 {
@@ -3337,6 +3356,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .logoContainer2 { animation: none; }
+  .logoContainer { animation: none; -webkit-animation: none; }
   .card { transition: none; }
   .card:hover { transform: none; }
 }
