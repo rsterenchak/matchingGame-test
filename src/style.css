@@ -1448,7 +1448,7 @@ body {
   overflow: hidden;
   background-color: rgb(255, 90, 90);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.1s ease-out, box-shadow 0.25s ease;
 
 }
 

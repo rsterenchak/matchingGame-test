@@ -5,6 +5,9 @@ export const changelog = [
     fixed: [
       'The volume sliders now adjust the music smoothly from silent to full instead of snapping to maximum at the slightest movement.',
     ],
+    added: [
+      'Face-up cards now tilt in 3D toward your cursor as you hover over them.',
+    ],
   },
   {
     version: '1.0',
@@ -14,7 +17,6 @@ export const changelog = [
       'Background music no longer stacks overlapping copies of a track when switching screens or toggling sound, so only one track plays at a time at the set volume.',
     ],
     changed: [
-      'The background music now plays at a lower, quieter volume across the home and play screens.',
       'New sessions now start with the background music at an even quieter default volume.',
     ],
   },
