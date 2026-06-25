@@ -41,3 +41,10 @@
   - File: `src/style.css`
   - Completed: 2026-06-25
   <!-- id: 4341e4f8-0ff7-4d55-9009-5d88385a8e75 -->
+
+- [ ] **[LOW]** Add subtle floating animation to `#logoContainer` on mobile viewports
+  - Type: feature
+  - Description: Define a CSS keyframe animation (`@keyframes floatCloud`) that translates `#logoContainer` vertically between 0 and roughly -10px on a ~3s ease-in-out infinite loop, giving the nimbus cloud / logo area a gentle bobbing effect. Apply the animation inside the existing 320px–641px breakpoints so it only activates on mobile-sized viewports. Use `-webkit-` prefixed keyframes and animation properties alongside the standard ones to ensure the animation runs in Safari (WebKit). No JS changes needed.
+  - File: `src/style.css`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: 63d1bc40-1c86-4f7d-a264-332ef611df1a -->
