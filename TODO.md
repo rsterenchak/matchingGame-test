@@ -13,10 +13,3 @@
   - File: `src/HomePage.jsx`, `src/MobileMenu.jsx`
   - Completed: 2026-06-25
   <!-- id: a8ddfd17-9740-4ccb-9fa8-24ddda18bdef -->
-
-- [ ] **[MEDIUM]** Add 3D perspective tilt effect to cards on mouse hover based on cursor position
-  - Type: feature
-  - Description: When the mouse moves over a face-up card, the card should tilt in 3D toward the cursor — calculating the cursor's offset from the card's center and mapping it to `rotateX` and `rotateY` values via `transform: perspective(600px) rotateX(Xdeg) rotateY(Ydeg)`. Add `onMouseMove` and `onMouseLeave` handlers in `Card.jsx`: `onMouseMove` uses `e.currentTarget.getBoundingClientRect()` to compute normalized offset (-1 to 1 on each axis) and derives rotation (suggested max ±15deg); `onMouseLeave` resets transform to identity. Apply via inline `style` prop (dynamic computed value — permitted by CLAUDE.md). Add a smooth `transition: transform 0.1s ease-out` on the card element in `style.css` so the tilt follows the cursor fluidly and snaps back on leave. Disable the effect (or set transform to none) while the popup is active (`popUpStyle` cursor-disabled state) so the effect doesn't fire during end-game. At the smallest breakpoint (320px, 55×105px cards) the effect should still apply but can use a reduced max rotation (±8deg) to avoid clipping adjacent cards.
-  - File: `src/Card.jsx`, `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
-  <!-- id: 33039b79-977d-474e-8ca3-a3e12b0376a1 -->
