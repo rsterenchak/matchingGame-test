@@ -10,13 +10,13 @@ export const changelog = [
     ],
     changed: [
       'On desktop screens, the nimbus cloud on the title screen now sits slightly further to the right.',
+      'On desktop screens, the nimbus cloud on the title screen now sits slightly further to the left.',
     ],
   },
   {
     version: '1.0',
     date: '2026-06-23',
     fixed: [
-      'On phones, the Goku-on-nimbus animation now layers directly behind the Fight button as intended instead of appearing in a separate row above it.',
       'Background music no longer stacks overlapping copies of a track when switching screens or toggling sound, so only one track plays at a time at the set volume.',
     ],
   },

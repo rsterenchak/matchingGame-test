@@ -348,23 +348,23 @@ describe('Nimbus cloud upsize and float animation', () => {
     expect(translateMatch[2]).toBe('-10%')
   })
 
-  it('961px breakpoint logoContainer2 shifts the nimbus 10% of the container width further right via left: calc(1vw + 10%)', () => {
+  it('961px breakpoint logoContainer2 shifts the nimbus 5% of the container width further right via left: calc(1vw + 5%)', () => {
     const ruleMatch = sliceMediaBlock('@media (min-width:961px)').match(/\.logoContainer2\s*\{([\s\S]*?)\}/)
     expect(ruleMatch).not.toBeNull()
-    expect(ruleMatch[1]).toMatch(/left:\s*calc\(\s*1vw\s*\+\s*10%\s*\)/)
+    expect(ruleMatch[1]).toMatch(/left:\s*calc\(\s*1vw\s*\+\s*5%\s*\)/)
   })
 
-  it('1281px breakpoint logoContainer2 keeps the same 10% rightward shift so desktop stays consistent', () => {
+  it('1281px breakpoint logoContainer2 keeps the same 5% rightward shift so desktop stays consistent', () => {
     const ruleMatch = sliceMediaBlock('@media (min-width:1281px)').match(/\.logoContainer2\s*\{([\s\S]*?)\}/)
     expect(ruleMatch).not.toBeNull()
-    expect(ruleMatch[1]).toMatch(/left:\s*calc\(\s*1vw\s*\+\s*10%\s*\)/)
+    expect(ruleMatch[1]).toMatch(/left:\s*calc\(\s*1vw\s*\+\s*5%\s*\)/)
   })
 
-  it('sub-desktop breakpoints (≤641px) do not pick up the 10% rightward shift', () => {
+  it('sub-desktop breakpoints (≤641px) do not pick up the desktop rightward shift', () => {
     for (const needle of ['@media (min-width:481px)', '@media (min-width:641px)']) {
       const ruleMatch = sliceMediaBlock(needle).match(/\.logoContainer2\s*\{([\s\S]*?)\}/)
       if (ruleMatch) {
-        expect(ruleMatch[1]).not.toMatch(/calc\(\s*1vw\s*\+\s*10%\s*\)/)
+        expect(ruleMatch[1]).not.toMatch(/calc\(\s*1vw\s*\+\s*5%\s*\)/)
       }
     }
   })
