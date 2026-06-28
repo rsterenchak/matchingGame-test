@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-28T05:51:44.192Z",
-  "sha": "4263e51ddd54519e2238b083732743a9abeedd7d",
+  "generatedAt": "2026-06-28T06:17:07.264Z",
+  "sha": "2c90dc22b183014f53ae0b69905b2c6678879c08",
   "files": [
     "Card.jsx",
     "CardBack.jsx",
@@ -11,5 +11,452 @@
     "changelog.js",
     "index.jsx",
     "style.css"
+  ],
+  "hasDom": true,
+  "regions": [
+    {
+      "selector": ".animationSection",
+      "label": "AnimationSection",
+      "file": "HomePage.jsx",
+      "line": 183
+    },
+    {
+      "selector": ".card",
+      "label": "Card",
+      "file": "Card.jsx",
+      "line": 248
+    },
+    {
+      "selector": ".cardBack",
+      "label": "CardBack",
+      "file": "CardBack.jsx",
+      "line": 30
+    },
+    {
+      "selector": ".cardFront",
+      "label": "CardFront",
+      "file": "Card.jsx",
+      "line": 255
+    },
+    {
+      "selector": ".cardImage",
+      "label": "CardImage",
+      "file": "Card.jsx",
+      "line": 256
+    },
+    {
+      "selector": ".currentScoreSection",
+      "label": "CurrentScoreSection",
+      "file": "PlayPage.jsx",
+      "line": 701
+    },
+    {
+      "selector": ".endGame",
+      "label": "EndGame",
+      "file": "PlayPage.jsx",
+      "line": 731
+    },
+    {
+      "selector": ".fightButton",
+      "label": "FightButton",
+      "file": "HomePage.jsx",
+      "line": 191
+    },
+    {
+      "selector": ".fightStage",
+      "label": "FightStage",
+      "file": "HomePage.jsx",
+      "line": 181
+    },
+    {
+      "selector": ".gameOverTitle",
+      "label": "GameOverTitle",
+      "file": "PlayPage.jsx",
+      "line": 733
+    },
+    {
+      "selector": ".gitIcon",
+      "label": "GitIcon",
+      "file": "HomePage.jsx",
+      "line": 149
+    },
+    {
+      "selector": ".gokuGif",
+      "label": "GokuGif",
+      "file": "HomePage.jsx",
+      "line": 187
+    },
+    {
+      "selector": ".gotItButton",
+      "label": "GotItButton",
+      "file": "PlayPage.jsx",
+      "line": 775
+    },
+    {
+      "selector": ".guyGif",
+      "label": "GuyGif",
+      "file": "HomePage.jsx",
+      "line": 185
+    },
+    {
+      "selector": ".hamburgerButton",
+      "label": "HamburgerButton",
+      "file": "MobileMenu.jsx",
+      "line": 35
+    },
+    {
+      "selector": ".helpButton",
+      "label": "HelpButton",
+      "file": "PlayPage.jsx",
+      "line": 616
+    },
+    {
+      "selector": ".homeSection",
+      "label": "HomeSection",
+      "file": "HomePage.jsx",
+      "line": 84
+    },
+    {
+      "selector": ".inputSection",
+      "label": "InputSection",
+      "file": "HomePage.jsx",
+      "line": 174
+    },
+    {
+      "selector": ".instructionsBackdrop",
+      "label": "InstructionsBackdrop",
+      "file": "PlayPage.jsx",
+      "line": 766
+    },
+    {
+      "selector": ".instructionsCard",
+      "label": "InstructionsCard",
+      "file": "PlayPage.jsx",
+      "line": 767
+    },
+    {
+      "selector": ".instructionsList",
+      "label": "InstructionsList",
+      "file": "PlayPage.jsx",
+      "line": 769
+    },
+    {
+      "selector": ".instructionsTitle",
+      "label": "InstructionsTitle",
+      "file": "PlayPage.jsx",
+      "line": 768
+    },
+    {
+      "selector": ".logoContainer",
+      "label": "LogoContainer",
+      "file": "HomePage.jsx",
+      "line": 163
+    },
+    {
+      "selector": ".logoContainer2",
+      "label": "LogoContainer2",
+      "file": "HomePage.jsx",
+      "line": 169
+    },
+    {
+      "selector": ".logoSection",
+      "label": "LogoSection",
+      "file": "HomePage.jsx",
+      "line": 161
+    },
+    {
+      "selector": ".logoSection2",
+      "label": "LogoSection2",
+      "file": "HomePage.jsx",
+      "line": 167
+    },
+    {
+      "selector": ".logoSection3",
+      "label": "LogoSection3",
+      "file": "PlayPage.jsx",
+      "line": 662
+    },
+    {
+      "selector": ".logoSection4",
+      "label": "LogoSection4",
+      "file": "PlayPage.jsx",
+      "line": 681
+    },
+    {
+      "selector": ".mobileMenuBackdrop",
+      "label": "MobileMenuBackdrop",
+      "file": "MobileMenu.jsx",
+      "line": 46
+    },
+    {
+      "selector": ".mobileMenuCloseButton",
+      "label": "MobileMenuCloseButton",
+      "file": "MobileMenu.jsx",
+      "line": 50
+    },
+    {
+      "selector": ".mobileMenuDivider",
+      "label": "MobileMenuDivider",
+      "file": "MobileMenu.jsx",
+      "line": 53
+    },
+    {
+      "selector": ".mobileMenuIcon",
+      "label": "MobileMenuIcon",
+      "file": "MobileMenu.jsx",
+      "line": 59
+    },
+    {
+      "selector": ".mobileMenuIconText",
+      "label": "MobileMenuIconText",
+      "file": "MobileMenu.jsx",
+      "line": 98
+    },
+    {
+      "selector": ".mobileMenuLabel",
+      "label": "MobileMenuLabel",
+      "file": "MobileMenu.jsx",
+      "line": 60
+    },
+    {
+      "selector": ".mobileMenuModal",
+      "label": "MobileMenuModal",
+      "file": "MobileMenu.jsx",
+      "line": 47
+    },
+    {
+      "selector": ".mobileMenuModalHeader",
+      "label": "MobileMenuModalHeader",
+      "file": "MobileMenu.jsx",
+      "line": 48
+    },
+    {
+      "selector": ".mobileMenuModalTitle",
+      "label": "MobileMenuModalTitle",
+      "file": "MobileMenu.jsx",
+      "line": 49
+    },
+    {
+      "selector": ".mobileMenuRow",
+      "label": "MobileMenuRow",
+      "file": "MobileMenu.jsx",
+      "line": 56
+    },
+    {
+      "selector": ".mobileMenuVolumeSlider",
+      "label": "MobileMenuVolumeSlider",
+      "file": "MobileMenu.jsx",
+      "line": 68
+    },
+    {
+      "selector": ".mobileMenuWrapper",
+      "label": "MobileMenuWrapper",
+      "file": "MobileMenu.jsx",
+      "line": 33
+    },
+    {
+      "selector": ".musicBlock",
+      "label": "MusicBlock",
+      "file": "HomePage.jsx",
+      "line": 98
+    },
+    {
+      "selector": ".musicBlock2",
+      "label": "MusicBlock2",
+      "file": "PlayPage.jsx",
+      "line": 571
+    },
+    {
+      "selector": ".musicBlock3",
+      "label": "MusicBlock3",
+      "file": "PlayPage.jsx",
+      "line": 606
+    },
+    {
+      "selector": ".musicIcon",
+      "label": "MusicIcon",
+      "file": "HomePage.jsx",
+      "line": 102
+    },
+    {
+      "selector": ".musicIcon2",
+      "label": "MusicIcon2",
+      "file": "PlayPage.jsx",
+      "line": 576
+    },
+    {
+      "selector": ".musicIcon3",
+      "label": "MusicIcon3",
+      "file": "PlayPage.jsx",
+      "line": 611
+    },
+    {
+      "selector": ".musicIconWrapper",
+      "label": "MusicIconWrapper",
+      "file": "HomePage.jsx",
+      "line": 95
+    },
+    {
+      "selector": ".navSection",
+      "label": "NavSection",
+      "file": "HomePage.jsx",
+      "line": 91
+    },
+    {
+      "selector": ".navSection2",
+      "label": "NavSection2",
+      "file": "PlayPage.jsx",
+      "line": 564
+    },
+    {
+      "selector": ".outerSection",
+      "label": "OuterSection",
+      "file": "HomePage.jsx",
+      "line": 89
+    },
+    {
+      "selector": ".outerSection2",
+      "label": "OuterSection2",
+      "file": "PlayPage.jsx",
+      "line": 562
+    },
+    {
+      "selector": ".playSection",
+      "label": "PlaySection",
+      "file": "PlayPage.jsx",
+      "line": 558
+    },
+    {
+      "selector": ".portfolioBlock",
+      "label": "PortfolioBlock",
+      "file": "HomePage.jsx",
+      "line": 143
+    },
+    {
+      "selector": ".portfolioBlock2",
+      "label": "PortfolioBlock2",
+      "file": "PlayPage.jsx",
+      "line": 640
+    },
+    {
+      "selector": ".portfolioIcon",
+      "label": "PortfolioIcon",
+      "file": "HomePage.jsx",
+      "line": 147
+    },
+    {
+      "selector": ".portfolioIcon2",
+      "label": "PortfolioIcon2",
+      "file": "PlayPage.jsx",
+      "line": 645
+    },
+    {
+      "selector": ".portfolioText",
+      "label": "PortfolioText",
+      "file": "HomePage.jsx",
+      "line": 145
+    },
+    {
+      "selector": ".portfolioText2",
+      "label": "PortfolioText2",
+      "file": "PlayPage.jsx",
+      "line": 642
+    },
+    {
+      "selector": ".retryButton",
+      "label": "RetryButton",
+      "file": "PlayPage.jsx",
+      "line": 735
+    },
+    {
+      "selector": ".scorePanel",
+      "label": "ScorePanel",
+      "file": "PlayPage.jsx",
+      "line": 703
+    },
+    {
+      "selector": ".scorePanelBestChip",
+      "label": "ScorePanelBestChip",
+      "file": "PlayPage.jsx",
+      "line": 709
+    },
+    {
+      "selector": ".scorePanelLabel",
+      "label": "ScorePanelLabel",
+      "file": "PlayPage.jsx",
+      "line": 706
+    },
+    {
+      "selector": ".scorePanelPips",
+      "label": "ScorePanelPips",
+      "file": "PlayPage.jsx",
+      "line": 711
+    },
+    {
+      "selector": ".scorePanelRow",
+      "label": "ScorePanelRow",
+      "file": "PlayPage.jsx",
+      "line": 704
+    },
+    {
+      "selector": ".scorePanelScoreGroup",
+      "label": "ScorePanelScoreGroup",
+      "file": "PlayPage.jsx",
+      "line": 705
+    },
+    {
+      "selector": ".scorePanelValue",
+      "label": "ScorePanelValue",
+      "file": "PlayPage.jsx",
+      "line": 707
+    },
+    {
+      "selector": ".speakerButton",
+      "label": "SpeakerButton",
+      "file": "HomePage.jsx",
+      "line": 107
+    },
+    {
+      "selector": ".svg-element",
+      "label": "Svg element",
+      "file": "HomePage.jsx",
+      "line": 193
+    },
+    {
+      "selector": ".svg-text",
+      "label": "Svg text",
+      "file": "HomePage.jsx",
+      "line": 194
+    },
+    {
+      "selector": ".topColumn1",
+      "label": "TopColumn1",
+      "file": "HomePage.jsx",
+      "line": 93
+    },
+    {
+      "selector": ".topColumn2",
+      "label": "TopColumn2",
+      "file": "HomePage.jsx",
+      "line": 140
+    },
+    {
+      "selector": ".topColumn3",
+      "label": "TopColumn3",
+      "file": "PlayPage.jsx",
+      "line": 566
+    },
+    {
+      "selector": ".topColumn4",
+      "label": "TopColumn4",
+      "file": "PlayPage.jsx",
+      "line": 637
+    },
+    {
+      "selector": ".volumeSliderInput",
+      "label": "VolumeSliderInput",
+      "file": "HomePage.jsx",
+      "line": 118
+    }
   ]
 }
