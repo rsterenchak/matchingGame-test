@@ -42,9 +42,9 @@
   - Completed: 2026-06-25
   <!-- id: 6af9c583-5df5-47aa-b546-729c04a4f691 -->
 
-- [ ] **[LOW]** Add a build-trigger comment to index.jsx
+- [x] **[LOW]** Add a build-trigger comment to index.jsx
   - Type: feature
   - Description: Insert a single inline comment (e.g., `// build trigger`) in `src/index.jsx` to force a fresh Vite build. No logic or behavior changes.
   - File: `src/index.jsx`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-06-28
   <!-- id: de8e42fe-5a8a-4e28-a61f-fe2176fad191 -->
