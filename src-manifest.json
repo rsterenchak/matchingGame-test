@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-28T06:17:07.264Z",
-  "sha": "2c90dc22b183014f53ae0b69905b2c6678879c08",
+  "generatedAt": "2026-06-28T07:19:38.039Z",
+  "sha": "86468f161402ae7a833abcad9871d21a68d6959d",
   "files": [
     "Card.jsx",
     "CardBack.jsx",
@@ -12,451 +12,1212 @@
     "index.jsx",
     "style.css"
   ],
-  "hasDom": true,
+  "srcRoot": "src",
   "regions": [
     {
       "selector": ".animationSection",
-      "label": "AnimationSection",
+      "label": "Animation Section",
       "file": "HomePage.jsx",
-      "line": 183
+      "line": 183,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 183
+        },
+        {
+          "file": "style.css",
+          "line": 80
+        }
+      ]
     },
     {
       "selector": ".card",
       "label": "Card",
       "file": "Card.jsx",
-      "line": 248
+      "line": 248,
+      "files": [
+        {
+          "file": "Card.jsx",
+          "line": 248
+        },
+        {
+          "file": "CardBack.jsx",
+          "line": 28
+        },
+        {
+          "file": "style.css",
+          "line": 1461
+        }
+      ]
     },
     {
       "selector": ".cardBack",
-      "label": "CardBack",
+      "label": "Card Back",
       "file": "CardBack.jsx",
-      "line": 30
+      "line": 30,
+      "files": [
+        {
+          "file": "CardBack.jsx",
+          "line": 30
+        },
+        {
+          "file": "style.css",
+          "line": 1509
+        }
+      ]
     },
     {
       "selector": ".cardFront",
-      "label": "CardFront",
+      "label": "Card Front",
       "file": "Card.jsx",
-      "line": 255
+      "line": 255,
+      "files": [
+        {
+          "file": "Card.jsx",
+          "line": 255
+        },
+        {
+          "file": "style.css",
+          "line": 1491
+        }
+      ]
     },
     {
       "selector": ".cardImage",
-      "label": "CardImage",
+      "label": "Card Image",
       "file": "Card.jsx",
-      "line": 256
+      "line": 256,
+      "files": [
+        {
+          "file": "Card.jsx",
+          "line": 256
+        },
+        {
+          "file": "style.css",
+          "line": 1503
+        }
+      ]
     },
     {
       "selector": ".currentScoreSection",
-      "label": "CurrentScoreSection",
+      "label": "Current Score Section",
       "file": "PlayPage.jsx",
-      "line": 701
+      "line": 701,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 701
+        },
+        {
+          "file": "style.css",
+          "line": 1519
+        }
+      ]
     },
     {
       "selector": ".endGame",
-      "label": "EndGame",
+      "label": "End Game",
       "file": "PlayPage.jsx",
-      "line": 731
+      "line": 731,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 731
+        },
+        {
+          "file": "style.css",
+          "line": 1674
+        }
+      ]
     },
     {
       "selector": ".fightButton",
-      "label": "FightButton",
+      "label": "Fight Button",
       "file": "HomePage.jsx",
-      "line": 191
+      "line": 191,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 191
+        },
+        {
+          "file": "style.css",
+          "line": 521
+        }
+      ]
     },
     {
       "selector": ".fightStage",
-      "label": "FightStage",
+      "label": "Fight Stage",
       "file": "HomePage.jsx",
-      "line": 181
+      "line": 181,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 181
+        },
+        {
+          "file": "style.css",
+          "line": 96
+        }
+      ]
     },
     {
       "selector": ".gameOverTitle",
-      "label": "GameOverTitle",
+      "label": "Game Over Title",
       "file": "PlayPage.jsx",
-      "line": 733
+      "line": 733,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 733
+        },
+        {
+          "file": "style.css",
+          "line": 1692
+        }
+      ]
     },
     {
       "selector": ".gitIcon",
-      "label": "GitIcon",
+      "label": "Git Icon",
       "file": "HomePage.jsx",
-      "line": 149
+      "line": 149,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 149
+        },
+        {
+          "file": "PlayPage.jsx",
+          "line": 649
+        },
+        {
+          "file": "style.css",
+          "line": 460
+        }
+      ]
     },
     {
       "selector": ".gokuGif",
-      "label": "GokuGif",
+      "label": "Goku Gif",
       "file": "HomePage.jsx",
-      "line": 187
+      "line": 187,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 187
+        },
+        {
+          "file": "style.css",
+          "line": 104
+        }
+      ]
     },
     {
       "selector": ".gotItButton",
-      "label": "GotItButton",
+      "label": "Got It Button",
       "file": "PlayPage.jsx",
-      "line": 775
+      "line": 775,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 775
+        },
+        {
+          "file": "style.css",
+          "line": 3250
+        }
+      ]
     },
     {
       "selector": ".guyGif",
-      "label": "GuyGif",
+      "label": "Guy Gif",
       "file": "HomePage.jsx",
-      "line": 185
+      "line": 185,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 185
+        },
+        {
+          "file": "style.css",
+          "line": 110
+        }
+      ]
     },
     {
       "selector": ".hamburgerButton",
-      "label": "HamburgerButton",
+      "label": "Hamburger Button",
       "file": "MobileMenu.jsx",
-      "line": 35
+      "line": 35,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 35
+        },
+        {
+          "file": "style.css",
+          "line": 1810
+        }
+      ]
     },
     {
       "selector": ".helpButton",
-      "label": "HelpButton",
+      "label": "Help Button",
       "file": "PlayPage.jsx",
-      "line": 616
+      "line": 616,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 616
+        },
+        {
+          "file": "style.css",
+          "line": 2040
+        }
+      ]
     },
     {
       "selector": ".homeSection",
-      "label": "HomeSection",
+      "label": "Home Section",
       "file": "HomePage.jsx",
-      "line": 84
+      "line": 84,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 84
+        },
+        {
+          "file": "style.css",
+          "line": 36
+        }
+      ]
     },
     {
       "selector": ".inputSection",
-      "label": "InputSection",
+      "label": "Input Section",
       "file": "HomePage.jsx",
-      "line": 174
+      "line": 174,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 174
+        },
+        {
+          "file": "style.css",
+          "line": 511
+        }
+      ]
     },
     {
       "selector": ".instructionsBackdrop",
-      "label": "InstructionsBackdrop",
+      "label": "Instructions Backdrop",
       "file": "PlayPage.jsx",
-      "line": 766
+      "line": 766,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 766
+        },
+        {
+          "file": "style.css",
+          "line": 3209
+        }
+      ]
     },
     {
       "selector": ".instructionsCard",
-      "label": "InstructionsCard",
+      "label": "Instructions Card",
       "file": "PlayPage.jsx",
-      "line": 767
+      "line": 767,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 767
+        },
+        {
+          "file": "style.css",
+          "line": 3222
+        }
+      ]
     },
     {
       "selector": ".instructionsList",
-      "label": "InstructionsList",
+      "label": "Instructions List",
       "file": "PlayPage.jsx",
-      "line": 769
+      "line": 769,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 769
+        },
+        {
+          "file": "style.css",
+          "line": 3241
+        }
+      ]
     },
     {
       "selector": ".instructionsTitle",
-      "label": "InstructionsTitle",
+      "label": "Instructions Title",
       "file": "PlayPage.jsx",
-      "line": 768
+      "line": 768,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 768
+        },
+        {
+          "file": "style.css",
+          "line": 3236
+        }
+      ]
     },
     {
       "selector": ".logoContainer",
-      "label": "LogoContainer",
+      "label": "Logo Container",
       "file": "HomePage.jsx",
-      "line": 163
+      "line": 163,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 163
+        },
+        {
+          "file": "style.css",
+          "line": 473
+        }
+      ]
     },
     {
       "selector": ".logoContainer2",
-      "label": "LogoContainer2",
+      "label": "Logo Container2",
       "file": "HomePage.jsx",
-      "line": 169
+      "line": 169,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 169
+        },
+        {
+          "file": "style.css",
+          "line": 496
+        }
+      ]
     },
     {
       "selector": ".logoSection",
-      "label": "LogoSection",
+      "label": "Logo Section",
       "file": "HomePage.jsx",
-      "line": 161
+      "line": 161,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 161
+        },
+        {
+          "file": "style.css",
+          "line": 464
+        }
+      ]
     },
     {
       "selector": ".logoSection2",
-      "label": "LogoSection2",
+      "label": "Logo Section2",
       "file": "HomePage.jsx",
-      "line": 167
+      "line": 167,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 167
+        },
+        {
+          "file": "style.css",
+          "line": 486
+        }
+      ]
     },
     {
       "selector": ".logoSection3",
-      "label": "LogoSection3",
+      "label": "Logo Section3",
       "file": "PlayPage.jsx",
-      "line": 662
+      "line": 662,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 662
+        },
+        {
+          "file": "style.css",
+          "line": 1452
+        }
+      ]
     },
     {
       "selector": ".logoSection4",
-      "label": "LogoSection4",
+      "label": "Logo Section4",
       "file": "PlayPage.jsx",
-      "line": 681
+      "line": 681,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 681
+        },
+        {
+          "file": "style.css",
+          "line": 1479
+        }
+      ]
     },
     {
       "selector": ".mobileMenuBackdrop",
-      "label": "MobileMenuBackdrop",
+      "label": "Mobile Menu Backdrop",
       "file": "MobileMenu.jsx",
-      "line": 46
+      "line": 46,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 46
+        },
+        {
+          "file": "style.css",
+          "line": 1861
+        }
+      ]
     },
     {
       "selector": ".mobileMenuCloseButton",
-      "label": "MobileMenuCloseButton",
+      "label": "Mobile Menu Close Button",
       "file": "MobileMenu.jsx",
-      "line": 50
+      "line": 50,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 50
+        },
+        {
+          "file": "style.css",
+          "line": 1896
+        }
+      ]
     },
     {
       "selector": ".mobileMenuDivider",
-      "label": "MobileMenuDivider",
+      "label": "Mobile Menu Divider",
       "file": "MobileMenu.jsx",
-      "line": 53
+      "line": 53,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 53
+        },
+        {
+          "file": "style.css",
+          "line": 1941
+        }
+      ]
     },
     {
       "selector": ".mobileMenuIcon",
-      "label": "MobileMenuIcon",
+      "label": "Mobile Menu Icon",
       "file": "MobileMenu.jsx",
-      "line": 59
+      "line": 59,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 59
+        },
+        {
+          "file": "style.css",
+          "line": 1947
+        }
+      ]
     },
     {
       "selector": ".mobileMenuIconText",
-      "label": "MobileMenuIconText",
+      "label": "Mobile Menu Icon Text",
       "file": "MobileMenu.jsx",
-      "line": 98
+      "line": 98,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 98
+        },
+        {
+          "file": "style.css",
+          "line": 1960
+        }
+      ]
     },
     {
       "selector": ".mobileMenuLabel",
-      "label": "MobileMenuLabel",
+      "label": "Mobile Menu Label",
       "file": "MobileMenu.jsx",
-      "line": 60
+      "line": 60,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 60
+        },
+        {
+          "file": "style.css",
+          "line": 1953
+        }
+      ]
     },
     {
       "selector": ".mobileMenuModal",
-      "label": "MobileMenuModal",
+      "label": "Mobile Menu Modal",
       "file": "MobileMenu.jsx",
-      "line": 47
+      "line": 47,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 47
+        },
+        {
+          "file": "style.css",
+          "line": 1874
+        }
+      ]
     },
     {
       "selector": ".mobileMenuModalHeader",
-      "label": "MobileMenuModalHeader",
+      "label": "Mobile Menu Modal Header",
       "file": "MobileMenu.jsx",
-      "line": 48
+      "line": 48,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 48
+        },
+        {
+          "file": "style.css",
+          "line": 1883
+        }
+      ]
     },
     {
       "selector": ".mobileMenuModalTitle",
-      "label": "MobileMenuModalTitle",
+      "label": "Mobile Menu Modal Title",
       "file": "MobileMenu.jsx",
-      "line": 49
+      "line": 49,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 49
+        },
+        {
+          "file": "style.css",
+          "line": 1890
+        }
+      ]
     },
     {
       "selector": ".mobileMenuRow",
-      "label": "MobileMenuRow",
+      "label": "Mobile Menu Row",
       "file": "MobileMenu.jsx",
-      "line": 56
+      "line": 56,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 56
+        },
+        {
+          "file": "style.css",
+          "line": 1914
+        }
+      ]
     },
     {
       "selector": ".mobileMenuVolumeSlider",
-      "label": "MobileMenuVolumeSlider",
+      "label": "Mobile Menu Volume Slider",
       "file": "MobileMenu.jsx",
-      "line": 68
+      "line": 68,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 68
+        },
+        {
+          "file": "style.css",
+          "line": 1972
+        }
+      ]
     },
     {
       "selector": ".mobileMenuWrapper",
-      "label": "MobileMenuWrapper",
+      "label": "Mobile Menu Wrapper",
       "file": "MobileMenu.jsx",
-      "line": 33
+      "line": 33,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 33
+        },
+        {
+          "file": "style.css",
+          "line": 1805
+        }
+      ]
     },
     {
       "selector": ".musicBlock",
-      "label": "MusicBlock",
+      "label": "Music Block",
       "file": "HomePage.jsx",
-      "line": 98
+      "line": 98,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 98
+        },
+        {
+          "file": "style.css",
+          "line": 330
+        }
+      ]
     },
     {
       "selector": ".musicBlock2",
-      "label": "MusicBlock2",
+      "label": "Music Block2",
       "file": "PlayPage.jsx",
-      "line": 571
+      "line": 571,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 571
+        },
+        {
+          "file": "style.css",
+          "line": 1197
+        }
+      ]
     },
     {
       "selector": ".musicBlock3",
-      "label": "MusicBlock3",
+      "label": "Music Block3",
       "file": "PlayPage.jsx",
-      "line": 606
+      "line": 606,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 606
+        },
+        {
+          "file": "style.css",
+          "line": 1304
+        }
+      ]
     },
     {
       "selector": ".musicIcon",
-      "label": "MusicIcon",
+      "label": "Music Icon",
       "file": "HomePage.jsx",
-      "line": 102
+      "line": 102,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 102
+        },
+        {
+          "file": "style.css",
+          "line": 343
+        }
+      ]
     },
     {
       "selector": ".musicIcon2",
-      "label": "MusicIcon2",
+      "label": "Music Icon2",
       "file": "PlayPage.jsx",
-      "line": 576
+      "line": 576,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 576
+        },
+        {
+          "file": "style.css",
+          "line": 1212
+        }
+      ]
     },
     {
       "selector": ".musicIcon3",
-      "label": "MusicIcon3",
+      "label": "Music Icon3",
       "file": "PlayPage.jsx",
-      "line": 611
+      "line": 611,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 611
+        },
+        {
+          "file": "style.css",
+          "line": 1318
+        }
+      ]
     },
     {
       "selector": ".musicIconWrapper",
-      "label": "MusicIconWrapper",
+      "label": "Music Icon Wrapper",
       "file": "HomePage.jsx",
-      "line": 95
+      "line": 95,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 95
+        },
+        {
+          "file": "PlayPage.jsx",
+          "line": 568
+        },
+        {
+          "file": "style.css",
+          "line": 142
+        }
+      ]
     },
     {
       "selector": ".navSection",
-      "label": "NavSection",
+      "label": "Nav Section",
       "file": "HomePage.jsx",
-      "line": 91
+      "line": 91,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 91
+        },
+        {
+          "file": "style.css",
+          "line": 118
+        }
+      ]
     },
     {
       "selector": ".navSection2",
-      "label": "NavSection2",
+      "label": "Nav Section2",
       "file": "PlayPage.jsx",
-      "line": 564
+      "line": 564,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 564
+        },
+        {
+          "file": "style.css",
+          "line": 1181
+        }
+      ]
     },
     {
       "selector": ".outerSection",
-      "label": "OuterSection",
+      "label": "Outer Section",
       "file": "HomePage.jsx",
-      "line": 89
+      "line": 89,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 89
+        },
+        {
+          "file": "style.css",
+          "line": 65
+        }
+      ]
     },
     {
       "selector": ".outerSection2",
-      "label": "OuterSection2",
+      "label": "Outer Section2",
       "file": "PlayPage.jsx",
-      "line": 562
+      "line": 562,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 562
+        },
+        {
+          "file": "style.css",
+          "line": 1170
+        }
+      ]
     },
     {
       "selector": ".playSection",
-      "label": "PlaySection",
+      "label": "Play Section",
       "file": "PlayPage.jsx",
-      "line": 558
+      "line": 558,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 558
+        },
+        {
+          "file": "style.css",
+          "line": 1138
+        }
+      ]
     },
     {
       "selector": ".portfolioBlock",
-      "label": "PortfolioBlock",
+      "label": "Portfolio Block",
       "file": "HomePage.jsx",
-      "line": 143
+      "line": 143,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 143
+        },
+        {
+          "file": "style.css",
+          "line": 435
+        }
+      ]
     },
     {
       "selector": ".portfolioBlock2",
-      "label": "PortfolioBlock2",
+      "label": "Portfolio Block2",
       "file": "PlayPage.jsx",
-      "line": 640
+      "line": 640,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 640
+        },
+        {
+          "file": "style.css",
+          "line": 1424
+        }
+      ]
     },
     {
       "selector": ".portfolioIcon",
-      "label": "PortfolioIcon",
+      "label": "Portfolio Icon",
       "file": "HomePage.jsx",
-      "line": 147
+      "line": 147,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 147
+        },
+        {
+          "file": "style.css",
+          "line": 455
+        }
+      ]
     },
     {
       "selector": ".portfolioIcon2",
-      "label": "PortfolioIcon2",
+      "label": "Portfolio Icon2",
       "file": "PlayPage.jsx",
-      "line": 645
+      "line": 645,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 645
+        },
+        {
+          "file": "style.css",
+          "line": 1443
+        }
+      ]
     },
     {
       "selector": ".portfolioText",
-      "label": "PortfolioText",
+      "label": "Portfolio Text",
       "file": "HomePage.jsx",
-      "line": 145
+      "line": 145,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 145
+        },
+        {
+          "file": "style.css",
+          "line": 447
+        }
+      ]
     },
     {
       "selector": ".portfolioText2",
-      "label": "PortfolioText2",
+      "label": "Portfolio Text2",
       "file": "PlayPage.jsx",
-      "line": 642
+      "line": 642,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 642
+        },
+        {
+          "file": "style.css",
+          "line": 1435
+        }
+      ]
     },
     {
       "selector": ".retryButton",
-      "label": "RetryButton",
+      "label": "Retry Button",
       "file": "PlayPage.jsx",
-      "line": 735
+      "line": 735,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 735
+        },
+        {
+          "file": "style.css",
+          "line": 1696
+        }
+      ]
     },
     {
       "selector": ".scorePanel",
-      "label": "ScorePanel",
+      "label": "Score Panel",
       "file": "PlayPage.jsx",
-      "line": 703
+      "line": 703,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 703
+        },
+        {
+          "file": "style.css",
+          "line": 1607
+        }
+      ]
     },
     {
       "selector": ".scorePanelBestChip",
-      "label": "ScorePanelBestChip",
+      "label": "Score Panel Best Chip",
       "file": "PlayPage.jsx",
-      "line": 709
+      "line": 709,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 709
+        },
+        {
+          "file": "style.css",
+          "line": 1644
+        }
+      ]
     },
     {
       "selector": ".scorePanelLabel",
-      "label": "ScorePanelLabel",
+      "label": "Score Panel Label",
       "file": "PlayPage.jsx",
-      "line": 706
+      "line": 706,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 706
+        },
+        {
+          "file": "style.css",
+          "line": 1632
+        }
+      ]
     },
     {
       "selector": ".scorePanelPips",
-      "label": "ScorePanelPips",
+      "label": "Score Panel Pips",
       "file": "PlayPage.jsx",
-      "line": 711
+      "line": 711,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 711
+        },
+        {
+          "file": "style.css",
+          "line": 1654
+        }
+      ]
     },
     {
       "selector": ".scorePanelRow",
-      "label": "ScorePanelRow",
+      "label": "Score Panel Row",
       "file": "PlayPage.jsx",
-      "line": 704
+      "line": 704,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 704
+        },
+        {
+          "file": "style.css",
+          "line": 1619
+        }
+      ]
     },
     {
       "selector": ".scorePanelScoreGroup",
-      "label": "ScorePanelScoreGroup",
+      "label": "Score Panel Score Group",
       "file": "PlayPage.jsx",
-      "line": 705
+      "line": 705,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 705
+        },
+        {
+          "file": "style.css",
+          "line": 1626
+        }
+      ]
     },
     {
       "selector": ".scorePanelValue",
-      "label": "ScorePanelValue",
+      "label": "Score Panel Value",
       "file": "PlayPage.jsx",
-      "line": 707
+      "line": 707,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 707
+        },
+        {
+          "file": "style.css",
+          "line": 1638
+        }
+      ]
     },
     {
       "selector": ".speakerButton",
-      "label": "SpeakerButton",
+      "label": "Speaker Button",
       "file": "HomePage.jsx",
-      "line": 107
+      "line": 107,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 107
+        },
+        {
+          "file": "PlayPage.jsx",
+          "line": 581
+        },
+        {
+          "file": "style.css",
+          "line": 151
+        }
+      ]
     },
     {
       "selector": ".svg-element",
-      "label": "Svg element",
+      "label": "Svg Element",
       "file": "HomePage.jsx",
-      "line": 193
+      "line": 193,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 193
+        },
+        {
+          "file": "style.css",
+          "line": 630
+        }
+      ]
     },
     {
       "selector": ".svg-text",
-      "label": "Svg text",
+      "label": "Svg Text",
       "file": "HomePage.jsx",
-      "line": 194
+      "line": 194,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 194
+        },
+        {
+          "file": "style.css",
+          "line": 539
+        }
+      ]
     },
     {
       "selector": ".topColumn1",
-      "label": "TopColumn1",
+      "label": "Top Column1",
       "file": "HomePage.jsx",
-      "line": 93
+      "line": 93,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 93
+        },
+        {
+          "file": "style.css",
+          "line": 124
+        }
+      ]
     },
     {
       "selector": ".topColumn2",
-      "label": "TopColumn2",
+      "label": "Top Column2",
       "file": "HomePage.jsx",
-      "line": 140
+      "line": 140,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 140
+        },
+        {
+          "file": "style.css",
+          "line": 134
+        }
+      ]
     },
     {
       "selector": ".topColumn3",
-      "label": "TopColumn3",
+      "label": "Top Column3",
       "file": "PlayPage.jsx",
-      "line": 566
+      "line": 566,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 566
+        },
+        {
+          "file": "style.css",
+          "line": 1187
+        }
+      ]
     },
     {
       "selector": ".topColumn4",
-      "label": "TopColumn4",
+      "label": "Top Column4",
       "file": "PlayPage.jsx",
-      "line": 637
+      "line": 637,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 637
+        },
+        {
+          "file": "style.css",
+          "line": 1417
+        }
+      ]
     },
     {
       "selector": ".volumeSliderInput",
-      "label": "VolumeSliderInput",
+      "label": "Volume Slider Input",
       "file": "HomePage.jsx",
-      "line": 118
+      "line": 118,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 118
+        },
+        {
+          "file": "PlayPage.jsx",
+          "line": 593
+        },
+        {
+          "file": "style.css",
+          "line": 287
+        }
+      ]
     }
-  ]
+  ],
+  "hasDom": true
 }
