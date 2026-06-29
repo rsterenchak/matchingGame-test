@@ -69,3 +69,10 @@
   - File: `src/MainSection.jsx`, `src/test/MainSection.test.jsx`
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: 218cbc16-d267-4c02-bb38-867e46ab4ec6 -->
+
+- [ ] **[MEDIUM]** Add music toggle button and volume slider to PlayPage nav on desktop
+  - Type: feature
+  - Description: The music toggle icon and a volume slider are currently absent from `PlayPage` on desktop. Add both to the `.navSection` on `PlayPage` so the player can toggle audio and adjust volume without leaving the game. In `MainSection.jsx`, lift volume into a new `useState` (default `0.07`) and pass it down to the `Handle*Audio` components, applying it to the `Audio` instance inside each effect so the slider has real effect. Pass `isCurrentAudio`, the toggle handler, and the volume state + setter to `PlayPage` via props (mirroring how `HomePage` already receives them). The toggle button should reuse the existing music icon and `.musicBlock*` yellow-glow pattern; the volume slider is a native `<input type="range">` styled to match. Both controls must be hidden at ≤640px breakpoints (using existing breakpoint values in `style.css`) and must respect `popUpStyle` so they appear disabled-cursor during the end-game popup.
+  - File: `src/MainSection.jsx`, `src/PlayPage.jsx`, `src/style.css`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: 79a26cdf-cbd4-400b-8f4f-b5b2bd89d6bc -->
