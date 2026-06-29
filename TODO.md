@@ -113,3 +113,10 @@
   - File: `src/PlayPage.jsx`, `src/MobileMenu.jsx`, `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: 36680c5a-d66f-454d-b886-0ce6209c078f -->
+
+- [ ] **[MEDIUM]** Add music toggle and volume slider to PlayPage matching HomePage's layout and positioning
+  - Type: feature
+  - Description: Copy the `.musicIconWrapper` / `.musicBlock` / `.musicIcon` / `.speakerButton` / `.volumeSliderInput` markup and CSS from `HomePage.jsx` and `src/style.css` into `PlayPage.jsx` so the music controls appear in the same visual position on the play screen as they do on the home screen. Wire the toggle to the existing `forMusicIcon` prop (calls `setAudioPause`/`setAudioPlay`) and the slider to `isVolume`/`onVolumeChange`; apply `style={popUpStyle}` to both so they show a disabled cursor during the end-game popup. Once the controls are rendered directly on `PlayPage`, remove the duplicate music toggle and volume slider from `MobileMenu.jsx` so they are no longer accessible via the hamburger on any viewport width. CSS additions should mirror the existing `.musicIconWrapper` rules already in `style.css` for `HomePage` — reuse selectors where possible rather than duplicating declarations.
+  - File: `src/PlayPage.jsx`, `src/MobileMenu.jsx`, `src/style.css`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: facd783c-2d9d-4e79-87a0-d920727212a3 -->
