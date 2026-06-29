@@ -84,3 +84,11 @@
   - File: `src/PlayPage.jsx`, `src/MainSection.jsx`, `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: 426acfc2-a3a5-4024-9b10-6b0ab634ee45 -->
+
+- [ ] **[MEDIUM]** Add music toggle button with vertical volume slider to PlayPage nav, left of the hamburger menu
+  - Type: feature
+  - Repo: rsterenchak/matchingGame-test
+  - Description: The music toggle button (`.musicBlock2`) and a volume slider are absent from `PlayPage`'s `.navSection` — both exist on `HomePage` but were never added to `PlayPage`. Add the toggle button immediately to the LEFT of the `MobileMenu` hamburger trigger, reusing the `.musicBlock*` yellow-glow pattern, and wire it to the existing `setAudioPause`/`setAudioPlay` props. Render a native `<input type="range">` as a VERTICAL slider positioned directly below the toggle button (use the existing `.volumeSliderWrapper` structure plus a vertical orientation in CSS via `writing-mode: vertical-lr` / `appearance: slider-vertical`); it stays always-visible (no popover/open state), hanging below the toggle. Bind it to the `isVolume`/`onVolumeChange` props. Apply `style={popUpStyle}` to both controls so they show a disabled cursor during the end-game popup, and keep them hidden at ≤640px matching the existing `display: none` breakpoint in `style.css`. Acceptance: tapping the toggle still calls `setAudioPause`/`setAudioPlay` and reflects play/pause state; dragging the slider fires `onVolumeChange` and updates `isVolume`; the toggle does not overlap or block the hamburger's click target; verify `MainSection` passes `activeCurrentAudio`, `setAudioPause`, `setAudioPlay`, `isVolume`, and `onVolumeChange` to `PlayPage` and add any missing prop.
+  - File: `src/PlayPage.jsx`, `src/MainSection.jsx`, `src/style.css`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: 96bbb771-c95c-498d-9370-3ebab43609ab -->
