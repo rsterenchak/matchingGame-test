@@ -55,3 +55,10 @@
   - File: `src/MainSection.jsx`
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: d768c20a-c02a-43b8-b4f7-6cec94578010 -->
+
+- [ ] **[LOW]** Lower the default volume slider value from 0.005 to 0.003
+  - Type: bug
+  - Description: The slider-driven volume system defaults to 0.005 (stored under `matchingGame_volume` in localStorage). This default is still perceived as too loud on some devices. Change the fallback value used when no localStorage entry exists from `0.005` to `0.003` in `src/MainSection.jsx` where `isVolume` state is initialized.
+  - File: `src/MainSection.jsx`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: 65785c1a-1b21-4614-87a4-4223e7822d2e -->
