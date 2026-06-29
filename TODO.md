@@ -76,3 +76,11 @@
   - File: `src/MainSection.jsx`, `src/PlayPage.jsx`, `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: 79a26cdf-cbd4-400b-8f4f-b5b2bd89d6bc -->
+
+- [ ] **[MEDIUM]** Add music toggle button and volume slider to PlayPage nav on desktop
+  - Type: feature
+  - Repo: rsterenchak/matchingGame-test
+  - Description: The music toggle button (`.musicBlock2`) and volume slider (`<input type="range">`) are absent from `PlayPage`'s `.navSection` on desktop — both exist on `HomePage` but were never added to `PlayPage`. Add the toggle button reusing the `.musicBlock*` yellow-glow pattern and wire it to the existing `setAudioPause`/`setAudioPlay` props. Add the native range slider with the same `.volumeSliderWrapper` structure already present on `HomePage`, bound to `isVolume`/`onVolumeChange` props from `MainSection`. Both controls must be hidden at ≤640px (matching the existing `display: none` breakpoint in `style.css`) and must have `style={popUpStyle}` applied so they show a disabled cursor during the end-game popup. Verify `MainSection` is passing `activeCurrentAudio`, `setAudioPause`, `setAudioPlay`, `isVolume`, and `onVolumeChange` to `PlayPage`; add any missing props.
+  - File: `src/PlayPage.jsx`, `src/MainSection.jsx`, `src/style.css`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: 426acfc2-a3a5-4024-9b10-6b0ab634ee45 -->
