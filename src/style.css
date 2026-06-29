@@ -2196,10 +2196,13 @@ body {
     align-items: flex-start;
   }
 
-  .topColumn3 > .musicIconWrapper,
   .topColumn3 > .musicBlock3,
   .topColumn3 > .helpButton {
     display: none;
+  }
+
+  .topColumn3 > .musicIconWrapper {
+    display: flex;
   }
 
   .portfolioIcon2 {
@@ -2584,7 +2587,7 @@ body {
   }
 
   .topColumn3 > .musicIconWrapper {
-    display: none;
+    display: flex;
   }
 
   .topColumn3 > .musicBlock3 {

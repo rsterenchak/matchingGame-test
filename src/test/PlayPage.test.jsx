@@ -361,9 +361,10 @@ describe('Desktop layout: hamburger replaces individual nav controls at 641px+',
     expect(match[1]).not.toContain('display: none')
   })
 
-  it('topColumn3 > .musicIconWrapper is hidden at 641px so the music+slider cluster does not show on desktop', () => {
+  it('topColumn3 > .musicIconWrapper is visible at 641px so the music+slider cluster shows directly on the play screen', () => {
     const section = get641Section()
-    expect(section).toMatch(/\.topColumn3\s*>\s*\.musicIconWrapper\s*\{[^}]*display:\s*none/)
+    expect(section).toMatch(/\.topColumn3\s*>\s*\.musicIconWrapper\s*\{[^}]*display:\s*flex/)
+    expect(section).not.toMatch(/\.topColumn3\s*>\s*\.musicIconWrapper\s*\{[^}]*display:\s*none/)
   })
 
   it('topColumn3 > .musicBlock3 is hidden at 641px so the background-switch button does not show on desktop', () => {
@@ -374,5 +375,38 @@ describe('Desktop layout: hamburger replaces individual nav controls at 641px+',
   it('topColumn3 > .helpButton is hidden at 641px so the how-to-play button does not show on desktop', () => {
     const section = get641Section()
     expect(section).toMatch(/\.topColumn3\s*>\s*\.helpButton\s*\{[^}]*display:\s*none/)
+  })
+})
+
+describe('Play screen music controls show inline on mobile (moved out of hamburger)', () => {
+  function get320Section() {
+    const marker = '@media (min-width:320px)  {'
+    const idx = css.indexOf(marker)
+    const nextMedia = css.indexOf('@media', idx + 1)
+    return css.slice(idx, nextMedia === -1 ? undefined : nextMedia)
+  }
+
+  it('topColumn3 > .musicIconWrapper is not hidden at 320px so the music cluster stays reachable on mobile without the hamburger', () => {
+    const section = get320Section()
+    expect(section).not.toMatch(/\.topColumn3\s*>\s*\.musicIconWrapper\s*\{[^}]*display:\s*none/)
+  })
+
+  it('PlayPage renders the inline music toggle and volume slider directly in the nav', () => {
+    const props = {
+      background: 'fake-bg.jpg',
+      setHomePage: vi.fn(),
+      setAudioPause: vi.fn(),
+      setAudioPlay: vi.fn(),
+      activeCurrentAudio: false,
+      isActiveData: [],
+      isVolume: 0.5,
+      onVolumeChange: vi.fn(),
+    }
+    vi.useFakeTimers()
+    render(<PlayPage {...props} />)
+    expect(document.querySelector('.musicIconWrapper .musicBlock2')).not.toBeNull()
+    expect(document.querySelector('.musicIconWrapper .volumeSliderInput')).not.toBeNull()
+    vi.clearAllTimers()
+    vi.useRealTimers()
   })
 })

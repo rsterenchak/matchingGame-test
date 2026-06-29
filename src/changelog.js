@@ -1,6 +1,13 @@
 export const changelog = [
   {
     version: '1.0',
+    date: '2026-06-29',
+    changed: [
+      'The play screen now shows the music toggle and volume slider directly in the top navigation instead of tucking them inside the menu.',
+    ],
+  },
+  {
+    version: '1.0',
     date: '2026-06-28',
     fixed: [
       'Background music now starts quieter by default for a gentler first-load volume.',
@@ -14,7 +21,6 @@ export const changelog = [
       'The volume sliders now adjust the music smoothly from silent to full instead of snapping to maximum at the slightest movement.',
     ],
     changed: [
-      'On desktop screens, the nimbus cloud on the title screen now sits slightly further to the right.',
       'On desktop screens, the nimbus cloud on the title screen now sits slightly further to the left.',
     ],
   },

@@ -631,6 +631,7 @@ export default function PlayPage({
                   isVolume={isVolume}
                   onVolumeChange={onVolumeChange}
                   popUpStyle={popUpStyle}
+                  showMusic={false}
                 />
 
             </div>

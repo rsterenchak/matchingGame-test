@@ -81,6 +81,16 @@ describe('MobileMenu modal', () => {
     fireEvent.click(document.querySelector('.hamburgerButton'))
     expect(document.querySelector('.mobileMenuDropdown')).toBeNull()
   })
+
+  it('omits the music toggle and volume slider when showMusic is false (PlayPage renders them inline)', () => {
+    render(<MobileMenu {...defaultProps} showMusic={false} />)
+    fireEvent.click(document.querySelector('.hamburgerButton'))
+    expect(screen.queryByText(/Music/)).toBeNull()
+    expect(document.querySelector('.mobileMenuVolumeSlider')).toBeNull()
+    // Other rows still render so the menu stays useful
+    expect(screen.getByText('Background')).toBeInTheDocument()
+    expect(screen.getByText('GitHub')).toBeInTheDocument()
+  })
 })
 
 describe('MobileMenu volume slider range', () => {
