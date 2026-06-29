@@ -496,7 +496,7 @@ export default function MainSection() {
   const [isCurrentAudio, setCurrentAudio] = useState(false);
   const [isVolume, setVolume] = useState(() => {
     const saved = localStorage.getItem('matchingGame_volume');
-    return saved !== null ? parseFloat(saved) : 0.005;
+    return saved !== null ? parseFloat(saved) : 0.003;
   });
 
   const [activeData, setActiveData] = useState([]);
