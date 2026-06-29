@@ -55,7 +55,9 @@ describe('Persistent Audio instances (overlapping-instance fix)', () => {
   })
 
   it('sets volume on the single persistent instance, not a throwaway', () => {
-    expect(source).toMatch(/audioRef\.current\.volume = volumeLevel/)
+    // The perceptual taper squares the linear slider value before assigning gain,
+    // so a low slider position yields a much quieter actual volume.
+    expect(source).toMatch(/audioRef\.current\.volume = volumeLevel \*\* 2/)
   })
 
   it('drives play and cleanup-pause through the same ref instance', () => {
