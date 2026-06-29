@@ -11,6 +11,7 @@ export default function MobileMenu({
   isVolume,
   onVolumeChange,
   popUpStyle,
+  showMusic = true,
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -50,30 +51,34 @@ export default function MobileMenu({
               <div className='mobileMenuCloseButton' onClick={() => setIsOpen(false)}>✕</div>
             </div>
 
-            <div className='mobileMenuDivider' />
+            {showMusic && (
+              <>
+                <div className='mobileMenuDivider' />
 
-            <div
-              className='mobileMenuRow'
-              onClick={() => forMusicIcon()}
-            >
-              <img className='mobileMenuIcon' src={musicIcon} alt="" />
-              <span className='mobileMenuLabel'>Music {activeCurrentAudio ? '(On)' : '(Off)'}</span>
-            </div>
+                <div
+                  className='mobileMenuRow'
+                  onClick={() => forMusicIcon()}
+                >
+                  <img className='mobileMenuIcon' src={musicIcon} alt="" />
+                  <span className='mobileMenuLabel'>Music {activeCurrentAudio ? '(On)' : '(Off)'}</span>
+                </div>
 
-            <div className='mobileMenuDivider' />
+                <div className='mobileMenuDivider' />
 
-            <div className='mobileMenuRow mobileMenuSliderRow'>
-              <input
-                type="range"
-                className="mobileMenuVolumeSlider"
-                min="0"
-                max="1"
-                step="0.001"
-                value={isVolume}
-                style={{ background: `linear-gradient(to right, yellow ${isVolume * 100}%, #ccc ${isVolume * 100}%)` }}
-                onChange={e => onVolumeChange(parseFloat(e.target.value))}
-              />
-            </div>
+                <div className='mobileMenuRow mobileMenuSliderRow'>
+                  <input
+                    type="range"
+                    className="mobileMenuVolumeSlider"
+                    min="0"
+                    max="1"
+                    step="0.001"
+                    value={isVolume}
+                    style={{ background: `linear-gradient(to right, yellow ${isVolume * 100}%, #ccc ${isVolume * 100}%)` }}
+                    onChange={e => onVolumeChange(parseFloat(e.target.value))}
+                  />
+                </div>
+              </>
+            )}
 
             {setupPage && (
               <>
