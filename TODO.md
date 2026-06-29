@@ -63,7 +63,7 @@
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: 65785c1a-1b21-4614-87a4-4223e7822d2e -->
 
-- [ ] **[MEDIUM]** Apply a perceptual (exponential) curve to slider volume so low positions are actually quiet
+- [x] **[MEDIUM]** Apply a perceptual (exponential) curve to slider volume so low positions are actually quiet — Completed: 2026-06-28
   - Type: bug
   - Description: The volume slider maps its 0–1 value linearly into `audioRef.current.volume`, but perceived loudness is logarithmic, so the bottom portion of the slider still sounds loud even at a low position. Keep the slider's stored/displayed value linear (0–1) for persistence under `matchingGame_volume` and for slider position, but apply a perceptual taper when computing the gain passed to the Audio instances: set `audioRef.current.volume = volumeLevel ** 2` in each `Handle*Audio` helper in `src/MainSection.jsx` (replacing the direct `audioRef.current.volume = volumeLevel` assignment), so a mid/low slider position yields a much lower actual gain while the top still reaches full volume. Do not change the slider min/max/step, the `value={isVolume}` wiring, the `handleVolumeChange` persistence, or the four `volumeLevel={isVolume}` props. Acceptance: dragging the slider into its lower half produces clearly quiet audio; full-right still reaches full volume; slider-at-zero stays silent; existing volume tests in `src/test/MainSection.test.jsx` still pass (note the `audioRef.current.volume = volumeLevel` regex assertion will need updating to allow the `** 2` taper).
   - File: `src/MainSection.jsx`, `src/test/MainSection.test.jsx`

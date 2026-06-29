@@ -82,7 +82,7 @@ function HandleHomeAudio({
     }, [audioState])
 
     useEffect(() => {
-      audioRef.current.volume = volumeLevel;
+      audioRef.current.volume = volumeLevel ** 2;
     }, [volumeLevel])
 
 
@@ -146,7 +146,7 @@ function HandlePauseAudio({
     }, [audioState])
 
     useEffect(() => {
-      audioRef.current.volume = volumeLevel;
+      audioRef.current.volume = volumeLevel ** 2;
     }, [volumeLevel])
 
 
@@ -223,7 +223,7 @@ function HandlePlayAudio({
     }, [audioState])
 
     useEffect(() => {
-      audioRef.current.volume = volumeLevel;
+      audioRef.current.volume = volumeLevel ** 2;
     }, [volumeLevel])
 
 
@@ -287,7 +287,7 @@ function HandlePausePlayAudio({
     }, [audioState])
 
     useEffect(() => {
-      audioRef.current.volume = volumeLevel;
+      audioRef.current.volume = volumeLevel ** 2;
     }, [volumeLevel])
 
 
