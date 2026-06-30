@@ -70,13 +70,6 @@
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: 218cbc16-d267-4c02-bb38-867e46ab4ec6 -->
 
-- [ ] **[MEDIUM]** Expose music toggle and vertical volume slider on desktop in PlayPage nav, left of hamburger
-  - Type: feature
-  - Description: On desktop (≥641px), `.musicIconWrapper` (containing the `.musicBlock2` toggle and `.volumeSliderInput` vertical slider) is currently hidden and its controls are only accessible inside the `MobileMenu` hamburger. Invert the CSS breakpoint so that at ≥641px `.musicIconWrapper` is visible (displayed left of the `.mobileMenuWrapper` hamburger trigger) and the music toggle + volume slider are removed from `MobileMenu`'s rendered output at that width. The toggle must remain wired to `forMusicIcon` → `setAudioPause`/`setAudioPlay` and reflect play/pause state; the slider must remain bound to `isVolume`/`onVolumeChange`; both must have `style={popUpStyle}` applied so they show a disabled cursor during the end-game popup. At ≤640px the existing behavior is unchanged: `.musicIconWrapper` stays hidden and the controls remain inside `MobileMenu`.
-  - File: `src/PlayPage.jsx`, `src/MobileMenu.jsx`, `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
-  <!-- id: 36680c5a-d66f-454d-b886-0ce6209c078f -->
-
 - [x] **[MEDIUM]** Add music toggle and volume slider to PlayPage matching HomePage's layout and positioning — Completed: 2026-06-29
   - Type: feature
   - Description: Copy the `.musicIconWrapper` / `.musicBlock` / `.musicIcon` / `.speakerButton` / `.volumeSliderInput` markup and CSS from `HomePage.jsx` and `src/style.css` into `PlayPage.jsx` so the music controls appear in the same visual position on the play screen as they do on the home screen. Wire the toggle to the existing `forMusicIcon` prop (calls `setAudioPause`/`setAudioPlay`) and the slider to `isVolume`/`onVolumeChange`; apply `style={popUpStyle}` to both so they show a disabled cursor during the end-game popup. Once the controls are rendered directly on `PlayPage`, remove the duplicate music toggle and volume slider from `MobileMenu.jsx` so they are no longer accessible via the hamburger on any viewport width. CSS additions should mirror the existing `.musicIconWrapper` rules already in `style.css` for `HomePage` — reuse selectors where possible rather than duplicating declarations.
