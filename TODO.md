@@ -72,13 +72,6 @@
 
 - [ ] **[MEDIUM]** Add music toggle button and volume slider to PlayPage nav on desktop
   - Type: feature
-  - Description: The music toggle icon and a volume slider are currently absent from `PlayPage` on desktop. Add both to the `.navSection` on `PlayPage` so the player can toggle audio and adjust volume without leaving the game. In `MainSection.jsx`, lift volume into a new `useState` (default `0.07`) and pass it down to the `Handle*Audio` components, applying it to the `Audio` instance inside each effect so the slider has real effect. Pass `isCurrentAudio`, the toggle handler, and the volume state + setter to `PlayPage` via props (mirroring how `HomePage` already receives them). The toggle button should reuse the existing music icon and `.musicBlock*` yellow-glow pattern; the volume slider is a native `<input type="range">` styled to match. Both controls must be hidden at ≤640px breakpoints (using existing breakpoint values in `style.css`) and must respect `popUpStyle` so they appear disabled-cursor during the end-game popup.
-  - File: `src/MainSection.jsx`, `src/PlayPage.jsx`, `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
-  <!-- id: 79a26cdf-cbd4-400b-8f4f-b5b2bd89d6bc -->
-
-- [ ] **[MEDIUM]** Add music toggle button and volume slider to PlayPage nav on desktop
-  - Type: feature
   - Repo: rsterenchak/matchingGame-test
   - Description: The music toggle button (`.musicBlock2`) and volume slider (`<input type="range">`) are absent from `PlayPage`'s `.navSection` on desktop — both exist on `HomePage` but were never added to `PlayPage`. Add the toggle button reusing the `.musicBlock*` yellow-glow pattern and wire it to the existing `setAudioPause`/`setAudioPlay` props. Add the native range slider with the same `.volumeSliderWrapper` structure already present on `HomePage`, bound to `isVolume`/`onVolumeChange` props from `MainSection`. Both controls must be hidden at ≤640px (matching the existing `display: none` breakpoint in `style.css`) and must have `style={popUpStyle}` applied so they show a disabled cursor during the end-game popup. Verify `MainSection` is passing `activeCurrentAudio`, `setAudioPause`, `setAudioPlay`, `isVolume`, and `onVolumeChange` to `PlayPage`; add any missing props.
   - File: `src/PlayPage.jsx`, `src/MainSection.jsx`, `src/style.css`
