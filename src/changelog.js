@@ -1,6 +1,13 @@
 export const changelog = [
   {
     version: '1.0',
+    date: '2026-06-30',
+    fixed: [
+      'Background music now plays at the correct quiet volume from the very first moment it starts, not just after moving the volume slider.',
+    ],
+  },
+  {
+    version: '1.0',
     date: '2026-06-29',
     changed: [
       'The play screen now shows the music toggle and volume slider directly in the top navigation instead of tucking them inside the menu.',
@@ -19,9 +26,6 @@ export const changelog = [
     date: '2026-06-25',
     fixed: [
       'The volume sliders now adjust the music smoothly from silent to full instead of snapping to maximum at the slightest movement.',
-    ],
-    changed: [
-      'On desktop screens, the nimbus cloud on the title screen now sits slightly further to the left.',
     ],
   },
 ];

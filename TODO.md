@@ -49,11 +49,11 @@
   - Completed: 2026-06-28
   <!-- id: de8e42fe-5a8a-4e28-a61f-fe2176fad191 -->
 
-- [ ] **[LOW]** Reduce default audio volume from 0.07 to 0.03 for both game tracks
+- [x] **[LOW]** Reduce default audio volume from 0.07 to 0.03 for both game tracks
   - Type: bug
   - Description: The current volume of 0.07 is too loud even at low levels. Lower the hardcoded volume constant to 0.03 on both Audio instances. Both tracks (DragonBallZ.mp3 and NamekTheme.mp3) are initialized in the Handle*Audio components inside `src/MainSection.jsx` — update the `.volume` assignment on each.
   - File: `src/MainSection.jsx`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-06-30
   <!-- id: d768c20a-c02a-43b8-b4f7-6cec94578010 -->
 
 - [x] **[LOW]** Lower the default volume slider value from 0.005 to 0.003 — Completed: 2026-06-28
