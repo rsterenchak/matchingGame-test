@@ -60,6 +60,14 @@ describe('Persistent Audio instances (overlapping-instance fix)', () => {
     expect(source).toMatch(/audioRef\.current\.volume = volumeLevel \*\* 2/)
   })
 
+  it('applies the perceptual taper on Audio construction, not just on slider changes', () => {
+    // Each Handle*Audio lazily constructs its Audio object and sets a.volume at that
+    // point. That init must also square the linear slider value so the very first
+    // audio frame uses the same perceptual curve as subsequent volumeLevel updates —
+    // not the louder linear value that existed before the effect fires.
+    expect(source).not.toMatch(/a\.volume = volumeLevel(?!\s*\*\*\s*2)/)
+  })
+
   it('drives play and cleanup-pause through the same ref instance', () => {
     expect(source).toMatch(/audioRef\.current\.play\(\)/)
     expect(source).toMatch(/audioRef\.current\.pause\(\)/)

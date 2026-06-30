@@ -22,7 +22,7 @@ function HandleHomeAudio({
   if (audioRef.current === null) {
     const a = new Audio(homeSong);
     a.loop = true;
-    a.volume = volumeLevel;
+    a.volume = volumeLevel ** 2;
     audioRef.current = a;
   }
 
@@ -98,7 +98,7 @@ function HandlePauseAudio({
   if (audioRef.current === null) {
     const a = new Audio(homeSong);
     a.loop = true;
-    a.volume = volumeLevel;
+    a.volume = volumeLevel ** 2;
     audioRef.current = a;
   }
 
@@ -162,7 +162,7 @@ function HandlePlayAudio({
   if (audioRef.current === null) {
     const a = new Audio(playSong);
     a.loop = true;
-    a.volume = volumeLevel;
+    a.volume = volumeLevel ** 2;
     a.currentTime = 1;
     audioRef.current = a;
   }
@@ -239,7 +239,7 @@ function HandlePausePlayAudio({
   if (audioRef.current === null) {
     const a = new Audio(playSong);
     a.loop = true;
-    a.volume = volumeLevel;
+    a.volume = volumeLevel ** 2;
     audioRef.current = a;
   }
 
