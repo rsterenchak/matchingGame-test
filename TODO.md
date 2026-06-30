@@ -72,13 +72,6 @@
 
 - [ ] **[MEDIUM]** Expose music toggle and vertical volume slider on desktop in PlayPage nav, left of hamburger
   - Type: feature
-  - Description: On desktop (≥641px), `.musicIconWrapper` (containing the `.musicBlock2` toggle and `.volumeSliderInput` vertical slider) is currently hidden and its controls are only accessible inside the `MobileMenu` hamburger. Invert the CSS breakpoint so that at ≥641px `.musicIconWrapper` is visible (displayed left of the `.mobileMenuWrapper` hamburger trigger) and the music toggle + volume slider are removed from `MobileMenu`'s rendered output at that width. The toggle must remain wired to `forMusicIcon` → `setAudioPause`/`setAudioPlay` and reflect play/pause state; the slider must remain bound to `isVolume`/`onVolumeChange`; both must have `style={popUpStyle}` applied so they show a disabled cursor during the end-game popup. At ≤640px the existing behavior is unchanged: `.musicIconWrapper` stays hidden and the controls remain inside `MobileMenu`. Update the assertions in `PlayPage.test.jsx` lines 348–378 to match the new contract (`.musicIconWrapper` visible at ≥641px, music controls absent from hamburger at ≥641px) — do not delete the tests, invert them.
-  - File: `src/PlayPage.jsx`, `src/MobileMenu.jsx`, `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
-  <!-- id: 9f63b6ef-fad6-43dc-8e2d-14d71d928402 -->
-
-- [ ] **[MEDIUM]** Expose music toggle and vertical volume slider on desktop in PlayPage nav, left of hamburger
-  - Type: feature
   - Description: On desktop (≥641px), `.musicIconWrapper` (containing the `.musicBlock2` toggle and `.volumeSliderInput` vertical slider) is currently hidden and its controls are only accessible inside the `MobileMenu` hamburger. Invert the CSS breakpoint so that at ≥641px `.musicIconWrapper` is visible (displayed left of the `.mobileMenuWrapper` hamburger trigger) and the music toggle + volume slider are removed from `MobileMenu`'s rendered output at that width. The toggle must remain wired to `forMusicIcon` → `setAudioPause`/`setAudioPlay` and reflect play/pause state; the slider must remain bound to `isVolume`/`onVolumeChange`; both must have `style={popUpStyle}` applied so they show a disabled cursor during the end-game popup. At ≤640px the existing behavior is unchanged: `.musicIconWrapper` stays hidden and the controls remain inside `MobileMenu`.
   - File: `src/PlayPage.jsx`, `src/MobileMenu.jsx`, `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
