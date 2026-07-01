@@ -4,6 +4,7 @@ export const changelog = [
     date: '2026-07-01',
     fixed: [
       'The nimbus cloud on the home screen now sits slightly higher and further left on mobile screens, matching its intended position.',
+      'The nimbus cloud on the home screen is nudged further up and to the left on the smallest mobile screens for tighter placement.',
     ],
   },
   {
@@ -24,7 +25,6 @@ export const changelog = [
     version: '1.0',
     date: '2026-06-28',
     fixed: [
-      'Background music now starts quieter by default for a gentler first-load volume.',
       'The lower half of the volume slider now produces genuinely quiet audio, with the top still reaching full volume.',
     ],
   },
