@@ -1,6 +1,13 @@
 export const changelog = [
   {
     version: '1.0',
+    date: '2026-07-01',
+    fixed: [
+      'The nimbus cloud on the home screen now sits slightly higher and further left on mobile screens, matching its intended position.',
+    ],
+  },
+  {
+    version: '1.0',
     date: '2026-06-30',
     fixed: [
       'Background music now plays at the correct quiet volume from the very first moment it starts, not just after moving the volume slider.',
@@ -19,13 +26,6 @@ export const changelog = [
     fixed: [
       'Background music now starts quieter by default for a gentler first-load volume.',
       'The lower half of the volume slider now produces genuinely quiet audio, with the top still reaching full volume.',
-    ],
-  },
-  {
-    version: '1.0',
-    date: '2026-06-25',
-    fixed: [
-      'The volume sliders now adjust the music smoothly from silent to full instead of snapping to maximum at the slightest movement.',
     ],
   },
 ];
