@@ -782,33 +782,36 @@ describe('Goku gif hidden below the 1281px breakpoint (visible only on large des
   })
 })
 
-describe('Mobile nimbus cloud nudged ~12px up and left within logoContainer2 (regression: cloud sat slightly off spot)', () => {
+describe('Mobile nimbus cloud nudged up and left within logoContainer2 (regression: cloud sat slightly off spot)', () => {
+  // 320px/481px received a further 12px up+left nudge (24px total off the base);
+  // 641px keeps the earlier 12px offset since the task scoped the extra nudge to
+  // the two smallest mobile breakpoints only.
   const mobileBlocks = [
-    ['320px', css.match(/@media\s*\(min-width:\s*320px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? ''],
-    ['481px', css.match(/@media\s*\(min-width:\s*481px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''],
-    ['641px', css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''],
+    ['320px', css.match(/@media\s*\(min-width:\s*320px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? '', 24],
+    ['481px', css.match(/@media\s*\(min-width:\s*481px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? '', 24],
+    ['641px', css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? '', 12],
   ]
 
-  for (const [label, block] of mobileBlocks) {
+  for (const [label, block, px] of mobileBlocks) {
     it(`${label} .logoContainer2 declares a translate so the cloud can be nudged without reflowing siblings`, () => {
       const ruleMatch = block.match(/\.logoContainer2\s*\{([^}]+)\}/)
       expect(ruleMatch).not.toBeNull()
       expect(ruleMatch[1]).toMatch(/translate:\s*[^;]+;/)
     })
 
-    it(`${label} .logoContainer2 translate shifts the nimbus 12px further left`, () => {
+    it(`${label} .logoContainer2 translate shifts the nimbus ${px}px further left`, () => {
       const ruleMatch = block.match(/\.logoContainer2\s*\{([^}]+)\}/)
       const tr = ruleMatch[1].match(/translate:\s*([^;]+);/)
       expect(tr).not.toBeNull()
-      expect(tr[1].trim()).toMatch(/^-12px\b/)
+      expect(tr[1].trim()).toMatch(new RegExp(`^-${px}px\\b`))
     })
 
-    it(`${label} .logoContainer2 translate adds a 12px upward nudge on top of the base -20% lift`, () => {
+    it(`${label} .logoContainer2 translate adds a ${px}px upward nudge on top of the base -20% lift`, () => {
       const ruleMatch = block.match(/\.logoContainer2\s*\{([^}]+)\}/)
       const tr = ruleMatch[1].match(/translate:\s*([^;]+);/)
       expect(tr).not.toBeNull()
-      // Y offset keeps the base -20% lift and subtracts a further 12px.
-      expect(tr[1]).toMatch(/-20%\s*-\s*12px/)
+      // Y offset keeps the base -20% lift and subtracts a further Npx.
+      expect(tr[1]).toMatch(new RegExp(`-20%\\s*-\\s*${px}px`))
     })
   }
 
