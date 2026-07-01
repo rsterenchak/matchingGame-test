@@ -83,10 +83,3 @@
   - File: `src/style.css`, `src/HomePage.jsx`
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: e999eef2-e449-4c9d-96a7-1df9b00ca641 -->
-
-- [ ] **[LOW]** Shift the nimbus cloud logo (logoContainer2) up and left by 12px
-  - Type: bug
-  - Description: The `.logoContainer2` element (nimbus cloud graphic on the home screen) is positioned slightly off from its intended spot. Adjust its positioning so it sits 12px further up and 12px further left than current, using whichever positioning mechanism is already applied (`top`/`left` offset, `margin`, or `transform`) in the `.logoContainer2` rule. Likely code location: the `.logoContainer2` class in `src/style.css`.
-  - File: `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
-  <!-- id: 7929d773-1cb5-44cc-bd3e-4ac4fe7d63c8 -->
