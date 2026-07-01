@@ -76,3 +76,10 @@
   - File: `src/PlayPage.jsx`, `src/MobileMenu.jsx`, `src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: facd783c-2d9d-4e79-87a0-d920727212a3 -->
+
+- [ ] **[LOW]** Shift nimbus cloud image up and left within logoContainer2 on mobile
+  - Type: bug
+  - Description: On mobile breakpoints, the nimbus cloud graphic nested under `.logoContainer2` on the home screen sits slightly off from its intended spot. Adjust its offset within the existing mobile media queries (320px/481px/641px breakpoints) so it sits about 12px further left and 12px further up relative to its current position, likely via `top`/`left` or `margin` on the nimbus cloud's rule inside those breakpoints. Do not change its positioning at desktop widths.
+  - File: `src/style.css`, `src/HomePage.jsx`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: e999eef2-e449-4c9d-96a7-1df9b00ca641 -->
