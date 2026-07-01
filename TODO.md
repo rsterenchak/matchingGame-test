@@ -84,7 +84,7 @@
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: e999eef2-e449-4c9d-96a7-1df9b00ca641 -->
 
-- [ ] **[LOW]** Shift the nimbus cloud image 12px up and to the left on mobile
+- [x] **[LOW]** Shift the nimbus cloud image 12px up and to the left on mobile — Completed: 2026-07-01
   - Type: bug
   - Description: On mobile viewports, the nimbus cloud decorative image on the HomePage sits slightly off from its intended position. Adjust its CSS position (via `top`/`left` or `transform: translate`) within the existing mobile breakpoint(s) (320px/481px) to move it 12px up and 12px to the left, without affecting its position at desktop widths. Locate the current rule in the relevant media query block in style.css.
   - File: `src/style.css`, `src/HomePage.jsx`
