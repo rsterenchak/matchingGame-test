@@ -781,3 +781,42 @@ describe('Goku gif hidden below the 1281px breakpoint (visible only on large des
     expect(ruleMatch[1]).toMatch(/width:\s*600px/)
   })
 })
+
+describe('Mobile nimbus cloud nudged ~12px up and left within logoContainer2 (regression: cloud sat slightly off spot)', () => {
+  const mobileBlocks = [
+    ['320px', css.match(/@media\s*\(min-width:\s*320px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? ''],
+    ['481px', css.match(/@media\s*\(min-width:\s*481px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''],
+    ['641px', css.match(/@media\s*\(min-width:\s*641px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''],
+  ]
+
+  for (const [label, block] of mobileBlocks) {
+    it(`${label} .logoContainer2 declares a translate so the cloud can be nudged without reflowing siblings`, () => {
+      const ruleMatch = block.match(/\.logoContainer2\s*\{([^}]+)\}/)
+      expect(ruleMatch).not.toBeNull()
+      expect(ruleMatch[1]).toMatch(/translate:\s*[^;]+;/)
+    })
+
+    it(`${label} .logoContainer2 translate shifts the nimbus 12px further left`, () => {
+      const ruleMatch = block.match(/\.logoContainer2\s*\{([^}]+)\}/)
+      const tr = ruleMatch[1].match(/translate:\s*([^;]+);/)
+      expect(tr).not.toBeNull()
+      expect(tr[1].trim()).toMatch(/^-12px\b/)
+    })
+
+    it(`${label} .logoContainer2 translate adds a 12px upward nudge on top of the base -20% lift`, () => {
+      const ruleMatch = block.match(/\.logoContainer2\s*\{([^}]+)\}/)
+      const tr = ruleMatch[1].match(/translate:\s*([^;]+);/)
+      expect(tr).not.toBeNull()
+      // Y offset keeps the base -20% lift and subtracts a further 12px.
+      expect(tr[1]).toMatch(/-20%\s*-\s*12px/)
+    })
+  }
+
+  it('961px desktop nimbus translate is untouched (mobile-only nudge)', () => {
+    const media961 = css.match(/@media\s*\(min-width:\s*961px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
+    const ruleMatch = media961.match(/\.logoContainer2\s*\{([\s\S]*?)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/translate:\s*-10%\s+-10%/)
+    expect(ruleMatch[1]).not.toMatch(/-12px/)
+  })
+})

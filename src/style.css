@@ -782,6 +782,14 @@ body {
     margin-top: -5vh;
     object-fit: contain;
 
+    /* Nudge the nimbus ~12px further left and ~12px further up from its
+       current mobile spot. Using the individual `translate` property (not
+       `top`/`left`/`margin`) reflows nothing and — unlike `transform`, which
+       the `floatCloud` bob animation overrides while it runs — survives the
+       animation, so the offset holds mid-bob. The Y keeps the base -20% lift
+       and subtracts a further 12px. */
+    translate: -12px calc(-20% - 12px);
+
     /* Mobile-only gentle bob; cascades up to the 961px block, where
        `nimbus-float` re-declares the animation for desktop. */
     -webkit-animation: floatCloud 3s ease-in-out infinite;
@@ -878,6 +886,7 @@ body {
     transform: translateX(12.3%);
     margin-top: -5vh;
     object-fit: contain;
+    translate: -12px calc(-20% - 12px);
   }
 
   .inputSection {
@@ -920,6 +929,7 @@ body {
     transform: translateX(12.3%);
     margin-top: -5vh;
     object-fit: contain;
+    translate: -12px calc(-20% - 12px);
   }
 }
 
