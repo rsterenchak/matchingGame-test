@@ -91,7 +91,7 @@
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: dda3e9f6-ba99-418f-acfa-3abbc4ce4179 -->
 
-- [ ] **[LOW]** Add a CSS comment to `style.css` to trigger a redeploy
+- [x] **[LOW]** Add a CSS comment to `style.css` to trigger a redeploy — Completed: 2026-07-03
   - Type: feature
   - Description: Add a harmless top-of-file comment (e.g. a timestamp or note) to `src/style.css` with no functional CSS changes. Purpose is solely to force a new build/deploy of the site. No visual or behavioral change should result.
   - File: `src/style.css`
