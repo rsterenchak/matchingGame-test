@@ -90,3 +90,10 @@
   - File: `src/style.css`, `src/HomePage.jsx`
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: dda3e9f6-ba99-418f-acfa-3abbc4ce4179 -->
+
+- [ ] **[LOW]** Add a CSS comment to `style.css` to trigger a redeploy
+  - Type: feature
+  - Description: Add a harmless top-of-file comment (e.g. a timestamp or note) to `src/style.css` with no functional CSS changes. Purpose is solely to force a new build/deploy of the site. No visual or behavioral change should result.
+  - File: `src/style.css`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: ce47021b-bc07-44e7-a810-ab64682d6af6 -->
