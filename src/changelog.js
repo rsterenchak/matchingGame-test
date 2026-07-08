@@ -1,6 +1,13 @@
 export const changelog = [
   {
     version: '1.0',
+    date: '2026-07-08',
+    fixed: [
+      'The nimbus cloud on the home screen now sits lower on medium-width screens, correcting a position where it appeared too high.',
+    ],
+  },
+  {
+    version: '1.0',
     date: '2026-07-01',
     fixed: [
       'The nimbus cloud on the home screen now sits slightly higher and further left on mobile screens, matching its intended position.',
@@ -19,13 +26,6 @@ export const changelog = [
     date: '2026-06-29',
     changed: [
       'The play screen now shows the music toggle and volume slider directly in the top navigation instead of tucking them inside the menu.',
-    ],
-  },
-  {
-    version: '1.0',
-    date: '2026-06-28',
-    fixed: [
-      'The lower half of the volume slider now produces genuinely quiet audio, with the top still reaching full volume.',
     ],
   },
 ];

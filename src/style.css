@@ -934,6 +934,15 @@ body {
   }
 }
 
+/* Within the 641px–961px range the Nimbus logo (.logoContainer2) sits too high.
+   Nudge it down ~24px here only; bounded to max-width 960px so the 961px+ desktop
+   placement (and every sibling) is left untouched. */
+@media (min-width:641px) and (max-width:960px) {
+  .logoContainer2 {
+    margin-top: calc(-5vh + 24px);
+  }
+}
+
 @media (min-width:961px) {
 
   .homeSection {
