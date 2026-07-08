@@ -98,9 +98,9 @@
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: ce47021b-bc07-44e7-a810-ab64682d6af6 -->
 
-- [ ] **[LOW]** Shift .logoContainer2 image down at 641px–961px breakpoint
+- [x] **[LOW]** Shift .logoContainer2 image down at 641px–961px breakpoint
   - Type: bug
   - Description: On HomePage, the img.logoContainer2 element sits too high within the 641px–961px width range. Add or adjust a media query in style.css targeting that breakpoint so the element is pushed down by at least 20px (e.g. via margin-top or transform), without altering its position outside that range or affecting the position of any sibling elements (Fight button, music icon, Goku gif).
   - File: `toDoList_main/src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-07-08
   <!-- id: 9233bd0e-7389-4824-b9ea-d292b08ff084 -->
