@@ -410,3 +410,33 @@ describe('Play screen music controls show inline on mobile (moved out of hamburg
     vi.useRealTimers()
   })
 })
+
+describe('Music toggle hover does not shift card rows (regression: hover grew box model)', () => {
+  it('.musicBlock2 base rule keeps a fixed 60x55 size', () => {
+    const match = css.match(/\.musicBlock2\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/width:\s*60px/)
+    expect(match[1]).toMatch(/height:\s*55px/)
+  })
+
+  it('.musicBlock2:hover uses a box-shadow ring rather than a size-growing animation', () => {
+    const match = css.match(/\.musicBlock2:hover\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    // No animation that would drive a width/height change on hover
+    expect(match[1]).not.toMatch(/animation/)
+    expect(match[1]).not.toMatch(/change-color3/)
+    // Non-layout-affecting hover feedback via box-shadow
+    expect(match[1]).toMatch(/box-shadow/)
+  })
+
+  it('.musicBlock2:hover never changes width or height on hover', () => {
+    const match = css.match(/\.musicBlock2:hover\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).not.toMatch(/\bwidth:/)
+    expect(match[1]).not.toMatch(/\bheight:/)
+  })
+
+  it('the size-growing change-color3 keyframes are removed everywhere', () => {
+    expect(css).not.toMatch(/change-color3/)
+  })
+})
