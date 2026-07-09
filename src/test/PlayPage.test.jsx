@@ -461,3 +461,27 @@ describe('Nav icons in .navSection2 share a consistent scale-up grow on hover', 
     expect(match[1]).toMatch(/transform:\s*scale/)
   })
 })
+
+describe('Nav icons in .navSection2 show no dark box on hover (regression: black mark over icon)', () => {
+  const icons = ['.musicBlock2', '.musicBlock3', '.helpButton']
+
+  // The scale-up grow establishes a stacking context on hover, which flips any
+  // z-index:-1 ::after with a solid dark fill in front of the yellow icon,
+  // rendering a black box. With the grow effect there should be no such pseudo-box.
+  it.each(icons)('%s has no ::after solid dark background box', (sel) => {
+    const escaped = sel.replace('.', '\\.')
+    const afterMatch = css.match(new RegExp(`${escaped}:after\\s*\\{([^}]+)\\}`))
+    if (afterMatch) {
+      expect(afterMatch[1]).not.toMatch(/background:\s*#111/)
+    }
+  })
+
+  it.each(icons)('%s applies only a scale transform on hover — no glow/blur/background carried over', (sel) => {
+    const escaped = sel.replace('.', '\\.')
+    const match = css.match(new RegExp(`${escaped}:hover\\s*\\{([^}]+)\\}`))
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/transform:\s*scale/)
+    expect(match[1]).not.toMatch(/filter:/)
+    expect(match[1]).not.toMatch(/background/)
+  })
+})

@@ -131,7 +131,7 @@
   - File: `toDoList_main/src/style.css`, `toDoList_main/src/MobileMenu.jsx`
   <!-- id: 29f3f4d2-5683-452b-8bff-b210076f4c77 -->
 
-- [ ] **[HIGH]** Fix black mark appearing over PlayPage nav icons on hover
+- [x] **[HIGH]** Fix black mark appearing over PlayPage nav icons on hover — Completed: 2026-07-09
   - Type: bug
   - Description: After applying the HomePage "grow" hover effect to `.navSection2` icons on PlayPage, hovering an icon now renders a solid black mark/box behind or over it instead of a clean scale-up. The grow style likely carries a `background`/`box-shadow`/`filter` rule from the HomePage context that doesn't render correctly against PlayPage's icon markup or background, or a transform is triggering an unintended fill/shadow layer. Fix the hover style so only the scale/grow transform applies, with no visible background box, matching the clean look on HomePage. Likely in the shared grow class/selector in `style.css` and its usage in `MobileMenu.jsx` on PlayPage.
   - File: `toDoList_main/src/style.css`, `toDoList_main/src/MobileMenu.jsx`
