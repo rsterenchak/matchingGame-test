@@ -118,3 +118,9 @@
   - File: `src/style.css`
   - Completed: 2026-07-09
   <!-- id: 3ff214d5-f85d-46b7-b9f9-bb932116c67b -->
+
+- [ ] **[LOW]** Equalize spacing and apply consistent glow to nav icons in `.navSection2`
+  - Type: bug
+  - Description: Icons inside `.navSection2` (in `MobileMenu.jsx`) are unevenly spaced and only some use the DBZ button glow effect. Update `.navSection2`'s layout (e.g. flexbox with `justify-content: space-between` or equal `gap`) so all icons are evenly distributed, and apply the existing glow pattern (`:before` pseudo-element + `glowing*` keyframe, matching `.fightButton`/`.musicBlock*`) to every icon in that row consistently. Do not change the layout/positioning of sibling nav sections or other page elements — scope the fix to `.navSection2` and its children only.
+  - File: `toDoList_main/src/style.css`, `toDoList_main/src/MobileMenu.jsx`
+  <!-- id: 4b061d52-b39d-4029-9597-3d34f6a040f0 -->
