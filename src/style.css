@@ -2662,6 +2662,19 @@ body {
     font-size: 16px;
   }
 
+  .topColumn3 {
+    display: grid;
+  }
+
+  .topColumn3 > .musicBlock3,
+  .topColumn3 > .helpButton {
+    display: flex;
+  }
+
+  .mobileMenuWrapper {
+    display: none;
+  }
+
   .musicBlock3 {
     display: flex;
     border-radius: 50%;

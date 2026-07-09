@@ -130,3 +130,40 @@ describe('hamburgerButton desktop color matches musicBlock3', () => {
     expect(hasMatch).toBe(true)
   })
 })
+
+describe('desktop PlayPage nav icon row restored at min-width:961px', () => {
+  const cssPath = join(__dirname, '../style.css')
+  const css = readFileSync(cssPath, 'utf8')
+  const media961Blocks = css
+    .split(/(?=@media)/)
+    .filter(b => /min-width:961px/.test(b))
+
+  it('re-shows the planet and help icons with a compound selector that outranks the earlier hide', () => {
+    // The hide is `.topColumn3 > .musicBlock3, .topColumn3 > .helpButton { display: none }`
+    // (specificity 0,0,2,0). A bare `.musicBlock3 { display: flex }` (0,0,1,0) loses, so the
+    // re-show must use the same compound `.topColumn3 > ...` selector to win.
+    const hasCompoundReshow = media961Blocks.some(block => {
+      const ruleMatch = block.match(
+        /\.topColumn3\s*>\s*\.musicBlock3\s*,\s*\.topColumn3\s*>\s*\.helpButton\s*\{([^}]*)\}/
+      )
+      return ruleMatch && /display:\s*flex/.test(ruleMatch[1])
+    })
+    expect(hasCompoundReshow).toBe(true)
+  })
+
+  it('hides the mobile hamburger wrapper at desktop widths', () => {
+    const hidesHamburger = media961Blocks.some(block => {
+      const ruleMatch = block.match(/\.mobileMenuWrapper\s*\{([^}]*)\}/)
+      return ruleMatch && /display:\s*none/.test(ruleMatch[1])
+    })
+    expect(hidesHamburger).toBe(true)
+  })
+
+  it('restores .topColumn3 to a grid so the desktop icon-row template lays out', () => {
+    const restoresGrid = media961Blocks.some(block => {
+      const ruleMatch = block.match(/\.topColumn3\s*\{([^}]*)\}/)
+      return ruleMatch && /display:\s*grid/.test(ruleMatch[1])
+    })
+    expect(restoresGrid).toBe(true)
+  })
+})
