@@ -112,9 +112,9 @@
   - Completed: 2026-07-09
   <!-- id: f6669556-bf96-42a7-a6a2-4b8161bbd7e0 -->
 
-- [ ] **[HIGH]** Restore desktop PlayPage nav icon row and hide the hamburger at ≥961px
+- [x] **[HIGH]** Restore desktop PlayPage nav icon row and hide the hamburger at ≥961px
   - Type: bug
   - Description: On PlayPage the planet (`.musicBlock3`) and help (`.helpButton`) icons are hidden at every screen width and the mobile hamburger (`.mobileMenuWrapper`) shows at every width, so desktop and mobile both collapse to a music-icon + hamburger row and the intended desktop icon row never renders. Root cause is a specificity mismatch: the compound rule `.topColumn3 > .musicBlock3, .topColumn3 > .helpButton { display: none }` is declared in both the `@media (min-width:320px)` and `@media (min-width:641px)` blocks (0,0,2,0), while the desktop re-show is bare `.musicBlock3 { display: flex }` in the 961px/1025px blocks (0,0,1,0) — it loses the match, and `.helpButton` is never re-declared at desktop widths at all. Separately, `.mobileMenuWrapper` is set `display: block` at 320px and 641px and never reset, and `.topColumn3` is flipped from its base grid to `display: flex` at 320px/641px and never restored. Fix (Direction A — desktop icon row, mobile hamburger): in the `@media (min-width:961px)` block add compound `.topColumn3 > .musicBlock3` and `.topColumn3 > .helpButton { display: flex }` so they outrank the earlier hide, add `.mobileMenuWrapper { display: none }`, and reset `.topColumn3 { display: grid }` so the untouched base `grid-template-areas: 'musicBlock2 . musicBlock3 helpBlock .'` lays out the desktop row again. These are min-width rules, so they cascade up through the 1025px/1281px blocks (which only re-declare the harmless bare `.musicBlock3` and need no change). Scope: mobile (<961px) is untouched — still music + hamburger; CSS-only, no markup changes to `PlayPage.jsx` or `MobileMenu.jsx`.
   - File: `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-07-09
   <!-- id: 3ff214d5-f85d-46b7-b9f9-bb932116c67b -->
