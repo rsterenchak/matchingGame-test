@@ -124,3 +124,9 @@
   - Description: Icons inside `.navSection2` (in `MobileMenu.jsx`) are unevenly spaced and only some use the DBZ button glow effect. Update `.navSection2`'s layout (e.g. flexbox with `justify-content: space-between` or equal `gap`) so all icons are evenly distributed, and apply the existing glow pattern (`:before` pseudo-element + `glowing*` keyframe, matching `.fightButton`/`.musicBlock*`) to every icon in that row consistently. Do not change the layout/positioning of sibling nav sections or other page elements — scope the fix to `.navSection2` and its children only.
   - File: `toDoList_main/src/style.css`, `toDoList_main/src/MobileMenu.jsx`
   <!-- id: 4b061d52-b39d-4029-9597-3d34f6a040f0 -->
+
+- [ ] **[LOW]** Equalize spacing and apply HomePage's grow effect to nav icons in `.navSection2`
+  - Type: bug
+  - Description: Icons inside `.navSection2` on PlayPage (rendered via `MobileMenu.jsx`) are unevenly spaced and don't share a consistent hover/active effect. Update `.navSection2`'s layout (flexbox with equal `gap` or `justify-content: space-between`) so all icons are evenly distributed, and apply the same "grow" style already used on the HomePage nav icons (a scale-up transform on hover/active, not the glow-ring pattern) to every icon in this row for visual consistency. Scope the CSS/layout change to `.navSection2` and its icon children only — do not alter positioning or spacing of other nav sections or unrelated page elements.
+  - File: `toDoList_main/src/style.css`, `toDoList_main/src/MobileMenu.jsx`
+  <!-- id: 29f3f4d2-5683-452b-8bff-b210076f4c77 -->
