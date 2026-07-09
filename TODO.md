@@ -130,3 +130,9 @@
   - Description: Icons inside `.navSection2` on PlayPage (rendered via `MobileMenu.jsx`) are unevenly spaced and don't share a consistent hover/active effect. Update `.navSection2`'s layout (flexbox with equal `gap` or `justify-content: space-between`) so all icons are evenly distributed, and apply the same "grow" style already used on the HomePage nav icons (a scale-up transform on hover/active, not the glow-ring pattern) to every icon in this row for visual consistency. Scope the CSS/layout change to `.navSection2` and its icon children only — do not alter positioning or spacing of other nav sections or unrelated page elements.
   - File: `toDoList_main/src/style.css`, `toDoList_main/src/MobileMenu.jsx`
   <!-- id: 29f3f4d2-5683-452b-8bff-b210076f4c77 -->
+
+- [ ] **[HIGH]** Fix black mark appearing over PlayPage nav icons on hover
+  - Type: bug
+  - Description: After applying the HomePage "grow" hover effect to `.navSection2` icons on PlayPage, hovering an icon now renders a solid black mark/box behind or over it instead of a clean scale-up. The grow style likely carries a `background`/`box-shadow`/`filter` rule from the HomePage context that doesn't render correctly against PlayPage's icon markup or background, or a transform is triggering an unintended fill/shadow layer. Fix the hover style so only the scale/grow transform applies, with no visible background box, matching the clean look on HomePage. Likely in the shared grow class/selector in `style.css` and its usage in `MobileMenu.jsx` on PlayPage.
+  - File: `toDoList_main/src/style.css`, `toDoList_main/src/MobileMenu.jsx`
+  <!-- id: fe4a35e7-b2f5-49f6-81f7-e63062eb45c2 -->
