@@ -1227,7 +1227,7 @@ body {
   background-color: yellow;
   cursor: pointer;
   grid-area: musicBlock2;
-  transition: box-shadow 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 .musicIcon2 {
@@ -1237,9 +1237,9 @@ body {
 
 .musicBlock2:hover {
 
-  /* Non-layout-affecting hover ring — box-shadow does not grow the box model,
-     so the card rows below no longer shift down on hover. */
-  box-shadow: 0 0 0 4px rgba(255, 255, 0, 0.75);
+  /* Grow effect matching the HomePage nav icons. transform: scale does not
+     reflow surrounding elements, so the card rows below never shift on hover. */
+  transform: scale(1.09);
 
 }
 
@@ -1266,7 +1266,8 @@ body {
 
 .musicBlock2:active {
   color: #000;
-  
+  transform: scale(1.09);
+
 }
 
 .musicBlock2:active:after {
@@ -1321,7 +1322,7 @@ body {
   background-color: yellow;
   cursor: pointer;
   grid-area: musicBlock3;
-  transition: box-shadow 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 .musicIcon3 {
@@ -1331,9 +1332,9 @@ body {
 
 .musicBlock3:hover {
 
-  /* Non-layout-affecting hover ring — matches .musicBlock2 so every nav icon
-     glows identically on hover and the card rows below never shift. */
-  box-shadow: 0 0 0 4px rgba(255, 255, 0, 0.75);
+  /* Grow effect matching .musicBlock2 so every nav icon scales up identically
+     on hover. transform: scale does not reflow, so the card rows never shift. */
+  transform: scale(1.09);
 
 }
 
@@ -1360,7 +1361,8 @@ body {
 
 .musicBlock3:active {
   color: #000;
-  
+  transform: scale(1.09);
+
 }
 
 .musicBlock3:active:after {
@@ -3068,13 +3070,13 @@ body {
   font-weight: bold;
   font-family: system-ui, sans-serif;
   color: black;
-  transition: box-shadow 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 .helpButton:hover {
-  /* Non-layout-affecting hover ring — matches .musicBlock2 so every nav icon
-     glows identically on hover and the card rows below never shift. */
-  box-shadow: 0 0 0 4px rgba(255, 255, 0, 0.75);
+  /* Grow effect matching .musicBlock2 so every nav icon scales up identically
+     on hover. transform: scale does not reflow, so the card rows never shift. */
+  transform: scale(1.09);
 }
 
 .helpButton:before {
@@ -3096,6 +3098,7 @@ body {
 
 .helpButton:active {
   color: #000;
+  transform: scale(1.09);
 }
 
 .helpButton:active:after {
