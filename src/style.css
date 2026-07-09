@@ -1249,38 +1249,6 @@ body {
 
 }
 
-/* Audio-toggle glow, matching the HomePage audio toggle (.musicBlock). The glow
-   lives entirely in the ::before halo (a blurred yellow gradient that fades in
-   on hover) — deliberately NO solid #111 ::after box, which is what the scale
-   grow flipped in front of the icon and rendered as a black mark. Only the audio
-   toggle carries this; the other .navSection2 icons stay grow-only. */
-.musicBlock2:before {
-  content: '';
-  background: linear-gradient(45deg, yellow, rgb(179, 179, 0), yellow, rgb(179, 179, 0), yellow, rgb(179, 179, 0));
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing3 20s linear infinite;
-  opacity: 0;
-  transition: opacity .2s ease-in-out;
-  border-radius: 15px;
-}
-
-.musicBlock2:hover:before {
-  opacity: 1;
-}
-
-@keyframes glowing3 {
-  0% { background-position: 0 0; }
-  50% { background-position: 400% 0; }
-  100% { background-position: 0 0; }
-}
-
 
 
 .musicBlock3 {
