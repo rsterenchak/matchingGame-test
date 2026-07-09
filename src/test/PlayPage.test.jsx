@@ -419,14 +419,14 @@ describe('Music toggle hover does not shift card rows (regression: hover grew bo
     expect(match[1]).toMatch(/height:\s*55px/)
   })
 
-  it('.musicBlock2:hover uses a box-shadow ring rather than a size-growing animation', () => {
+  it('.musicBlock2:hover uses a scale-up transform rather than a size-growing animation', () => {
     const match = css.match(/\.musicBlock2:hover\s*\{([^}]+)\}/)
     expect(match).not.toBeNull()
     // No animation that would drive a width/height change on hover
     expect(match[1]).not.toMatch(/animation/)
     expect(match[1]).not.toMatch(/change-color3/)
-    // Non-layout-affecting hover feedback via box-shadow
-    expect(match[1]).toMatch(/box-shadow/)
+    // Non-layout-affecting grow feedback via transform: scale (does not reflow)
+    expect(match[1]).toMatch(/transform:\s*scale/)
   })
 
   it('.musicBlock2:hover never changes width or height on hover', () => {
@@ -438,5 +438,26 @@ describe('Music toggle hover does not shift card rows (regression: hover grew bo
 
   it('the size-growing change-color3 keyframes are removed everywhere', () => {
     expect(css).not.toMatch(/change-color3/)
+  })
+})
+
+describe('Nav icons in .navSection2 share a consistent scale-up grow on hover', () => {
+  const icons = ['.musicBlock2', '.musicBlock3', '.helpButton']
+
+  it.each(icons)('%s grows via transform: scale on hover', (sel) => {
+    const escaped = sel.replace('.', '\\.')
+    const match = css.match(new RegExp(`${escaped}:hover\\s*\\{([^}]+)\\}`))
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/transform:\s*scale/)
+    // No layout-shifting box-model changes on hover
+    expect(match[1]).not.toMatch(/\bwidth:/)
+    expect(match[1]).not.toMatch(/\bheight:/)
+  })
+
+  it.each(icons)('%s grows via transform: scale on active', (sel) => {
+    const escaped = sel.replace('.', '\\.')
+    const match = css.match(new RegExp(`${escaped}:active\\s*\\{([^}]+)\\}`))
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/transform:\s*scale/)
   })
 })
