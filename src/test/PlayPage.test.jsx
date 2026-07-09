@@ -485,3 +485,36 @@ describe('Nav icons in .navSection2 show no dark box on hover (regression: black
     expect(match[1]).not.toMatch(/background/)
   })
 })
+
+describe('PlayPage audio toggle keeps the HomePage glow (regression: glow lost with black-mark fix)', () => {
+  // The audio toggle on PlayPage is .musicBlock2. It should carry the same
+  // hover glow as the HomePage audio toggle (.musicBlock): a blurred yellow
+  // gradient ::before that fades in on hover. The glow lives in ::before, not
+  // the :hover rule, so it never reintroduces the black-mark :after box.
+  it('.musicBlock2:before defines a blurred yellow glow gradient', () => {
+    const match = css.match(/\.musicBlock2:before\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/filter:\s*blur/)
+    expect(match[1]).toMatch(/linear-gradient/)
+    // Hidden until hover fades it in
+    expect(match[1]).toMatch(/opacity:\s*0/)
+  })
+
+  it('.musicBlock2:hover:before fades the glow in to full opacity', () => {
+    const match = css.match(/\.musicBlock2:hover:before\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/opacity:\s*1/)
+  })
+
+  it('.musicBlock2 glow does not reintroduce a solid dark ::after box', () => {
+    const afterMatch = css.match(/\.musicBlock2:after\s*\{([^}]+)\}/)
+    if (afterMatch) {
+      expect(afterMatch[1]).not.toMatch(/background:\s*#111/)
+    }
+  })
+
+  it('the non-audio nav icons stay glow-free — no ::before glow on .musicBlock3 or .helpButton', () => {
+    expect(css).not.toMatch(/\.musicBlock3:before\s*\{/)
+    expect(css).not.toMatch(/\.helpButton:before\s*\{/)
+  })
+})
