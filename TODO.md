@@ -136,3 +136,9 @@
   - Description: After applying the HomePage "grow" hover effect to `.navSection2` icons on PlayPage, hovering an icon now renders a solid black mark/box behind or over it instead of a clean scale-up. The grow style likely carries a `background`/`box-shadow`/`filter` rule from the HomePage context that doesn't render correctly against PlayPage's icon markup or background, or a transform is triggering an unintended fill/shadow layer. Fix the hover style so only the scale/grow transform applies, with no visible background box, matching the clean look on HomePage. Likely in the shared grow class/selector in `style.css` and its usage in `MobileMenu.jsx` on PlayPage.
   - File: `toDoList_main/src/style.css`, `toDoList_main/src/MobileMenu.jsx`
   <!-- id: fe4a35e7-b2f5-49f6-81f7-e63062eb45c2 -->
+
+- [ ] **[HIGH]** Restore lost glow effect on PlayPage audio toggle after black-mark hover fix
+  - Type: bug
+  - Description: Fixing the black-mark hover bug on `.navSection2` icons (PlayPage) also stripped the glow effect on the audio toggle icon, which should match the glow already used on the HomePage audio toggle. The black-mark fix likely removed a `background`/`box-shadow`/`filter` rule entirely instead of isolating just the offending layer, taking the legitimate glow with it. Restore the HomePage audio toggle's glow style on the PlayPage audio toggle while keeping the black-mark fix intact — the other `.navSection2` icons should keep the clean grow-only hover with no glow or black mark. Likely in the shared hover/glow selectors in `style.css` and their usage in `MobileMenu.jsx`.
+  - File: `toDoList_main/src/style.css`, `toDoList_main/src/MobileMenu.jsx`
+  <!-- id: 70fd7f51-db3c-4e8f-91de-c7322c57fa88 -->
