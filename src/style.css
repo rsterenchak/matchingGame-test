@@ -1206,9 +1206,9 @@ body {
 
 .topColumn3 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 28fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 28fr;
   grid-template-areas:
-  'musicBlock2 . musicBlock3 helpBlock .';
+  'musicBlock2 . musicBlock3 . helpBlock .';
   width: 50%;
 
 }
@@ -1321,6 +1321,7 @@ body {
   background-color: yellow;
   cursor: pointer;
   grid-area: musicBlock3;
+  transition: box-shadow 0.3s ease;
 }
 
 .musicIcon3 {
@@ -1330,23 +1331,10 @@ body {
 
 .musicBlock3:hover {
 
+  /* Non-layout-affecting hover ring — matches .musicBlock2 so every nav icon
+     glows identically on hover and the card rows below never shift. */
+  box-shadow: 0 0 0 4px rgba(255, 255, 0, 0.75);
 
-  animation: 0.5s change-color4 1 normal forwards; 
-  
-}
-
-@keyframes change-color4 {
-  from {
-    background-color: yellow;
-  }
-
-  to {
-
-    width: 65px;
-    height: 60px;    
-    background-color: yellow;
-
-  }
 }
 
 .musicBlock3:before {
@@ -3080,21 +3068,13 @@ body {
   font-weight: bold;
   font-family: system-ui, sans-serif;
   color: black;
+  transition: box-shadow 0.3s ease;
 }
 
 .helpButton:hover {
-  animation: 0.5s change-color8 1 normal forwards;
-}
-
-@keyframes change-color8 {
-  from {
-    background-color: yellow;
-  }
-  to {
-    width: 65px;
-    height: 60px;
-    background-color: yellow;
-  }
+  /* Non-layout-affecting hover ring — matches .musicBlock2 so every nav icon
+     glows identically on hover and the card rows below never shift. */
+  box-shadow: 0 0 0 4px rgba(255, 255, 0, 0.75);
 }
 
 .helpButton:before {
