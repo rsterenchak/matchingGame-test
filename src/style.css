@@ -1227,7 +1227,6 @@ body {
   background-color: yellow;
   cursor: pointer;
   grid-area: musicBlock2;
-  transition: transform 0.2s ease;
 }
 
 .musicIcon2 {
@@ -1235,18 +1234,47 @@ body {
 
 }
 
-.musicBlock2:hover {
+/* HomePage's rotating glow effect (see .musicBlock) replaces the old
+   transform: scale hover feedback so PlayPage's nav matches HomePage's. */
+.musicBlock2:before {
+  content: '';
+  background: linear-gradient(45deg, yellow, rgb(179, 179, 0), yellow,  rgb(179, 179, 0), yellow,  rgb(179, 179, 0));
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing2 20s linear infinite;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+  border-radius: 15px;
+}
 
-  /* Grow effect matching the HomePage nav icons. transform: scale does not
-     reflow surrounding elements, so the card rows below never shift on hover. */
-  transform: scale(1.09);
+.musicBlock2:hover:before {
+  opacity: 1;
+}
 
+.musicBlock2:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 20px;
 }
 
 .musicBlock2:active {
   color: #000;
-  transform: scale(1.09);
+}
 
+.musicBlock2:active:after {
+  background: transparent;
 }
 
 
@@ -1263,7 +1291,6 @@ body {
   background-color: yellow;
   cursor: pointer;
   grid-area: musicBlock3;
-  transition: transform 0.2s ease;
 }
 
 .musicIcon3 {
@@ -1271,18 +1298,47 @@ body {
 
 }
 
-.musicBlock3:hover {
+/* HomePage's rotating glow effect (see .musicBlock) replaces the old
+   transform: scale hover feedback so PlayPage's nav matches HomePage's. */
+.musicBlock3:before {
+  content: '';
+  background: linear-gradient(45deg, yellow, rgb(179, 179, 0), yellow,  rgb(179, 179, 0), yellow,  rgb(179, 179, 0));
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing2 20s linear infinite;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+  border-radius: 15px;
+}
 
-  /* Grow effect matching .musicBlock2 so every nav icon scales up identically
-     on hover. transform: scale does not reflow, so the card rows never shift. */
-  transform: scale(1.09);
+.musicBlock3:hover:before {
+  opacity: 1;
+}
 
+.musicBlock3:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 20px;
 }
 
 .musicBlock3:active {
   color: #000;
-  transform: scale(1.09);
+}
 
+.musicBlock3:active:after {
+  background: transparent;
 }
 
 
@@ -2952,18 +3008,49 @@ body {
   font-weight: bold;
   font-family: system-ui, sans-serif;
   color: black;
-  transition: transform 0.2s ease;
 }
 
-.helpButton:hover {
-  /* Grow effect matching .musicBlock2 so every nav icon scales up identically
-     on hover. transform: scale does not reflow, so the card rows never shift. */
-  transform: scale(1.09);
+/* HomePage's rotating glow effect (see .musicBlock) replaces the old
+   transform: scale hover feedback so PlayPage's nav matches HomePage's. */
+.helpButton:before {
+  content: '';
+  background: linear-gradient(45deg, yellow, rgb(179, 179, 0), yellow,  rgb(179, 179, 0), yellow,  rgb(179, 179, 0));
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing2 20s linear infinite;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+  border-radius: 15px;
+}
+
+.helpButton:hover:before {
+  opacity: 1;
+}
+
+.helpButton:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 20px;
 }
 
 .helpButton:active {
   color: #000;
-  transform: scale(1.09);
+}
+
+.helpButton:active:after {
+  background: transparent;
 }
 
 /* Instructions modal */

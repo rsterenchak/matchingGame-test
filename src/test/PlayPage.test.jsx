@@ -419,18 +419,16 @@ describe('Music toggle hover does not shift card rows (regression: hover grew bo
     expect(match[1]).toMatch(/height:\s*55px/)
   })
 
-  it('.musicBlock2:hover uses a scale-up transform rather than a size-growing animation', () => {
-    const match = css.match(/\.musicBlock2:hover\s*\{([^}]+)\}/)
+  it('.musicBlock2:hover:before reveals the glow without a size-growing animation', () => {
+    const match = css.match(/\.musicBlock2:hover:before\s*\{([^}]+)\}/)
     expect(match).not.toBeNull()
-    // No animation that would drive a width/height change on hover
-    expect(match[1]).not.toMatch(/animation/)
+    // The glow appears purely by fading the :before layer in — no box-model change.
+    expect(match[1]).toMatch(/opacity:\s*1/)
     expect(match[1]).not.toMatch(/change-color3/)
-    // Non-layout-affecting grow feedback via transform: scale (does not reflow)
-    expect(match[1]).toMatch(/transform:\s*scale/)
   })
 
-  it('.musicBlock2:hover never changes width or height on hover', () => {
-    const match = css.match(/\.musicBlock2:hover\s*\{([^}]+)\}/)
+  it('.musicBlock2:hover:before never changes width or height on hover', () => {
+    const match = css.match(/\.musicBlock2:hover:before\s*\{([^}]+)\}/)
     expect(match).not.toBeNull()
     expect(match[1]).not.toMatch(/\bwidth:/)
     expect(match[1]).not.toMatch(/\bheight:/)
@@ -441,47 +439,40 @@ describe('Music toggle hover does not shift card rows (regression: hover grew bo
   })
 })
 
-describe('Nav icons in .navSection2 share a consistent scale-up grow on hover', () => {
+describe('Nav icons in .navSection2 share HomePage\'s rotating glow on hover (replaces scale-on-hover)', () => {
   const icons = ['.musicBlock2', '.musicBlock3', '.helpButton']
 
-  it.each(icons)('%s grows via transform: scale on hover', (sel) => {
+  it.each(icons)('%s no longer uses transform: scale on hover or active', (sel) => {
     const escaped = sel.replace('.', '\\.')
-    const match = css.match(new RegExp(`${escaped}:hover\\s*\\{([^}]+)\\}`))
-    expect(match).not.toBeNull()
-    expect(match[1]).toMatch(/transform:\s*scale/)
-    // No layout-shifting box-model changes on hover
-    expect(match[1]).not.toMatch(/\bwidth:/)
-    expect(match[1]).not.toMatch(/\bheight:/)
+    const hover = css.match(new RegExp(`${escaped}:hover\\s*\\{([^}]+)\\}`))
+    if (hover) expect(hover[1]).not.toMatch(/transform:\s*scale/)
+    const active = css.match(new RegExp(`${escaped}:active\\s*\\{([^}]+)\\}`))
+    if (active) expect(active[1]).not.toMatch(/transform:\s*scale/)
   })
 
-  it.each(icons)('%s grows via transform: scale on active', (sel) => {
+  it.each(icons)('%s has a blurred rotating :before glow layer hidden by default', (sel) => {
     const escaped = sel.replace('.', '\\.')
-    const match = css.match(new RegExp(`${escaped}:active\\s*\\{([^}]+)\\}`))
+    const match = css.match(new RegExp(`${escaped}:before\\s*\\{([^}]+)\\}`))
     expect(match).not.toBeNull()
-    expect(match[1]).toMatch(/transform:\s*scale/)
-  })
-})
-
-describe('Nav icons in .navSection2 show no dark box on hover (regression: black mark over icon)', () => {
-  const icons = ['.musicBlock2', '.musicBlock3', '.helpButton']
-
-  // The scale-up grow establishes a stacking context on hover, which flips any
-  // z-index:-1 ::after with a solid dark fill in front of the yellow icon,
-  // rendering a black box. With the grow effect there should be no such pseudo-box.
-  it.each(icons)('%s has no ::after solid dark background box', (sel) => {
-    const escaped = sel.replace('.', '\\.')
-    const afterMatch = css.match(new RegExp(`${escaped}:after\\s*\\{([^}]+)\\}`))
-    if (afterMatch) {
-      expect(afterMatch[1]).not.toMatch(/background:\s*#111/)
-    }
+    expect(match[1]).toMatch(/filter:\s*blur/)
+    expect(match[1]).toMatch(/animation:\s*glowing2/)
+    expect(match[1]).toMatch(/background-size:\s*400%/)
+    expect(match[1]).toMatch(/opacity:\s*0/)
+    expect(match[1]).toMatch(/border-radius:\s*15px/)
   })
 
-  it.each(icons)('%s applies only a scale transform on hover — no glow/blur/background carried over', (sel) => {
+  it.each(icons)('%s reveals the glow on hover via :hover:before opacity 1', (sel) => {
     const escaped = sel.replace('.', '\\.')
-    const match = css.match(new RegExp(`${escaped}:hover\\s*\\{([^}]+)\\}`))
+    const match = css.match(new RegExp(`${escaped}:hover:before\\s*\\{([^}]+)\\}`))
     expect(match).not.toBeNull()
-    expect(match[1]).toMatch(/transform:\s*scale/)
-    expect(match[1]).not.toMatch(/filter:/)
-    expect(match[1]).not.toMatch(/background/)
+    expect(match[1]).toMatch(/opacity:\s*1/)
+  })
+
+  it.each(icons)('%s has a black :after backing layer with border-radius 20px', (sel) => {
+    const escaped = sel.replace('.', '\\.')
+    const match = css.match(new RegExp(`${escaped}:after\\s*\\{([^}]+)\\}`))
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/background:\s*#111/)
+    expect(match[1]).toMatch(/border-radius:\s*20px/)
   })
 })
