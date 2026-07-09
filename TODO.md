@@ -137,7 +137,7 @@
   - File: `toDoList_main/src/style.css`, `toDoList_main/src/MobileMenu.jsx`
   <!-- id: fe4a35e7-b2f5-49f6-81f7-e63062eb45c2 -->
 
-- [ ] **[HIGH]** Restore lost glow effect on PlayPage audio toggle after black-mark hover fix
+- [x] **[HIGH]** Restore lost glow effect on PlayPage audio toggle after black-mark hover fix — Completed: 2026-07-09
   - Type: bug
   - Description: Fixing the black-mark hover bug on `.navSection2` icons (PlayPage) also stripped the glow effect on the audio toggle icon, which should match the glow already used on the HomePage audio toggle. The black-mark fix likely removed a `background`/`box-shadow`/`filter` rule entirely instead of isolating just the offending layer, taking the legitimate glow with it. Restore the HomePage audio toggle's glow style on the PlayPage audio toggle while keeping the black-mark fix intact — the other `.navSection2` icons should keep the clean grow-only hover with no glow or black mark. Likely in the shared hover/glow selectors in `style.css` and their usage in `MobileMenu.jsx`.
   - File: `toDoList_main/src/style.css`, `toDoList_main/src/MobileMenu.jsx`
