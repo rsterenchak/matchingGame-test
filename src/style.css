@@ -1227,6 +1227,7 @@ body {
   background-color: yellow;
   cursor: pointer;
   grid-area: musicBlock2;
+  transition: box-shadow 0.3s ease;
 }
 
 .musicIcon2 {
@@ -1236,23 +1237,10 @@ body {
 
 .musicBlock2:hover {
 
+  /* Non-layout-affecting hover ring — box-shadow does not grow the box model,
+     so the card rows below no longer shift down on hover. */
+  box-shadow: 0 0 0 4px rgba(255, 255, 0, 0.75);
 
-  animation: 0.5s change-color3 1 normal forwards; 
-  
-}
-
-@keyframes change-color3 {
-  from {
-    background-color: yellow;
-  }
-
-  to {
-
-    width: 65px;
-    height: 60px;    
-    background-color: yellow;
-
-  }
 }
 
 .musicBlock2:before {
@@ -2100,20 +2088,6 @@ body {
 
   }
 
-  @keyframes change-color3 {
-    from {
-      background-color: yellow;
-    }
-
-    to {
-
-      width: 26px;
-      height: 26px;
-      background-color: yellow;
-
-    }
-  }
-
   .gitIcon {
     width: 30px;
     height: 30px;
@@ -2317,20 +2291,6 @@ body {
 
   }
 
-  @keyframes change-color3 {
-    from {
-      background-color: yellow;
-    }
-
-    to {
-
-      width: 28px;
-      height: 28px;
-      background-color: yellow;
-
-    }
-  }
-
   .logoSection3 {
     display: grid;
     grid-template-columns: repeat(4, calc((100vw - 32px) / 4));
@@ -2490,20 +2450,6 @@ body {
     height: 55px;
     margin-top: 10px;
 
-  }
-
-  @keyframes change-color3 {
-    from {
-      background-color: yellow;
-    }
-  
-    to {
-  
-      width: 65px;
-      height: 60px;    
-      background-color: yellow;
-  
-    }
   }
 
   @keyframes change-color4 {
@@ -2738,20 +2684,6 @@ body {
 
   }
 
-  @keyframes change-color3 {
-    from {
-      background-color: yellow;
-    }
-
-    to {
-
-      width: 65px;
-      height: 60px;
-      background-color: yellow;
-
-    }
-  }
-
   @keyframes change-color4 {
     from {
       background-color: yellow;
@@ -2859,20 +2791,6 @@ body {
   
     }
 
-    @keyframes change-color3 {
-      from {
-        background-color: yellow;
-      }
-    
-      to {
-    
-        width: 65px;
-        height: 60px;    
-        background-color: yellow;
-    
-      }
-    }
-
     @keyframes change-color4 {
       from {
         background-color: yellow;
@@ -2956,20 +2874,6 @@ body {
     background-color: yellow;
     cursor: pointer;
     grid-area: musicBlock3;
-  }
-
-  @keyframes change-color3 {
-    from {
-      background-color: yellow;
-    }
-
-    to {
-
-      width: 65px;
-      height: 60px;
-      background-color: yellow;
-
-    }
   }
 
   @keyframes change-color4 {
