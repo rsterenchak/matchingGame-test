@@ -104,3 +104,10 @@
   - File: `toDoList_main/src/style.css`
   - Completed: 2026-07-08
   <!-- id: 9233bd0e-7389-4824-b9ea-d292b08ff084 -->
+
+- [ ] **[HIGH]** Fix music toggle hover animation shifting card rows down on PlayPage
+  - Type: bug
+  - Description: The `.musicBlock2:hover` rule animates `width`/`height` via the `change-color3` keyframes (60x55 → 65x60), which grows the element's box model. Since `.musicBlock2` sits in `.navSection2`, the first row of `.outerSection2`'s auto-sized grid (`grid-template-rows: 1fr 2fr 2fr 0.8fr`), the 5px growth increases that row's height and pushes `.logoSection3`/`.logoSection4` (the card rows) downward every time the mouse hovers the toggle. Replace the width/height animation with a non-layout-affecting hover effect (box-shadow ring per chosen Option C), keeping `width: 60px; height: 55px` fixed at all times so no box-model dimension changes on hover. Remove or repurpose the `change-color3` keyframes accordingly.
+  - File: `matchingGame-test/src/style.css`, `matchingGame-test/src/PlayPage.jsx`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: f6669556-bf96-42a7-a6a2-4b8161bbd7e0 -->
