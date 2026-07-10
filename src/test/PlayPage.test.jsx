@@ -475,4 +475,11 @@ describe('Nav icons in .navSection2 share HomePage\'s rotating glow on hover (re
     expect(match[1]).toMatch(/background:\s*#111/)
     expect(match[1]).toMatch(/border-radius:\s*20px/)
   })
+
+  it.each(icons)('%s grows on hover via the change-color2 animation, layered with the glow', (sel) => {
+    const escaped = sel.replace('.', '\\.')
+    const match = css.match(new RegExp(`${escaped}:hover\\s*\\{([^}]+)\\}`))
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/animation:\s*0\.5s\s+change-color2/)
+  })
 })
