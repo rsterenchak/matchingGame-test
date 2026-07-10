@@ -13,3 +13,9 @@
   - File: `src/style.css`
   - Completed: 2025-06-01 (PR #108)
   <!-- id: 50de06dd-6782-46ed-88fb-7ead039d15e3 -->
+
+- [ ] **[MEDIUM]** Apply grow hover effect to all PlayPage `.navSection2` icons including help toggle
+  - Type: feature
+  - Description: The grow (scale-up on hover) effect used on the HomePage nav icons is not applied consistently to every icon in `.navSection2` on PlayPage — notably the help question-mark toggle is missing it. Apply the same grow transform to all `.navSection2` icons on PlayPage (audio toggle, help question-mark, and any others) so hover behavior is uniform. Preserve the existing glow and the black-mark hover fix already in place — the grow should layer cleanly with no black background box reintroduced. Likely in the shared grow selector in `style.css` and its application to the icon elements in `MobileMenu.jsx`.
+  - File: `toDoList_main/src/style.css`, `toDoList_main/src/MobileMenu.jsx`
+  <!-- id: bc5d6155-3b7b-469a-a429-aa7dd1057b88 -->
