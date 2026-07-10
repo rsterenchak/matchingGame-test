@@ -3022,6 +3022,13 @@ body {
   color: black;
 }
 
+/* HomePage's size-grow hover feedback (see .musicBlock, change-color2)
+   layered alongside the rotating glow so both fire together on hover,
+   matching .musicBlock2 / .musicBlock3 so every nav icon behaves uniformly. */
+.helpButton:hover {
+  animation: 0.5s change-color2 1 normal forwards;
+}
+
 /* HomePage's rotating glow effect (see .musicBlock) replaces the old
    transform: scale hover feedback so PlayPage's nav matches HomePage's. */
 .helpButton:before {

@@ -3,7 +3,7 @@ export const changelog = [
     version: '1.0',
     date: '2026-07-09',
     changed: [
-      'The music and background icons on the play screen now grow slightly when hovered, in addition to their glow ring, matching the home screen navigation.',
+      'The help icon on the play screen now grows on hover just like the music and background icons, so every navigation icon responds the same way.',
     ],
     fixed: [
       'The play screen now shows the planet and help icons next to the music toggle on desktop, reserving the hamburger menu for narrower screens.',
