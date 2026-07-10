@@ -6,3 +6,10 @@
   - File: `toDoList_main/src/style.css`
   - Completed:
   <!-- id: f4f9d4d9-5d05-427a-b289-2702e276ac11 -->
+
+- [ ] **[LOW]** Add hover grow animation to PlayPage's musicBlock2 and musicBlock3 alongside existing glow
+  - Type: feature
+  - Description: PlayPage's .musicBlock2 and .musicBlock3 nav icons currently only have the rotating-glow :before hover effect from PR #107; add HomePage's size-grow hover feedback (60x55px → 65x60px, 0.5s ease) so both effects fire together on hover, matching HomePage's .musicBlock behavior. Implement the grow via a width/height transition (or the change-color2 keyframes) on :hover for both classes, layered with the existing glowing2 :before opacity fade rather than replacing it. Background-color stays yellow throughout, unchanged.
+  - File: `src/style.css`
+  - Completed: 2025-06-01 (PR #108)
+  <!-- id: 50de06dd-6782-46ed-88fb-7ead039d15e3 -->
