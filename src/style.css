@@ -1234,6 +1234,12 @@ body {
 
 }
 
+/* HomePage's size-grow hover feedback (see .musicBlock, change-color2)
+   layered alongside the rotating glow so both fire together on hover. */
+.musicBlock2:hover {
+  animation: 0.5s change-color2 1 normal forwards;
+}
+
 /* HomePage's rotating glow effect (see .musicBlock) replaces the old
    transform: scale hover feedback so PlayPage's nav matches HomePage's. */
 .musicBlock2:before {
@@ -1296,6 +1302,12 @@ body {
 .musicIcon3 {
   margin: 5px;
 
+}
+
+/* HomePage's size-grow hover feedback (see .musicBlock, change-color2)
+   layered alongside the rotating glow so both fire together on hover. */
+.musicBlock3:hover {
+  animation: 0.5s change-color2 1 normal forwards;
 }
 
 /* HomePage's rotating glow effect (see .musicBlock) replaces the old
