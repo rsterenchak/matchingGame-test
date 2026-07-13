@@ -345,7 +345,7 @@ describe('PlayPage instructions modal', () => {
   })
 })
 
-describe('Desktop layout: hamburger replaces individual nav controls at 641px+', () => {
+describe('Tablet layout (641–960px): nav shows 3 icons instead of the hamburger', () => {
   function get641Section() {
     const marker = '@media (min-width:641px)  {'
     const idx = css.indexOf(marker)
@@ -353,12 +353,12 @@ describe('Desktop layout: hamburger replaces individual nav controls at 641px+',
     return css.slice(idx, nextMedia === -1 ? undefined : nextMedia)
   }
 
-  it('mobileMenuWrapper uses display: block (not none) at 641px so the hamburger is visible on desktop', () => {
+  it('mobileMenuWrapper is hidden (display: none) at 641px so the hamburger no longer shows on tablets', () => {
     const section = get641Section()
     const match = section.match(/\.mobileMenuWrapper\s*\{([^}]+)\}/)
     expect(match).not.toBeNull()
-    expect(match[1]).toContain('display: block')
-    expect(match[1]).not.toContain('display: none')
+    expect(match[1]).toContain('display: none')
+    expect(match[1]).not.toContain('display: block')
   })
 
   it('topColumn3 > .musicIconWrapper is visible at 641px so the music+slider cluster shows directly on the play screen', () => {
@@ -367,14 +367,16 @@ describe('Desktop layout: hamburger replaces individual nav controls at 641px+',
     expect(section).not.toMatch(/\.topColumn3\s*>\s*\.musicIconWrapper\s*\{[^}]*display:\s*none/)
   })
 
-  it('topColumn3 > .musicBlock3 is hidden at 641px so the background-switch button does not show on desktop', () => {
+  it('topColumn3 > .musicBlock3 is shown (display: flex) at 641px so the background-switch button joins the nav', () => {
     const section = get641Section()
-    expect(section).toMatch(/\.topColumn3\s*>\s*\.musicBlock3\s*\{[^}]*display:\s*none/)
+    expect(section).toMatch(/\.topColumn3\s*>\s*\.musicBlock3\s*\{[^}]*display:\s*flex/)
+    expect(section).not.toMatch(/\.topColumn3\s*>\s*\.musicBlock3\s*\{[^}]*display:\s*none/)
   })
 
-  it('topColumn3 > .helpButton is hidden at 641px so the how-to-play button does not show on desktop', () => {
+  it('topColumn3 > .helpButton is shown (display: flex) at 641px so the how-to-play button joins the nav', () => {
     const section = get641Section()
-    expect(section).toMatch(/\.topColumn3\s*>\s*\.helpButton\s*\{[^}]*display:\s*none/)
+    expect(section).toMatch(/\.topColumn3\s*>\s*\.helpButton\s*\{[^}]*display:\s*flex/)
+    expect(section).not.toMatch(/\.topColumn3\s*>\s*\.helpButton\s*\{[^}]*display:\s*none/)
   })
 })
 
