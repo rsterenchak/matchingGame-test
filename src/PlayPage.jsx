@@ -28,6 +28,8 @@ export default function PlayPage({
 
   const [sliderOpen, setSliderOpen] = useState(false);
   const musicWrapperRef = useRef(null);
+  const longPressTimerRef = useRef(null);
+  const longPressFiredRef = useRef(false);
 
   const [activeInstructionsModal, setActiveInstructionsModal] = useState(true);
   const modalInteractiveRef = useRef(false);
@@ -209,11 +211,40 @@ export default function PlayPage({
     }
     else{
 
-      setAudioPlay();      
+      setAudioPlay();
 
     }
 
   }
+
+  // Long-press on the music icon reveals the volume slider inline (replacing the
+  // separate speaker button on mobile). A quick tap still toggles play/pause.
+  function cancelMusicPress() {
+    if (longPressTimerRef.current) {
+      clearTimeout(longPressTimerRef.current);
+      longPressTimerRef.current = null;
+    }
+  }
+
+  function startMusicPress() {
+    cancelMusicPress();
+    longPressFiredRef.current = false;
+    longPressTimerRef.current = setTimeout(() => {
+      longPressFiredRef.current = true;
+      setSliderOpen(true);
+    }, 500);
+  }
+
+  function handleMusicClick() {
+    if (longPressFiredRef.current) {
+      // The long-press already opened the slider — don't also toggle play/pause.
+      longPressFiredRef.current = false;
+      return;
+    }
+    forMusicIcon();
+  }
+
+  useEffect(() => cancelMusicPress, []);
 
 
 
@@ -569,22 +600,17 @@ export default function PlayPage({
 
                   <div
                     className='musicBlock2'
-                    onClick={() => forMusicIcon()}
+                    onClick={handleMusicClick}
+                    onMouseDown={startMusicPress}
+                    onMouseUp={cancelMusicPress}
+                    onMouseLeave={cancelMusicPress}
+                    onTouchStart={startMusicPress}
+                    onTouchEnd={cancelMusicPress}
                     style={popUpStyle}
                   >
 
                     <img className='musicIcon2' src={musicIcon}></img>
 
-                  </div>
-
-                  <div
-                    className='speakerButton'
-                    onClick={() => setSliderOpen(o => !o)}
-                    style={popUpStyle}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="black">
-                      <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
-                    </svg>
                   </div>
 
                   <div className={`volumeSliderWrapper${sliderOpen ? ' sliderOpen' : ''}`}>
