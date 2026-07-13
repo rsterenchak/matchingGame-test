@@ -640,3 +640,54 @@ describe('Mobile nav spacing: .topColumn3 icons evenly spaced when flex', () => 
     expect(match[1]).toMatch(/margin-left:\s*0\b/)
   })
 })
+
+describe('Mobile PlayPage nav: section2 buttons form a centered matched-pair row (320/481)', () => {
+  function getMediaSection(minWidth) {
+    const marker = `@media (min-width:${minWidth}px)  {`
+    const idx = css.indexOf(marker)
+    if (idx === -1) return ''
+    const nextMedia = css.indexOf('@media', idx + 1)
+    return css.slice(idx, nextMedia === -1 ? undefined : nextMedia)
+  }
+
+  function standaloneRule(section, selector) {
+    const escaped = selector.replace('.', '\\.')
+    return section.match(new RegExp(`(?:^|\\n)[ \\t]*${escaped}\\s*\\{([^}]*)\\}`))
+  }
+
+  // .topColumn3 becomes a flex row shared by the 320px and 481px breakpoints (the
+  // 481px block has no .topColumn3 rule, so it cascades from 320px). Centering it
+  // lays the three nav buttons out as a single horizontal, vertically-aligned row.
+  it('topColumn3 centers its nav buttons horizontally and vertically at 320px so they read as a matched-pair row', () => {
+    const match = standaloneRule(getMediaSection(320), '.topColumn3')
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/align-items:\s*center/)
+    expect(match[1]).toMatch(/justify-content:\s*center/)
+    expect(match[1]).not.toMatch(/align-items:\s*flex-start/)
+  })
+
+  // The leading music icon inherits a base margin-left of 10px that the two
+  // trailing icons don't have; zeroing it at the mobile breakpoints keeps the gap
+  // between all three buttons consistent (the 20px sibling margins alone).
+  it.each([320, 481])('musicBlock2 margin-left is reset to 0 at %ipx so the music icon is flush with its matched pair', (bp) => {
+    const match = standaloneRule(getMediaSection(bp), '.musicBlock2')
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/margin-left:\s*0\b/)
+  })
+
+  // The centering is scoped to mobile only: at 641px .topColumn3 must go back to a
+  // left-aligned flex-start row (justify-content reset) and the music icon must
+  // regain its 10px offset, so the tablet/desktop nav layout stays unchanged.
+  it('topColumn3 resets to flex-start justification at 641px so the desktop/tablet nav is not re-centered', () => {
+    const match = standaloneRule(getMediaSection(641), '.topColumn3')
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/justify-content:\s*flex-start/)
+    expect(match[1]).not.toMatch(/justify-content:\s*center/)
+  })
+
+  it('musicBlock2 margin-left is restored to 10px at 641px so the mobile reset does not leak into the tablet nav', () => {
+    const match = standaloneRule(getMediaSection(641), '.musicBlock2')
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/margin-left:\s*10px/)
+  })
+})

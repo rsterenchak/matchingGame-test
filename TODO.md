@@ -49,7 +49,7 @@
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: 98b5990b-efcd-40a3-9c2d-854fb29fe8b9 -->
 
-- [ ] **[MEDIUM]** Align PlayPage nav section2 buttons in a horizontal matched-pair row on mobile
+- [x] **[MEDIUM]** Align PlayPage nav section2 buttons in a horizontal matched-pair row on mobile — Completed: 2026-07-13
   - Type: bug
   - Description: On the PlayPage nav section2, the nav buttons currently stack/misalign and render at different sizes on narrow (mobile) widths. Lay them out on a single horizontal row, centered as a matched pair, with identical button dimensions and a consistent gap between them. Scope the change to the mobile breakpoints (320px and 481px) only — do not alter the desktop layout. Acceptance criteria for behavior that must survive the realignment: (a) the music toggle button's onClick must still fire the `isCurrentAudio` toggle in `MainSection` that drives the `Handle*Audio` play/pause; (b) the home/back control must still flip `isCurrentPage` back to HomePage; (c) `popUpStyle` (blur + `cursor: auto`) must still thread through both buttons so they read as disabled behind the game-over/win popup.
   - File: `src/style.css`, `src/MobileMenu.jsx`, `src/PlayPage.jsx`

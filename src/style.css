@@ -2027,6 +2027,7 @@ body {
     width: min(7vw, 24px);
     height: min(7vw, 24px);
     margin-top: 8px;
+    margin-left: 0;
 
   }
 
@@ -2129,7 +2130,8 @@ body {
 
   .topColumn3 {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
   }
 
   .topColumn3 > .musicBlock3,
@@ -2232,6 +2234,7 @@ body {
     width: min(6vw, 26px);
     height: min(6vw, 26px);
     margin-top: 8px;
+    margin-left: 0;
 
   }
 
@@ -2395,6 +2398,9 @@ body {
     width: 60px;
     height: 55px;
     margin-top: 10px;
+    /* Restore the base 10px offset the mobile blocks zero out, so their reset
+       does not leak up into the tablet nav via the min-width cascade. */
+    margin-left: 10px;
 
   }
 
@@ -2402,11 +2408,11 @@ body {
     from {
       background-color: yellow;
     }
-  
+
     to {
-  
+
       width: 65px;
-      height: 60px;    
+      height: 60px;
       background-color: yellow;
   
     }
@@ -2493,9 +2499,13 @@ body {
     height: 30px;
   }
 
+  /* Reset the mobile centering so the tablet/desktop nav stays left-aligned;
+     the 320/481 blocks center .topColumn3, and min-width cascade would otherwise
+     leak that justification up into this breakpoint. */
   .topColumn3 {
     display: flex;
     align-items: flex-start;
+    justify-content: flex-start;
   }
 
   .topColumn3 > .musicIconWrapper {

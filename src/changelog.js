@@ -9,13 +9,7 @@ export const changelog = [
     fixed: [
       'On small tablets and larger, the play screen music, background, and help icons now stay evenly aligned in a row when the volume slider is closed instead of being pushed out of line.',
       'On phones and small tablets, the play screen music, background, and help icons are now evenly spaced instead of bunched together.',
-    ],
-  },
-  {
-    version: '1.0',
-    date: '2026-07-09',
-    fixed: [
-      'Hovering the music, background, or help icons on the play screen no longer shows a stray black box behind the icon; only the clean grow effect appears.',
+      'On phones, the play screen music, background, and help icons now sit in a centered, evenly spaced row of matching size instead of drifting out of alignment.',
     ],
   },
 ];
