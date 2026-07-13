@@ -28,7 +28,7 @@
 - Completed: 2025-06-01 (PR #1)
   <!-- id: 2c6305a3-fa29-4c65-a9fc-307871fb2e45 -->
 
-- [ ] **[MEDIUM]** Reduce mobile PlayPage nav to 3 icons matching desktop (music, background, help)
+- [x] **[MEDIUM]** Reduce mobile PlayPage nav to 3 icons matching desktop (music, background, help) — Completed: 2026-07-13
   - Type: feature
   - Description: On PlayPage below 641px, replace the current mobile nav (musicIconWrapper with musicBlock2 + separate speakerButton, plus hamburgerButton/MobileMenu) with exactly 3 icons matching desktop's set: a merged music toggle (tap toggles music via forMusicIcon, long-press/hold reveals the volume slider inline instead of a separate speakerButton icon), the musicBlock3 planet/background button (setupPage), and the helpButton ('?', opens instructions modal). Remove the hamburgerButton and MobileMenu rendering from PlayPage's mobile breakpoints entirely (desktop already doesn't render it); the GitHub link stays only in portfolioBlock2/portfolioIcon2. Update the media queries so musicBlock3 and helpButton are shown (not hidden) below 641px, and mobileMenuWrapper/hamburgerButton are hidden at all mobile widths. Add a long-press/hold handler on musicBlock2 (touch/mouse hold, e.g. via onTouchStart/onMouseDown + timer) to open the existing volumeSliderWrapper in place of the removed speakerButton.
   - File: `src/PlayPage.jsx`, `src/style.css`, `src/MobileMenu.jsx`

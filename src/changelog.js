@@ -1,10 +1,14 @@
 export const changelog = [
   {
     version: '1.0',
-    date: '2026-07-09',
+    date: '2026-07-13',
     changed: [
-      'The help icon on the play screen now grows on hover just like the music and background icons, so every navigation icon responds the same way.',
+      'On phones, the play screen now shows music, background, and help icons directly with a long-press on the music icon to reveal the volume slider, replacing the pop-out hamburger menu.',
     ],
+  },
+  {
+    version: '1.0',
+    date: '2026-07-09',
     fixed: [
       'The play screen now shows the planet and help icons next to the music toggle on desktop, reserving the hamburger menu for narrower screens.',
       'The music, background, and help icons on the play screen are now evenly spaced and each show a matching glow ring on hover.',

@@ -411,6 +411,101 @@ describe('Play screen music controls show inline on mobile (moved out of hamburg
   })
 })
 
+describe('Mobile PlayPage nav shows 3 icons (music, background, help) instead of the hamburger', () => {
+  function get320Section() {
+    const marker = '@media (min-width:320px)  {'
+    const idx = css.indexOf(marker)
+    const nextMedia = css.indexOf('@media', idx + 1)
+    return css.slice(idx, nextMedia === -1 ? undefined : nextMedia)
+  }
+
+  const defaultProps = {
+    background: 'fake-bg.jpg',
+    setHomePage: vi.fn(),
+    setAudioPause: vi.fn(),
+    setAudioPlay: vi.fn(),
+    activeCurrentAudio: false,
+    isActiveData: [],
+    isVolume: 0.5,
+    onVolumeChange: vi.fn(),
+  }
+
+  beforeEach(() => {
+    localStorage.clear()
+    vi.clearAllMocks()
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    vi.clearAllTimers()
+    vi.useRealTimers()
+    localStorage.clear()
+  })
+
+  it('mobileMenuWrapper is hidden (display: none) at 320px so the hamburger no longer shows on mobile', () => {
+    const section = get320Section()
+    const match = section.match(/\.mobileMenuWrapper\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('display: none')
+    expect(match[1]).not.toContain('display: block')
+  })
+
+  it('topColumn3 > .musicBlock3 and .helpButton are shown (display: flex) at 320px so background + help join the mobile nav', () => {
+    const section = get320Section()
+    const match = section.match(/\.topColumn3\s*>\s*\.musicBlock3,\s*\.topColumn3\s*>\s*\.helpButton\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('display: flex')
+    expect(match[1]).not.toContain('display: none')
+  })
+
+  it('topColumn3 > .musicIconWrapper stays visible (display: flex) at 320px so the music toggle remains', () => {
+    const section = get320Section()
+    expect(section).toMatch(/\.topColumn3\s*>\s*\.musicIconWrapper\s*\{[^}]*display:\s*flex/)
+  })
+
+  it('portfolioIcon2 is shown (display: block) at 320px so the GitHub link is not lost on mobile', () => {
+    const section = get320Section()
+    const match = section.match(/\.portfolioIcon2\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toContain('display: block')
+    expect(match[1]).not.toContain('display: none')
+  })
+
+  it('no longer renders a separate speakerButton element (long-press replaces it)', () => {
+    render(<PlayPage {...defaultProps} />)
+    expect(document.querySelector('.speakerButton')).toBeNull()
+  })
+
+  it('a quick tap on the music icon toggles play/pause', () => {
+    render(<PlayPage {...defaultProps} />)
+    const music = document.querySelector('.musicBlock2')
+    fireEvent.mouseDown(music)
+    fireEvent.mouseUp(music)
+    fireEvent.click(music)
+    // activeCurrentAudio is false, so a tap should start playback
+    expect(defaultProps.setAudioPlay).toHaveBeenCalled()
+  })
+
+  it('a long-press on the music icon opens the volume slider', () => {
+    render(<PlayPage {...defaultProps} />)
+    const music = document.querySelector('.musicBlock2')
+    fireEvent.mouseDown(music)
+    act(() => vi.advanceTimersByTime(500))
+    expect(document.querySelector('.volumeSliderWrapper.sliderOpen')).not.toBeNull()
+  })
+
+  it('the click following a long-press does not also toggle play/pause', () => {
+    render(<PlayPage {...defaultProps} />)
+    const music = document.querySelector('.musicBlock2')
+    fireEvent.mouseDown(music)
+    act(() => vi.advanceTimersByTime(500))
+    fireEvent.mouseUp(music)
+    fireEvent.click(music)
+    expect(defaultProps.setAudioPlay).not.toHaveBeenCalled()
+    expect(document.querySelector('.volumeSliderWrapper.sliderOpen')).not.toBeNull()
+  })
+})
+
 describe('Music toggle hover does not shift card rows (regression: hover grew box model)', () => {
   it('.musicBlock2 base rule keeps a fixed 60x55 size', () => {
     const match = css.match(/\.musicBlock2\s*\{([^}]+)\}/)
