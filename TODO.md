@@ -34,3 +34,10 @@
   - File: `src/PlayPage.jsx`, `src/style.css`, `src/MobileMenu.jsx`
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: e14cd8b4-e755-4ed0-914a-93fd1f22030f -->
+
+- [ ] **[MEDIUM]** Scope the 641px+ volumeSliderWrapper override to .sliderOpen so nav icons stay equal-sized
+  - Type: bug
+  - Description: At viewports ≥641px, the media-query rule for `.volumeSliderWrapper` (style.css:2334) applies `display:flex` and `position:relative` unconditionally instead of only when the wrapper has the `sliderOpen` class, unlike the base rule it's meant to override. This makes the 28x76px volume slider render permanently in-flow beneath the music icon, stretching `.musicIconWrapper` and breaking the 3-icon nav row (music, planet, help) out of visual alignment even when the slider is closed. Fix by changing the selector at style.css:2334 to `.volumeSliderWrapper.sliderOpen` so it only takes flow space when toggled open, matching the base rule's scoping; verify the three nav circles (`.musicBlock2`, `.musicBlock3`, `.helpButton`) render as equal 60x55px circles in a horizontal row at ≥641px with the slider closed, and confirm the slider still opens in-flow correctly beneath the music icon when `sliderOpen` is active.
+  - File: `src/style.css`, `src/PlayPage.jsx`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: 864cec7b-a042-4cea-b86f-66da6456dc93 -->
