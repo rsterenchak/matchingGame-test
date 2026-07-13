@@ -41,3 +41,10 @@
   - File: `src/style.css`, `src/PlayPage.jsx`
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: 864cec7b-a042-4cea-b86f-66da6456dc93 -->
+
+- [ ] **[MEDIUM]** Fix bunched nav icons in .topColumn3 on mobile widths
+  - Type: bug
+  - Description: On mobile widths (320px/481px/641px) .topColumn3 switches from grid to flex but loses the grid's empty-track spacing, so .musicIconWrapper, .musicBlock3, and .helpButton render flush against each other instead of evenly spaced like the desktop grid layout. Fix by adding margin-left: 20px to .musicBlock3 and .helpButton within the 320px, 481px, and 641px media query blocks (matching the desktop grid's visual spacing) without adding a gap on .topColumn3 itself. Verify icon spacing looks even at all three mobile breakpoints and remains unchanged at 961px+ where .topColumn3 reverts to grid.
+  - File: `src/style.css`, `src/PlayPage.jsx`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: 98b5990b-efcd-40a3-9c2d-854fb29fe8b9 -->
