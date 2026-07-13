@@ -20,7 +20,7 @@
   - File: `toDoList_main/src/style.css`, `toDoList_main/src/MobileMenu.jsx`
   <!-- id: bc5d6155-3b7b-469a-a429-aa7dd1057b88 -->
 
-- [ ] **[MEDIUM]** Reduce mobile PlayPage nav to 3 icons matching desktop (music, background, help)
+- [x] **[MEDIUM]** Reduce mobile PlayPage nav to 3 icons matching desktop (music, background, help) — Completed: 2026-07-13
 
 - Type: feature
 - Description: On PlayPage below 641px, replace the current mobile nav (musicIconWrapper with musicBlock2 + separate speakerButton, hamburgerButton opening MobileMenu) with exactly 3 icons matching desktop's set: a merged music toggle (musicBlock2, tap toggles play/pause via forMusicIcon) that reveals the existing volumeSliderWrapper via long-press instead of the separate speakerButton, the background/planet toggle (musicBlock3, setupPage), and the help icon (helpButton, opens instructions modal). Remove the hamburgerButton/MobileMenu rendering from the mobile breakpoints (<641px and 641-960px) so mobileMenuWrapper stays hidden until it's no longer needed; keep the GitHub link accessible via the existing portfolioIcon2/portfolioBlock2 in the footer row (currently hidden below 641px — make it visible on mobile so GitHub isn't lost). Update media queries so `.topColumn3 > .musicBlock3, .topColumn3 > .helpButton` are shown (not hidden) below 641px, `.musicIconWrapper`'s speakerButton element is removed or repurposed for the long-press interaction, and `.mobileMenuWrapper`/MobileMenu usage is removed from PlayPage's mobile render path. Likely code: the `<div className='topColumn3'>` markup and its CSS breakpoints in `src/PlayPage.jsx` and `src/style.css`.

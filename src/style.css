@@ -2472,7 +2472,7 @@ body {
   }
 
   .mobileMenuWrapper {
-    display: block;
+    display: none;
   }
 
   .hamburgerButton {
@@ -2497,11 +2497,11 @@ body {
   }
 
   .topColumn3 > .musicBlock3 {
-    display: none;
+    display: flex;
   }
 
   .topColumn3 > .helpButton {
-    display: none;
+    display: flex;
   }
 
   .portfolioIcon2 {
