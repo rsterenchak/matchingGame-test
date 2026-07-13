@@ -1982,6 +1982,7 @@ body {
     width: min(7vw, 24px);
     height: min(7vw, 24px);
     margin-top: 8px;
+    margin-left: 20px;
 
   }
 
@@ -1990,6 +1991,7 @@ body {
     width: min(7vw, 24px);
     height: min(7vw, 24px);
     margin-top: 8px;
+    margin-left: 20px;
 
   }
 
@@ -2183,6 +2185,7 @@ body {
     width: min(6vw, 26px);
     height: min(6vw, 26px);
     margin-top: 8px;
+    margin-left: 20px;
 
   }
 
@@ -2205,6 +2208,7 @@ body {
     width: min(6vw, 26px);
     height: min(6vw, 26px);
     margin-top: 8px;
+    margin-left: 20px;
 
   }
 
@@ -2359,6 +2363,7 @@ body {
     width: 60px;
     height: 55px;
     margin-top: 10px;
+    margin-left: 20px;
 
   }
 
@@ -2367,6 +2372,7 @@ body {
     width: 60px;
     height: 55px;
     margin-top: 10px;
+    margin-left: 20px;
 
   }
 
@@ -2622,11 +2628,19 @@ body {
     width: 60px;
     height: 55px;
     margin-top: 10px;
+    margin-left: 0;
     justify-content: center;
     border: 3px solid black;
     background-color: yellow;
     cursor: pointer;
     grid-area: musicBlock3;
+  }
+
+  /* Reset the mobile flex-layout margin so .topColumn3's grid tracks alone
+     space the nav icons at desktop widths (the min-width cascade would
+     otherwise leak the 20px margin-left up from the mobile blocks). */
+  .helpButton {
+    margin-left: 0;
   }
 
   .musicBlock2 {
