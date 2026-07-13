@@ -281,6 +281,18 @@ describe('Volume slider correct fill colors (regression: was dark blob)', () => 
     expect(css).toMatch(/\.volumeSliderInput::-webkit-slider-thumb\s*\{[^}]*background:\s*yellow/)
   })
 
+  it('CSS ≥641px in-flow volume slider override is scoped to .sliderOpen so it only takes flow space when open', () => {
+    // The base rule keeps the wrapper position: absolute; the ≥641px override
+    // that switches it to position: relative must be scoped to .sliderOpen,
+    // otherwise the closed slider renders permanently in-flow and breaks the
+    // 3-icon nav row alignment.
+    expect(css).toMatch(/\.volumeSliderWrapper\.sliderOpen\s*\{[^}]*position:\s*relative/)
+  })
+
+  it('CSS has no unscoped .volumeSliderWrapper rule forcing position: relative (would stretch the nav row when closed)', () => {
+    expect(css).not.toMatch(/\.volumeSliderWrapper\s*\{[^}]*position:\s*relative/)
+  })
+
   it('PlayPage volume slider input uses yellow-on-grey fill gradient matching the white-track design', () => {
     const props = {
       background: 'fake-bg.jpg',

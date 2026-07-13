@@ -2331,7 +2331,7 @@ body {
     display: none;
   }
 
-  .volumeSliderWrapper {
+  .volumeSliderWrapper.sliderOpen {
     display: flex;
     position: relative;
     top: auto;
