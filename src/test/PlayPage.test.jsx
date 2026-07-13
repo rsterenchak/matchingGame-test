@@ -592,3 +592,51 @@ describe('Nav icons in .navSection2 share HomePage\'s rotating glow on hover (re
     expect(match[1]).toMatch(/animation:\s*0\.5s\s+change-color2/)
   })
 })
+
+describe('Mobile nav spacing: .topColumn3 icons evenly spaced when flex', () => {
+  // Slice a play-page mobile media block (double-space marker form).
+  function getMediaSection(minWidth) {
+    const marker = `@media (min-width:${minWidth}px)  {`
+    const idx = css.indexOf(marker)
+    if (idx === -1) return ''
+    const nextMedia = css.indexOf('@media', idx + 1)
+    return css.slice(idx, nextMedia === -1 ? undefined : nextMedia)
+  }
+
+  // Match a standalone rule (e.g. `.helpButton { ... }`) inside a section,
+  // ignoring compound selectors like `.topColumn3 > .helpButton { ... }` by
+  // anchoring to the start of a line (spaces/tabs only, never crossing lines).
+  function standaloneRule(section, selector) {
+    const escaped = selector.replace('.', '\\.')
+    return section.match(new RegExp(`(?:^|\\n)[ \\t]*${escaped}\\s*\\{([^}]*)\\}`))
+  }
+
+  // The flex breakpoints where .topColumn3 loses the desktop grid's empty-track
+  // spacing and needs an explicit margin-left on the trailing two nav icons.
+  it.each([320, 481, 641])('musicBlock3 has margin-left: 20px at %ipx so it does not sit flush against the music icon', (bp) => {
+    const match = standaloneRule(getMediaSection(bp), '.musicBlock3')
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/margin-left:\s*20px/)
+  })
+
+  it.each([320, 481, 641])('helpButton has margin-left: 20px at %ipx so it does not sit flush against the background button', (bp) => {
+    const match = standaloneRule(getMediaSection(bp), '.helpButton')
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/margin-left:\s*20px/)
+  })
+
+  // At 961px+ .topColumn3 reverts to grid, so the mobile margin-left must be
+  // reset to 0 — otherwise the min-width cascade leaks it and shifts the
+  // desktop nav icons, which must remain unchanged.
+  it('musicBlock3 margin-left is reset to 0 at 961px so the desktop grid spacing is unchanged', () => {
+    const match = standaloneRule(getMediaSection(961), '.musicBlock3')
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/margin-left:\s*0\b/)
+  })
+
+  it('helpButton margin-left is reset to 0 at 961px so the desktop grid spacing is unchanged', () => {
+    const match = standaloneRule(getMediaSection(961), '.helpButton')
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/margin-left:\s*0\b/)
+  })
+})
