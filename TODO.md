@@ -82,3 +82,10 @@
   - File: `toDoList_main/src/PlayPage.jsx`, `toDoList_main/src/style.css`
   - Completed:
   <!-- id: 080d13e4-c517-4e68-90f9-acafe4295478 -->
+
+- [ ] **[LOW]** Match homepage hamburger button yellow to PlayPage nav button yellow
+  - Type: bug
+  - Description: The hamburger menu button on `HomePage` uses a slightly different shade of yellow than the `.musicBlock*`-family nav buttons on `PlayPage`. Update the hamburger button's background color in CSS to use the exact same yellow value as the PlayPage nav buttons so the two match. Likely a single color value change in the hamburger button's class rule.
+  - File: `src/style.css`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: c93812cb-65e9-40cb-a54d-c047b99ccbae -->
