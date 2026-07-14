@@ -1779,7 +1779,7 @@ body {
   justify-content: center;
   align-items: center;
   border: 2.5px solid black;
-  background-color: #FFD700;
+  background-color: yellow;
   cursor: pointer;
   user-select: none;
 }
