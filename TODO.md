@@ -68,3 +68,10 @@
   - File: `toDoList_main/src/PlayPage.jsx`, `toDoList_main/src/style.css`
   - Completed:
   <!-- id: da36920e-866c-463d-a296-8fd098ffee22 -->
+
+- [ ] **[LOW]** Shrink PlayPage stack buttons and hide the GitHub username/icon
+  - Type: bug
+  - Description: The three circular buttons (music, second icon, "?") in the upper-left vertical stack on PlayPage are slightly too large; reduce their shared size (e.g. from 36px to ~28-30px) via the shared button class introduced in the prior stacking change. Also hide the "@rsterenchak" text and GitHub icon link currently shown next to the button stack — remove it from the rendered layout (e.g. wrap in `display:none` or remove the element) without deleting the underlying markup/logic if it's reused elsewhere. Verify the button stack's vertical spacing still looks correct at the smaller size across existing breakpoints (320px, 481px, 641px).
+  - File: `toDoList_main/src/PlayPage.jsx`, `toDoList_main/src/style.css`
+  - Completed:
+  <!-- id: d8d562a0-a523-4001-a25d-08f989bb0b74 -->
