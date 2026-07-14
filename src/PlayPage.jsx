@@ -599,7 +599,7 @@ export default function PlayPage({
                 <div className='musicIconWrapper' ref={musicWrapperRef}>
 
                   <div
-                    className='musicBlock2'
+                    className='musicBlock2 navStackButton'
                     onClick={handleMusicClick}
                     onMouseDown={startMusicPress}
                     onMouseUp={cancelMusicPress}
@@ -629,7 +629,7 @@ export default function PlayPage({
                 </div>
 
                 <div
-                  className='musicBlock3'
+                  className='musicBlock3 navStackButton'
                   onClick={() => setupPage()}
                   style={popUpStyle}
                 >
@@ -639,7 +639,7 @@ export default function PlayPage({
                 </div>
 
                 <div
-                  className='helpButton'
+                  className='helpButton navStackButton'
                   onClick={() => setActiveInstructionsModal(true)}
                   style={popUpStyle}
                 >
