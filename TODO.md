@@ -76,7 +76,7 @@
   - Completed:
   <!-- id: d8d562a0-a523-4001-a25d-08f989bb0b74 -->
 
-- [ ] **[LOW]** Increase PlayPage stack button size to 34px and remove hover grow effect
+- [x] **[LOW]** Increase PlayPage stack button size to 34px and remove hover grow effect — Completed: 2026-07-14
   - Type: bug
   - Description: The three circular buttons (music, second icon, "?") in the upper-left vertical stack on PlayPage should be resized to 34x34px via their shared button class. Additionally remove any hover/active scale-up ("grow") transform currently applied to these buttons so they stay visually static on hover/tap. Verify the stack's spacing and alignment still look correct at 34px across existing breakpoints (320px, 481px, 641px).
   - File: `toDoList_main/src/PlayPage.jsx`, `toDoList_main/src/style.css`

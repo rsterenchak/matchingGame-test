@@ -1234,11 +1234,8 @@ body {
 
 }
 
-/* HomePage's size-grow hover feedback (see .musicBlock, change-color2)
-   layered alongside the rotating glow so both fire together on hover. */
-.musicBlock2:hover {
-  animation: 0.5s change-color2 1 normal forwards;
-}
+/* PlayPage nav buttons stay visually static on hover — no size grow.
+   Only the rotating glow (:hover:before) responds to hover. */
 
 /* HomePage's rotating glow effect (see .musicBlock) replaces the old
    transform: scale hover feedback so PlayPage's nav matches HomePage's. */
@@ -1304,11 +1301,8 @@ body {
 
 }
 
-/* HomePage's size-grow hover feedback (see .musicBlock, change-color2)
-   layered alongside the rotating glow so both fire together on hover. */
-.musicBlock3:hover {
-  animation: 0.5s change-color2 1 normal forwards;
-}
+/* PlayPage nav buttons stay visually static on hover — no size grow.
+   Only the rotating glow (:hover:before) responds to hover. */
 
 /* HomePage's rotating glow effect (see .musicBlock) replaces the old
    transform: scale hover feedback so PlayPage's nav matches HomePage's. */
@@ -1379,8 +1373,8 @@ body {
 }
 
 .topColumn3 .navStackButton {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   margin: 0;
   flex: 0 0 auto;
 }
@@ -3083,12 +3077,9 @@ body {
   color: black;
 }
 
-/* HomePage's size-grow hover feedback (see .musicBlock, change-color2)
-   layered alongside the rotating glow so both fire together on hover,
-   matching .musicBlock2 / .musicBlock3 so every nav icon behaves uniformly. */
-.helpButton:hover {
-  animation: 0.5s change-color2 1 normal forwards;
-}
+/* PlayPage nav buttons stay visually static on hover — no size grow,
+   matching .musicBlock2 / .musicBlock3 so every nav icon behaves uniformly.
+   Only the rotating glow (:hover:before) responds to hover. */
 
 /* HomePage's rotating glow effect (see .musicBlock) replaces the old
    transform: scale hover feedback so PlayPage's nav matches HomePage's. */

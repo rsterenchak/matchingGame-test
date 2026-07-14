@@ -586,11 +586,12 @@ describe('Nav icons in .navSection2 share HomePage\'s rotating glow on hover (re
     expect(match[1]).toMatch(/border-radius:\s*20px/)
   })
 
-  it.each(icons)('%s grows on hover via the change-color2 animation, layered with the glow', (sel) => {
+  it.each(icons)('%s stays visually static on hover — no size-grow change-color2 animation', (sel) => {
     const escaped = sel.replace('.', '\\.')
     const match = css.match(new RegExp(`${escaped}:hover\\s*\\{([^}]+)\\}`))
-    expect(match).not.toBeNull()
-    expect(match[1]).toMatch(/animation:\s*0\.5s\s+change-color2/)
+    // The glow lives on :hover:before (matched separately); any plain :hover
+    // rule must not re-introduce the size-grow animation.
+    if (match) expect(match[1]).not.toMatch(/change-color2/)
   })
 })
 
@@ -742,14 +743,13 @@ describe('PlayPage nav controls form a uniform vertical stack in the upper-left 
     expect(match[1]).toMatch(/margin:\s*0\b/)
   })
 
-  it('.navStackButton is shrunk to a compact ~28-30px circle', () => {
+  it('.navStackButton is sized to a compact 34px circle', () => {
     const match = css.match(/\.topColumn3\s+\.navStackButton\s*\{([^}]+)\}/)
     expect(match).not.toBeNull()
     const widthMatch = match[1].match(/width:\s*([0-9]+)px/)
     expect(widthMatch).not.toBeNull()
     const size = Number(widthMatch[1])
-    expect(size).toBeGreaterThanOrEqual(28)
-    expect(size).toBeLessThanOrEqual(30)
+    expect(size).toBe(34)
   })
 
   it('all three nav triggers (music, background, help) carry the shared navStackButton class', () => {
