@@ -56,7 +56,7 @@
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: cf17bac0-8fca-4207-9c16-335ad93c75b0 -->
 
-- [ ] **[HIGH]** Fix missing hamburger menu button on mobile HomePage
+- [x] **[HIGH]** Fix missing hamburger menu button on mobile HomePage — Completed: 2026-07-14
   - Type: bug
   - Description: The hamburger/mobile menu button does not appear in the top-left corner of the HomePage at mobile breakpoints (320px–641px), even though `MobileMenu.jsx` exists and presumably renders correctly on PlayPage or desktop. Verify `HomePage.jsx` actually renders `MobileMenu`, and check `style.css` for a rule (media query or z-index/display issue) hiding it specifically at mobile widths on the home screen. Fix so the button is visible and clickable in the top-left corner on mobile, matching existing breakpoints (320px, 481px, 641px).
   - File: `toDoList_main/src/HomePage.jsx`, `toDoList_main/src/MobileMenu.jsx`, `toDoList_main/src/style.css`
