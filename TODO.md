@@ -62,7 +62,7 @@
   - File: `toDoList_main/src/HomePage.jsx`, `toDoList_main/src/MobileMenu.jsx`, `toDoList_main/src/style.css`
   <!-- id: 2ac92eb7-98ee-40b0-86c6-19084d0c0447 -->
 
-- [ ] **[MEDIUM]** Fix inconsistent button sizes and relocate PlayPage buttons to a vertical stack in the upper-left corner
+- [x] **[MEDIUM]** Fix inconsistent button sizes and relocate PlayPage buttons to a vertical stack in the upper-left corner — Completed: 2026-07-14
   - Type: bug
   - Description: The music toggle, second icon button, and "?" instructions button on `PlayPage` currently render at different sizes because they lack a shared class/dimensions. Restructure them into a single vertical stack anchored to the upper-left of the screen, all sharing identical width/height (e.g. 36px circular buttons) via one shared CSS class instead of per-button inline sizing. Preserve existing behavior: the music button must still toggle `isCurrentAudio` in `MainSection.jsx` correctly; the "?" button must still open the instructional popover, and the popover should continue opening centered on screen (not re-anchored beside the button) — only the trigger buttons move, not the popover's positioning logic. Verify no click listeners or mount-path-registered behavior (e.g. outside-click handlers for the popover) were dependent on the buttons' old DOM location.
   - File: `toDoList_main/src/PlayPage.jsx`, `toDoList_main/src/style.css`

@@ -691,3 +691,87 @@ describe('Mobile PlayPage nav: section2 buttons form a centered matched-pair row
     expect(match[1]).toMatch(/margin-left:\s*10px/)
   })
 })
+
+describe('PlayPage nav controls form a uniform vertical stack in the upper-left corner', () => {
+  const defaultProps = {
+    background: 'fake-bg.jpg',
+    setHomePage: vi.fn(),
+    setAudioPause: vi.fn(),
+    setAudioPlay: vi.fn(),
+    activeCurrentAudio: false,
+    isActiveData: [],
+    isVolume: 0.5,
+    onVolumeChange: vi.fn(),
+  }
+
+  beforeEach(() => {
+    localStorage.clear()
+    vi.clearAllMocks()
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    vi.clearAllTimers()
+    vi.useRealTimers()
+    localStorage.clear()
+  })
+
+  // The three nav triggers stack vertically instead of the old horizontal row.
+  it('.topColumn3 is laid out as a flex column so the nav buttons stack vertically', () => {
+    const match = css.match(/\.navSection2\s+\.topColumn3\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/display:\s*flex/)
+    expect(match[1]).toMatch(/flex-direction:\s*column/)
+    expect(match[1]).toMatch(/align-items:\s*flex-start/)
+  })
+
+  // A single shared .navStackButton rule gives every trigger identical
+  // dimensions (fixes the per-breakpoint size drift). Because it out-specifies
+  // the individual .musicBlock2/3 / .helpButton size rules, it wins everywhere.
+  it('.navStackButton sets one identical width/height for every nav button', () => {
+    const match = css.match(/\.topColumn3\s+\.navStackButton\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    const widthMatch = match[1].match(/width:\s*([0-9]+px)/)
+    const heightMatch = match[1].match(/height:\s*([0-9]+px)/)
+    expect(widthMatch).not.toBeNull()
+    expect(heightMatch).not.toBeNull()
+    // Circular buttons: identical width and height.
+    expect(widthMatch[1]).toBe(heightMatch[1])
+    // Sibling margins are cleared so the column gap alone controls spacing.
+    expect(match[1]).toMatch(/margin:\s*0\b/)
+  })
+
+  it('all three nav triggers (music, background, help) carry the shared navStackButton class', () => {
+    render(<PlayPage {...defaultProps} />)
+    expect(document.querySelectorAll('.navStackButton')).toHaveLength(3)
+    expect(document.querySelector('.musicBlock2.navStackButton')).not.toBeNull()
+    expect(document.querySelector('.musicBlock3.navStackButton')).not.toBeNull()
+    expect(document.querySelector('.helpButton.navStackButton')).not.toBeNull()
+  })
+
+  it('the music toggle inside the stack still fires the audio play/pause handler on tap', () => {
+    render(<PlayPage {...defaultProps} />)
+    const music = document.querySelector('.musicBlock2.navStackButton')
+    fireEvent.mouseDown(music)
+    fireEvent.mouseUp(music)
+    fireEvent.click(music)
+    expect(defaultProps.setAudioPlay).toHaveBeenCalled()
+  })
+
+  it('the help trigger opens the instructions popover, which stays centered via position: fixed (not re-anchored to the button)', () => {
+    render(<PlayPage {...defaultProps} />)
+    // Dismiss the mount-time modal first, then reopen via the relocated button.
+    act(() => vi.advanceTimersByTime(400))
+    fireEvent.click(document.querySelector('.gotItButton'))
+    expect(screen.queryByText('How to Play')).not.toBeInTheDocument()
+
+    fireEvent.click(document.querySelector('.helpButton.navStackButton'))
+    expect(screen.getByText('How to Play')).toBeInTheDocument()
+
+    const backdropRule = css.match(/\.instructionsBackdrop\s*\{([^}]+)\}/)
+    expect(backdropRule).not.toBeNull()
+    expect(backdropRule[1]).toMatch(/position:\s*fixed/)
+    expect(backdropRule[1]).toMatch(/align-items:\s*center/)
+    expect(backdropRule[1]).toMatch(/justify-content:\s*center/)
+  })
+})

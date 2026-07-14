@@ -1362,6 +1362,29 @@ body {
   margin-left: 0;
 }
 
+/* Vertical nav stack, anchored to the upper-left corner. The music, background,
+   and help controls stack in a single column instead of the old horizontal nav
+   row, and share one identical size via .navStackButton so they can never drift
+   out of sync per breakpoint. The descendant selectors below are deliberately
+   more specific (0,2,0) than the per-breakpoint .musicBlock2 / .musicBlock3 /
+   .helpButton size and margin rules (0,1,0), so this single source of truth wins
+   at every width and every button renders as the same circle. */
+.navSection2 .topColumn3 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+  width: auto;
+}
+
+.topColumn3 .navStackButton {
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  flex: 0 0 auto;
+}
+
 .topColumn4 {
   display: flex;
   flex-direction: row-reverse;
