@@ -477,12 +477,13 @@ describe('Mobile PlayPage nav shows 3 icons (music, background, help) instead of
     expect(section).toMatch(/\.topColumn3\s*>\s*\.musicIconWrapper\s*\{[^}]*display:\s*flex/)
   })
 
-  it('portfolioIcon2 is shown (display: block) at 320px so the GitHub link is not lost on mobile', () => {
-    const section = get320Section()
-    const match = section.match(/\.portfolioIcon2\s*\{([^}]+)\}/)
+  it('portfolioBlock2 (the @rsterenchak text + GitHub icon next to the button stack) is hidden', () => {
+    // The first .portfolioBlock2 rule is the base rule; it must remove the block
+    // from the layout so the username/icon no longer render beside the nav stack.
+    const match = css.match(/\.portfolioBlock2\s*\{([^}]+)\}/)
     expect(match).not.toBeNull()
-    expect(match[1]).toContain('display: block')
-    expect(match[1]).not.toContain('display: none')
+    expect(match[1]).toContain('display: none')
+    expect(match[1]).not.toContain('display: flex')
   })
 
   it('no longer renders a separate speakerButton element (long-press replaces it)', () => {
@@ -739,6 +740,16 @@ describe('PlayPage nav controls form a uniform vertical stack in the upper-left 
     expect(widthMatch[1]).toBe(heightMatch[1])
     // Sibling margins are cleared so the column gap alone controls spacing.
     expect(match[1]).toMatch(/margin:\s*0\b/)
+  })
+
+  it('.navStackButton is shrunk to a compact ~28-30px circle', () => {
+    const match = css.match(/\.topColumn3\s+\.navStackButton\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    const widthMatch = match[1].match(/width:\s*([0-9]+)px/)
+    expect(widthMatch).not.toBeNull()
+    const size = Number(widthMatch[1])
+    expect(size).toBeGreaterThanOrEqual(28)
+    expect(size).toBeLessThanOrEqual(30)
   })
 
   it('all three nav triggers (music, background, help) carry the shared navStackButton class', () => {
