@@ -1,9 +1,15 @@
 export const changelog = [
   {
     version: '1.0',
+    date: '2026-07-14',
+    fixed: [
+      'On phones, the home screen now shows the hamburger menu button in the top-left corner instead of hiding it.',
+    ],
+  },
+  {
+    version: '1.0',
     date: '2026-07-13',
     changed: [
-      'On phones, the play screen now shows music, background, and help icons directly with a long-press on the music icon to reveal the volume slider, replacing the pop-out hamburger menu.',
       'On small tablets and landscape phones, the play screen now shows the music, background, and help icons directly instead of the pop-out hamburger menu, matching phones and desktop.',
     ],
     fixed: [

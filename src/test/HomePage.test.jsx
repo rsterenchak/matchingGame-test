@@ -823,3 +823,42 @@ describe('Mobile nimbus cloud nudged up and left within logoContainer2 (regressi
     expect(ruleMatch[1]).not.toMatch(/-12px/)
   })
 })
+
+describe('Mobile HomePage hamburger menu visibility (regression: hamburger hidden on HomePage at mobile widths)', () => {
+  // Returns the `@media (...) {` header string that encloses the first
+  // `selector { ... }` rule whose declarations match `declMatch`, so a test can
+  // assert which breakpoint a rule lives under even when the selector repeats.
+  const enclosingMediaHeader = (selector, declMatch) => {
+    const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const re = new RegExp(escaped + '\\s*\\{([^}]*)\\}', 'g')
+    let m
+    while ((m = re.exec(css))) {
+      if (declMatch.test(m[1])) {
+        const before = css.slice(0, m.index)
+        const mediaStart = before.lastIndexOf('@media')
+        if (mediaStart === -1) return ''
+        const braceIdx = css.indexOf('{', mediaStart)
+        return css.slice(mediaStart, braceIdx === -1 ? mediaStart : braceIdx)
+      }
+    }
+    return null
+  }
+
+  it('HomePage renders the MobileMenu hamburger button so a menu control exists at mobile widths', () => {
+    render(<HomePage {...defaultProps} isVolume={0.5} onVolumeChange={vi.fn()} />)
+    const btn = document.querySelector('.mobileMenuWrapper .hamburgerButton')
+    expect(btn).not.toBeNull()
+  })
+
+  it('shows the HomePage hamburger (topColumn1) at the 320px mobile breakpoint via display: flex', () => {
+    const header = enclosingMediaHeader('.topColumn1 > .mobileMenuWrapper', /display:\s*flex/)
+    expect(header).not.toBeNull()
+    expect(header).toMatch(/min-width:\s*320px/)
+  })
+
+  it('hides the HomePage hamburger again at the 641px breakpoint where desktop music controls return', () => {
+    const header = enclosingMediaHeader('.topColumn1 > .mobileMenuWrapper', /display:\s*none/)
+    expect(header).not.toBeNull()
+    expect(header).toMatch(/min-width:\s*641px/)
+  })
+})

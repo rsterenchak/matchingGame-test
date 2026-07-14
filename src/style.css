@@ -2151,6 +2151,14 @@ body {
     display: none;
   }
 
+  /* On mobile the HomePage desktop music controls are hidden (above), so the
+     hamburger takes their place in the top-left corner. Scoped to topColumn1 so
+     PlayPage's own hamburger rule is untouched; the > selector out-specifies the
+     blanket .mobileMenuWrapper { display: none } in this same block. */
+  .topColumn1 > .mobileMenuWrapper {
+    display: flex;
+  }
+
   .portfolioIcon {
     display: none;
   }
@@ -2526,6 +2534,12 @@ body {
 
   .topColumn1 > .musicIconWrapper {
     display: flex;
+  }
+
+  /* From 641px up the desktop music controls return, so hide the HomePage
+     hamburger again (it stays for 320/481 via the cascade otherwise). */
+  .topColumn1 > .mobileMenuWrapper {
+    display: none;
   }
 
   .portfolioIcon {
