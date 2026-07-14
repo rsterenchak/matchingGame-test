@@ -1379,8 +1379,8 @@ body {
 }
 
 .topColumn3 .navStackButton {
-  width: 56px;
-  height: 56px;
+  width: 30px;
+  height: 30px;
   margin: 0;
   flex: 0 0 auto;
 }
@@ -1393,7 +1393,7 @@ body {
 }
 
 .portfolioBlock2 {
-  display: flex;
+  display: none;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
