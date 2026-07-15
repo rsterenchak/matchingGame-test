@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-15T07:33:38.161Z",
-  "sha": "3dcf110781441086dba3364f85197714001310be",
+  "generatedAt": "2026-07-15T07:42:55.021Z",
+  "sha": "60ab13d453610a2f7603a4ca7fcd4a51e28b13a2",
   "files": [
     "Card.jsx",
     "CardBack.jsx",
@@ -226,7 +226,7 @@
         },
         {
           "file": "style.css",
-          "line": 3186
+          "line": 3202
         }
       ]
     },
@@ -322,7 +322,7 @@
         },
         {
           "file": "style.css",
-          "line": 3145
+          "line": 3161
         }
       ]
     },
@@ -338,7 +338,7 @@
         },
         {
           "file": "style.css",
-          "line": 3158
+          "line": 3174
         }
       ]
     },
@@ -354,7 +354,7 @@
         },
         {
           "file": "style.css",
-          "line": 3177
+          "line": 3193
         }
       ]
     },
@@ -370,7 +370,7 @@
         },
         {
           "file": "style.css",
-          "line": 3172
+          "line": 3188
         }
       ]
     },
