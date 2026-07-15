@@ -89,3 +89,10 @@
   - File: `src/style.css`
   - Completed: 2026-07-14
   <!-- id: c93812cb-65e9-40cb-a54d-c047b99ccbae -->
+
+- [ ] **[LOW]** Match desktop nav icon button size to homepage nav button
+  - Type: bug
+  - Description: On desktop widths (≥1025px breakpoint), the music, settings, and help circular icon buttons in the top-left corner are too small. Resize them to match the dimensions of the existing desktop homepage nav button (e.g. the "Fight" button sizing on `HomePage.jsx`) so all top-level nav controls feel visually consistent, scaling icon glyphs proportionally. Apply this only at the 1025px desktop breakpoint so mobile/tablet sizing is unaffected. Likely defined in `HomePage.jsx`/`PlayPage.jsx`/`MobileMenu.jsx` markup with sizing rules in `style.css`.
+  - File: `matchingGame-test/src/style.css`, `matchingGame-test/src/HomePage.jsx`, `matchingGame-test/src/PlayPage.jsx`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: 7ff7db04-84f7-4e73-a828-2e572f51fd36 -->
