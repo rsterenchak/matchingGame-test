@@ -809,16 +809,16 @@ describe('PlayPage nav controls form a uniform vertical stack in the upper-left 
     expect(top[1]).toBe(homeTop)
   })
 
-  it('at desktop the nav buttons grow on hover (transform: scale) like HomePage\'s nav button', () => {
+  it('at desktop the nav buttons grow on hover like HomePage — via the change-color2 width/height keyframes, not transform: scale (which blackens the button)', () => {
     const hover = desktopBlock().match(/\.topColumn3\s+\.navStackButton:hover\s*\{([^}]+)\}/)
     expect(hover).not.toBeNull()
-    const scale = hover[1].match(/transform:\s*scale\(([0-9.]+)\)/)
-    expect(scale).not.toBeNull()
-    expect(Number(scale[1])).toBeGreaterThan(1)
-
-    // A transition on the button makes the hover grow ease in like HomePage's.
-    const base = desktopBlock().match(/\.topColumn3\s+\.navStackButton\s*\{([^}]+)\}/)
-    expect(base[1]).toMatch(/transition:[^;]*transform/)
+    // HomePage's .musicBlock grows via the change-color2 width/height keyframes.
+    // transform: scale creates a stacking context that flips the negative
+    // z-index black :after (#111) above the yellow background, blackening the
+    // button — so the grow must reuse HomePage's animation and must NOT use
+    // transform: scale.
+    expect(hover[1]).toMatch(/animation:[^;]*change-color2/)
+    expect(hover[1]).not.toMatch(/transform:\s*scale/)
   })
 
   it('all three nav triggers (music, background, help) carry the shared navStackButton class', () => {
