@@ -752,6 +752,45 @@ describe('PlayPage nav controls form a uniform vertical stack in the upper-left 
     expect(size).toBe(34)
   })
 
+  // The PlayPage desktop rules live in the SECOND @media (min-width:1025px)
+  // block (the first only tweaks HomePage's .inputSection padding).
+  function desktopBlock() {
+    const marker = '@media (min-width:1025px) {'
+    const firstIdx = css.indexOf(marker)
+    const secondIdx = css.indexOf(marker, firstIdx + 1)
+    const nextMedia = css.indexOf('@media', secondIdx + 1)
+    return css.slice(secondIdx, nextMedia === -1 ? undefined : nextMedia)
+  }
+
+  it('at the 1025px desktop breakpoint the nav icon stack grows to match HomePage\'s nav button (60x55)', () => {
+    // HomePage's top-left nav button (.musicBlock base rule) sets the target size.
+    const homeNav = css.match(/\.musicBlock\s*\{([^}]+)\}/)
+    expect(homeNav).not.toBeNull()
+    const homeW = homeNav[1].match(/width:\s*([0-9]+)px/)[1]
+    const homeH = homeNav[1].match(/height:\s*([0-9]+)px/)[1]
+
+    const override = desktopBlock().match(/\.topColumn3\s+\.navStackButton\s*\{([^}]+)\}/)
+    expect(override).not.toBeNull()
+    const w = override[1].match(/width:\s*([0-9]+)px/)[1]
+    const h = override[1].match(/height:\s*([0-9]+)px/)[1]
+    // Matches HomePage's nav button, and is larger than the compact 34px default.
+    expect(w).toBe(homeW)
+    expect(h).toBe(homeH)
+    expect(Number(w)).toBeGreaterThan(34)
+  })
+
+  it('the desktop help "?" glyph scales up so it stays proportional in the larger button', () => {
+    // The base .helpButton rule is un-indented (column 0); media-query and
+    // .topColumn3-scoped rules are indented, so anchor to start-of-line.
+    const helpBase = css.match(/^\.helpButton\s*\{([^}]+)\}/m)
+    const baseFont = Number(helpBase[1].match(/font-size:\s*([0-9]+)px/)[1])
+
+    const override = desktopBlock().match(/\.topColumn3\s+\.helpButton\s*\{([^}]+)\}/)
+    expect(override).not.toBeNull()
+    const desktopFont = Number(override[1].match(/font-size:\s*([0-9]+)px/)[1])
+    expect(desktopFont).toBeGreaterThan(baseFont)
+  })
+
   it('all three nav triggers (music, background, help) carry the shared navStackButton class', () => {
     render(<PlayPage {...defaultProps} />)
     expect(document.querySelectorAll('.navStackButton')).toHaveLength(3)
