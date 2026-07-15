@@ -2880,6 +2880,22 @@ body {
   .topColumn3 .navStackButton {
     width: 60px;
     height: 55px;
+    transition: transform 0.5s ease;
+  }
+
+  /* Match HomePage's nav button hover feedback: .musicBlock grows on hover.
+     A transform: scale grows the icon (and its glow) while leaving the column
+     layout untouched. Desktop-only so mobile/tablet sizing is unaffected. */
+  .topColumn3 .navStackButton:hover {
+    transform: scale(1.09);
+  }
+
+  /* Offset the stack from the top-left border to match HomePage's nav button,
+     whose .musicIconWrapper sits 10px in from the corner (the PlayPage stack is
+     otherwise flush against the edge). */
+  .navSection2 .topColumn3 {
+    margin-top: 10px;
+    margin-left: 10px;
   }
 
   .topColumn3 .helpButton {

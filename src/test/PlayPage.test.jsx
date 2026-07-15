@@ -791,6 +791,36 @@ describe('PlayPage nav controls form a uniform vertical stack in the upper-left 
     expect(desktopFont).toBeGreaterThan(baseFont)
   })
 
+  it('at desktop the nav stack is offset from the page border to match HomePage\'s nav button', () => {
+    // HomePage's nav button sits 10px in from the top-left corner via its
+    // .musicIconWrapper margins. The PlayPage stack should carry the same offset.
+    const homeWrapper = css.match(/\.musicIconWrapper\s*\{([^}]+)\}/)
+    expect(homeWrapper).not.toBeNull()
+    const homeLeft = homeWrapper[1].match(/margin-left:\s*([0-9]+)px/)[1]
+    const homeTop = homeWrapper[1].match(/margin-top:\s*([0-9]+)px/)[1]
+
+    const override = desktopBlock().match(/\.navSection2\s+\.topColumn3\s*\{([^}]+)\}/)
+    expect(override).not.toBeNull()
+    const left = override[1].match(/margin-left:\s*([0-9]+)px/)
+    const top = override[1].match(/margin-top:\s*([0-9]+)px/)
+    expect(left).not.toBeNull()
+    expect(top).not.toBeNull()
+    expect(left[1]).toBe(homeLeft)
+    expect(top[1]).toBe(homeTop)
+  })
+
+  it('at desktop the nav buttons grow on hover (transform: scale) like HomePage\'s nav button', () => {
+    const hover = desktopBlock().match(/\.topColumn3\s+\.navStackButton:hover\s*\{([^}]+)\}/)
+    expect(hover).not.toBeNull()
+    const scale = hover[1].match(/transform:\s*scale\(([0-9.]+)\)/)
+    expect(scale).not.toBeNull()
+    expect(Number(scale[1])).toBeGreaterThan(1)
+
+    // A transition on the button makes the hover grow ease in like HomePage's.
+    const base = desktopBlock().match(/\.topColumn3\s+\.navStackButton\s*\{([^}]+)\}/)
+    expect(base[1]).toMatch(/transition:[^;]*transform/)
+  })
+
   it('all three nav triggers (music, background, help) carry the shared navStackButton class', () => {
     render(<PlayPage {...defaultProps} />)
     expect(document.querySelectorAll('.navStackButton')).toHaveLength(3)
