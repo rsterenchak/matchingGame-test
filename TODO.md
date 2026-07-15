@@ -96,3 +96,10 @@
   - File: `matchingGame-test/src/style.css`, `matchingGame-test/src/HomePage.jsx`, `matchingGame-test/src/PlayPage.jsx`
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: 7ff7db04-84f7-4e73-a828-2e572f51fd36 -->
+
+- [ ] **[LOW]** Match PlayPage nav button spacing and hover-grow effect to HomePage on desktop
+  - Type: bug
+  - Description: On desktop widths (≥1025px breakpoint), the music/settings/help nav buttons on `PlayPage` sit too close to the page edge compared to the homepage nav button, which has appropriate margin from the border. Update the desktop breakpoint spacing/margin rules so PlayPage nav buttons match HomePage's offset from the page border. Also add the same hover "grow" scale effect (transform: scale on :hover) that the homepage nav button has, applied only at desktop widths. Likely in `style.css` desktop breakpoint rules for nav buttons, with markup in `PlayPage.jsx` and `HomePage.jsx` for reference on existing classes.
+  - File: `matchingGame-test/src/style.css`, `matchingGame-test/src/PlayPage.jsx`, `matchingGame-test/src/HomePage.jsx`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: b507035f-3763-4a4d-bbb8-b3698f1ef39e -->
