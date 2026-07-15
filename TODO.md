@@ -104,7 +104,7 @@
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: b507035f-3763-4a4d-bbb8-b3698f1ef39e -->
 
-- [ ] **[HIGH]** Fix nav icon buttons turning black on hover after grow-effect change
+- [x] **[HIGH]** Fix nav icon buttons turning black on hover after grow-effect change — Completed: 2026-07-15
   - Type: bug
   - Description: After the recent hover-grow change on the desktop nav buttons, hovering a nav icon (music/settings/help) blackens the button — the yellow DBZ background disappears and the icon/circle renders dark instead of scaling cleanly (see the "?" button in the screenshot). The likely cause is the new `:hover` rule overriding `background`/`fill`/`color` (or the `:before` glow pseudo-element) instead of only applying `transform: scale`. Fix so hover applies only the grow (and existing glow) while preserving the yellow background and icon color. Check the nav-button `:hover` and `:before` rules in `style.css` added by the previous change.
   - File: `matchingGame-test/src/style.css`
