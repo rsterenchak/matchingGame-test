@@ -2870,6 +2870,22 @@ body {
 /* big landscape tablets, laptops, and desktops */
 @media (min-width:1025px) {
 
+  /* Desktop: grow the top-left nav icon stack (music, background, help) to the
+     same size as HomePage's nav button (.musicBlock, 60x55) so every top-level
+     nav control matches. The shared .navStackButton rule is the size source of
+     truth (see its base 34px definition), so this override — equal specificity,
+     later in source — wins here. The img glyphs auto-scale via their flex fit
+     (same margin-only sizing as HomePage's .musicIcon); the help "?" glyph has
+     no image to grow, so its font-size is bumped to keep pace. */
+  .topColumn3 .navStackButton {
+    width: 60px;
+    height: 55px;
+  }
+
+  .topColumn3 .helpButton {
+    font-size: 34px;
+  }
+
   .musicBlock3 {
     display: flex;
     border-radius: 50%;
