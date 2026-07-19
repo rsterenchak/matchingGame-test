@@ -1,6 +1,13 @@
 export const changelog = [
   {
     version: '1.0',
+    date: '2026-07-19',
+    changed: [
+      'On desktop widths, the "How to Play" help window is now about 20% larger for easier reading.',
+    ],
+  },
+  {
+    version: '1.0',
     date: '2026-07-15',
     fixed: [
       'On desktop widths, the play screen music, background, and help buttons now grow to match the home screen navigation button size.',
@@ -12,7 +19,6 @@ export const changelog = [
     version: '1.0',
     date: '2026-07-14',
     fixed: [
-      'On the play screen, the music, background, and help buttons are now slightly larger and no longer grow when hovered or tapped.',
       'On the home screen, the hamburger menu button now uses the same yellow as the play screen navigation buttons.',
     ],
   },
