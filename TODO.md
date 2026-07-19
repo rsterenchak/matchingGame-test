@@ -110,3 +110,9 @@
   - File: `matchingGame-test/src/style.css`
   - Completed: YYYY-MM-DD (PR #<number>)
   <!-- id: d5e0cc36-ca14-420d-babf-d9b232785abd -->
+
+- [ ] **[LOW]** Increase help modal size by ~20% on desktop in PlayPage
+  - Type: feature
+  - Description: The help/instructions modal on PlayPage is too small on desktop breakpoints (1025px and up). Increase its width and height by roughly 20% at the desktop breakpoints only, leaving mobile sizing untouched. Likely lives in the `.endGame` or a dedicated help-modal class in style.css, scoped under the existing 1025px/1281px breakpoints; verify padding/font-size still read well at the larger size.
+  - File: `toDoList_main/src/style.css`, `toDoList_main/src/PlayPage.jsx`
+  <!-- id: f5728d4a-dfff-4006-84ea-b1d1b8d9b506 -->
