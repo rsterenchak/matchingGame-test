@@ -3279,6 +3279,24 @@ body {
   100% { background-position: 0 0; }
 }
 
+/* Enlarge the help/instructions modal by ~20% on desktop only. Mobile
+   sizing (the base rules above) is left untouched. */
+@media (min-width:1025px) {
+  .instructionsCard {
+    max-width: 480px;
+    padding: 36px;
+    gap: 24px;
+  }
+
+  .instructionsTitle {
+    font-size: 34px;
+  }
+
+  .instructionsList {
+    font-size: 19px;
+  }
+}
+
 /*
 
 @media screen and (max-height: 1100px) {
