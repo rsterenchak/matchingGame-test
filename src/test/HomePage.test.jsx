@@ -1025,3 +1025,68 @@ describe('HomePage nav buttons share the .navStackButton treatment', () => {
     expect(document.querySelector('.mobileMenuModal')).not.toBeNull()
   })
 })
+
+describe('HomePage buttons have depth and pressed states', () => {
+  const rule = (re) => {
+    const match = css.match(re)
+    expect(match).not.toBeNull()
+    return match[1]
+  }
+  const gradient = /radial-gradient\(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%\)/
+
+  it('.fightButton has a top-lit gradient face, layered box-shadow, and transform/box-shadow transition', () => {
+    const base = rule(/\.fightButton\s*\{([^}]+)\}/)
+    expect(base).toMatch(gradient)
+    expect(base).toMatch(/0 0 0 2px rgb\(179, 179, 0\)/)
+    expect(base).toMatch(/inset 0 0 0 2px rgba\(255, 255, 255, 0\.35\)/)
+    expect(base).toMatch(/isolation:\s*isolate/)
+    expect(base).toMatch(/transition:\s*transform \.2s, box-shadow \.2s/)
+  })
+
+  it('.fightButton:after is a click-through inner bevel instead of the old #111 backing', () => {
+    const after = rule(/\.fightButton:after\s*\{([^}]+)\}/)
+    expect(after).toMatch(/pointer-events:\s*none/)
+    expect(after).toMatch(/inset 0 3px 5px rgba\(120, 120, 0, 0\.45\)/)
+    expect(after).not.toMatch(/#111/)
+  })
+
+  it('.fightButton grows by scale on hover and presses down on :active', () => {
+    expect(rule(/\.fightButton:hover\s*\{([^}]+)\}/)).toMatch(/transform:\s*scale\(1\.036\)/)
+    expect(rule(/\.fightButton:active\s*\{([^}]+)\}/)).toMatch(/transform:\s*scale\(0\.98\)/)
+    expect(rule(/\.fightButton:active:after\s*\{([^}]+)\}/)).toMatch(/inset 0 4px 10px rgba\(120, 120, 0, 0\.6\)/)
+    expect(css).not.toMatch(/change-color 1 normal/)
+  })
+
+  it('.fightButton:before glow keeps its glowing animation', () => {
+    expect(rule(/\.fightButton:before\s*\{([^}]+)\}/)).toMatch(/animation:\s*glowing 20s/)
+  })
+
+  it('.topColumn1 .navStackButton shares the gradient face, layered shadow, and transition', () => {
+    const base = rule(/\.topColumn1\s+\.navStackButton\s*\{([^}]+)\}/)
+    expect(base).toMatch(gradient)
+    expect(base).toMatch(/0 0 0 2px rgb\(179, 179, 0\)/)
+    expect(base).toMatch(/isolation:\s*isolate/)
+    expect(base).toMatch(/transition:\s*transform \.2s, box-shadow \.2s/)
+  })
+
+  it('.topColumn1 .navStackButton:after is a round click-through inner bevel', () => {
+    const after = rule(/\.topColumn1\s+\.navStackButton:after\s*\{([^}]+)\}/)
+    expect(after).toMatch(/border-radius:\s*50%/)
+    expect(after).toMatch(/pointer-events:\s*none/)
+    expect(after).toMatch(/inset 0 3px 5px rgba\(120, 120, 0, 0\.45\)/)
+  })
+
+  it('.topColumn1 .navStackButton scales up on hover and down on :active', () => {
+    const hover = rule(/\.topColumn1\s+\.navStackButton:hover\s*\{([^}]+)\}/)
+    expect(hover).toMatch(/transform:\s*scale\(1\.08\)/)
+    expect(hover).toMatch(/animation:\s*none/)
+    expect(rule(/\.topColumn1\s+\.navStackButton:active\s*\{([^}]+)\}/)).toMatch(/transform:\s*scale\(0\.95\)/)
+    expect(rule(/\.topColumn1\s+\.navStackButton:active:after\s*\{([^}]+)\}/)).toMatch(/inset 0 4px 10px rgba\(120, 120, 0, 0\.6\)/)
+  })
+
+  it('.musicIcon paints above the depth layers', () => {
+    const icon = rule(/\.musicIcon\s*\{([^}]+)\}/)
+    expect(icon).toMatch(/position:\s*relative/)
+    expect(icon).toMatch(/z-index:\s*1/)
+  })
+})
