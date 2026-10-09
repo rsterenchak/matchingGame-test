@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-09T11:50:57.289Z",
-  "sha": "ace42e7cd5f95831511fafb5cac3d1a755bf7e62",
+  "generatedAt": "2026-10-09T12:06:01.990Z",
+  "sha": "140b0996f048e5f7e8206def187f16c5eb97b6d4",
   "files": [
     "Card.jsx",
     "CardBack.jsx",
@@ -14,6 +14,7 @@
     "test/Card.test.jsx",
     "test/HomePage.test.jsx",
     "test/MainSection.test.jsx",
+    "test/MainSectionGain.test.jsx",
     "test/MemoryGameTitle.test.js",
     "test/MobileMenu.test.jsx",
     "test/PlayPage.test.jsx",
