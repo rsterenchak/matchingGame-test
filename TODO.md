@@ -145,9 +145,9 @@
   - Out of scope: Slider UI changes, other audio refactors, removing commented-out blocks.
   <!-- id: 0ddea085-8a86-479a-9ffc-306c645d8f62 -->
 
-- [ ] **[MEDIUM]** Enlarge PlayPage nav buttons to ~48px touch targets and reflow the button stack into a horizontal bottom bar on mobile
+- [x] **[MEDIUM]** Enlarge PlayPage nav buttons to ~48px touch targets and reflow the button stack into a horizontal bottom bar on mobile
   - Type: feature
   - Description: On mobile widths (≤480px) the PlayPage nav controls — the music block (`.musicBlock2`), the page-switch/planet block (`.musicBlock3`), and the help button (`.helpButton`), all grouped under `.topColumn3` inside `.navSection2` — are currently squeezed to `min(7vw,24px)` (~24px) by the per-breakpoint override, well under the 44px minimum touch target. Enlarge `.topColumn3 .navStackButton` to 48px (keeping the 3px black border and yellow DBZ-button fill) and change `.topColumn3` from a vertical `flex-direction: column` stack with `align-items: flex-start` into a horizontal `flex-direction: row` row with `justify-content: space-around` and `align-items: center` inside a rounded pill container (`border-radius: 36px`, `bg-raised`, `border-mid`, `padding: 10px 16px`), positioned below the card grid so it no longer crowds the cards or the score panel. Keep the volume slider inline next to the music button via `.musicIconWrapper` (row + `gap: 10px`) rather than stacked under it. Scope the new row layout, the 48px size, and the override removal to the existing ≤480px breakpoints only — the desktop/tablet vertical stack (≥481px) must render exactly as it does today. Every button keeps its existing handler (`handleMusicClick`, `setupPage()`, `setActiveInstructionsModal(true)`) and continues to receive `popUpStyle` so the popup blur/disabled cursor still applies; `MobileMenu` stays in the same row and remains reachable.
   - File: `src/style.css`, `src/PlayPage.jsx`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-10-09
   <!-- id: 06ec4e60-9990-4c2b-b447-6152d7759356 -->
