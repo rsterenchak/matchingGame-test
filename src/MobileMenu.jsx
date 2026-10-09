@@ -12,6 +12,7 @@ export default function MobileMenu({
   onVolumeChange,
   popUpStyle,
   showMusic = true,
+  buttonClassName = '',
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,7 +34,7 @@ export default function MobileMenu({
     <>
       <div className='mobileMenuWrapper'>
         <div
-          className='hamburgerButton'
+          className={`hamburgerButton${buttonClassName ? ` ${buttonClassName}` : ''}`}
           onClick={() => setIsOpen(o => !o)}
           style={popUpStyle}
         >

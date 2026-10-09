@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect, vi } from 'vitest'
 import { readFileSync } from 'fs'
 import { resolve, dirname } from 'path'
@@ -958,5 +958,70 @@ describe('Home page fits short windows between 641 and 960px wide (regression: F
     const block = bandBlock()
     expect(block).not.toMatch(/grid-template-rows/)
     expect(block).not.toMatch(/\.logoContainer2/)
+  })
+})
+
+describe('HomePage nav buttons share the .navStackButton treatment', () => {
+  const navProps = { ...defaultProps, isVolume: 0.5, onVolumeChange: vi.fn() }
+
+  it('music toggle, speaker, and hamburger all carry the shared navStackButton class', () => {
+    render(<HomePage {...navProps} />)
+    const column = document.querySelector('.topColumn1')
+    expect(column.querySelectorAll('.navStackButton')).toHaveLength(3)
+    expect(column.querySelector('.musicBlock.navStackButton')).not.toBeNull()
+    expect(column.querySelector('.speakerButton.navStackButton')).not.toBeNull()
+    expect(column.querySelector('.hamburgerButton.navStackButton')).not.toBeNull()
+  })
+
+  it('.topColumn1 .navStackButton is a 60x55 yellow circle with a 3px black border', () => {
+    const match = css.match(/\.topColumn1\s+\.navStackButton\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    const rule = match[1]
+    expect(rule).toMatch(/width:\s*60px/)
+    expect(rule).toMatch(/height:\s*55px/)
+    expect(rule).toMatch(/border-radius:\s*50%/)
+    expect(rule).toMatch(/border:\s*3px solid black/)
+    expect(rule).toMatch(/background-color:\s*yellow/)
+    expect(rule).not.toMatch(/display:/)
+  })
+
+  it('glyphs inside the HomePage nav buttons are 26px', () => {
+    const match = css.match(/\.topColumn1\s+\.navStackButton\s+img,\s*\.topColumn1\s+\.navStackButton\s+svg\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/width:\s*26px/)
+    expect(match[1]).toMatch(/height:\s*26px/)
+  })
+
+  it('the music/speaker pair has a 10px gap', () => {
+    const match = css.match(/\.topColumn1\s*>\s*\.musicIconWrapper\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/gap:\s*10px/)
+  })
+
+  it('shrinks to 48x48 alongside PlayPage inside the max-width:480px block', () => {
+    const start = css.indexOf('@media (max-width:480px)')
+    expect(start).toBeGreaterThan(-1)
+    const block = css.slice(start, css.indexOf('@media', start + 1))
+    const match = block.match(/\.topColumn1\s+\.navStackButton,\s*\.topColumn3\s+\.navStackButton\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/width:\s*48px/)
+    expect(match[1]).toMatch(/height:\s*48px/)
+  })
+
+  it('keeps the music toggle and speaker handlers intact', () => {
+    const setAudioPlay = vi.fn()
+    render(<HomePage {...navProps} setAudioPlay={setAudioPlay} />)
+    fireEvent.click(document.querySelector('.musicBlock.navStackButton'))
+    expect(setAudioPlay).toHaveBeenCalledTimes(1)
+    const wrapper = document.querySelector('.topColumn1 .volumeSliderWrapper')
+    expect(wrapper.classList.contains('sliderOpen')).toBe(false)
+    fireEvent.click(document.querySelector('.speakerButton.navStackButton'))
+    expect(wrapper.classList.contains('sliderOpen')).toBe(true)
+  })
+
+  it('keeps the hamburger opening the mobile menu', () => {
+    render(<HomePage {...navProps} />)
+    fireEvent.click(document.querySelector('.hamburgerButton.navStackButton'))
+    expect(document.querySelector('.mobileMenuModal')).not.toBeNull()
   })
 })

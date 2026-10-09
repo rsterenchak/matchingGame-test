@@ -3,7 +3,7 @@ export const changelog = [
     version: '1.0',
     date: '2026-10-09',
     changed: [
-      'On phones, the game screen\'s music, home, and help buttons are now larger and sit in a horizontal bar below the cards, with the volume slider opening right beside the music button.',
+      'The home screen\'s music, volume, and menu buttons now share the game screen\'s round yellow button style and size, shrinking to the same touch-friendly size on phones.',
     ],
     fixed: [
       'On desktop widths in shorter browser windows, the home screen artwork now scales down so the Fight button stays visible, and very short windows can scroll to reach it.',

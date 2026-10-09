@@ -1425,6 +1425,43 @@ body {
   flex: 0 0 auto;
 }
 
+/* HomePage nav controls (music toggle, speaker, hamburger) share PlayPage's
+   .navStackButton DBZ treatment at its desktop 60x55 size. Scoped to .topColumn1
+   (0,2,0) so it out-ranks the per-breakpoint .musicBlock / .speakerButton /
+   .hamburgerButton size rules (0,1,0) at every width; the max-width:480px block
+   shrinks it to the same 48px touch target as PlayPage. No display here, so the
+   per-breakpoint show/hide rules still decide which buttons are visible. */
+.topColumn1 .navStackButton {
+  width: 60px;
+  height: 55px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 3px solid black;
+  background-color: yellow;
+}
+
+.topColumn1 .navStackButton img,
+.topColumn1 .navStackButton svg {
+  width: 26px;
+  height: 26px;
+  margin: 0;
+  fill: black;
+}
+
+.topColumn1 .navStackButton:hover {
+  animation: 0.5s change-color2 1 normal forwards;
+}
+
+.topColumn1 > .musicIconWrapper {
+  gap: 10px;
+}
+
+.topColumn1 .speakerButton {
+  margin-top: 0;
+}
+
 .topColumn4 {
   display: flex;
   flex-direction: row-reverse;
@@ -2265,9 +2302,16 @@ body {
     border: 2px solid rgba(255, 255, 255, 0.35);
   }
 
+  .topColumn1 .navStackButton,
   .topColumn3 .navStackButton {
     width: 48px;
     height: 48px;
+  }
+
+  /* Hold the HomePage buttons at their 48px touch size instead of growing on
+     hover, matching PlayPage where the hover grow is desktop-only. */
+  .topColumn1 .navStackButton:hover {
+    animation: none;
   }
 
   /* Volume slider sits inline beside the music button instead of dropping
