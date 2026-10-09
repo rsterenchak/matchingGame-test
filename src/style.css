@@ -2228,6 +2228,71 @@ body {
 
 }
 
+/* Phone-only PlayPage nav: the vertical upper-left stack becomes a horizontal
+   pill-shaped bar below the card grid with 48px touch targets. Bounded by
+   max-width so the ≥481px tablet/desktop stack is untouched. The grid `order`
+   moves the nav row between the cards and the score panel without changing
+   the JSX order. */
+@media (max-width:480px) {
+  .outerSection2 {
+    grid-template-rows: 1fr 1fr auto auto;
+  }
+
+  .navSection2 {
+    order: 3;
+    justify-content: center;
+    padding: 0 10px;
+  }
+
+  .scorePanel {
+    order: 4;
+  }
+
+  .topColumn4 {
+    display: none;
+  }
+
+  .navSection2 .topColumn3 {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 320px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border-radius: 36px;
+    background-color: rgba(17, 17, 17, 0.75);
+    border: 2px solid rgba(255, 255, 255, 0.35);
+  }
+
+  .topColumn3 .navStackButton {
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Volume slider sits inline beside the music button instead of dropping
+     below it, sized to the button height so opening it doesn't grow the bar.
+     Scoped to .sliderOpen so the closed slider never takes up row space. */
+  .topColumn3 > .musicIconWrapper {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .topColumn3 .volumeSliderWrapper.sliderOpen {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    height: 48px;
+    box-sizing: border-box;
+  }
+
+  .topColumn3 .volumeSliderInput {
+    height: 36px;
+  }
+}
+
 @media (min-width:481px)  {
   .playSection {
     overflow-x: hidden;
