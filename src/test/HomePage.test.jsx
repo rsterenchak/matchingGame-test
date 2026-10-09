@@ -862,3 +862,68 @@ describe('Mobile HomePage hamburger menu visibility (regression: hamburger hidde
     expect(header).toMatch(/min-width:\s*641px/)
   })
 })
+
+describe('Home page fits short desktop windows (regression: Fight button and Goku clipped below ~850px tall at 961px+)', () => {
+  const desktopBlock = (needle) => {
+    const start = css.indexOf(needle)
+    if (start === -1) return ''
+    const next = css.indexOf('@media', start + needle.length)
+    return css.slice(start, next === -1 ? css.length : next)
+  }
+  const rule = (block, selector) => {
+    const escaped = selector.replace(/\./g, '\\.')
+    return block.match(new RegExp(`${escaped}\\s*\\{([^}]+)\\}`))?.[1] ?? null
+  }
+
+  for (const needle of ['@media (min-width:961px) {', '@media (min-width:1281px) {']) {
+    describe(needle, () => {
+      const block = desktopBlock(needle)
+
+      it('.outerSection is pinned to the viewport height (100dvh) with min-height: 0 so the fr rows divide the screen instead of sizing to content', () => {
+        const body = rule(block, '.outerSection')
+        expect(body).not.toBeNull()
+        expect(body).toMatch(/(?<![\w-])height:\s*100dvh/)
+        expect(body).toMatch(/min-height:\s*0\b/)
+      })
+
+      it('.logoSection, .logoSection2 and .inputSection set min-height: 0 so their grid rows may shrink', () => {
+        for (const sel of ['.logoSection', '.logoSection2', '.inputSection']) {
+          const body = rule(block, sel)
+          expect(body, sel).not.toBeNull()
+          expect(body, sel).toMatch(/min-height:\s*0\b/)
+        }
+      })
+
+      it('.logoContainer scales with its row (height: 50%, leaving room for the nimbus lift) with a 160px floor instead of a 220px pixel minimum', () => {
+        const body = rule(block, '.logoContainer')
+        expect(body).not.toBeNull()
+        expect(body).toMatch(/(?<![\w-])height:\s*50%/)
+        expect(body).toMatch(/min-height:\s*160px/)
+      })
+
+      it('.logoContainer2 fills its row (height: 100%) with a 200px floor instead of a 315px pixel minimum, keeping its nimbus lift', () => {
+        const body = rule(block, '.logoContainer2')
+        expect(body).not.toBeNull()
+        expect(body).toMatch(/(?<![\w-])height:\s*100%/)
+        expect(body).toMatch(/min-height:\s*200px/)
+        expect(body).toMatch(/top:\s*-18vh/)
+        expect(body).toMatch(/translate:\s*-10%\s+-10%/)
+      })
+    })
+  }
+
+  it('below 640px tall at desktop widths the page scrolls (body overflow: auto, outerSection height auto / min-height 100dvh) so the Fight button stays reachable', () => {
+    const block = desktopBlock('@media (min-width:961px) and (max-height: 640px)')
+    expect(block).not.toBe('')
+    expect(rule(block, 'body')).toMatch(/overflow:\s*auto/)
+    const outer = rule(block, '.outerSection')
+    expect(outer).toMatch(/(?<![\w-])height:\s*auto/)
+    expect(outer).toMatch(/min-height:\s*100dvh/)
+  })
+
+  it('below 640px tall at desktop widths the art is pinned at its floors (160px / 200px) so the rows cannot inflate past the content', () => {
+    const block = desktopBlock('@media (min-width:961px) and (max-height: 640px)')
+    expect(rule(block, '.logoContainer')).toMatch(/(?<![\w-])height:\s*160px/)
+    expect(rule(block, '.logoContainer2')).toMatch(/(?<![\w-])height:\s*200px/)
+  })
+})
