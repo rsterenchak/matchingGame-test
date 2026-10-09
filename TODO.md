@@ -123,7 +123,7 @@
   - File: `src/style.css`
   <!-- id: 4b386beb-f2ef-4fa9-866c-463afb118215 -->
 
-- [ ] **[MEDIUM]** Fix home page clipping the Fight button in short windows between 641 and 960px wide
+- [x] **[MEDIUM]** Fix home page clipping the Fight button in short windows between 641 and 960px wide — Completed: 2026-10-09
   - Type: bug
   - Description: PR #124 fixed short-window clipping for viewports ≥961px wide, but the 641–960px band (a non-maximized desktop window, or a tablet in landscape) was left out: at 920×600 and 800×500 the home grid's content is ~775px tall, `body { overflow: hidden }` still applies, and the Fight button sits at ~770px — below the fold with no way to scroll. Mirror the desktop treatment in that band in `src/style.css`: add `@media (min-width:641px) and (max-width:960px) and (max-height: 800px) { body { overflow: auto; } .outerSection { height: auto; min-height: 100dvh; } }` so a short window scrolls to the button. Do not change the band's grid rows or the nimbus nudge (`margin-top: calc(-5vh + 24px)`) — only the overflow and the grid height. Reuse the existing 641/960 breakpoints; no new width breakpoints. At 920×600 and 800×500 the page must scroll and the Fight button be reachable; 920×900 shows everything with no scrollbar; 1300×560 and 390×844 are unchanged from today.
   - File: `src/style.css`

@@ -927,3 +927,36 @@ describe('Home page fits short desktop windows (regression: Fight button and Gok
     expect(rule(block, '.logoContainer2')).toMatch(/(?<![\w-])height:\s*200px/)
   })
 })
+
+describe('Home page fits short windows between 641 and 960px wide (regression: Fight button clipped below the fold at 920x600 / 800x500)', () => {
+  const needle = '@media (min-width:641px) and (max-width:960px) and (max-height: 800px)'
+  const bandBlock = () => {
+    const start = css.indexOf(needle)
+    if (start === -1) return ''
+    const next = css.indexOf('@media', start + needle.length)
+    return css.slice(start, next === -1 ? css.length : next)
+  }
+  const rule = (block, selector) => {
+    const escaped = selector.replace(/\./g, '\\.')
+    return block.match(new RegExp(`${escaped}\\s*\\{([^}]+)\\}`))?.[1] ?? null
+  }
+
+  it('below 800px tall in the 641–960px band the page scrolls (body overflow: auto) so the Fight button is reachable', () => {
+    const block = bandBlock()
+    expect(block).not.toBe('')
+    expect(rule(block, 'body')).toMatch(/overflow:\s*auto/)
+  })
+
+  it('below 800px tall in the 641–960px band .outerSection grows with its content (height: auto, min-height: 100dvh)', () => {
+    const outer = rule(bandBlock(), '.outerSection')
+    expect(outer).not.toBeNull()
+    expect(outer).toMatch(/(?<![\w-])height:\s*auto/)
+    expect(outer).toMatch(/min-height:\s*100dvh/)
+  })
+
+  it('leaves the band\'s grid rows and nimbus nudge alone (only overflow and grid height change)', () => {
+    const block = bandBlock()
+    expect(block).not.toMatch(/grid-template-rows/)
+    expect(block).not.toMatch(/\.logoContainer2/)
+  })
+})
