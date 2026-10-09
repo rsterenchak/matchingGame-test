@@ -10,6 +10,42 @@ import playSong from './assets/NamekTheme.mp3'
 
 // process.env.DBZ_KEY;
 
+// iOS Safari ignores HTMLMediaElement.volume (it is always 1.0), so each playing
+// track is routed through a shared AudioContext GainNode whose gain the volume
+// slider can actually control. Browsers without Web Audio keep using a.volume.
+let sharedAudioContext = null;
+
+function routeThroughGain(audioRef, gainRef, volumeLevel) {
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  if (!AudioCtx) return;
+
+  // Created lazily inside the play() effect, which follows a user gesture,
+  // so the context isn't born suspended by the autoplay policy.
+  if (sharedAudioContext === null) {
+    sharedAudioContext = new AudioCtx();
+  }
+
+  // createMediaElementSource may only be called once per element, so the
+  // chain is built once and kept on the persistent ref.
+  if (gainRef.current === null) {
+    const source = sharedAudioContext.createMediaElementSource(audioRef.current);
+    const gainNode = sharedAudioContext.createGain();
+    gainNode.gain.value = volumeLevel ** 2;
+    source.connect(gainNode);
+    gainNode.connect(sharedAudioContext.destination);
+    // The gain now applies the taper; keep the element at full volume so the
+    // curve isn't applied twice on browsers that honour both.
+    audioRef.current.volume = 1;
+    gainRef.current = gainNode;
+  }
+
+  if (sharedAudioContext.state === 'suspended') {
+    sharedAudioContext.resume().catch(error => {
+      // Resume was blocked; the next gesture-driven play() retries it.
+    });
+  }
+}
+
 // create component responsible for controlling music
 
 function HandleHomeAudio({
@@ -25,6 +61,7 @@ function HandleHomeAudio({
     a.volume = volumeLevel ** 2;
     audioRef.current = a;
   }
+  const gainRef = useRef(null);
 
   let homeAudioSwitch = false;
 
@@ -46,6 +83,8 @@ function HandleHomeAudio({
       // otherwise start the track *after* cleanup paused it, leaving an orphaned
       // instance stacking on top of the active track. We pause again on resolve.
       let cancelled = false;
+
+      routeThroughGain(audioRef, gainRef, volumeLevel);
 
       var playPromise = audioRef.current.play();
 
@@ -82,7 +121,11 @@ function HandleHomeAudio({
     }, [audioState])
 
     useEffect(() => {
-      audioRef.current.volume = volumeLevel ** 2;
+      if (gainRef.current !== null) {
+        gainRef.current.gain.value = volumeLevel ** 2;
+      } else {
+        audioRef.current.volume = volumeLevel ** 2;
+      }
     }, [volumeLevel])
 
 
@@ -166,6 +209,7 @@ function HandlePlayAudio({
     a.currentTime = 1;
     audioRef.current = a;
   }
+  const gainRef = useRef(null);
 
   let playAudioSwitch = false;
 
@@ -187,6 +231,8 @@ function HandlePlayAudio({
       // otherwise start the track *after* cleanup paused it, leaving an orphaned
       // instance stacking on top of the active track. We pause again on resolve.
       let cancelled = false;
+
+      routeThroughGain(audioRef, gainRef, volumeLevel);
 
       var playPromise = audioRef.current.play();
 
@@ -223,7 +269,11 @@ function HandlePlayAudio({
     }, [audioState])
 
     useEffect(() => {
-      audioRef.current.volume = volumeLevel ** 2;
+      if (gainRef.current !== null) {
+        gainRef.current.gain.value = volumeLevel ** 2;
+      } else {
+        audioRef.current.volume = volumeLevel ** 2;
+      }
     }, [volumeLevel])
 
 
