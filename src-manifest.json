@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-18T12:02:18.398Z",
-  "sha": "7a89c93c36f70edb0e5a36383a019c691c6b07a7",
+  "generatedAt": "2026-10-09T08:08:10.879Z",
+  "sha": "66dcd366804631ddb35f87fcfb7004cb51004e28",
   "files": [
     "Card.jsx",
     "CardBack.jsx",
@@ -10,7 +10,15 @@
     "PlayPage.jsx",
     "changelog.js",
     "index.jsx",
-    "style.css"
+    "style.css",
+    "test/Card.test.jsx",
+    "test/HomePage.test.jsx",
+    "test/MainSection.test.jsx",
+    "test/MemoryGameTitle.test.js",
+    "test/MobileMenu.test.jsx",
+    "test/PlayPage.test.jsx",
+    "test/placeholder.test.js",
+    "test/setup.js"
   ],
   "srcRoot": "src",
   "regions": [
@@ -1215,5 +1223,6 @@
       ]
     }
   ],
-  "hasDom": true
+  "hasDom": true,
+  "lens": "ui"
 }
