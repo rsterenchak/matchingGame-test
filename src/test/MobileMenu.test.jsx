@@ -167,3 +167,15 @@ describe('desktop PlayPage nav icon row restored at min-width:961px', () => {
     expect(restoresGrid).toBe(true)
   })
 })
+
+describe('MobileMenu buttonClassName', () => {
+  it('renders the hamburger with only its own class by default', () => {
+    render(<MobileMenu {...defaultProps} />)
+    expect(document.querySelector('.hamburgerButton').className).toBe('hamburgerButton')
+  })
+
+  it('appends buttonClassName to the hamburger when provided', () => {
+    render(<MobileMenu {...defaultProps} buttonClassName='navStackButton' />)
+    expect(document.querySelector('.hamburgerButton.navStackButton')).not.toBeNull()
+  })
+})
