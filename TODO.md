@@ -158,3 +158,10 @@
   - File: `src/HomePage.jsx`, `src/style.css`, `src/MobileMenu.jsx`
   - Completed: 2026-10-09
   <!-- id: 984c92df-67ca-44a0-8183-c91c7cf7d31d -->
+
+- [ ] **[MEDIUM]** Shift the homepage nimbus cloud down on mobile so it stops overlapping the Dragon Ball Z title
+  - Type: bug
+  - Description: On mobile, the nimbus cloud image (`.logoContainer2`) sits too high and overlaps the "Dragon Ball Z" title in `.logoContainer` above it. In the mobile-only `@media (min-width:320px)` and `@media (min-width:481px)` blocks in `src/style.css`, reduce the upward Y offset in the cloud's `translate` declaration from `calc(-20% - 24px)` to approximately `calc(-20% - 14px)` so the cloud renders a few pixels lower and clears the title. Leave the desktop block (`@media (min-width:961px)` and above) untouched, and leave `width`, `transform: translateX(12.3%)`, `margin-top`, and the `floatCloud` keyframes unchanged so the bob animation still works. Verify at both 320px and 481px widths that the cloud clears the title and nothing else (logo, Fight button, music toggle, Goku gif) shifts.
+  - File: `src/style.css`, `src/HomePage.jsx`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: 2df6adc2-7773-4ff9-97f4-7ecc52fb86f5 -->
