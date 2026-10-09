@@ -137,7 +137,7 @@
   - Verify: 920x600, 800x500 → / ; click "Fight" ; wait 1500, 920x900, 1300x560, 390x844 → /
   <!-- id: 430915da-d25b-4841-bf42-06e9348fdd9b -->
 
-- [ ] **[HIGH]** Fix music playing at full volume on iOS by routing audio through a Web Audio GainNode
+- [x] **[HIGH]** Fix music playing at full volume on iOS by routing audio through a Web Audio GainNode — Completed: 2026-10-09
   - Type: bug
   - Description: On iOS Safari, HTMLMediaElement.volume is ignored (always 1.0), so the `a.volume = volumeLevel ** 2` assignments in the four Handle*Audio components (HandleHomeAudio, HandlePauseAudio, HandlePlayAudio, HandlePausePlayAudio) in MainSection.jsx have no effect and music is far too loud even with device volume low and the slider at minimum. Route each track through a shared AudioContext with a MediaElementAudioSourceNode -> GainNode -> destination chain, and set `gain.value = volumeLevel ** 2` in the existing volume useEffect, so the volume slider works on iOS. Keep desktop/Android behavior unchanged (same volume curve and default 0.003).
   - File: `src/MainSection.jsx`
