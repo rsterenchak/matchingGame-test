@@ -151,3 +151,10 @@
   - File: `src/style.css`, `src/PlayPage.jsx`
   - Completed: 2026-10-09
   <!-- id: 06ec4e60-9990-4c2b-b447-6152d7759356 -->
+
+- [ ] **[MEDIUM]** Restyle HomePage nav buttons to match PlayPage's .navStackButton aesthetic and sizing
+  - Type: feature
+  - Description: Give the HomePage nav controls in `.topColumn1` — the music toggle (`.musicBlock`), the speaker/volume button (`.speakerButton`), and the MobileMenu toggle — the same DBZ button treatment as PlayPage's `.navStackButton` group (`.musicBlock2` / `.musicBlock3` / `.helpButton`): 60×55px, `border-radius: 50%`, `3px solid black` border, `background-color: yellow`, and 26px black SVG glyphs, with a 10px gap between the music/speaker pair. Mirror PlayPage's `@media (max-width: 480px)` rule so these buttons shrink to 48×48px at that breakpoint instead of holding desktop size, and add the shared `.navStackButton` class to the HomePage buttons rather than duplicating the rule. The Fight button is explicitly out of scope — keep it at 273×84px with its existing radius and font — and keep every current `onClick` handler intact (`forMusicIcon()` on the music toggle, `setSliderOpen(o => !o)` on the speaker button, and the MobileMenu open toggle) so audio toggling, the volume slider, and the menu still behave exactly as before. Preserve the existing `glowing*` keyframe glow family on these buttons and do not introduce breakpoints outside the documented set (320 / 481 / 641 / 961 / 1025 / 1281); the buttons must still fit at 320px.
+  - File: `src/HomePage.jsx`, `src/style.css`, `src/MobileMenu.jsx`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: 984c92df-67ca-44a0-8183-c91c7cf7d31d -->
