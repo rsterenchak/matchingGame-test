@@ -155,7 +155,8 @@ body {
   justify-content: center;
   width: 28px;
   height: 26px;
-  background-color: #FFD700;
+  background-color: yellow;
+  background-image: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
   border: 2.5px solid black;
   border-radius: 50%;
   cursor: pointer;
@@ -337,12 +338,16 @@ body {
   justify-content: center;
   border: 3px solid black;
   background-color: yellow;
+  background-image: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
   cursor: pointer;
 
 }
 
+/* Lifted above the button's depth layers so the glyph always paints on top. */
 .musicIcon {
   margin: 5px;
+  position: relative;
+  z-index: 1;
 
 }
 
@@ -528,35 +533,31 @@ body {
   width: 273px;
   border-radius: 20px;
   background-color: yellow;
+  background-image: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
   cursor: pointer;
   border: 3px solid black;
   position: relative;
   font-family: 'customFont1';
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 14px rgba(179, 179, 0, 0.6),
+    0 8px 14px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
   font-size: 19px;
+  /* Own stacking context so the :before glow and the :after face layer the
+     same way at rest and while a hover/press transform is applied. */
+  isolation: isolate;
+  transition: transform .2s, box-shadow .2s;
 
 }
 
-.fightButton:hover, .svg-text:hover {
-
-
-  animation: 0.5s change-color 1 normal forwards;
-
-}
-
-@keyframes change-color {
-  from {
-    background-color: yellow;
-  }
-
-  to {
-    height: 89px;
-    width: 283px;
-    font-size: 21px;
-    background-color: yellow;
-    fill: rgb(0, 0, 0)
-
-  }
+.fightButton:hover {
+  transform: scale(1.036);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 22px rgba(179, 179, 0, 0.9),
+    0 12px 20px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
 }
 
 
@@ -584,11 +585,19 @@ body {
 
 .fightButton:active {
   color: #000;
+  transform: scale(0.98);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 10px rgba(179, 179, 0, 0.6),
+    0 3px 6px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
   
 }
 
 .fightButton:active:after {
-  background: transparent;
+  box-shadow:
+    inset 0 4px 10px rgba(120, 120, 0, 0.6),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.3);
   
 }
 
@@ -596,16 +605,23 @@ body {
   opacity: 1;
 }
 
+/* Dimensional face: sits above the :before glow (later in tree order, same
+   z-index) and below the label, re-drawing the black border so the glow never
+   bleeds over it, with an inner bevel and a white bottom edge. */
 .fightButton:after {
   z-index: -1;
   content: '';
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #111;
-  left: 0;
-  top: 0;
+  inset: -3px;
+  border: 3px solid black;
   border-radius: 20px;
+  background: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
+  box-shadow:
+    inset 0 3px 5px rgba(120, 120, 0, 0.45),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.6),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  transition: box-shadow .2s;
   
   
 }
@@ -1440,6 +1456,37 @@ body {
   border-radius: 50%;
   border: 3px solid black;
   background-color: yellow;
+  background-image: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 10px rgba(179, 179, 0, 0.6),
+    0 5px 9px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  /* Same layering as .fightButton: a stacking context that holds at rest and
+     under the hover/press transforms, with the face drawn by :after below. */
+  isolation: isolate;
+  transition: transform .2s, box-shadow .2s;
+}
+
+/* Dimensional face + inner bevel, layered over the :before glow and under the
+   glyph. Covers the border box and re-draws the black border so the glow never
+   bleeds over it. Out-ranks the per-button #111 :after backing (0,1,1). */
+.topColumn1 .navStackButton:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  inset: -3px;
+  width: auto;
+  height: auto;
+  border: 3px solid black;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
+  box-shadow:
+    inset 0 3px 5px rgba(120, 120, 0, 0.45),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.6),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  transition: box-shadow .2s;
 }
 
 .topColumn1 .navStackButton img,
@@ -1451,7 +1498,29 @@ body {
 }
 
 .topColumn1 .navStackButton:hover {
-  animation: 0.5s change-color2 1 normal forwards;
+  animation: none;
+  transform: scale(1.08);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 18px rgba(179, 179, 0, 0.9),
+    0 8px 14px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+}
+
+.topColumn1 .navStackButton:active {
+  transform: scale(0.95);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 8px rgba(179, 179, 0, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+}
+
+.topColumn1 .navStackButton:active:after {
+  background: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
+  box-shadow:
+    inset 0 4px 10px rgba(120, 120, 0, 0.6),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.3);
 }
 
 .topColumn1 > .musicIconWrapper {
@@ -2309,9 +2378,10 @@ body {
   }
 
   /* Hold the HomePage buttons at their 48px touch size instead of growing on
-     hover, matching PlayPage where the hover grow is desktop-only. */
-  .topColumn1 .navStackButton:hover {
-    animation: none;
+     hover, matching PlayPage where the hover grow is desktop-only. The pressed
+     scale-down still applies. */
+  .topColumn1 .navStackButton:hover:not(:active) {
+    transform: none;
   }
 
   /* Volume slider sits inline beside the music button instead of dropping
