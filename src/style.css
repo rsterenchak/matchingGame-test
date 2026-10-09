@@ -943,6 +943,19 @@ body {
   }
 }
 
+/* Short windows in the 641px–960px band: the home grid's content is taller than
+   the viewport, so let the page scroll instead of clipping the Fight button. */
+@media (min-width:641px) and (max-width:960px) and (max-height: 800px) {
+  body {
+    overflow: auto;
+  }
+
+  .outerSection {
+    height: auto;
+    min-height: 100dvh;
+  }
+}
+
 @media (min-width:961px) {
 
   .homeSection {
