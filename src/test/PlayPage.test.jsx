@@ -855,3 +855,26 @@ describe('PlayPage nav controls form a uniform vertical stack in the upper-left 
     expect(backdropRule[1]).toMatch(/justify-content:\s*center/)
   })
 })
+
+describe('PlayPage scroll position on entry', () => {
+  const defaultProps = {
+    background: 'fake-bg.jpg',
+    setHomePage: vi.fn(),
+    setAudioPause: vi.fn(),
+    setAudioPlay: vi.fn(),
+    activeCurrentAudio: false,
+    isActiveData: [],
+    isVolume: 0.5,
+    onVolumeChange: vi.fn(),
+  }
+
+  afterEach(() => {
+    vi.restoreAllMocks()
+  })
+
+  it('scrolls the window back to the top on mount so a scrolled short home page does not leave the play screen clipped', () => {
+    const scrollSpy = vi.spyOn(window, 'scrollTo').mockImplementation(() => {})
+    render(<PlayPage {...defaultProps} />)
+    expect(scrollSpy).toHaveBeenCalledWith(0, 0)
+  })
+})

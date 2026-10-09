@@ -34,6 +34,12 @@ export default function PlayPage({
   const [activeInstructionsModal, setActiveInstructionsModal] = useState(true);
   const modalInteractiveRef = useRef(false);
 
+  // A short home page can be scrolled down to reach the Fight button; start the
+  // play screen at the top so its nav row isn't left scrolled out of view.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     if (!sliderOpen) return;
 
