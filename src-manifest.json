@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-09T12:20:01.702Z",
-  "sha": "bd7cc5efde2ff864729c8054abd0a47ce620045c",
+  "generatedAt": "2026-10-09T12:36:26.606Z",
+  "sha": "23a58a5dfc84b4d4744b6a9bb86a45b90ef0776f",
   "files": [
     "Card.jsx",
     "CardBack.jsx",
@@ -27,11 +27,11 @@
       "selector": ".animationSection",
       "label": "Animation Section",
       "file": "HomePage.jsx",
-      "line": 183,
+      "line": 184,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 183
+          "line": 184
         },
         {
           "file": "style.css",
@@ -55,7 +55,7 @@
         },
         {
           "file": "style.css",
-          "line": 1472
+          "line": 1509
         }
       ]
     },
@@ -71,7 +71,7 @@
         },
         {
           "file": "style.css",
-          "line": 1520
+          "line": 1557
         }
       ]
     },
@@ -87,7 +87,7 @@
         },
         {
           "file": "style.css",
-          "line": 1502
+          "line": 1539
         }
       ]
     },
@@ -103,7 +103,7 @@
         },
         {
           "file": "style.css",
-          "line": 1514
+          "line": 1551
         }
       ]
     },
@@ -119,7 +119,7 @@
         },
         {
           "file": "style.css",
-          "line": 1530
+          "line": 1567
         }
       ]
     },
@@ -135,7 +135,7 @@
         },
         {
           "file": "style.css",
-          "line": 1685
+          "line": 1722
         }
       ]
     },
@@ -143,11 +143,11 @@
       "selector": ".fightButton",
       "label": "Fight Button",
       "file": "HomePage.jsx",
-      "line": 191,
+      "line": 192,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 191
+          "line": 192
         },
         {
           "file": "style.css",
@@ -159,11 +159,11 @@
       "selector": ".fightStage",
       "label": "Fight Stage",
       "file": "HomePage.jsx",
-      "line": 181,
+      "line": 182,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 181
+          "line": 182
         },
         {
           "file": "style.css",
@@ -183,7 +183,7 @@
         },
         {
           "file": "style.css",
-          "line": 1703
+          "line": 1740
         }
       ]
     },
@@ -191,11 +191,11 @@
       "selector": ".gitIcon",
       "label": "Git Icon",
       "file": "HomePage.jsx",
-      "line": 149,
+      "line": 150,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 149
+          "line": 150
         },
         {
           "file": "PlayPage.jsx",
@@ -211,11 +211,11 @@
       "selector": ".gokuGif",
       "label": "Goku Gif",
       "file": "HomePage.jsx",
-      "line": 187,
+      "line": 188,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 187
+          "line": 188
         },
         {
           "file": "style.css",
@@ -235,7 +235,7 @@
         },
         {
           "file": "style.css",
-          "line": 3315
+          "line": 3359
         }
       ]
     },
@@ -243,31 +243,15 @@
       "selector": ".guyGif",
       "label": "Guy Gif",
       "file": "HomePage.jsx",
-      "line": 185,
+      "line": 186,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 185
+          "line": 186
         },
         {
           "file": "style.css",
           "line": 111
-        }
-      ]
-    },
-    {
-      "selector": ".hamburgerButton",
-      "label": "Hamburger Button",
-      "file": "MobileMenu.jsx",
-      "line": 36,
-      "files": [
-        {
-          "file": "MobileMenu.jsx",
-          "line": 36
-        },
-        {
-          "file": "style.css",
-          "line": 1821
         }
       ]
     },
@@ -307,11 +291,11 @@
       "selector": ".inputSection",
       "label": "Input Section",
       "file": "HomePage.jsx",
-      "line": 174,
+      "line": 175,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 174
+          "line": 175
         },
         {
           "file": "style.css",
@@ -331,7 +315,7 @@
         },
         {
           "file": "style.css",
-          "line": 3274
+          "line": 3318
         }
       ]
     },
@@ -347,7 +331,7 @@
         },
         {
           "file": "style.css",
-          "line": 3287
+          "line": 3331
         }
       ]
     },
@@ -363,7 +347,7 @@
         },
         {
           "file": "style.css",
-          "line": 3306
+          "line": 3350
         }
       ]
     },
@@ -379,7 +363,7 @@
         },
         {
           "file": "style.css",
-          "line": 3301
+          "line": 3345
         }
       ]
     },
@@ -387,11 +371,11 @@
       "selector": ".logoContainer",
       "label": "Logo Container",
       "file": "HomePage.jsx",
-      "line": 163,
+      "line": 164,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 163
+          "line": 164
         },
         {
           "file": "style.css",
@@ -403,11 +387,11 @@
       "selector": ".logoContainer2",
       "label": "Logo Container2",
       "file": "HomePage.jsx",
-      "line": 169,
+      "line": 170,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 169
+          "line": 170
         },
         {
           "file": "style.css",
@@ -419,11 +403,11 @@
       "selector": ".logoSection",
       "label": "Logo Section",
       "file": "HomePage.jsx",
-      "line": 161,
+      "line": 162,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 161
+          "line": 162
         },
         {
           "file": "style.css",
@@ -435,11 +419,11 @@
       "selector": ".logoSection2",
       "label": "Logo Section2",
       "file": "HomePage.jsx",
-      "line": 167,
+      "line": 168,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 167
+          "line": 168
         },
         {
           "file": "style.css",
@@ -459,7 +443,7 @@
         },
         {
           "file": "style.css",
-          "line": 1463
+          "line": 1500
         }
       ]
     },
@@ -475,109 +459,13 @@
         },
         {
           "file": "style.css",
-          "line": 1490
+          "line": 1527
         }
       ]
     },
     {
       "selector": ".mobileMenuBackdrop",
       "label": "Mobile Menu Backdrop",
-      "file": "MobileMenu.jsx",
-      "line": 47,
-      "files": [
-        {
-          "file": "MobileMenu.jsx",
-          "line": 47
-        },
-        {
-          "file": "style.css",
-          "line": 1872
-        }
-      ]
-    },
-    {
-      "selector": ".mobileMenuCloseButton",
-      "label": "Mobile Menu Close Button",
-      "file": "MobileMenu.jsx",
-      "line": 51,
-      "files": [
-        {
-          "file": "MobileMenu.jsx",
-          "line": 51
-        },
-        {
-          "file": "style.css",
-          "line": 1907
-        }
-      ]
-    },
-    {
-      "selector": ".mobileMenuDivider",
-      "label": "Mobile Menu Divider",
-      "file": "MobileMenu.jsx",
-      "line": 56,
-      "files": [
-        {
-          "file": "MobileMenu.jsx",
-          "line": 56
-        },
-        {
-          "file": "style.css",
-          "line": 1952
-        }
-      ]
-    },
-    {
-      "selector": ".mobileMenuIcon",
-      "label": "Mobile Menu Icon",
-      "file": "MobileMenu.jsx",
-      "line": 62,
-      "files": [
-        {
-          "file": "MobileMenu.jsx",
-          "line": 62
-        },
-        {
-          "file": "style.css",
-          "line": 1958
-        }
-      ]
-    },
-    {
-      "selector": ".mobileMenuIconText",
-      "label": "Mobile Menu Icon Text",
-      "file": "MobileMenu.jsx",
-      "line": 103,
-      "files": [
-        {
-          "file": "MobileMenu.jsx",
-          "line": 103
-        },
-        {
-          "file": "style.css",
-          "line": 1971
-        }
-      ]
-    },
-    {
-      "selector": ".mobileMenuLabel",
-      "label": "Mobile Menu Label",
-      "file": "MobileMenu.jsx",
-      "line": 63,
-      "files": [
-        {
-          "file": "MobileMenu.jsx",
-          "line": 63
-        },
-        {
-          "file": "style.css",
-          "line": 1964
-        }
-      ]
-    },
-    {
-      "selector": ".mobileMenuModal",
-      "label": "Mobile Menu Modal",
       "file": "MobileMenu.jsx",
       "line": 48,
       "files": [
@@ -587,13 +475,93 @@
         },
         {
           "file": "style.css",
-          "line": 1885
+          "line": 1909
         }
       ]
     },
     {
-      "selector": ".mobileMenuModalHeader",
-      "label": "Mobile Menu Modal Header",
+      "selector": ".mobileMenuCloseButton",
+      "label": "Mobile Menu Close Button",
+      "file": "MobileMenu.jsx",
+      "line": 52,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 52
+        },
+        {
+          "file": "style.css",
+          "line": 1944
+        }
+      ]
+    },
+    {
+      "selector": ".mobileMenuDivider",
+      "label": "Mobile Menu Divider",
+      "file": "MobileMenu.jsx",
+      "line": 57,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 57
+        },
+        {
+          "file": "style.css",
+          "line": 1989
+        }
+      ]
+    },
+    {
+      "selector": ".mobileMenuIcon",
+      "label": "Mobile Menu Icon",
+      "file": "MobileMenu.jsx",
+      "line": 63,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 63
+        },
+        {
+          "file": "style.css",
+          "line": 1995
+        }
+      ]
+    },
+    {
+      "selector": ".mobileMenuIconText",
+      "label": "Mobile Menu Icon Text",
+      "file": "MobileMenu.jsx",
+      "line": 104,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 104
+        },
+        {
+          "file": "style.css",
+          "line": 2008
+        }
+      ]
+    },
+    {
+      "selector": ".mobileMenuLabel",
+      "label": "Mobile Menu Label",
+      "file": "MobileMenu.jsx",
+      "line": 64,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 64
+        },
+        {
+          "file": "style.css",
+          "line": 2001
+        }
+      ]
+    },
+    {
+      "selector": ".mobileMenuModal",
+      "label": "Mobile Menu Modal",
       "file": "MobileMenu.jsx",
       "line": 49,
       "files": [
@@ -603,13 +571,13 @@
         },
         {
           "file": "style.css",
-          "line": 1894
+          "line": 1922
         }
       ]
     },
     {
-      "selector": ".mobileMenuModalTitle",
-      "label": "Mobile Menu Modal Title",
+      "selector": ".mobileMenuModalHeader",
+      "label": "Mobile Menu Modal Header",
       "file": "MobileMenu.jsx",
       "line": 50,
       "files": [
@@ -619,7 +587,23 @@
         },
         {
           "file": "style.css",
-          "line": 1901
+          "line": 1931
+        }
+      ]
+    },
+    {
+      "selector": ".mobileMenuModalTitle",
+      "label": "Mobile Menu Modal Title",
+      "file": "MobileMenu.jsx",
+      "line": 51,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 51
+        },
+        {
+          "file": "style.css",
+          "line": 1938
         }
       ]
     },
@@ -627,15 +611,15 @@
       "selector": ".mobileMenuRow",
       "label": "Mobile Menu Row",
       "file": "MobileMenu.jsx",
-      "line": 59,
+      "line": 60,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 59
+          "line": 60
         },
         {
           "file": "style.css",
-          "line": 1925
+          "line": 1962
         }
       ]
     },
@@ -643,15 +627,15 @@
       "selector": ".mobileMenuVolumeSlider",
       "label": "Mobile Menu Volume Slider",
       "file": "MobileMenu.jsx",
-      "line": 71,
+      "line": 72,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 71
+          "line": 72
         },
         {
           "file": "style.css",
-          "line": 1983
+          "line": 2020
         }
       ]
     },
@@ -659,15 +643,15 @@
       "selector": ".mobileMenuWrapper",
       "label": "Mobile Menu Wrapper",
       "file": "MobileMenu.jsx",
-      "line": 34,
+      "line": 35,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 34
+          "line": 35
         },
         {
           "file": "style.css",
-          "line": 1816
+          "line": 1853
         }
       ]
     },
@@ -871,11 +855,11 @@
       "selector": ".portfolioBlock",
       "label": "Portfolio Block",
       "file": "HomePage.jsx",
-      "line": 143,
+      "line": 144,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 143
+          "line": 144
         },
         {
           "file": "style.css",
@@ -895,7 +879,7 @@
         },
         {
           "file": "style.css",
-          "line": 1435
+          "line": 1472
         }
       ]
     },
@@ -903,11 +887,11 @@
       "selector": ".portfolioIcon",
       "label": "Portfolio Icon",
       "file": "HomePage.jsx",
-      "line": 147,
+      "line": 148,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 147
+          "line": 148
         },
         {
           "file": "style.css",
@@ -927,7 +911,7 @@
         },
         {
           "file": "style.css",
-          "line": 1454
+          "line": 1491
         }
       ]
     },
@@ -935,11 +919,11 @@
       "selector": ".portfolioText",
       "label": "Portfolio Text",
       "file": "HomePage.jsx",
-      "line": 145,
+      "line": 146,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 145
+          "line": 146
         },
         {
           "file": "style.css",
@@ -959,7 +943,7 @@
         },
         {
           "file": "style.css",
-          "line": 1446
+          "line": 1483
         }
       ]
     },
@@ -975,7 +959,7 @@
         },
         {
           "file": "style.css",
-          "line": 1707
+          "line": 1744
         }
       ]
     },
@@ -991,7 +975,7 @@
         },
         {
           "file": "style.css",
-          "line": 1618
+          "line": 1655
         }
       ]
     },
@@ -1007,7 +991,7 @@
         },
         {
           "file": "style.css",
-          "line": 1655
+          "line": 1692
         }
       ]
     },
@@ -1023,7 +1007,7 @@
         },
         {
           "file": "style.css",
-          "line": 1643
+          "line": 1680
         }
       ]
     },
@@ -1039,7 +1023,7 @@
         },
         {
           "file": "style.css",
-          "line": 1665
+          "line": 1702
         }
       ]
     },
@@ -1055,7 +1039,7 @@
         },
         {
           "file": "style.css",
-          "line": 1630
+          "line": 1667
         }
       ]
     },
@@ -1071,7 +1055,7 @@
         },
         {
           "file": "style.css",
-          "line": 1637
+          "line": 1674
         }
       ]
     },
@@ -1087,7 +1071,7 @@
         },
         {
           "file": "style.css",
-          "line": 1649
+          "line": 1686
         }
       ]
     },
@@ -1111,11 +1095,11 @@
       "selector": ".svg-element",
       "label": "Svg Element",
       "file": "HomePage.jsx",
-      "line": 193,
+      "line": 194,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 193
+          "line": 194
         },
         {
           "file": "style.css",
@@ -1127,11 +1111,11 @@
       "selector": ".svg-text",
       "label": "Svg Text",
       "file": "HomePage.jsx",
-      "line": 194,
+      "line": 195,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 194
+          "line": 195
         },
         {
           "file": "style.css",
@@ -1159,11 +1143,11 @@
       "selector": ".topColumn2",
       "label": "Top Column2",
       "file": "HomePage.jsx",
-      "line": 140,
+      "line": 141,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 140
+          "line": 141
         },
         {
           "file": "style.css",
@@ -1199,7 +1183,7 @@
         },
         {
           "file": "style.css",
-          "line": 1428
+          "line": 1465
         }
       ]
     },
