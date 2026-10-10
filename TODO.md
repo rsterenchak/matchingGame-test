@@ -216,9 +216,10 @@
   - Completed: 2026-10-10
   <!-- id: 323a86a9-94fe-4ed1-8338-0995616d0f9d -->
 
-- [ ] **[MEDIUM]** Fix Nimbus cloud shifting right on desktop when animations are off
+- [x] **[MEDIUM]** Fix Nimbus cloud shifting right on desktop when animations are off
   - Type: bug
   - Description: On the home page at 961px+ with `prefers-reduced-motion: reduce` (or any time the `nimbus-float` animation isn't running), the Nimbus cloud (`.logoContainer2`) sits noticeably right of center; with the animation running it bobs vertically and is correctly centered. Cause: the `min-width:641px` block sets `transform: translateX(12.3%)` for mobile/tablet centering and no later block resets it — the `min-width:961px` block (which adds `left: calc(1vw + 5%)`, `translate: -10% -10%`, `scale: 0.9` and `animation: nimbus-float`) and the `min-width:1281px` block both re-declare positioning but never touch `transform`. While `nimbus-float` runs, its keyframes' `transform: translateY(...)` override the base transform and hide the stale `translateX`; when the `prefers-reduced-motion` block sets `animation: none`, the cascaded `translateX(12.3%)` applies and pushes the cloud right. Fix: add `transform: none;` to the `.logoContainer2` rule in the `@media (min-width:961px)` block, with a short comment noting it clears the 641px mobile centering so the static position matches the animation's 0% frame. That one declaration cascades to the `1281px` block (which doesn't set `transform`), so no change is needed there, and it has no effect while the animation runs because the keyframe transform still overrides it. Do not touch the mobile `floatCloud` keyframes or the `641px` rule — mobile bakes `translateX(12.3%)` into every keyframe, so the base `translateX` is the intended resting position there. At 1300x900 with reduced motion emulated, the cloud is horizontally centered under the Dragon Ball Z title at the same spot the animated version rests; at 1300x900 without reduced motion the bob is unchanged; at 390x844 the cloud position is unchanged in both modes.
   - File: `src/style.css`
   - Verify: 1300x900, 390x844 → /
+  - Completed: 2026-10-10
   <!-- id: ba8d23ab-4140-4ec6-80f9-c6d55fcaae78 -->
