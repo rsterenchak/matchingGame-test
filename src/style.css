@@ -2146,24 +2146,47 @@ body {
   color: #777;
 }
 
-/* High scores modal rows carry a level badge between name and score. */
-.highScoresRow.withLevel {
-  grid-template-columns: 24px 1fr auto auto;
-  align-items: center;
+/* High scores modal level tabs: small DBZ pills, three across under the title.
+   The active tab gets the yellow face and ring; the others sit on light grey. */
+.scoresTabs {
+  display: flex;
+  gap: 6px;
+  padding: 8px 10px;
+  border-bottom: 2px solid black;
 }
 
-.highScoresLevel {
+.scoresTab {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 30px;
   padding: 0 6px;
-  border: 1.5px solid black;
-  border-radius: 8px;
-  background-color: #fff6a8;
-  font-size: 11px;
+  border: 3px solid black;
+  border-radius: 36px;
+  background-color: #eee;
+  color: black;
+  font-family: 'customFont1';
+  font-size: 12px;
+  opacity: .7;
+  cursor: pointer;
+  transition: opacity .2s;
 }
 
-/* Runs whose level can't be known get no badge, not an empty pill. */
-.highScoresLevel:empty {
-  padding: 0;
-  border: none;
+.scoresTab:hover {
+  opacity: .9;
+}
+
+.scoresTab.scoresTabActive {
+  background-color: yellow;
+  background-image: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
+  box-shadow: 0 0 0 2px rgb(179, 179, 0);
+  opacity: 1;
+}
+
+.highScoresUnknown {
+  padding: 6px 12px;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: #777;
 }
 
 /* The high scores modal blurs the page behind it, like the end-game popup. */

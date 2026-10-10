@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, act, cleanup } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { highScoresKey, sortHighScores, loadHighScores, levelLabel } from '../highScores.js'
+import { highScoresKey, sortHighScores, loadHighScores, levelLabel, entryLevel, levelWinCounts } from '../highScores.js'
 import HomePage from '../HomePage.jsx'
 import PlayPage from '../PlayPage.jsx'
 import MobileMenu from '../MobileMenu.jsx'
@@ -51,6 +51,18 @@ describe('highScores helpers', () => {
     expect(levelLabel({ score: 16 })).toBe('')
     expect(levelLabel({ score: 12 })).toBe('')
     expect(levelLabel({})).toBe('')
+  })
+
+  it('resolves entryLevel to a level key, or null when it cannot be known', () => {
+    expect(entryLevel({ level: 'hard', score: 3 })).toBe('hard')
+    expect(entryLevel({ score: 20 })).toBe('hard')
+    expect(entryLevel({ score: 30 })).toBe('hardest')
+    expect(entryLevel({ score: 12 })).toBeNull()
+    expect(entryLevel({ score: 12, level: 'insane' })).toBeNull()
+  })
+
+  it('exposes the per-level win counts', () => {
+    expect(levelWinCounts).toEqual({ easy: 16, hard: 24, hardest: 32 })
   })
 
   it('keeps entries whose level is missing or unrecognised', () => {
@@ -164,19 +176,86 @@ describe('HighScoresModal in MainSection', () => {
     expect(screen.getByText('No scores yet')).toBeInTheDocument()
   })
 
-  it('lists the top 10 saved runs with rank, name, level badge, and score', () => {
-    const runs = Array.from({ length: 12 }, (_, i) => ({ name: 'P' + i, score: i }))
-    runs[11].level = 'hardest'
+  it('lists the top 10 runs of the active tab with rank, name, and score / winCount', () => {
+    const runs = Array.from({ length: 12 }, (_, i) => ({ name: 'P' + i, score: i, level: 'easy' }))
+    runs.push({ name: 'H1', score: 15, level: 'hard' })
     localStorage.setItem('matchingGame_highScores', JSON.stringify(runs))
     openModal()
-    const rows = document.querySelectorAll('.scoresCard .highScoresRow.withLevel')
+    const rows = document.querySelectorAll('.scoresCard .highScoresRow')
     expect(rows).toHaveLength(10)
     expect(rows[0].querySelector('.highScoresRank').textContent).toBe('1')
     expect(rows[0].querySelector('.highScoresName').textContent).toBe('P11')
-    expect(rows[0].querySelector('.highScoresLevel').textContent).toBe('Hardest')
-    expect(rows[0].querySelector('.highScoresScore').textContent).toBe('11')
-    // A run saved without a level and a score that fits any level gets no badge.
-    expect(rows[1].querySelector('.highScoresLevel').textContent).toBe('')
+    expect(rows[0].querySelector('.highScoresScore').textContent).toBe('11 / 16')
+    expect(document.querySelector('.scoresCard .highScoresLevel')).toBeNull()
+    expect(screen.queryByText('H1')).toBeNull()
+  })
+
+  it('shows Easy / Hard / Hardest tabs, opening on the current level', () => {
+    openModal()
+    const tabs = document.querySelectorAll('.scoresTabs .scoresTab')
+    expect([...tabs].map(t => t.textContent)).toEqual(['Easy', 'Hard', 'Hardest'])
+    expect(tabs[0].getAttribute('aria-selected')).toBe('true')
+    expect(tabs[0].classList.contains('scoresTabActive')).toBe(true)
+    expect(tabs[1].getAttribute('aria-selected')).toBe('false')
+  })
+
+  it('opens on the level picked on the home page', () => {
+    render(<MainSection />)
+    fireEvent.click(screen.getByText('Hard'))
+    fireEvent.click(document.querySelector('.topColumn1 .scoresButton'))
+    expect(document.querySelector('.scoresTab.scoresTabActive').textContent).toBe('Hard')
+  })
+
+  it('switches lists on tab click and arrow keys without closing or changing the level', () => {
+    localStorage.setItem('matchingGame_highScores', JSON.stringify([
+      { name: 'Goku', score: 16, level: 'easy' },
+      { name: 'Vegeta', score: 15, level: 'hard' },
+      { name: 'Gohan', score: 30 },
+    ]))
+    openModal()
+    expect(document.querySelector('.scoresCard .highScoresName').textContent).toBe('Goku')
+
+    fireEvent.click(document.querySelector('.scoresTabs').children[1])
+    expect(document.querySelector('.scoresBackdrop')).not.toBeNull()
+    expect(document.querySelector('.scoresCard .highScoresName').textContent).toBe('Vegeta')
+    expect(document.querySelector('.scoresCard .highScoresScore').textContent).toBe('15 / 24')
+
+    fireEvent.keyDown(document.querySelector('.scoresTab.scoresTabActive'), { key: 'ArrowRight' })
+    expect(document.querySelector('.scoresTab.scoresTabActive').textContent).toBe('Hardest')
+    expect(document.activeElement.textContent).toBe('Hardest')
+    expect(document.querySelector('.scoresCard .highScoresScore').textContent).toBe('30 / 32')
+
+    fireEvent.keyDown(document.activeElement, { key: 'ArrowRight' })
+    expect(document.querySelector('.scoresTab.scoresTabActive').textContent).toBe('Easy')
+    fireEvent.keyDown(document.activeElement, { key: 'ArrowLeft' })
+    expect(document.querySelector('.scoresTab.scoresTabActive').textContent).toBe('Hardest')
+
+    // The home page's selected level is untouched by tab switches.
+    expect(document.querySelector('.levelButton.levelActive').textContent).toBe('Easy')
+  })
+
+  it('shows "No scores yet" on an empty tab', () => {
+    localStorage.setItem('matchingGame_highScores', JSON.stringify([{ name: 'Goku', score: 16, level: 'easy' }]))
+    openModal()
+    expect(screen.queryByText('No scores yet')).toBeNull()
+    fireEvent.click(document.querySelector('.scoresTabs').children[2])
+    expect(screen.getByText('No scores yet')).toBeInTheDocument()
+  })
+
+  it('notes runs without a recorded level instead of listing them', () => {
+    localStorage.setItem('matchingGame_highScores', JSON.stringify([
+      { name: 'Krillin', score: 12 },
+      { name: 'Yamcha', score: 3 },
+    ]))
+    openModal()
+    expect(screen.queryByText('Krillin')).toBeNull()
+    expect(screen.getByText('2 older runs without a recorded level')).toBeInTheDocument()
+  })
+
+  it('omits the older-runs note when every run has a known level', () => {
+    localStorage.setItem('matchingGame_highScores', JSON.stringify([{ name: 'Goku', score: 16, level: 'easy' }]))
+    openModal()
+    expect(document.querySelector('.highScoresUnknown')).toBeNull()
   })
 
   it('re-reads storage on each open so a newly saved run shows without a reload', () => {
