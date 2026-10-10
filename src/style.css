@@ -1136,6 +1136,9 @@ body {
   }
 }
 
+/* The Nimbus cloud rule below sets `transform: none` to clear the 641px mobile
+   `translateX(12.3%)` centering, so the static (reduced-motion) position
+   matches the nimbus-float 0% frame. */
 @media (min-width:961px) {
 
   .homeSection {
@@ -1215,6 +1218,7 @@ body {
     animation: nimbus-float 5s ease-in-out infinite;
     scale: 0.9;
     translate: -10% -10%;
+    transform: none;
   }
 
   .inputSection {
