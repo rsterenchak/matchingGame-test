@@ -322,3 +322,23 @@
   - Verify: 1300x900, 390x844 → /
   - Completed: 2026-10-10
   <!-- id: 9b6e711d-2873-485e-8b59-0a7a93d88e6d -->
+
+- [ ] **[MEDIUM]** Add a Dragon Ball summoning celebration when a level is won
+  - Type: feature
+  - Description: When the player picks every fighter and the win popup appears (`isOver` true inside the `activePopUp` block in `src/PlayPage.jsx`, rendering `.endGame` with "You Won!"), play a one-shot "summon the dragon" celebration behind the card: a golden flash over the board, then the seven Dragon Balls rising past the popup. Loss (Game Over) gets nothing.
+  - Behavior:
+    1. Markup. Add a `WinCelebration` component (new file `src/WinCelebration.jsx`, presentational only — no game state) rendered as a sibling just before the win `.endGame` card, only when `activePopUp && isOver`. It renders a fixed, pointer-events-none layer (`.winCelebration`, `position: fixed; inset: 0; z-index` above the blurred `.playSection` and below `.endGame`) containing a `.winFlash` div and seven `.dragonBall` spans numbered 1–7, each showing its star count with a small red ★ glyph (CSS `::after` with `content: attr(data-stars)` is fine; no images or new assets).
+    2. Animation, pure CSS keyframes in `src/style.css`, no library, no canvas (CLAUDE.md: no new dependencies or animation libs). `.winFlash`: radial golden glow (`#ffff99` center → `rgba(255,255,0,.4)` → transparent) fading in over 0.2s and out by 1.2s. Each `.dragonBall`: 28px circle with a `radial-gradient(circle at 35% 30%, #ffd96b, #f59e2c 70%, #b35e00)` face and `1px solid #7a3e00` border, starting below the viewport at one of seven evenly spaced horizontal positions and rising to above the top over ~2.8s with `ease-out`, scaling from 0.6 to 1.05, staggered 0.15s apart, opacity in at 30% and out by 100%. Use `transform` and `opacity` only (compositor-friendly — keep the mobile GPU budget).
+    3. Difficulty scaling. Easy: one wave of seven balls. Hard: a second wave starting 0.9s later. Hardest: a third wave starting 1.8s later and the flash held 0.4s longer. Drive this from the `isLevel` prop PlayPage already receives (wave count = 1 / 2 / 3).
+    4. Lifecycle. The layer unmounts itself on the last ball's `animationend` (or a fallback `setTimeout` of total duration + 200ms, cleared on unmount), so Retry and the end-game list are unaffected and nothing keeps animating. It plays once per win: keyed on the win event (e.g. a `winCount`/score-at-win key), so re-renders of the popup — typing a name, saving a score — don't restart it, and Retry → next win plays it again.
+    5. Reduced motion. Under `@media (prefers-reduced-motion: reduce)` (extend the existing block at the bottom of `style.css`) the balls are `display: none` and `.winFlash` renders as a static 60%-opacity glow with no animation; the unmount fallback timer still clears it after 1.5s.
+  - Acceptance criteria:
+    - Win on Easy at 1300x900: flash then seven numbered balls rise behind the white card; the card, name field and Save button remain fully clickable during and after; the layer is gone from the DOM after ~3s.
+    - Win on Hardest: three staggered waves; total under 6s.
+    - Game Over: no flash, no balls.
+    - 390x844: balls are spread across the phone width and never cause horizontal scroll (`overflow: hidden` on the layer).
+    - Existing tests in `src/test/PlayPage.test.jsx` ("End-game popup", "Retry after a win") still pass; add a test that the `.winCelebration` layer is present on the win popup and absent on Game Over.
+  - Out of scope: sound effects, confetti, changes to the win/loss logic in `Card.jsx`; no new dependencies.
+  - File: `src/WinCelebration.jsx`, `src/PlayPage.jsx`, `src/style.css`, `src/test/PlayPage.test.jsx`
+  - Verify: 1300x900, 390x844 → /
+  <!-- id: 17624410-095a-4802-a13d-a80ede498442 -->
