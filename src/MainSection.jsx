@@ -7,7 +7,7 @@ import HomePage from './HomePage.jsx'
 import PlayPage from './PlayPage.jsx'
 import homeSong from './assets/DragonBallZ.mp3'
 import playSong from './assets/NamekTheme.mp3'
-import { loadHighScores, levelLabel } from './highScores.js'
+import { loadHighScores, sortHighScores, entryLevel, levelLabels, levelWinCounts } from './highScores.js'
 
 // process.env.DBZ_KEY;
 
@@ -350,12 +350,30 @@ const levelLimits = {easy: 16, hard: 24, hardest: 32};
 
 const maxScoresModalShown = 10;
 
+const scoresTabLevels = ['easy', 'hard', 'hardest'];
+
 // Saved runs, opened from the trophy button on either page. Reads storage on
 // every open, so a run saved from the end-game popup shows up without a reload.
-function HighScoresModal({ closeScores }) {
+// One tab per level so ranks only compare runs of the same difficulty; it opens
+// on the current level, and switching tabs doesn't change the selected level.
+function HighScoresModal({ closeScores, initialLevel }) {
 
   const [highScores] = useState(() => loadHighScores());
+  const [activeTab, setActiveTab] = useState(() => scoresTabLevels.includes(initialLevel) ? initialLevel : 'easy');
   const modalInteractiveRef = useRef(false);
+  const tabRefs = useRef({});
+
+  const tabScores = sortHighScores(highScores.filter(entry => entryLevel(entry) === activeTab));
+  const unknownCount = highScores.filter(entry => entryLevel(entry) === null).length;
+
+  function handleTabKey(e) {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    e.preventDefault();
+    const step = e.key === 'ArrowRight' ? 1 : -1;
+    const next = scoresTabLevels[(scoresTabLevels.indexOf(activeTab) + step + scoresTabLevels.length) % scoresTabLevels.length];
+    setActiveTab(next);
+    tabRefs.current[next]?.focus();
+  }
 
   useEffect(() => {
 
@@ -392,19 +410,39 @@ function HighScoresModal({ closeScores }) {
 
           <div className='highScoresTitle'>High scores</div>
 
-          {highScores.length > 0 ? (
-            <ol className='highScoresList'>
-              {highScores.slice(0, maxScoresModalShown).map((entry, i) => (
-                <li key={i} className='highScoresRow withLevel'>
+          <div className='scoresTabs' role='tablist' aria-label='Difficulty' onKeyDown={handleTabKey}>
+            {scoresTabLevels.map(level => (
+              <button
+                key={level}
+                ref={el => { tabRefs.current[level] = el; }}
+                type='button'
+                role='tab'
+                className={`scoresTab${activeTab === level ? ' scoresTabActive' : ''}`}
+                aria-selected={activeTab === level}
+                tabIndex={activeTab === level ? 0 : -1}
+                onClick={() => setActiveTab(level)}
+              >
+                {levelLabels[level]}
+              </button>
+            ))}
+          </div>
+
+          {tabScores.length > 0 ? (
+            <ol className='highScoresList' role='tabpanel'>
+              {tabScores.slice(0, maxScoresModalShown).map((entry, i) => (
+                <li key={i} className='highScoresRow'>
                   <span className='highScoresRank'>{i + 1}</span>
                   <span className='highScoresName'>{entry.name}</span>
-                  <span className='highScoresLevel'>{levelLabel(entry)}</span>
-                  <span className='highScoresScore'>{entry.score}</span>
+                  <span className='highScoresScore'>{entry.score} / {levelWinCounts[activeTab]}</span>
                 </li>
               ))}
             </ol>
           ) : (
-            <div className='highScoresEmpty'>No scores yet</div>
+            <div className='highScoresEmpty' role='tabpanel'>No scores yet</div>
+          )}
+
+          {unknownCount > 0 && (
+            <div className='highScoresUnknown'>{unknownCount} older {unknownCount === 1 ? 'run' : 'runs'} without a recorded level</div>
           )}
 
         </div>
@@ -770,7 +808,7 @@ export default function MainSection() {
     )}
 
     {activeScoresModal && (
-      <HighScoresModal closeScores={() => setActiveScoresModal(false)} />
+      <HighScoresModal closeScores={() => setActiveScoresModal(false)} initialLevel={isLevel} />
     )}
 
 

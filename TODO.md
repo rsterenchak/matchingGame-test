@@ -305,7 +305,7 @@
   - Completed: 2026-10-10
   <!-- id: e099f20a-72dc-49f3-aabf-12b66057041c -->
 
-- [ ] **[MEDIUM]** Group the high scores modal into Easy / Hard / Hardest tabs
+- [x] **[MEDIUM]** Group the high scores modal into Easy / Hard / Hardest tabs
   - Type: feature
   - Description: The high scores modal (`HighScoresModal` in `src/MainSection.jsx`) shows one list of every saved run sorted by raw score with a level badge per row, so an Easy 16/16 outranks a Hard 15/24. Replace it with one tab per level so ranks only compare runs of the same difficulty.
   - Behavior:
@@ -320,4 +320,5 @@
   - Out of scope: changing the end-game popup list, re-ranking by percentage, or clearing scores; no new dependencies.
   - File: `src/MainSection.jsx`, `src/highScores.js`, `src/PlayPage.jsx`, `src/style.css`, `src/test/highScores.test.js`
   - Verify: 1300x900, 390x844 → /
+  - Completed: 2026-10-10
   <!-- id: 9b6e711d-2873-485e-8b59-0a7a93d88e6d -->

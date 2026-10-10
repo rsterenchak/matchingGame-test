@@ -9,15 +9,15 @@ import planetIcon from './assets/planet.svg'
 import gitIcon from './assets/github.svg'
 import cardBack from './assets/dbzCardBack.png'
 import trophyIcon from './assets/trophy.svg'
-import { highScoresKey, sortHighScores, loadHighScores } from './highScores.js'
+import { highScoresKey, sortHighScores, loadHighScores, levelWinCounts } from './highScores.js'
 
 // Per-level board settings: how many cards are shown each round, and how many
 // unique picks win the game (the size of the level's pool). Exported so the
 // HomePage level info line reads the same numbers.
 export const levelSettings = {
-  easy: {shownCount: 8, winCount: 16},
-  hard: {shownCount: 8, winCount: 24},
-  hardest: {shownCount: 12, winCount: 32}
+  easy: {shownCount: 8, winCount: levelWinCounts.easy},
+  hard: {shownCount: 8, winCount: levelWinCounts.hard},
+  hardest: {shownCount: 12, winCount: levelWinCounts.hardest}
 };
 
 const maxHighScoresShown = 5;
