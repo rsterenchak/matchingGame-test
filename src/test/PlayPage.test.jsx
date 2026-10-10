@@ -1127,11 +1127,17 @@ describe('Mobile Safari safe areas: scroll roots, insets, and the phone bottom d
     const panel = standaloneRule(phone, '.scorePanel')[1]
     expect(nav).toMatch(/position:\s*sticky/)
     expect(nav).toMatch(/bottom:\s*calc\(76px \+ env\(safe-area-inset-bottom\)\)/)
-    expect(nav).toMatch(/border-top:/)
     expect(panel).toMatch(/position:\s*sticky/)
     expect(panel).toMatch(/bottom:\s*0/)
     expect(panel).toMatch(/margin:\s*0 10px;/)
     expect(panel).toMatch(/padding-bottom:\s*calc\(10px \+ env\(safe-area-inset-bottom\)\)/)
+  })
+
+  it('phone nav pill floats on the page with no dark strip or top border behind it', () => {
+    const nav = standaloneRule(block('@media (max-width:480px) {'), '.navSection2')[1]
+    expect(nav).not.toMatch(/background-color:/)
+    expect(nav).not.toMatch(/border-top:/)
+    expect(nav).toMatch(/z-index:\s*12;/)
   })
 
   it('phone board is centered between two 1fr spacer rows with the dock below', () => {

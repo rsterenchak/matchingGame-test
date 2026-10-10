@@ -2723,11 +2723,12 @@ body {
     grid-row: 3;
   }
 
-  /* The nav pill and score panel form a bottom dock: sticky against the
-     scrolling document so the card rows scroll under them when the board
-     is taller than the screen. The dock's bottom edge carries the inset. The
-     pill sticks just above the score panel (76px tall plus the inset) so the
-     two never overlap. */
+  /* The nav pill and score panel stay docked at the bottom: sticky against
+     the scrolling document so the card rows scroll under them when the board
+     is taller than the screen. The score panel's bottom edge carries the
+     inset. The pill floats on the page with no strip behind it and sticks
+     just above the score panel (76px tall plus the inset) so the two never
+     overlap. */
   .navSection2 {
     grid-row: 5;
     justify-content: center;
@@ -2735,8 +2736,6 @@ body {
     position: sticky;
     bottom: calc(76px + env(safe-area-inset-bottom));
     z-index: 12;
-    background-color: rgba(0, 0, 0, 0.28);
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
   }
 
   .scorePanel {
