@@ -8,6 +8,8 @@ import musicIcon from './assets/musical-notes.svg'
 import planetIcon from './assets/planet.svg'
 import gitIcon from './assets/github.svg'
 import cardBack from './assets/dbzCardBack.png'
+import trophyIcon from './assets/trophy.svg'
+import { highScoresKey, sortHighScores, loadHighScores } from './highScores.js'
 
 // Per-level board settings: how many cards are shown each round, and how many
 // unique picks win the game (the size of the level's pool). Exported so the
@@ -18,38 +20,7 @@ export const levelSettings = {
   hardest: {shownCount: 12, winCount: 32}
 };
 
-// Saved runs persist across reloads as a JSON array of { name, score }.
-export const highScoresKey = 'matchingGame_highScores';
-
 const maxHighScoresShown = 5;
-
-function sortHighScores(list){
-
-  return [...list].sort((a, b) => b.score - a.score);
-
-}
-
-function loadHighScores(){
-
-  try {
-
-    let parsed = JSON.parse(localStorage.getItem(highScoresKey));
-
-    if(!Array.isArray(parsed)){
-      return [];
-    }
-
-    return sortHighScores(parsed.filter(entry =>
-      entry && typeof entry.name === 'string' && typeof entry.score === 'number'
-    ));
-
-  } catch {
-
-    return [];
-
-  }
-
-}
 
 
 export default function PlayPage({
@@ -63,7 +34,8 @@ export default function PlayPage({
   onVolumeChange,
   isLevel = 'easy',
   isHighScore = 0,
-  setHighScore
+  setHighScore,
+  openScores
 
 }) {
 
@@ -609,7 +581,7 @@ export default function PlayPage({
       return;
     }
 
-    let newEntry = {name: name, score: activeScore};
+    let newEntry = {name: name, score: activeScore, level: isLevel};
     let newHighScores = sortHighScores([...activeHighScores, newEntry]);
 
     localStorage.setItem(highScoresKey, JSON.stringify(newHighScores));
@@ -817,6 +789,16 @@ export default function PlayPage({
                   ?
                 </div>
 
+                <div
+                  className='scoresButton navStackButton'
+                  onClick={() => openScores()}
+                  style={popUpStyle}
+                >
+
+                  <img className='musicIcon3' src={trophyIcon} alt="High scores"></img>
+
+                </div>
+
                 <MobileMenu
                   forMusicIcon={forMusicIcon}
                   activeCurrentAudio={activeCurrentAudio}
@@ -824,6 +806,8 @@ export default function PlayPage({
                   setupPage={setupPage}
                   planetIcon={planetIcon}
                   openInstructions={() => setActiveInstructionsModal(true)}
+                  openScores={openScores}
+                  trophyIcon={trophyIcon}
                   gitIcon={gitIcon}
                   isVolume={isVolume}
                   onVolumeChange={onVolumeChange}

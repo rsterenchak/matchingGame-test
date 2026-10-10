@@ -7,6 +7,7 @@ import HomePage from './HomePage.jsx'
 import PlayPage from './PlayPage.jsx'
 import homeSong from './assets/DragonBallZ.mp3'
 import playSong from './assets/NamekTheme.mp3'
+import { loadHighScores, levelLabel } from './highScores.js'
 
 // process.env.DBZ_KEY;
 
@@ -347,6 +348,72 @@ function HandlePausePlayAudio({
 // Number of characters each difficulty level pulls from the API.
 const levelLimits = {easy: 16, hard: 24, hardest: 32};
 
+const maxScoresModalShown = 10;
+
+// Saved runs, opened from the trophy button on either page. Reads storage on
+// every open, so a run saved from the end-game popup shows up without a reload.
+function HighScoresModal({ closeScores }) {
+
+  const [highScores] = useState(() => loadHighScores());
+  const modalInteractiveRef = useRef(false);
+
+  useEffect(() => {
+
+    // Same ghost-click guard as PlayPage's instructions modal: iOS synthesizes a
+    // click ~300ms after touchend, which would land on the backdrop and close
+    // the modal the moment it opens.
+    modalInteractiveRef.current = false;
+    const guardTimer = setTimeout(() => {
+      modalInteractiveRef.current = true;
+    }, 400);
+
+    function handleEscape(e) {
+      if (e.key === 'Escape' && modalInteractiveRef.current) {
+        closeScores();
+      }
+    }
+
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      clearTimeout(guardTimer);
+    };
+  }, []);
+
+  function close() {
+    if (!modalInteractiveRef.current) return;
+    closeScores();
+  }
+
+  return (
+    <div className='instructionsBackdrop scoresBackdrop' onClick={close}>
+      <div className='instructionsCard scoresCard' onClick={e => e.stopPropagation()}>
+        <div className='highScoresBlock'>
+
+          <div className='highScoresTitle'>High scores</div>
+
+          {highScores.length > 0 ? (
+            <ol className='highScoresList'>
+              {highScores.slice(0, maxScoresModalShown).map((entry, i) => (
+                <li key={i} className='highScoresRow withLevel'>
+                  <span className='highScoresRank'>{i + 1}</span>
+                  <span className='highScoresName'>{entry.name}</span>
+                  <span className='highScoresLevel'>{levelLabel(entry)}</span>
+                  <span className='highScoresScore'>{entry.score}</span>
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <div className='highScoresEmpty'>No scores yet</div>
+          )}
+
+        </div>
+        <div className='gotItButton' onClick={close}>Close</div>
+      </div>
+    </div>
+  );
+}
+
 export default function MainSection() {
 
   const pulledData = [
@@ -558,6 +625,9 @@ export default function MainSection() {
   const [isLevel, setLevel] = useState('easy');
   const [activeHighScores, setActiveHighScores] = useState({easy: 0, hard: 0, hardest: 0});
 
+  // One high scores modal shared by both pages' trophy buttons.
+  const [activeScoresModal, setActiveScoresModal] = useState(false);
+
   function handleVolumeChange(newVolume) {
     setVolume(newVolume);
     localStorage.setItem('matchingGame_volume', String(newVolume));
@@ -675,6 +745,7 @@ export default function MainSection() {
         isLevel={isLevel}
         setLevel={setLevel}
         levelLimits={levelLimits}
+        openScores={() => setActiveScoresModal(true)}
       />
       
       ) : (
@@ -694,7 +765,12 @@ export default function MainSection() {
         isLevel={isLevel}
         isHighScore={activeHighScores[isLevel]}
         setHighScore={score => setActiveHighScores(prev => ({...prev, [isLevel]: score}))}
+        openScores={() => setActiveScoresModal(true)}
       />  
+    )}
+
+    {activeScoresModal && (
+      <HighScoresModal closeScores={() => setActiveScoresModal(false)} />
     )}
 
 

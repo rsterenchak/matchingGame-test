@@ -1052,10 +1052,11 @@ describe('Home page fits short windows between 641 and 960px wide (regression: F
 describe('HomePage nav buttons share the .navStackButton treatment', () => {
   const navProps = { ...defaultProps, isVolume: 0.5, onVolumeChange: vi.fn() }
 
-  it('music toggle, speaker, and hamburger all carry the shared navStackButton class', () => {
+  it('music toggle, speaker, high scores, and hamburger all carry the shared navStackButton class', () => {
     render(<HomePage {...navProps} />)
     const column = document.querySelector('.topColumn1')
-    expect(column.querySelectorAll('.navStackButton')).toHaveLength(3)
+    expect(column.querySelectorAll('.navStackButton')).toHaveLength(4)
+    expect(column.querySelector('.scoresButton.navStackButton')).not.toBeNull()
     expect(column.querySelector('.musicBlock.navStackButton')).not.toBeNull()
     expect(column.querySelector('.speakerButton.navStackButton')).not.toBeNull()
     expect(column.querySelector('.hamburgerButton.navStackButton')).not.toBeNull()
