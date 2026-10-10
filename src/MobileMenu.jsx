@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { playSfx } from './sfx.js';
 
 export default function MobileMenu({
   forMusicIcon,
@@ -37,7 +38,7 @@ export default function MobileMenu({
       <div className='mobileMenuWrapper'>
         <div
           className={`hamburgerButton${buttonClassName ? ` ${buttonClassName}` : ''}`}
-          onClick={() => setIsOpen(o => !o)}
+          onClick={() => { playSfx('tap'); setIsOpen(o => !o); }}
           style={popUpStyle}
         >
           <svg viewBox="0 0 24 24" width="22" height="22" fill="black">
@@ -51,7 +52,7 @@ export default function MobileMenu({
           <div className='mobileMenuModal' onClick={e => e.stopPropagation()}>
             <div className='mobileMenuModalHeader'>
               <span className='mobileMenuModalTitle'>Menu</span>
-              <div className='mobileMenuCloseButton' onClick={() => setIsOpen(false)}>✕</div>
+              <div className='mobileMenuCloseButton' onClick={() => { playSfx('tap'); setIsOpen(false); }}>✕</div>
             </div>
 
             {showMusic && (
@@ -60,7 +61,7 @@ export default function MobileMenu({
 
                 <div
                   className='mobileMenuRow'
-                  onClick={() => forMusicIcon()}
+                  onClick={() => { playSfx('tap'); forMusicIcon(); }}
                 >
                   <img className='mobileMenuIcon' src={musicIcon} alt="" />
                   <span className='mobileMenuLabel'>Music {activeCurrentAudio ? '(On)' : '(Off)'}</span>
@@ -88,7 +89,7 @@ export default function MobileMenu({
                 <div className='mobileMenuDivider' />
                 <div
                   className='mobileMenuRow'
-                  onClick={() => { setIsOpen(false); setupPage(); }}
+                  onClick={() => { playSfx('tap'); setIsOpen(false); setupPage(); }}
                 >
                   <img className='mobileMenuIcon' src={planetIcon} alt="" />
                   <span className='mobileMenuLabel'>Background</span>
@@ -101,7 +102,7 @@ export default function MobileMenu({
                 <div className='mobileMenuDivider' />
                 <div
                   className='mobileMenuRow'
-                  onClick={() => { setIsOpen(false); openInstructions(); }}
+                  onClick={() => { playSfx('tap'); setIsOpen(false); openInstructions(); }}
                 >
                   <span className='mobileMenuIconText'>?</span>
                   <span className='mobileMenuLabel'>How to Play</span>
@@ -114,7 +115,7 @@ export default function MobileMenu({
                 <div className='mobileMenuDivider' />
                 <div
                   className='mobileMenuRow'
-                  onClick={() => { setIsOpen(false); openScores(); }}
+                  onClick={() => { playSfx('tap'); setIsOpen(false); openScores(); }}
                 >
                   <img className='mobileMenuIcon' src={trophyIcon} alt="" />
                   <span className='mobileMenuLabel'>High scores</span>

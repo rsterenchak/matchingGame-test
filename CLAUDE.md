@@ -35,6 +35,7 @@ All source lives in `src/`. Each file has a defined responsibility — stay with
 - `src/PlayPage.jsx` — Game screen. Owns all game state: shown cards, picked cards, current score, high score, the popup, the card-flip interval, the position pool, and the shuffle logic. Renders two rows of `Card` (or `CardBack` while flipped). Renders the end-game popup.
 - `src/Card.jsx` — One face-up card. Owns the click handler that decides whether the click was a hit (incrementing score, adding to picked) or a miss (ending the game). Calls `shuffleNow` from props to trigger the next round.
 - `src/highScores.js` — Pure (non-React) helpers for the saved-runs list in `localStorage` (`highScoresKey`, `sortHighScores`, `loadHighScores`, `levelLabel`), shared by `PlayPage`'s end-game popup and `MainSection`'s `HighScoresModal`.
+- `src/sfx.js` — Pure (non-React) Web Audio helpers for the synthesized button and card sounds (`playSfx`, `setSfxEnabled`, `setSfxVolume`) and the single lazily-created `AudioContext` (`getAudioContext`) that the music's gain routing in `MainSection` shares.
 - `src/WinCelebration.jsx` — The one-shot Dragon Ball flash-and-rise layer `PlayPage` renders behind the win popup (more waves on harder levels). Presentational only; removes itself when the animation ends.
 - `src/CardBack.jsx` — One face-down card. Purely presentational; takes no meaningful props.
 - `src/style.css` — All styling. No inline `style` props in JSX unless computed dynamically (e.g., the background-image URL, the popup blur).

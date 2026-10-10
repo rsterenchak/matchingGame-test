@@ -5,6 +5,7 @@ import musicIcon from './assets/musical-notes.svg'
 import planetIcon from './assets/planet.svg'
 import gitIcon from './assets/github.svg'
 import cardBack from './assets/dbzCardBack.png'
+import { playSfx } from './sfx.js'
 
 export default function Card({
   item,
@@ -141,6 +142,8 @@ export default function Card({
         // > end game  
         console.log('Game is over...exists in the picked array');
 
+        playSfx('miss');
+
         // need to generate an 'end game retry screen'
         // include pop-up, You scored #/#. Would you like to play again?
         // startInitialTurn(false);
@@ -164,6 +167,8 @@ export default function Card({
         // console.log(newPositions);
 
         // > add to picked array (state), increment score (state) 
+        playSfx('hit');
+
         let newlyPickedArray = isPickedArray;
         let newPositions = isPositions;
         let incrementedScore = isScore + 1;
@@ -212,6 +217,8 @@ export default function Card({
     
       // > end game  
       console.log('Game is over...card was never shown');
+
+      playSfx('miss');
 
       // need to generate an 'end game retry screen'
       // startInitialTurn(false);

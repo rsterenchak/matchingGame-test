@@ -5,6 +5,7 @@ import Card from './Card.jsx'
 import CardBack from './CardBack.jsx';
 import MobileMenu from './MobileMenu.jsx';
 import WinCelebration from './WinCelebration.jsx';
+import { playSfx } from './sfx.js';
 import musicIcon from './assets/musical-notes.svg'
 import planetIcon from './assets/planet.svg'
 import gitIcon from './assets/github.svg'
@@ -280,6 +281,7 @@ export default function PlayPage({
       longPressFiredRef.current = false;
       return;
     }
+    playSfx('tap');
     forMusicIcon();
   }
 
@@ -638,14 +640,14 @@ export default function PlayPage({
 
         <div 
           className='retryButton'
-          onClick={() => resetGame()}
+          onClick={() => { playSfx('tap'); resetGame(); }}
         >Retry?</div>
 
         <button
           type='button'
           className='saveButton'
           disabled={activePlayerName.trim() === '' || activeSavedEntry !== null}
-          onClick={() => saveHighScore()}
+          onClick={() => { playSfx('tap'); saveHighScore(); }}
         >{activeSavedEntry !== null ? 'Saved' : 'Save'}</button>
 
       </div>
@@ -709,7 +711,7 @@ export default function PlayPage({
 
                 <div
                   className='musicBlock3 navStackButton'
-                  onClick={() => setupPage()}
+                  onClick={() => { playSfx('tap'); setupPage(); }}
                   style={popUpStyle}
                 >
 
@@ -719,7 +721,7 @@ export default function PlayPage({
 
                 <div
                   className='helpButton navStackButton'
-                  onClick={() => setActiveInstructionsModal(true)}
+                  onClick={() => { playSfx('tap'); setActiveInstructionsModal(true); }}
                   style={popUpStyle}
                 >
                   ?
@@ -727,7 +729,7 @@ export default function PlayPage({
 
                 <div
                   className='scoresButton navStackButton'
-                  onClick={() => openScores()}
+                  onClick={() => { playSfx('tap'); openScores(); }}
                   style={popUpStyle}
                 >
 
@@ -885,7 +887,7 @@ export default function PlayPage({
             <li><span className='instructionsIcon instructionsIconDanger' aria-hidden='true'>✕</span><span>Picking a repeated fighter ends the game.</span></li>
             <li><span className='instructionsIcon instructionsIconWin' aria-hidden='true'>★</span><span>Pick all {winCount} unique fighters to win!</span></li>
           </ul>
-          <div className='gotItButton' onClick={closeInstructions}>Got it!</div>
+          <div className='gotItButton' onClick={() => { playSfx('tap'); closeInstructions(); }}>Got it!</div>
         </div>
       </div>
     )}
