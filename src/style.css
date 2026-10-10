@@ -1985,11 +1985,120 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 200px;
+  box-sizing: border-box;
+  padding: 24px 22px;
   width: 350px;
+  max-width: calc(100vw - 24px);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
-  gap: 20px;
+  gap: 14px;
   font-family: 'customFont1';
+}
+
+.endGameNameInput {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid black;
+  border-radius: 12px;
+  font-family: 'customFont1';
+  font-size: 16px;
+  outline: none;
+}
+
+.endGameNameInput:focus {
+  box-shadow: 0 0 0 3px rgba(179, 179, 0, 0.6);
+}
+
+.endGameNameInput:disabled {
+  background-color: #f2f2f2;
+  color: #555;
+}
+
+.highScoresBlock {
+  box-sizing: border-box;
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.highScoresTitle {
+  padding: 6px 12px;
+  border-bottom: 2px solid black;
+  font-size: 14px;
+}
+
+.highScoresList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.highScoresRow {
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  column-gap: 8px;
+  padding: 4px 12px;
+  font-size: 14px;
+}
+
+.highScoresRow + .highScoresRow {
+  border-top: 1px solid #ddd;
+}
+
+.highScoresRow.ownRow {
+  background-color: #fff6a8;
+}
+
+.highScoresName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.highScoresScore {
+  font-variant-numeric: tabular-nums;
+}
+
+.highScoresEmpty {
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #777;
+}
+
+.endGameButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.saveButton {
+  width: 110px;
+  height: 55px;
+  margin: 2px;
+  border: 3px solid black;
+  border-radius: 17px;
+  background-color: white;
+  color: black;
+  font-family: 'customFont1';
+  font-size: 20px;
+  transition: transform .2s;
+  cursor: pointer;
+}
+
+.saveButton:hover:not(:disabled) {
+  transform: scale(1.036);
+}
+
+.saveButton:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.saveButton:disabled {
+  opacity: 0.45;
+  cursor: auto;
 }
 
 .gameOverTitle {  

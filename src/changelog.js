@@ -2,8 +2,8 @@ export const changelog = [
   {
     version: '1.0',
     date: '2026-10-09',
-    changed: [
-      'The difficulty description under the level buttons is now subtle plain text instead of a yellow button-like pill.',
+    added: [
+      'When a game ends you can now enter your name and save your score to a High scores list that is kept between visits, with your own run highlighted.',
     ],
     fixed: [
       'On tablet-width and narrow desktop windows that are short, the home screen can now scroll so the Fight button is always reachable.',
