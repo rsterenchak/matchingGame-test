@@ -402,6 +402,11 @@ export default function PlayPage({
     // loading, or the fetch failed) never spins this loop forever.
     let roundSize = Math.min(shownCount, activeStandardArray.length);
 
+    // Re-roll cap for the unpicked-card guard below — if the position list ever
+    // goes stale, deal the round anyway instead of hanging the browser.
+    let maxRerolls = 500;
+    let rerolls = 0;
+
     // Generates non-duplicate array positions - ***** Needs to keep track of unpicked array positions *****
     while((counter < roundSize)){
 
@@ -425,9 +430,16 @@ export default function PlayPage({
         console.log(activePositions);
         console.log(activeStandardArray); */
 
-        if((counter === (roundSize - 1)) && (result === false)){
+        // Nothing left unpicked means no deal can pass the guard, so skip it.
+        if((counter === (roundSize - 1)) && (result === false) && (activePositions.length > 0) && (rerolls < maxRerolls)){
 
           console.log('Renew digits array');
+
+          rerolls += 1;
+
+          if(rerolls === maxRerolls){
+            console.warn('shuffleArray: no unpicked card dealt after ' + maxRerolls + ' re-rolls; dealing the round anyway');
+          }
 
           counter = 0;
           randomArrayPositions = [];
@@ -612,6 +624,7 @@ export default function PlayPage({
     setActiveSavedEntry(null);
     setActiveScore(0);
     setActivePickedArray([]);
+    setActivePositions(Array.from({length: winCount}, (_, i) => i));
     setActiveShown(activeShuffledArray);
     setActivePopUp(false);
 

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, act } from '@testing-library/react'
+import { render, screen, fireEvent, act, cleanup } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { readFileSync } from 'fs'
 import { resolve, dirname } from 'path'
@@ -1151,5 +1151,130 @@ describe('Mobile Safari safe areas: scroll roots, insets, and the phone bottom d
     expect(panel).toMatch(/grid-row:\s*6;/)
     expect(nav).not.toMatch(/order:/)
     expect(panel).not.toMatch(/order:/)
+  })
+})
+
+describe('Retry after a win: the next game does not freeze', () => {
+  const characters = Array.from({ length: 16 }, (_, i) => ({
+    id: i + 1,
+    name: `Fighter ${i + 1}`,
+    image: `fighter-${i + 1}.png`,
+  }))
+
+  const defaultProps = {
+    background: 'fake-bg.jpg',
+    setHomePage: vi.fn(),
+    setAudioPause: vi.fn(),
+    setAudioPlay: vi.fn(),
+    activeCurrentAudio: false,
+    isActiveData: characters,
+    isVolume: 0.5,
+    onVolumeChange: vi.fn(),
+    setHighScore: vi.fn(),
+  }
+
+  // The dealing loop logs 'Renew digits array' on every re-roll. A stuck loop
+  // re-rolls forever and blocks the thread, so a timer can't interrupt it —
+  // throw from the log instead once the count is clearly runaway.
+  const maxRenews = 2000
+  let renews
+  let stuck
+
+  // React reports the throw as an uncaught window error; swallow it so the
+  // failed `stuck` assertion is what reports the regression.
+  function swallowStuckError(e) {
+    if (e.error?.message === 'shuffle loop stuck') e.preventDefault()
+  }
+
+  beforeEach(() => {
+    window.addEventListener('error', swallowStuckError)
+    localStorage.clear()
+    vi.useFakeTimers()
+    renews = 0
+    stuck = false
+    vi.spyOn(console, 'warn').mockImplementation(() => {})
+    vi.spyOn(console, 'log').mockImplementation((msg) => {
+      if (msg === 'Renew digits array' && ++renews > maxRenews) {
+        stuck = true
+        throw new Error('shuffle loop stuck')
+      }
+    })
+  })
+
+  afterEach(() => {
+    // Unmounting reshuffles, so unmount while the log spy can still break a
+    // stuck loop.
+    try {
+      cleanup()
+    } catch {
+      // Already reported by the `stuck` assertion.
+    }
+    vi.clearAllTimers()
+    vi.useRealTimers()
+    vi.restoreAllMocks()
+    window.removeEventListener('error', swallowStuckError)
+    localStorage.clear()
+  })
+
+  function clickCard(card) {
+    try {
+      fireEvent.click(card)
+    } catch {
+      // A stuck loop surfaces through the log spy; `stuck` reports it below.
+    }
+    expect(stuck).toBe(false)
+  }
+
+  const boardImages = () =>
+    [...document.querySelectorAll('.card .cardImage')].map(img => img.getAttribute('src'))
+
+  // Plays one run, each round clicking a fighter that is unpicked and was
+  // already on the board in an earlier round (a fighter dealt for the first
+  // time this round would be a loss). Returns the final score.
+  function playOneRun() {
+    const picked = new Set()
+    act(() => { vi.advanceTimersByTime(1000) })
+    const seen = new Set(boardImages())
+    for (let turn = 0; turn < 16 && !document.querySelector('.endGame'); turn++) {
+      act(() => { vi.advanceTimersByTime(1000) })
+      const board = boardImages()
+      const src = board.find(s => seen.has(s) && !picked.has(s)) ?? board[0]
+      board.forEach(s => seen.add(s))
+      picked.add(src)
+      clickCard(document.querySelectorAll('.card')[board.indexOf(src)])
+    }
+    expect(document.querySelector('.endGame')).toBeInTheDocument()
+    return document.querySelector('.scorePanelValue').textContent
+  }
+
+  // A round can deal only never-seen unpicked fighters, which forces a loss,
+  // so keep retrying until a run reaches the 16/16 win popup.
+  function playToWin() {
+    for (let run = 0; run < 30; run++) {
+      if (playOneRun() === '16 / 16') return
+      fireEvent.click(document.querySelector('.retryButton'))
+    }
+    throw new Error('no run reached 16 / 16')
+  }
+
+  it('the first card click after Retry returns and the board re-renders', () => {
+    render(<PlayPage {...defaultProps} />)
+    playToWin()
+
+    fireEvent.click(document.querySelector('.retryButton'))
+    expect(document.querySelector('.endGame')).not.toBeInTheDocument()
+
+    clickCard(document.querySelector('.card'))
+    expect(screen.getByText('1 / 16')).toBeInTheDocument()
+    act(() => { vi.advanceTimersByTime(1000) })
+    expect(document.querySelectorAll('.card')).toHaveLength(8)
+  })
+
+  it('a second full game can be won after Retry', () => {
+    render(<PlayPage {...defaultProps} />)
+    playToWin()
+
+    fireEvent.click(document.querySelector('.retryButton'))
+    playToWin()
   })
 })
