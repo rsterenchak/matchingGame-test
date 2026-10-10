@@ -297,3 +297,9 @@
   - Verify: 1300x900, 390x844 → /
   - Completed: 2026-10-10
   <!-- id: f6fde93d-96ce-40de-9974-a4ef7ed9a648 -->
+
+- [ ] **[LOW]** Stop labeling pre-level high score entries as Easy
+  - Type: bug
+  - Description: `levelLabel()` in `src/highScores.js` returns `'Easy'` for any saved run without a `level` field, on the assumption that such runs predate difficulty levels. That is wrong: the Easy/Hard/Hardest selector shipped before name-entry high scores did, and the `level` field was only added to saves later, so runs played on Hard or Hardest during that window were stored as `{name, score}` and now display as "Easy" in both the end-game list and the high scores modal. Fix `levelLabel` so a missing `level` is inferred from the score where it is unambiguous — `score > 24` → `'Hardest'`, `score > 16` → `'Hard'` (Easy's `winCount` is 16 and Hard's is 24, per `levelSettings` in `src/PlayPage.jsx`) — and otherwise returns `''` so the row renders no level badge rather than a wrong one; update the comment to say why. Keep `levelLabels` for entries that do have a `level`. Also update `loadHighScores` to accept entries whose `level` is missing or not one of the three keys (it already filters on `name`/`score` only — just don't start rejecting them). Add unit cases to the existing `src/test/` suite for `levelLabel`: `{level: 'hard'}` → "Hard", `{score: 20}` → "Hard", `{score: 30}` → "Hardest", `{score: 12}` → "". No change to how runs are saved; `newEntry` already includes `level: isLevel`.
+  - File: `src/highScores.js`, `src/test/highScores.test.js`
+  <!-- id: e099f20a-72dc-49f3-aabf-12b66057041c -->
