@@ -8,23 +8,19 @@ import PlayPage from './PlayPage.jsx'
 import homeSong from './assets/DragonBallZ.mp3'
 import playSong from './assets/NamekTheme.mp3'
 import { loadHighScores, sortHighScores, entryLevel, levelLabels, levelWinCounts } from './highScores.js'
+import { getAudioContext, playSfx, setSfxEnabled, setSfxVolume } from './sfx.js'
 
 // process.env.DBZ_KEY;
 
 // iOS Safari ignores HTMLMediaElement.volume (it is always 1.0), so each playing
 // track is routed through a shared AudioContext GainNode whose gain the volume
 // slider can actually control. Browsers without Web Audio keep using a.volume.
-let sharedAudioContext = null;
-
+// The context is shared with the button sounds in sfx.js.
 function routeThroughGain(audioRef, gainRef, volumeLevel) {
-  const AudioCtx = window.AudioContext || window.webkitAudioContext;
-  if (!AudioCtx) return;
-
   // Created lazily inside the play() effect, which follows a user gesture,
   // so the context isn't born suspended by the autoplay policy.
-  if (sharedAudioContext === null) {
-    sharedAudioContext = new AudioCtx();
-  }
+  const sharedAudioContext = getAudioContext();
+  if (!sharedAudioContext) return;
 
   // createMediaElementSource may only be called once per element, so the
   // chain is built once and kept on the persistent ref.
@@ -420,7 +416,7 @@ function HighScoresModal({ closeScores, initialLevel }) {
                 className={`scoresTab${activeTab === level ? ' scoresTabActive' : ''}`}
                 aria-selected={activeTab === level}
                 tabIndex={activeTab === level ? 0 : -1}
-                onClick={() => setActiveTab(level)}
+                onClick={() => { playSfx('tap'); setActiveTab(level); }}
               >
                 {levelLabels[level]}
               </button>
@@ -446,7 +442,7 @@ function HighScoresModal({ closeScores, initialLevel }) {
           )}
 
         </div>
-        <div className='gotItButton' onClick={close}>Close</div>
+        <div className='gotItButton' onClick={() => { playSfx('tap'); close(); }}>Close</div>
       </div>
     </div>
   );
@@ -665,6 +661,15 @@ export default function MainSection() {
 
   // One high scores modal shared by both pages' trophy buttons.
   const [activeScoresModal, setActiveScoresModal] = useState(false);
+
+  // Button sounds follow the music toggle and volume slider.
+  useEffect(() => {
+    setSfxEnabled(isCurrentAudio);
+  }, [isCurrentAudio]);
+
+  useEffect(() => {
+    setSfxVolume(isVolume);
+  }, [isVolume]);
 
   function handleVolumeChange(newVolume) {
     setVolume(newVolume);

@@ -8,6 +8,7 @@ import guyGif from './assets/dbzMoving.png'
 import memoryGameTitleSvg from './assets/MemoryGameTitle.svg'
 import trophyIcon from './assets/trophy.svg'
 import { levelSettings } from './PlayPage.jsx'
+import { playSfx } from './sfx.js'
 
 export default function HomePage({
   background,
@@ -69,6 +70,7 @@ export default function HomePage({
     // The whole input section starts the game on click — picking a level must
     // not also fire Fight.
     e.stopPropagation();
+    playSfx('tap');
     setLevel(level);
 
   }
@@ -80,6 +82,7 @@ export default function HomePage({
 
   function setupPage(){
 
+    playSfx('fight');
     setPlayPage();
     setAudioPause();
     setAudioPlay();
@@ -122,7 +125,7 @@ export default function HomePage({
 
                   <div
                     className='musicBlock navStackButton'
-                    onClick={() => forMusicIcon()}
+                    onClick={() => { playSfx('tap'); forMusicIcon(); }}
                   >
 
                     <img className='musicIcon' src={musicIcon}></img>
@@ -131,7 +134,7 @@ export default function HomePage({
 
                   <div
                     className='speakerButton navStackButton'
-                    onClick={() => setSliderOpen(o => !o)}
+                    onClick={() => { playSfx('tap'); setSliderOpen(o => !o); }}
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="black">
                       <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
@@ -140,7 +143,7 @@ export default function HomePage({
 
                   <div
                     className='scoresButton navStackButton'
-                    onClick={() => openScores()}
+                    onClick={() => { playSfx('tap'); openScores(); }}
                   >
                     <img src={trophyIcon} alt="High scores" />
                   </div>
