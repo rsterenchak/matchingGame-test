@@ -202,9 +202,9 @@
   - Completed: 2026-10-09
   <!-- id: c6824f8d-4144-4d66-96ed-3a3a577c221e -->
 
-- [ ] **[MEDIUM]** Add name entry and localStorage high-score persistence to the end-game popup
+- [x] **[MEDIUM]** Add name entry and localStorage high-score persistence to the end-game popup
   - Type: feature
   - Description: The end-game popup (`.endGame` in `src/PlayPage.jsx`, rendered when `activePopUp` is true for both the `Game Over` loss and `You Won!` win states) currently shows only a title and a Retry button, so the score is discarded on reload. Add a name-entry input, a "High scores" list, and a Save button to that popup, following variant B: keep the white card with `border-radius: 20px` and `customFont1`, switch the fixed `height: 200px` to vertical padding so the taller content fits, use 2px black borders and 12px radii on the input and list, place the existing yellow DBZ `.retryButton` (glow via the `:before` pseudo-element, unchanged) beside a white "Save" ghost button, and highlight the player's own just-finished row in pale yellow (`#fff6a8`). On game end, prompt for a name and persist the run to localStorage under the `matchingGame_` prefix (e.g. `matchingGame_highScores` as a JSON array of `{ name, score }`), sort descending, and render the top entries in the list with rank, name, and tabular-nums score — use the history-list interpretation from the chosen mockup, not a single best score. Read the stored list on mount and wrap `JSON.parse` in a try/catch that falls back to an empty list so a corrupt value can't crash the game, and keep the existing rule that the high score updates only at game end, never mid-run. Put all new styles in `src/style.css` (no inline `style` props, besides the existing dynamic background/popup-blur ones) and add Vitest coverage in `test/PlayPage.test.jsx` asserting the save writes the correct key, prompt-at-end behavior, and descending sort.
   - File: `src/PlayPage.jsx`, `src/style.css`, `test/PlayPage.test.jsx`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-10-09
   <!-- id: 063bbeca-80e2-42b0-85b5-e8f89206248c -->
