@@ -34,6 +34,16 @@ body {
   background-color: #4a90d9;
 }
 
+/* Phones scroll the document itself so mobile Safari manages its bottom
+   toolbar (collapsing it on scroll) instead of drawing it over a fixed-height
+   page; 641px+ keeps body overflow: hidden and its short-window fallbacks. */
+@media (max-width:640px) {
+  body {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
 .homeSection {
   margin: 0px;
   padding: 0px;
@@ -844,33 +854,12 @@ body {
 
 @media (min-width:320px){
 
-  /* The page section is the scroll root: body stays overflow: hidden, so the
-     section gets a definite viewport height and scrolls its own content when
-     the grid is taller than the screen (e.g. the Fight row on short phones). */
   .homeSection {
     margin: 0px;
     padding: 0px;
-    height: 100vh;
-    height: -webkit-fill-available;
-    height: 100dvh;
-    overflow-y: auto;
-    overflow-x: hidden;
 
     z-index: 0;
 
-  }
-
-  /* The edge-fade overlay would scroll away with the content now that the
-     section scrolls; pin it to the section's box (like the background image)
-     and pull the content back up over it. */
-  .homeSection::before {
-    position: sticky;
-    inset: auto;
-    top: 0;
-    display: block;
-    height: 100%;
-    margin-bottom: -100vh;
-    margin-bottom: -100dvh;
   }
 
   .outerSection {
@@ -1132,6 +1121,30 @@ body {
     margin-top: -5vh;
     object-fit: contain;
     translate: -12px calc(-20% - 12px);
+  }
+
+  /* 641px+ keeps body overflow: hidden, so the page section is the scroll
+     root: a definite viewport height lets it scroll its own content when the
+     grid is taller than the window. (Phones scroll the document instead.) */
+  .homeSection {
+    height: 100vh;
+    height: -webkit-fill-available;
+    height: 100dvh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  /* The edge-fade overlay would scroll away with the content now that the
+     section scrolls; pin it to the section's box (like the background image)
+     and pull the content back up over it. */
+  .homeSection::before {
+    position: sticky;
+    inset: auto;
+    top: 0;
+    display: block;
+    height: 100%;
+    margin-bottom: -100vh;
+    margin-bottom: -100dvh;
   }
 }
 
@@ -2477,29 +2490,6 @@ body {
 
 /* smartphones, iPhone, portrait 480x320 phones */
 @media (min-width:320px)  {
-  /* Same scroll root as .homeSection: a definite height so overflow-y: auto
-     actually scrolls instead of the section growing past the viewport. */
-  .playSection {
-    height: 100vh;
-    height: -webkit-fill-available;
-    height: 100dvh;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  /* The edge-fade overlay would scroll away with the content now that the
-     section scrolls; pin it to the section's box (like the background image)
-     and pull the content back up over it. */
-  .playSection::before {
-    position: sticky;
-    inset: auto;
-    top: 0;
-    display: block;
-    height: 100%;
-    margin-bottom: -100vh;
-    margin-bottom: -100dvh;
-  }
-
   .portfolioBlock2 {
     width: auto;
     max-width: 100%;
@@ -2509,7 +2499,7 @@ body {
   .outerSection2 {
     display: grid;
     grid-template-rows: auto 1fr 1fr auto;
-    min-height: 100%;
+    min-height: 100dvh;
     margin: 0px;
     padding: 0px;
     gap: 10px;
@@ -2709,9 +2699,9 @@ body {
 
 /* Phone-only PlayPage nav: the vertical upper-left stack becomes a horizontal
    pill-shaped bar below the card grid with 48px touch targets. Bounded by
-   max-width so the ≥481px tablet/desktop stack is untouched. The grid `order`
-   moves the nav row between the cards and the score panel without changing
-   the JSX order. */
+   max-width so the ≥481px tablet/desktop stack is untouched. Explicit grid
+   rows move the nav row between the cards and the score panel without
+   changing the JSX order. */
 @media (max-width:480px) {
   /* Trim the side padding so the scaled-up active level button (e.g. Hardest
      at the end of the row) still fits on narrow phones. */
@@ -2719,17 +2709,27 @@ body {
     padding: 0 10px;
   }
 
+  /* The two 1fr spacer rows (1 and 4) center the card rows between the top
+     inset and the dock. */
   .outerSection2 {
-    grid-template-rows: 1fr 1fr auto auto;
+    grid-template-rows: 1fr auto auto 1fr auto auto;
   }
 
-  /* The nav pill and score panel form a bottom dock: sticky inside the
-     scrolling .playSection so the card rows scroll under them when the board
+  .logoSection3 {
+    grid-row: 2;
+  }
+
+  .logoSection4 {
+    grid-row: 3;
+  }
+
+  /* The nav pill and score panel form a bottom dock: sticky against the
+     scrolling document so the card rows scroll under them when the board
      is taller than the screen. The dock's bottom edge carries the inset. The
      pill sticks just above the score panel (76px tall plus the inset) so the
      two never overlap. */
   .navSection2 {
-    order: 3;
+    grid-row: 5;
     justify-content: center;
     padding: 8px 10px;
     position: sticky;
@@ -2740,7 +2740,7 @@ body {
   }
 
   .scorePanel {
-    order: 4;
+    grid-row: 6;
     position: sticky;
     bottom: 0;
     z-index: 12;
@@ -2974,8 +2974,24 @@ body {
 @media (min-width:641px)  {
    /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
 
+  /* Same scroll root as .homeSection at 641px+: a definite height so the
+     section scrolls (overflow-x: hidden from 481px makes overflow-y compute
+     to auto) instead of growing past the viewport. */
   .playSection {
+    height: 100vh;
+    height: -webkit-fill-available;
+    height: 100dvh;
     overflow-y: visible;
+  }
+
+  .playSection::before {
+    position: sticky;
+    inset: auto;
+    top: 0;
+    display: block;
+    height: 100%;
+    margin-bottom: -100vh;
+    margin-bottom: -100dvh;
   }
 
   .speakerButton {

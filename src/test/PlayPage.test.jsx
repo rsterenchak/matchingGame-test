@@ -158,11 +158,11 @@ describe('Mobile layout: score panel at bottom, card grid centered', () => {
     expect(match[1]).toContain('grid-template-rows: auto 1fr 1fr auto')
   })
 
-  it('outerSection2 uses height: 100% at 320px so 1fr rows have a reference height', () => {
+  it('outerSection2 uses min-height: 100dvh at 320px so 1fr rows have a reference height', () => {
     const section = getMediaSection(320)
     const match = section.match(/\.outerSection2\s*\{([^}]+)\}/)
     expect(match).not.toBeNull()
-    expect(match[1]).toContain('height: 100%')
+    expect(match[1]).toContain('min-height: 100dvh')
   })
 
   it('logoSection3 aligns to end at 320px so the top card row clusters toward the vertical center', () => {
@@ -219,11 +219,12 @@ describe('Mobile layout: score panel pushed to viewport bottom with safe-area ga
     return css.slice(idx, nextMedia === -1 ? undefined : nextMedia)
   }
 
-  it('outerSection2 has min-height: 100% of the 100dvh scroll root at 320px so 1fr rows fill viewport when card content is shorter', () => {
+  it('outerSection2 has min-height: 100dvh at 320px so 1fr rows fill the viewport now that the document scrolls', () => {
     const section = getMediaSection(320)
     const match = section.match(/\.outerSection2\s*\{([^}]+)\}/)
     expect(match).not.toBeNull()
-    expect(match[1]).toContain('min-height: 100%')
+    expect(match[1]).toContain('min-height: 100dvh')
+    expect(match[1]).not.toContain('min-height: 100%')
     expect(match[1]).not.toMatch(/(?:^|\n)\s*height:/)
   })
 
@@ -1062,21 +1063,52 @@ describe('Mobile Safari safe areas: scroll roots, insets, and the phone bottom d
     return section.match(new RegExp(`(?:^|\\n)[ \\t]*${escaped}\\s*\\{([^}]*)\\}`))
   }
 
-  // body stays overflow: hidden, so each page section needs a definite height
-  // for overflow-y: auto to scroll instead of growing past the viewport.
+  // Phones scroll the document so Safari manages its bottom toolbar; a 100dvh
+  // inner scroller's bottom edge would sit under the expanded toolbar.
   it.each([
     ['.homeSection', '@media (min-width:320px){'],
     ['.playSection', '@media (min-width:320px)  {'],
-  ])('%s is a 100dvh scroll root at 320px', (sel, marker) => {
+  ])('%s is not a fixed-height scroll root at 320px', (sel, marker) => {
+    const match = standaloneRule(block(marker), sel)
+    if (match) {
+      expect(match[1]).not.toMatch(/(?:^|\n)\s*height:/)
+      expect(match[1]).not.toMatch(/overflow(-[xy])?:/)
+    }
+  })
+
+  it.each([
+    ['.homeSection::before', '@media (min-width:320px){'],
+    ['.playSection::before', '@media (min-width:320px)  {'],
+  ])('%s keeps the base absolute edge-fade at 320px (no sticky override)', (sel, marker) => {
+    expect(block(marker)).not.toContain(`${sel} {`)
+    const base = css.match(new RegExp(`(?:^|\\n)${sel.replace('.', '\\.')}\\s*\\{([^}]+)\\}`))[1]
+    expect(base).toMatch(/position:\s*absolute/)
+    expect(base).toMatch(/inset:\s*0/)
+  })
+
+  // 641px+ keeps body overflow: hidden, so the sections stay 100dvh scroll roots.
+  it.each([
+    ['.homeSection', '@media (min-width:641px) {'],
+    ['.playSection', '@media (min-width:641px)  {'],
+  ])('%s is a 100dvh scroll root at 641px+', (sel, marker) => {
     const match = standaloneRule(block(marker), sel)
     expect(match).not.toBeNull()
     expect(match[1]).toMatch(/height:\s*100vh;[\s\S]*height:\s*100dvh/)
-    expect(match[1]).toMatch(/overflow-y:\s*auto/)
-    expect(match[1]).toMatch(/overflow-x:\s*hidden/)
+    expect(block(marker)).toMatch(new RegExp(`${sel.replace('.', '\\.')}::before\\s*\\{[^}]*position:\\s*sticky`))
   })
 
-  it('body keeps overflow: hidden so the document itself never scrolls', () => {
+  it('body keeps overflow: hidden by default for 641px+', () => {
     expect(css.match(/(?:^|\n)body\s*\{([^}]+)\}/)[1]).toMatch(/overflow:\s*hidden/)
+  })
+
+  it('phones (max-width:640px) let the document scroll vertically, after the base body rule', () => {
+    const baseIdx = css.search(/(?:^|\n)body\s*\{/)
+    const phoneIdx = css.indexOf('@media (max-width:640px) {')
+    expect(phoneIdx).toBeGreaterThan(baseIdx)
+    const body = standaloneRule(block('@media (max-width:640px) {'), 'body')
+    expect(body).not.toBeNull()
+    expect(body[1]).toMatch(/overflow-y:\s*auto/)
+    expect(body[1]).toMatch(/overflow-x:\s*hidden/)
   })
 
   it('both page grids pad by the top/left/right safe-area insets with an 8px top gutter', () => {
@@ -1100,5 +1132,18 @@ describe('Mobile Safari safe areas: scroll roots, insets, and the phone bottom d
     expect(panel).toMatch(/bottom:\s*0/)
     expect(panel).toMatch(/margin:\s*0 10px;/)
     expect(panel).toMatch(/padding-bottom:\s*calc\(10px \+ env\(safe-area-inset-bottom\)\)/)
+  })
+
+  it('phone board is centered between two 1fr spacer rows with the dock below', () => {
+    const phone = block('@media (max-width:480px) {')
+    expect(standaloneRule(phone, '.outerSection2')[1]).toMatch(/grid-template-rows:\s*1fr auto auto 1fr auto auto;/)
+    expect(standaloneRule(phone, '.logoSection3')[1]).toMatch(/grid-row:\s*2;/)
+    expect(standaloneRule(phone, '.logoSection4')[1]).toMatch(/grid-row:\s*3;/)
+    const nav = standaloneRule(phone, '.navSection2')[1]
+    const panel = standaloneRule(phone, '.scorePanel')[1]
+    expect(nav).toMatch(/grid-row:\s*5;/)
+    expect(panel).toMatch(/grid-row:\s*6;/)
+    expect(nav).not.toMatch(/order:/)
+    expect(panel).not.toMatch(/order:/)
   })
 })
