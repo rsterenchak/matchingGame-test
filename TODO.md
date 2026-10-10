@@ -264,9 +264,10 @@
   - Completed: 2026-10-10
   <!-- id: 3edfef99-18c8-4c3d-be75-d76149c296f0 -->
 
-- [ ] **[LOW]** Remove the dark strip behind the PlayPage nav pill on mobile
+- [x] **[LOW]** Remove the dark strip behind the PlayPage nav pill on mobile
   - Type: bug
   - Description: On phones (≤480px) the bottom dock's nav pill sits on a hard-edged translucent strip — `.navSection2 { background-color: rgba(0, 0, 0, 0.28); border-top: 1px solid rgba(255, 255, 255, 0.25); }` in the `@media (max-width:480px)` block of `src/style.css` (added as the dock surface in PR #141). The strip spans the full width behind the pill only, not the red score panel below it, so it reads as a stray dark rectangle on the water. Remove the `background-color` and `border-top` declarations from that `.navSection2` rule (and update its comment so it no longer describes a dock surface); the pill keeps its own `rgba(17, 17, 17, 0.75)` background and white outline on `.navSection2 .topColumn3`, and the score panel keeps its red card. Leave the rule's `grid-row`, `padding`, `position: sticky`, `bottom`, and `z-index` untouched so the dock still sticks above the Safari toolbar and the card rows still scroll beneath it on the hardest board. Desktop and tablet are unaffected since the rule lives only in the ≤480px block. At 390x844 the pill floats directly on the water background with no band or line behind it, and the score panel below is unchanged; at 1300x900 nothing changes.
   - File: `src/style.css`
   - Verify: 390x844, 1300x900 → /
+  - Completed: 2026-10-10
   <!-- id: b3193d0a-68b5-48b9-bf5b-c2f3535424b3 -->
