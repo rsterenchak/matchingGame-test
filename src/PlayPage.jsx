@@ -4,6 +4,7 @@ import './style.css';
 import Card from './Card.jsx'
 import CardBack from './CardBack.jsx';
 import MobileMenu from './MobileMenu.jsx';
+import WinCelebration from './WinCelebration.jsx';
 import musicIcon from './assets/musical-notes.svg'
 import planetIcon from './assets/planet.svg'
 import gitIcon from './assets/github.svg'
@@ -904,12 +905,18 @@ export default function PlayPage({
       <>
       {isOver ? (
 
+        <>
+
+        <WinCelebration isLevel={isLevel} />
+
         <div className='endGame'>
 
           <div className='gameOverTitle'>You Won!</div>
           {endGameScores}
 
         </div>
+
+        </>
       ) : (
 
         <div className='endGame'>

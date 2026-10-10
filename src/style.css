@@ -2072,7 +2072,79 @@ body {
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
   gap: 14px;
   font-family: 'customFont1';
+  z-index: 2;
 }
+
+/* Win celebration: a golden flash, then the seven Dragon Balls rising past
+   the popup. Sits above the blurred board and below the .endGame card, and
+   never takes clicks. */
+.winCelebration {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.winFlash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, #ffff99 0%, rgba(255, 255, 0, 0.4) 35%, transparent 70%);
+  /* Resting state is the static reduced-motion glow; the keyframes take over
+     opacity whenever the flash animates. */
+  opacity: 0.6;
+  animation: winFlash 1.2s ease-out forwards;
+}
+
+.winCelebration.longFlash .winFlash {
+  animation: winFlashLong 1.6s ease-out forwards;
+}
+
+.dragonBall {
+  position: absolute;
+  bottom: 0;
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  margin-left: -14px;
+  border-radius: 50%;
+  border: 1px solid #7a3e00;
+  background: radial-gradient(circle at 35% 30%, #ffd96b, #f59e2c 70%, #b35e00);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(40px) scale(0.6);
+  animation: dragonBallRise 2.8s ease-out forwards;
+}
+
+.dragonBall::after {
+  content: attr(data-stars) '\2605';
+  color: #d10000;
+  font-size: 9px;
+  line-height: 1;
+}
+
+@keyframes winFlash {
+  0% { opacity: 0; }
+  17% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes winFlashLong {
+  0% { opacity: 0; }
+  12% { opacity: 1; }
+  37% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes dragonBallRise {
+  0% { opacity: 0; transform: translateY(40px) scale(0.6); }
+  30% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(calc(-100vh - 40px)) scale(1.05); }
+}
+
 
 .endGameNameInput {
   box-sizing: border-box;
@@ -4168,6 +4240,9 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .logoContainer2 { animation: none; }
+  .dragonBall { display: none; }
+  .winFlash,
+  .winCelebration.longFlash .winFlash { animation: none; }
   .card { transition: none; }
   .card:hover { transform: none; }
 
