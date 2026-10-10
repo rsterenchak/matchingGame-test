@@ -18,6 +18,39 @@ export const levelSettings = {
   hardest: {shownCount: 12, winCount: 32}
 };
 
+// Saved runs persist across reloads as a JSON array of { name, score }.
+export const highScoresKey = 'matchingGame_highScores';
+
+const maxHighScoresShown = 5;
+
+function sortHighScores(list){
+
+  return [...list].sort((a, b) => b.score - a.score);
+
+}
+
+function loadHighScores(){
+
+  try {
+
+    let parsed = JSON.parse(localStorage.getItem(highScoresKey));
+
+    if(!Array.isArray(parsed)){
+      return [];
+    }
+
+    return sortHighScores(parsed.filter(entry =>
+      entry && typeof entry.name === 'string' && typeof entry.score === 'number'
+    ));
+
+  } catch {
+
+    return [];
+
+  }
+
+}
+
 
 export default function PlayPage({
   background,
@@ -202,6 +235,16 @@ export default function PlayPage({
   const [isOver, setOver] = useState(false);
 
   const [isEffect, setEffect] = useState(false);
+
+  // Saved runs for the end-game "High scores" list, read once on mount. A
+  // corrupt or missing value falls back to an empty list instead of crashing.
+  const [activeHighScores, setActiveHighScores] = useState(() => loadHighScores());
+
+  const [activePlayerName, setActivePlayerName] = useState('');
+
+  // The entry saved from the run that just ended, so its row can be highlighted
+  // (and the Save button disabled) until Retry starts a new run.
+  const [activeSavedEntry, setActiveSavedEntry] = useState(null);
 
   const boxStyle = {
     backgroundImage: `url(${background})`,
@@ -544,9 +587,29 @@ export default function PlayPage({
     
   );
 
+  // Records the finished run under the typed name. Only reachable from the
+  // end-game popup, so the list never changes mid-run.
+  function saveHighScore(){
+
+    let name = activePlayerName.trim();
+
+    if(name === '' || activeSavedEntry !== null){
+      return;
+    }
+
+    let newEntry = {name: name, score: activeScore};
+    let newHighScores = sortHighScores([...activeHighScores, newEntry]);
+
+    localStorage.setItem(highScoresKey, JSON.stringify(newHighScores));
+    setActiveHighScores(newHighScores);
+    setActiveSavedEntry(newEntry);
+
+  }
+
   function resetGame(){
 
     // console.log('Runs reset game');
+    setActiveSavedEntry(null);
     setActiveScore(0);
     setActivePickedArray([]);
     setActiveShown(activeShuffledArray);
@@ -602,6 +665,72 @@ export default function PlayPage({
 
     };
   }, [activeShuffledArray]) 
+
+  // Top entries of the history list, plus the just-saved run when it ranks
+  // below them so the player always sees their own row.
+  const highScoreRows = activeHighScores
+    .map((entry, i) => ({entry: entry, rank: i + 1}))
+    .filter(row => row.rank <= maxHighScoresShown || row.entry === activeSavedEntry);
+
+  // Shared body of both end-game popups: name entry, the saved history list,
+  // and the Retry / Save buttons.
+  const endGameScores = (
+    <>
+
+      <input
+        className='endGameNameInput'
+        type='text'
+        placeholder='Enter your name'
+        aria-label='Your name'
+        maxLength={12}
+        autoFocus
+        value={activePlayerName}
+        disabled={activeSavedEntry !== null}
+        onChange={e => setActivePlayerName(e.target.value)}
+        onKeyDown={e => { if(e.key === 'Enter') saveHighScore(); }}
+      />
+
+      <div className='highScoresBlock'>
+
+        <div className='highScoresTitle'>High scores</div>
+
+        {activeHighScores.length > 0 ? (
+          <ol className='highScoresList'>
+            {highScoreRows.map(({entry, rank}) => (
+              <li
+                key={rank}
+                className={`highScoresRow${entry === activeSavedEntry ? ' ownRow' : ''}`}
+              >
+                <span className='highScoresRank'>{rank}</span>
+                <span className='highScoresName'>{entry.name}</span>
+                <span className='highScoresScore'>{entry.score}</span>
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <div className='highScoresEmpty'>No scores yet</div>
+        )}
+
+      </div>
+
+      <div className='endGameButtons'>
+
+        <div 
+          className='retryButton'
+          onClick={() => resetGame()}
+        >Retry?</div>
+
+        <button
+          type='button'
+          className='saveButton'
+          disabled={activePlayerName.trim() === '' || activeSavedEntry !== null}
+          onClick={() => saveHighScore()}
+        >{activeSavedEntry !== null ? 'Saved' : 'Save'}</button>
+
+      </div>
+
+    </>
+  );
 
   console.log('Picked');
   console.log(activePickedArray);
@@ -781,10 +910,7 @@ export default function PlayPage({
         <div className='endGame'>
 
           <div className='gameOverTitle'>You Won!</div>
-          <div 
-            className='retryButton'
-            onClick={() => resetGame()}
-          >Retry?</div>
+          {endGameScores}
 
         </div>
       ) : (
@@ -792,10 +918,7 @@ export default function PlayPage({
         <div className='endGame'>
 
         <div className='gameOverTitle'>Game Over</div>
-        <div 
-          className='retryButton'
-          onClick={() => resetGame()}
-        >Retry?</div>
+        {endGameScores}
 
         </div>
       )

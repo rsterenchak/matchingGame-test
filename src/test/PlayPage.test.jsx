@@ -890,3 +890,122 @@ describe('PlayPage scroll position on entry', () => {
     expect(scrollSpy).toHaveBeenCalledWith(0, 0)
   })
 })
+
+describe('End-game popup: name entry and saved high scores', () => {
+  const characters = Array.from({ length: 16 }, (_, i) => ({
+    id: i + 1,
+    name: `Fighter ${i + 1}`,
+    image: `fighter-${i + 1}.png`,
+  }))
+
+  const defaultProps = {
+    background: 'fake-bg.jpg',
+    setHomePage: vi.fn(),
+    setAudioPause: vi.fn(),
+    setAudioPlay: vi.fn(),
+    activeCurrentAudio: false,
+    isActiveData: characters,
+    isVolume: 0.5,
+    onVolumeChange: vi.fn(),
+    setHighScore: vi.fn(),
+  }
+
+  beforeEach(() => {
+    localStorage.clear()
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    vi.clearAllTimers()
+    vi.useRealTimers()
+    localStorage.clear()
+  })
+
+  // Clicks the first face-up card every round until the run ends — it either
+  // repeats a picked fighter (loss) or eventually picks all 16 (win).
+  function playUntilGameOver() {
+    for (let turn = 0; turn < 40 && !document.querySelector('.endGame'); turn++) {
+      act(() => { vi.advanceTimersByTime(1000) })
+      const card = document.querySelector('.card')
+      expect(card).not.toBeNull()
+      fireEvent.click(card)
+    }
+    expect(document.querySelector('.endGame')).toBeInTheDocument()
+  }
+
+  it('does not prompt for a name while the run is still in progress', () => {
+    render(<PlayPage {...defaultProps} />)
+    act(() => { vi.advanceTimersByTime(1000) })
+    expect(document.querySelector('.card')).not.toBeNull()
+    expect(screen.queryByPlaceholderText('Enter your name')).not.toBeInTheDocument()
+    expect(document.querySelector('.saveButton')).not.toBeInTheDocument()
+  })
+
+  it('prompts for a name with the high scores list once the game ends', () => {
+    render(<PlayPage {...defaultProps} />)
+    playUntilGameOver()
+    expect(screen.getByPlaceholderText('Enter your name')).toBeInTheDocument()
+    expect(screen.getByText('High scores')).toBeInTheDocument()
+    expect(document.querySelector('.endGame .retryButton')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Save' })).toBeDisabled()
+  })
+
+  it('saving writes the run to matchingGame_highScores and highlights the player row', () => {
+    render(<PlayPage {...defaultProps} />)
+    playUntilGameOver()
+    const finalScore = parseInt(document.querySelector('.scorePanelValue').textContent, 10)
+
+    fireEvent.change(screen.getByPlaceholderText('Enter your name'), { target: { value: '  Goku  ' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }))
+
+    expect(JSON.parse(localStorage.getItem('matchingGame_highScores'))).toEqual([
+      { name: 'Goku', score: finalScore },
+    ])
+    const ownRow = document.querySelector('.highScoresRow.ownRow')
+    expect(ownRow).not.toBeNull()
+    expect(ownRow.textContent).toContain('Goku')
+    expect(screen.getByRole('button', { name: 'Saved' })).toBeDisabled()
+  })
+
+  it('stores and renders saved runs sorted by score descending', () => {
+    localStorage.setItem('matchingGame_highScores', JSON.stringify([
+      { name: 'Krillin', score: 3 },
+      { name: 'Vegeta', score: 99 },
+      { name: 'Yamcha', score: -1 },
+    ]))
+    render(<PlayPage {...defaultProps} />)
+    playUntilGameOver()
+
+    fireEvent.change(screen.getByPlaceholderText('Enter your name'), { target: { value: 'Goku' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }))
+
+    const stored = JSON.parse(localStorage.getItem('matchingGame_highScores'))
+    const scores = stored.map(entry => entry.score)
+    expect(scores).toEqual([...scores].sort((a, b) => b - a))
+    expect(stored[0]).toEqual({ name: 'Vegeta', score: 99 })
+    expect(stored[stored.length - 1]).toEqual({ name: 'Yamcha', score: -1 })
+
+    const names = [...document.querySelectorAll('.highScoresName')].map(el => el.textContent)
+    expect(names).toEqual(stored.map(entry => entry.name))
+  })
+
+  it('a corrupt stored value falls back to an empty list instead of crashing', () => {
+    localStorage.setItem('matchingGame_highScores', '{not json')
+    render(<PlayPage {...defaultProps} />)
+    playUntilGameOver()
+    expect(screen.getByText('No scores yet')).toBeInTheDocument()
+  })
+
+  it('popup card uses padding instead of a fixed height, with 2px borders and 12px radii on the input and list', () => {
+    const endGame = css.match(/^\.endGame\s*\{([^}]+)\}/m)[1]
+    expect(endGame).not.toMatch(/\bheight:\s*200px/)
+    expect(endGame).toMatch(/padding:/)
+    expect(endGame).toMatch(/border-radius:\s*20px/)
+    for (const sel of ['endGameNameInput', 'highScoresBlock']) {
+      const rule = css.match(new RegExp(`^\\.${sel}\\s*\\{([^}]+)\\}`, 'm'))[1]
+      expect(rule).toMatch(/border:\s*2px solid black/)
+      expect(rule).toMatch(/border-radius:\s*12px/)
+    }
+    expect(css).toMatch(/\.highScoresRow\.ownRow\s*\{[^}]*#fff6a8/)
+  })
+})
