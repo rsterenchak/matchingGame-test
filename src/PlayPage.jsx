@@ -939,11 +939,12 @@ export default function PlayPage({
       <div className='instructionsBackdrop' onClick={closeInstructions}>
         <div className='instructionsCard' onClick={e => e.stopPropagation()}>
           <div className='instructionsTitle'>How to Play</div>
+          <div className='instructionsGoal'>Goal: pick {winCount} different fighters without repeating one.</div>
           <ul className='instructionsList'>
-            <li>Pick a Z Fighter you haven't picked before.</li>
-            <li>Cards reshuffle after every turn.</li>
-            <li>Picking a repeated fighter ends the game.</li>
-            <li>Pick all {winCount} unique fighters to win!</li>
+            <li><span className='instructionsIcon instructionsIconCheck' aria-hidden='true'>✓</span><span>Pick a Z Fighter you haven't picked before.</span></li>
+            <li><span className='instructionsIcon instructionsIconShuffle' aria-hidden='true'>⇄</span><span>Cards reshuffle after every turn.</span></li>
+            <li><span className='instructionsIcon instructionsIconDanger' aria-hidden='true'>✕</span><span>Picking a repeated fighter ends the game.</span></li>
+            <li><span className='instructionsIcon instructionsIconWin' aria-hidden='true'>★</span><span>Pick all {winCount} unique fighters to win!</span></li>
           </ul>
           <div className='gotItButton' onClick={closeInstructions}>Got it!</div>
         </div>
