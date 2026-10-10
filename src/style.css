@@ -1752,6 +1752,14 @@ body {
   fill: black;
 }
 
+/* The trophy sits in the help button's centered face, so its viewBox-only SVG
+   needs an explicit size or it renders at its intrinsic size and overflows. */
+.scoresButton img {
+  width: 26px;
+  height: 26px;
+  margin: 0;
+}
+
 .topColumn1 .navStackButton:hover {
   animation: none;
   transform: scale(1.08);
@@ -2864,14 +2872,14 @@ body {
      the scrolling document so the card rows scroll under them when the board
      is taller than the screen. The score panel's bottom edge carries the
      inset. The pill floats on the page with no strip behind it and sticks
-     just above the score panel (76px tall plus the inset) so the two never
-     overlap. */
+     just above the score panel (76px tall plus its 16px bottom margin and the
+     inset) so the two never overlap. */
   .navSection2 {
     grid-row: 5;
     justify-content: center;
     padding: 8px 10px;
     position: sticky;
-    bottom: calc(76px + env(safe-area-inset-bottom));
+    bottom: calc(92px + env(safe-area-inset-bottom));
     z-index: 12;
   }
 
@@ -2880,7 +2888,7 @@ body {
     position: sticky;
     bottom: 0;
     z-index: 12;
-    margin: 0 10px;
+    margin: 0 10px 16px;
     padding-bottom: calc(10px + env(safe-area-inset-bottom));
   }
 
@@ -3670,6 +3678,11 @@ body {
 
   .topColumn3 .helpButton {
     font-size: 34px;
+  }
+
+  .scoresButton img {
+    width: 30px;
+    height: 30px;
   }
 
   .musicBlock3 {
