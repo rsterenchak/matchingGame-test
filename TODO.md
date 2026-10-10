@@ -304,3 +304,20 @@
   - File: `src/highScores.js`, `src/test/highScores.test.js`
   - Completed: 2026-10-10
   <!-- id: e099f20a-72dc-49f3-aabf-12b66057041c -->
+
+- [ ] **[MEDIUM]** Group the high scores modal into Easy / Hard / Hardest tabs
+  - Type: feature
+  - Description: The high scores modal (`HighScoresModal` in `src/MainSection.jsx`) shows one list of every saved run sorted by raw score with a level badge per row, so an Easy 16/16 outranks a Hard 15/24. Replace it with one tab per level so ranks only compare runs of the same difficulty.
+  - Behavior:
+    1. Tabs. Add a `scoresTabs` row under the `.highScoresTitle` with three `scoresTab` buttons labeled Easy, Hard, Hardest. Style them as small DBZ pills matching the HomePage level buttons (`customFont1`, `3px solid black` border, `border-radius: 36px`, yellow radial-gradient face on the active tab with the `0 0 0 2px rgb(179,179,0)` ring, inactive tabs on a light grey `#eee` face at `opacity: .7`), sized to fit three across inside the 90%-width `.scoresCard` at 390px. Keyboard: left/right arrow moves between tabs; the active tab has `aria-selected`.
+    2. Default tab. `HighScoresModal` takes a new `initialLevel` prop; `MainSection` passes `isLevel` so the modal opens on the level currently selected on the home page or being played. Switching tabs is local state and does not change `isLevel`.
+    3. Per-level list. Resolve each entry's level with a new `entryLevel(entry)` helper in `src/highScores.js` that returns the `level` key (`'easy' | 'hard' | 'hardest'`) using the same rules `levelLabel` uses for the pre-level entries (score > 24 → hardest, > 16 → hard), and `null` when it cannot be known; `levelLabel` becomes a thin wrapper over it. The active tab lists entries whose `entryLevel` matches, sorted by `sortHighScores`, top 10, and shows the score as `score / winCount` for that level (16 / 24 / 32 from `levelSettings` in `src/PlayPage.jsx` — export it or move the three win counts into `src/highScores.js` so `MainSection` doesn't import the page). Entries with `null` level appear in a fourth row group only if any exist: a small "Unknown level" section under the active tab's list is not needed — instead show them in every tab? No: show them nowhere in the tabs and add a one-line note under the list, "N older runs without a recorded level", only when N > 0. Drop the per-row level badge inside the modal (`.highScoresRow.withLevel` / `.highScoresLevel`) since the tab carries it; leave the end-game popup list in `src/PlayPage.jsx` untouched.
+    4. Empty state. A tab with no runs shows the existing `.highScoresEmpty` "No scores yet" text.
+  - Acceptance criteria:
+    - 1300x900: trophy opens the modal on the current level's tab; tabs switch lists without closing the modal; scores read like "15 / 24".
+    - 390x844: the three tabs fit on one row inside the card; the list is unchanged otherwise.
+    - Saving a Hard run from the end-game popup makes it appear under the Hard tab on the next open.
+  - Out of scope: changing the end-game popup list, re-ranking by percentage, or clearing scores; no new dependencies.
+  - File: `src/MainSection.jsx`, `src/highScores.js`, `src/PlayPage.jsx`, `src/style.css`, `src/test/highScores.test.js`
+  - Verify: 1300x900, 390x844 → /
+  <!-- id: 9b6e711d-2873-485e-8b59-0a7a93d88e6d -->
