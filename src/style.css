@@ -740,9 +740,9 @@ body {
     inset 0 -2px 0 rgba(255, 255, 255, 0.3);
 }
 
-/* Info line under the level selector describing the picked level. Same face as
-   the level buttons, but static: no glow, no hover, and a default cursor so it
-   doesn't read as something that starts the game. Each half stays whole and
+/* Info line under the level selector describing the picked level. Plain muted
+   text rather than a yellow pill, with a default cursor, so it doesn't read as
+   something that can be tapped or that starts the game. Each half stays whole and
    wraps onto its own line when the column is too narrow for both. */
 .levelInfo {
   display: flex;
@@ -752,20 +752,13 @@ body {
   column-gap: 6px;
   max-width: calc(100vw - 32px);
   box-sizing: border-box;
-  padding: 4px 14px;
+  padding: 4px 0;
   margin-bottom: 12px;
-  border-radius: 20px;
-  background-color: yellow;
-  background-image: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
-  border: 3px solid black;
-  box-shadow:
-    0 0 0 2px rgb(179, 179, 0),
-    0 6px 10px rgba(0, 0, 0, 0.45),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
   font-family: 'customFont1';
   font-size: 13px;
   line-height: 1.25;
-  color: black;
+  color: rgba(255, 255, 235, 0.85);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85), 0 0 6px rgba(0, 0, 0, 0.5);
   text-align: center;
   cursor: default;
   user-select: none;

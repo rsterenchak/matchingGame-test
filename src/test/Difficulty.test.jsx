@@ -287,11 +287,12 @@ describe('HomePage selected-level info line', () => {
     expect(setPlayPage).not.toHaveBeenCalled()
   })
 
-  it('uses the DBZ face with a default cursor', () => {
+  it('reads as plain text, not a button, with a default cursor', () => {
     const rule = css.match(/\.levelInfo\s*\{([^}]+)\}/)
     expect(rule).not.toBeNull()
-    expect(rule[1]).toContain('border: 3px solid black')
-    expect(rule[1]).toContain('border-radius: 20px')
+    expect(rule[1]).not.toMatch(/^\s*(background[\w-]*|border[\w-]*|box-shadow)\s*:/m)
+    expect(rule[1]).toContain('column-gap: 6px')
+    expect(rule[1]).toContain('margin-bottom: 12px')
     expect(rule[1]).toContain("font-family: 'customFont1'")
     expect(rule[1]).toContain('font-size: 13px')
     expect(rule[1]).toContain('cursor: default')
