@@ -223,3 +223,10 @@
   - Verify: 1300x900, 390x844 → /
   - Completed: 2026-10-10
   <!-- id: ba8d23ab-4140-4ec6-80f9-c6d55fcaae78 -->
+
+- [ ] **[MEDIUM]** Rewrite the How to Play modal with a goal banner and icon-led bullets
+  - Type: feature
+  - Description: Restructure the instructions modal on the play page to variant B so the rules read at a glance. Add a `goal` banner above the list that summarizes the objective, and convert the four plain bullets into icon rows (flex, 24px icon column + text): a check for "choose a fighter you haven't picked yet", a shuffle glyph for "cards shuffle each turn", a danger-colored ✕ for "pick the same fighter twice and you lose", and a warning-colored ★ for "reach N unique picks to win!". Set `.instructionsList` to `list-style:none; padding:0; gap:8px; line-height:1.4` and give each `li` an 8px/12px padded row with a subtle background and border, and cut the card's horizontal padding to 22px so every row still fits at 320px width. Keep the `{winCount}` interpolation in the goal banner and the win bullet — do not hardcode "12" as the mockup shows — and leave the existing `closeInstructions` handler and `.gotItButton` behavior intact. Use the palette already defined in `style.css` for the accent/danger/warning icon colors (the mockup's `var(--accent)` tokens are from a different design system and don't exist in this app); keep the white card, 1.5px black border, 8px radius, and `customFont1` title unchanged.
+  - File: `src/PlayPage.jsx`, `src/style.css`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: 4e4cc625-db37-4931-9ea1-3bd36a1029a0 -->
