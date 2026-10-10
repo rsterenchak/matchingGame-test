@@ -344,6 +344,8 @@ function HandlePausePlayAudio({
 }
 
 
+// Number of characters each difficulty level pulls from the API.
+const levelLimits = {easy: 16, hard: 24, hardest: 32};
 
 export default function MainSection() {
 
@@ -556,8 +558,6 @@ export default function MainSection() {
   const [isLevel, setLevel] = useState('easy');
   const [activeHighScores, setActiveHighScores] = useState({easy: 0, hard: 0, hardest: 0});
 
-  const levelLimits = {easy: 16, hard: 24, hardest: 32};
-
   function handleVolumeChange(newVolume) {
     setVolume(newVolume);
     localStorage.setItem('matchingGame_volume', String(newVolume));
@@ -674,6 +674,7 @@ export default function MainSection() {
         onVolumeChange={handleVolumeChange}
         isLevel={isLevel}
         setLevel={setLevel}
+        levelLimits={levelLimits}
       />
       
       ) : (

@@ -188,9 +188,9 @@
   - Completed: 2026-10-09
   <!-- id: c38e726e-9aa5-49e3-9c75-b77bd51bd99a -->
 
-- [ ] **[MEDIUM]** Add a selected-level info line under the difficulty selectors on the homepage
+- [x] **[MEDIUM]** Add a selected-level info line under the difficulty selectors on the homepage
   - Type: feature
   - Description: Add a persistent info block directly below the `.levelSelect` group on the home screen that describes the currently selected difficulty: Easy = 16 characters, 8 cards shown per round; Hard = 24 characters, 8 cards shown per round; Hardest = 32 characters, 12 cards shown per round. Render it between the `.levelSelect` row and the `.fightButton` inside `.fightStage`, driving the copy from the level config (the `levelLimits` values in `src/MainSection.jsx` and the per-level card counts in `src/PlayPage.jsx`) rather than hardcoding duplicates, and have it update immediately when the player picks a level. The block must be non-interactive with respect to the game: it sits inside `.inputSection`, whose `onClick` starts play, so it must call `stopPropagation` (or otherwise prevent the click from starting the game) and use `cursor: default` so tapping it never launches a run. Style it with `customFont1`, the yellow/3px-black-border button aesthetic, and the existing 20px button radius / 13px font scale, and make sure it fits the existing responsive breakpoints (320px, 481px, 641px, 961px, 1025px, 1281px) — shrinking/wrapping gracefully at narrow widths rather than overflowing the `.fightStage` column.
   - File: `src/HomePage.jsx`, `src/style.css` (reads level config from `src/MainSection.jsx` and `src/PlayPage.jsx`)
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-10-09
   <!-- id: b060f626-a867-432c-bd12-57aff612ad57 -->

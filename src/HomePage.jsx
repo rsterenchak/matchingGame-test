@@ -6,6 +6,7 @@ import gitIcon from './assets/github.svg'
 import gokuGif from './assets/goku-gif.gif'
 import guyGif from './assets/dbzMoving.png'
 import memoryGameTitleSvg from './assets/MemoryGameTitle.svg'
+import { levelSettings } from './PlayPage.jsx'
 
 export default function HomePage({
   background,
@@ -16,7 +17,8 @@ export default function HomePage({
   isVolume,
   onVolumeChange,
   isLevel = 'easy',
-  setLevel
+  setLevel,
+  levelLimits
 }) {
 
   console.log('HomePage re-rendered');
@@ -68,6 +70,11 @@ export default function HomePage({
     setLevel(level);
 
   }
+
+  // Pool size comes from MainSection's API limits; the level's win threshold is
+  // the same number, so fall back to it when the limits aren't passed in.
+  const levelCharacters = levelLimits?.[isLevel] ?? levelSettings[isLevel].winCount;
+  const levelShown = levelSettings[isLevel].shownCount;
 
   function setupPage(){
 
@@ -220,6 +227,17 @@ export default function HomePage({
                   </div>
                 ))}
 
+              </div>
+
+              {/* Describes the picked level. Sits inside the click-to-play
+                  section, so a tap here must not start the game. */}
+              <div
+                className='levelInfo'
+                aria-live='polite'
+                onClick={e => e.stopPropagation()}
+              >
+                <span className='levelInfoLine'>{levelCharacters} characters,</span>
+                <span className='levelInfoLine'>{levelShown} cards shown per round</span>
               </div>
 
               <div className='fightButton'>
