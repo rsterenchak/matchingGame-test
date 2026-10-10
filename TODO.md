@@ -323,7 +323,7 @@
   - Completed: 2026-10-10
   <!-- id: 9b6e711d-2873-485e-8b59-0a7a93d88e6d -->
 
-- [ ] **[MEDIUM]** Add a Dragon Ball summoning celebration when a level is won
+- [x] **[MEDIUM]** Add a Dragon Ball summoning celebration when a level is won
   - Type: feature
   - Description: When the player picks every fighter and the win popup appears (`isOver` true inside the `activePopUp` block in `src/PlayPage.jsx`, rendering `.endGame` with "You Won!"), play a one-shot "summon the dragon" celebration behind the card: a golden flash over the board, then the seven Dragon Balls rising past the popup. Loss (Game Over) gets nothing.
   - Behavior:
@@ -341,4 +341,5 @@
   - Out of scope: sound effects, confetti, changes to the win/loss logic in `Card.jsx`; no new dependencies.
   - File: `src/WinCelebration.jsx`, `src/PlayPage.jsx`, `src/style.css`, `src/test/PlayPage.test.jsx`
   - Verify: 1300x900, 390x844 → /
+  - Completed: 2026-10-10
   <!-- id: 17624410-095a-4802-a13d-a80ede498442 -->
