@@ -2,8 +2,8 @@ export const changelog = [
   {
     version: '1.0',
     date: '2026-10-10',
-    changed: [
-      'The high scores window now has Easy, Hard, and Hardest tabs that open on your current level, so runs are only ranked against the same difficulty and scores read like "15 / 24".',
+    added: [
+      'Winning a level now summons the dragon: a golden flash and the seven Dragon Balls rise past the victory card, with extra waves on Hard and Hardest.',
     ],
     fixed: [
       'On iPhones in Safari, the Fight button and the game\'s score panel are no longer hidden behind the bottom toolbar, and the cards now sit centered on the play screen.',

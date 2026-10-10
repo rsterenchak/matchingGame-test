@@ -4,6 +4,7 @@ import { readFileSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import PlayPage from '../PlayPage.jsx'
+import WinCelebration from '../WinCelebration.jsx'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const css = readFileSync(resolve(__dirname, '../style.css'), 'utf8')
@@ -1277,5 +1278,99 @@ describe('Retry after a win: the next game does not freeze', () => {
 
     fireEvent.click(document.querySelector('.retryButton'))
     playToWin()
+  })
+
+  it('the win popup plays the Dragon Ball celebration behind the card, which then removes itself', () => {
+    render(<PlayPage {...defaultProps} />)
+    playToWin()
+
+    const layer = document.querySelector('.winCelebration')
+    expect(layer).toBeInTheDocument()
+    expect(layer.querySelector('.winFlash')).toBeInTheDocument()
+    expect(layer.querySelectorAll('.dragonBall')).toHaveLength(7)
+    expect(layer.nextElementSibling).toHaveClass('endGame')
+
+    // Typing a name re-renders the popup without restarting the layer.
+    fireEvent.change(screen.getByPlaceholderText('Enter your name'), { target: { value: 'Goku' } })
+    expect(document.querySelector('.winCelebration')).toBe(layer)
+
+    act(() => { vi.advanceTimersByTime(4000) })
+    expect(document.querySelector('.winCelebration')).not.toBeInTheDocument()
+    expect(document.querySelector('.endGame')).toBeInTheDocument()
+  })
+
+  it('Game Over shows no celebration', () => {
+    render(<PlayPage {...defaultProps} />)
+    act(() => { vi.advanceTimersByTime(1000) })
+    const first = boardImages()[0]
+    clickCard(document.querySelectorAll('.card')[0])
+
+    // Re-pick the same fighter as soon as it is dealt again.
+    for (let turn = 0; turn < 40 && !document.querySelector('.endGame'); turn++) {
+      act(() => { vi.advanceTimersByTime(1000) })
+      const board = boardImages()
+      const index = board.indexOf(first)
+      clickCard(document.querySelectorAll('.card')[index === -1 ? 0 : index])
+    }
+
+    expect(screen.getByText('Game Over')).toBeInTheDocument()
+    expect(document.querySelector('.winCelebration')).not.toBeInTheDocument()
+    expect(document.querySelector('.dragonBall')).not.toBeInTheDocument()
+  })
+})
+
+describe('Win celebration layer', () => {
+  beforeEach(() => { vi.useFakeTimers() })
+  afterEach(() => {
+    cleanup()
+    vi.useRealTimers()
+  })
+
+  it.each([['easy', 1], ['hard', 2], ['hardest', 3]])('%s plays %i wave(s) of seven numbered balls', (level, waves) => {
+    render(<WinCelebration isLevel={level} />)
+    const balls = [...document.querySelectorAll('.dragonBall')]
+    expect(balls).toHaveLength(7 * waves)
+    expect(balls.slice(0, 7).map(ball => ball.dataset.stars)).toEqual(['1', '2', '3', '4', '5', '6', '7'])
+    const lastDelay = parseFloat(balls[balls.length - 1].style.animationDelay)
+    expect(lastDelay).toBeCloseTo((waves - 1) * 0.9 + 6 * 0.15)
+    expect(lastDelay + 2.8).toBeLessThan(6)
+    expect(document.querySelector('.winCelebration').classList.contains('longFlash')).toBe(waves === 3)
+  })
+
+  // jsdom's style object makes React listen for the webkit-prefixed name, so
+  // fire both spellings.
+  function endAnimation(el) {
+    fireEvent.animationEnd(el)
+    fireEvent(el, new Event('webkitAnimationEnd', { bubbles: true }))
+  }
+
+  it('unmounts when the last ball finishes rising', () => {
+    render(<WinCelebration isLevel='easy' />)
+    const balls = document.querySelectorAll('.dragonBall')
+    endAnimation(balls[0])
+    expect(document.querySelector('.winCelebration')).toBeInTheDocument()
+    endAnimation(balls[balls.length - 1])
+    expect(document.querySelector('.winCelebration')).not.toBeInTheDocument()
+  })
+
+  it('falls back to a timer when no animationend fires', () => {
+    render(<WinCelebration isLevel='hardest' />)
+    act(() => { vi.advanceTimersByTime(5000) })
+    expect(document.querySelector('.winCelebration')).toBeInTheDocument()
+    act(() => { vi.advanceTimersByTime(1000) })
+    expect(document.querySelector('.winCelebration')).not.toBeInTheDocument()
+  })
+
+  it('is a fixed, click-through, overflow-hidden layer above the board and below the popup card, with balls hidden under reduced motion', () => {
+    const layer = css.match(/^\.winCelebration\s*\{([^}]+)\}/m)[1]
+    expect(layer).toMatch(/position:\s*fixed/)
+    expect(layer).toMatch(/pointer-events:\s*none/)
+    expect(layer).toMatch(/overflow:\s*hidden/)
+    expect(layer).toMatch(/z-index:\s*1\b/)
+    expect(css.match(/^\.endGame\s*\{([^}]+)\}/m)[1]).toMatch(/z-index:\s*2\b/)
+    const reduced = css.slice(css.indexOf('@media (prefers-reduced-motion: reduce)'))
+    expect(reduced).toMatch(/\.dragonBall\s*\{\s*display:\s*none/)
+    expect(reduced).toMatch(/\.winFlash,[^{]*\{\s*animation:\s*none/)
+    expect(css.match(/^\.winFlash\s*\{([^}]+)\}/m)[1]).toMatch(/opacity:\s*0\.6/)
   })
 })
