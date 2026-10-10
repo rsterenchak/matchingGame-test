@@ -9,13 +9,7 @@ export const changelog = [
     ],
     fixed: [
       'On desktop with reduced motion turned on, the home screen\'s Nimbus cloud now sits centered under the Dragon Ball Z title instead of drifting to the right.',
-    ],
-  },
-  {
-    version: '1.0',
-    date: '2026-10-09',
-    fixed: [
-      'On phones, the home screen\'s Nimbus cloud now sits a little lower so it no longer overlaps the Dragon Ball Z title.',
+      'On iPhones, the menu button no longer hides under the notch or status bar, short screens can scroll down to the Fight button, and the game\'s controls and score stay docked above Safari\'s bottom toolbar.',
     ],
   },
 ];

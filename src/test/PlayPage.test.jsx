@@ -105,11 +105,13 @@ describe('Desktop layout: score panel pinned to bottom, card grid centered', () 
     expect(match[1]).toContain('grid-template-rows: auto 1fr 1fr auto')
   })
 
-  it('outerSection2 sets height to 100dvh at 961px so the grid fills the full viewport', () => {
+  // .playSection is the 100dvh scroll root, so 100% fills the full viewport
+  // without the section's 1px border pushing the grid into a 2px overflow.
+  it('outerSection2 sets height to 100% of the 100dvh scroll root at 961px so the grid fills the full viewport', () => {
     const section = get961Section()
     const match = section.match(/\.outerSection2\s*\{([^}]+)\}/)
     expect(match).not.toBeNull()
-    expect(match[1]).toContain('height: 100dvh')
+    expect(match[1]).toMatch(/(?:^|\n)\s*height:\s*100%/)
   })
 
   it('scorePanel has max-width at 961px for a contained floating widget instead of full-bleed', () => {
@@ -217,11 +219,12 @@ describe('Mobile layout: score panel pushed to viewport bottom with safe-area ga
     return css.slice(idx, nextMedia === -1 ? undefined : nextMedia)
   }
 
-  it('outerSection2 has min-height: 100dvh at 320px so 1fr rows fill viewport when card content is shorter', () => {
+  it('outerSection2 has min-height: 100% of the 100dvh scroll root at 320px so 1fr rows fill viewport when card content is shorter', () => {
     const section = getMediaSection(320)
     const match = section.match(/\.outerSection2\s*\{([^}]+)\}/)
     expect(match).not.toBeNull()
-    expect(match[1]).toContain('min-height: 100dvh')
+    expect(match[1]).toContain('min-height: 100%')
+    expect(match[1]).not.toMatch(/(?:^|\n)\s*height:/)
   })
 
   it('outerSection2 has min-height: 100dvh at 481px', () => {
@@ -1044,5 +1047,58 @@ describe('End-game popup: name entry and saved high scores', () => {
       expect(rule).toMatch(/border-radius:\s*12px/)
     }
     expect(css).toMatch(/\.highScoresRow\.ownRow\s*\{[^}]*#fff6a8/)
+  })
+})
+
+describe('Mobile Safari safe areas: scroll roots, insets, and the phone bottom dock', () => {
+  function block(marker) {
+    const idx = css.indexOf(marker)
+    expect(idx).not.toBe(-1)
+    return css.slice(idx, css.indexOf('@media', idx + 1))
+  }
+
+  function standaloneRule(section, selector) {
+    const escaped = selector.replace('.', '\\.')
+    return section.match(new RegExp(`(?:^|\\n)[ \\t]*${escaped}\\s*\\{([^}]*)\\}`))
+  }
+
+  // body stays overflow: hidden, so each page section needs a definite height
+  // for overflow-y: auto to scroll instead of growing past the viewport.
+  it.each([
+    ['.homeSection', '@media (min-width:320px){'],
+    ['.playSection', '@media (min-width:320px)  {'],
+  ])('%s is a 100dvh scroll root at 320px', (sel, marker) => {
+    const match = standaloneRule(block(marker), sel)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/height:\s*100vh;[\s\S]*height:\s*100dvh/)
+    expect(match[1]).toMatch(/overflow-y:\s*auto/)
+    expect(match[1]).toMatch(/overflow-x:\s*hidden/)
+  })
+
+  it('body keeps overflow: hidden so the document itself never scrolls', () => {
+    expect(css.match(/(?:^|\n)body\s*\{([^}]+)\}/)[1]).toMatch(/overflow:\s*hidden/)
+  })
+
+  it('both page grids pad by the top/left/right safe-area insets with an 8px top gutter', () => {
+    const match = css.match(/\.outerSection,\s*\n\.outerSection2\s*\{([^}]+)\}/)
+    expect(match).not.toBeNull()
+    expect(match[1]).toMatch(/padding-top:\s*max\(env\(safe-area-inset-top\),\s*8px\)/)
+    expect(match[1]).toMatch(/padding-left:\s*env\(safe-area-inset-left\)/)
+    expect(match[1]).toMatch(/padding-right:\s*env\(safe-area-inset-right\)/)
+    // Must come after every breakpoint's `padding: 0px` reset to take effect.
+    expect(css.lastIndexOf('padding: 0px')).toBeLessThan(match.index)
+  })
+
+  it('phone nav pill and score panel are sticky above the bottom inset, pill stacked above the panel', () => {
+    const phone = block('@media (max-width:480px) {')
+    const nav = standaloneRule(phone, '.navSection2')[1]
+    const panel = standaloneRule(phone, '.scorePanel')[1]
+    expect(nav).toMatch(/position:\s*sticky/)
+    expect(nav).toMatch(/bottom:\s*calc\(76px \+ env\(safe-area-inset-bottom\)\)/)
+    expect(nav).toMatch(/border-top:/)
+    expect(panel).toMatch(/position:\s*sticky/)
+    expect(panel).toMatch(/bottom:\s*0/)
+    expect(panel).toMatch(/margin:\s*0 10px;/)
+    expect(panel).toMatch(/padding-bottom:\s*calc\(10px \+ env\(safe-area-inset-bottom\)\)/)
   })
 })

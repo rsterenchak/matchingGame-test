@@ -238,7 +238,7 @@
   - Completed: 2026-10-10
   <!-- id: c05decd1-9861-43d0-95fa-4242f64433b1 -->
 
-- [ ] **[HIGH]** Fix mobile Safari safe-area clipping on HomePage and PlayPage
+- [x] **[HIGH]** Fix mobile Safari safe-area clipping on HomePage and PlayPage
   - Type: bug
   - Description: On iPhones in Safari, both pages collide with browser chrome. `index.html` sets `viewport-fit=cover` but `src/style.css` only ever uses `env(safe-area-inset-bottom)` (on `.inputSection` and `.scorePanel`), never `-top`, `-left`, or `-right`, so the HomePage hamburger (`.hamburgerButton`, `margin-top: 8px` in the 320px block) sits under the status bar/notch and in landscape the card rows and controls run under the notch and home-indicator edges. Separately, `body { overflow: hidden }` is global and nothing lifts it on phones: `.homeSection` and `.playSection` only set `min-height: 100dvh`, so the `.playSection { overflow-y: auto }` rule in the 320px block is inert (the element grows instead of scrolling) and on short phones the bottom rows — the Fight button on home, and the nav pill (`.navSection2`, `order: 3`) plus `.scorePanel` (`order: 4`) on play — overflow 100dvh and are clipped under Safari's bottom toolbar with no way to reach them. The two desktop short-window `body { overflow: auto }` fallbacks (641–960px ≤800px tall, 961px+ ≤640px tall) don't cover phones.
   - Behavior:
@@ -253,4 +253,5 @@
   - Out of scope: changing the ≤480px nav pill design, the HomePage layout above 480px, or `MobileMenu.jsx`; no JSX changes.
   - File: `src/style.css`
   - Verify: 390x844, 375x667, 844x390, 1300x900 → /
+  - Completed: 2026-10-10
   <!-- id: f2fa4846-1939-4b5e-bc2a-fad333d1b883 -->
