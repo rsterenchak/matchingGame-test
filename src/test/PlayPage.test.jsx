@@ -355,6 +355,43 @@ describe('PlayPage instructions modal', () => {
     fireEvent.click(document.querySelector('.instructionsBackdrop'))
     expect(screen.queryByText('How to Play')).not.toBeInTheDocument()
   })
+
+  it('shows a goal banner above the list that interpolates the level win count', () => {
+    render(<PlayPage {...defaultProps} isLevel='hard' />)
+    const goal = document.querySelector('.instructionsGoal')
+    expect(goal).not.toBeNull()
+    expect(goal.textContent).toContain('24')
+    expect(goal.nextElementSibling.classList.contains('instructionsList')).toBe(true)
+  })
+
+  it('renders each rule as an icon row with a check, shuffle, danger ✕ and win ★ icon', () => {
+    render(<PlayPage {...defaultProps} />)
+    const rows = document.querySelectorAll('.instructionsList li')
+    expect(rows).toHaveLength(4)
+    const icons = [...rows].map(li => li.querySelector('.instructionsIcon'))
+    expect(icons[0].classList.contains('instructionsIconCheck')).toBe(true)
+    expect(icons[1].classList.contains('instructionsIconShuffle')).toBe(true)
+    expect(icons[2].classList.contains('instructionsIconDanger')).toBe(true)
+    expect(icons[2].textContent).toBe('✕')
+    expect(icons[3].classList.contains('instructionsIconWin')).toBe(true)
+    expect(icons[3].textContent).toBe('★')
+    icons.forEach(icon => expect(icon.getAttribute('aria-hidden')).toBe('true'))
+  })
+
+  it('styles the list as unbulleted flex rows with a 24px icon column and 22px horizontal card padding', () => {
+    const listRule = css.match(/\.instructionsList\s*\{([^}]+)\}/)
+    expect(listRule[1]).toMatch(/list-style:\s*none/)
+    expect(listRule[1]).toMatch(/padding:\s*0/)
+    expect(listRule[1]).toMatch(/gap:\s*8px/)
+    expect(listRule[1]).toMatch(/line-height:\s*1\.4/)
+    const rowRule = css.match(/\.instructionsList li\s*\{([^}]+)\}/)
+    expect(rowRule[1]).toMatch(/display:\s*flex/)
+    expect(rowRule[1]).toMatch(/padding:\s*8px 12px/)
+    const iconRule = css.match(/\.instructionsIcon\s*\{([^}]+)\}/)
+    expect(iconRule[1]).toMatch(/flex:\s*0 0 24px/)
+    const cardRule = css.match(/\.instructionsCard\s*\{([^}]+)\}/)
+    expect(cardRule[1]).toMatch(/padding:\s*\d+px 22px/)
+  })
 })
 
 describe('Tablet layout (641–960px): nav shows 3 icons instead of the hamburger', () => {
