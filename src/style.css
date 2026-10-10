@@ -4016,4 +4016,62 @@ body {
   .logoContainer2 { animation: none; }
   .card { transition: none; }
   .card:hover { transform: none; }
+
+  /* Reduced motion is an OS-level accessibility setting (Windows "Animation
+     effects", macOS "Reduce motion"), so the site goes fully static under it:
+     every glow, pulse, and hover grow below is frozen on its first frame. The
+     :before glows keep their gradient and their at-rest / on-hover opacity, the
+     active level keeps its scale and the pulse's first-keyframe aura, and the
+     continuously re-rasterized blur(5px) glows stop costing a repaint per frame. */
+  .fightButton:before,
+  .musicBlock:before,
+  .speakerButton:before,
+  .volumeSliderWrapper:before,
+  .hamburgerButton:before,
+  .levelButton:before,
+  .musicBlock2:before,
+  .musicBlock3:before,
+  .helpButton:before,
+  .retryButton:before,
+  .gotItButton:before,
+  .levelButton.levelActive,
+  .musicBlock:hover,
+  .speakerButton:hover,
+  .hamburgerButton:hover,
+  .topColumn1 .navStackButton:hover,
+  .topColumn3 .navStackButton:hover {
+    animation: none;
+  }
+
+  .fightButton,
+  .levelButton,
+  .topColumn1 .navStackButton,
+  .topColumn3 .navStackButton,
+  .retryButton,
+  .gotItButton {
+    transition: none;
+  }
+
+  .fightButton:hover,
+  .fightButton:active,
+  .topColumn1 .navStackButton:hover,
+  .topColumn1 .navStackButton:active,
+  .topColumn3 .navStackButton:hover,
+  .topColumn3 .navStackButton:active,
+  .retryButton:hover,
+  .retryButton:active,
+  .gotItButton:hover,
+  .gotItButton:active {
+    transform: none;
+  }
+
+  .levelButton:hover,
+  .levelButton:active {
+    transform: scale(0.96);
+  }
+
+  .levelButton.levelActive:hover,
+  .levelButton.levelActive:active {
+    transform: scale(1.12);
+  }
 }

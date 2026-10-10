@@ -298,6 +298,76 @@ describe('Nimbus cloud upsize and float animation', () => {
     expect(css).toMatch(/@media\s*\(prefers-reduced-motion:\s*reduce\)[^{]*\{[^}]*\.logoContainer2[^}]*animation:\s*none/)
   })
 
+  describe('prefers-reduced-motion block freezes every glow, pulse, and hover grow', () => {
+    const reducedMotionBlock = (() => {
+      const starts = [...css.matchAll(/@media\s*\(prefers-reduced-motion:\s*reduce\)\s*\{/g)]
+      expect(starts).toHaveLength(1)
+      let depth = 1
+      let i = starts[0].index + starts[0][0].length
+      const bodyStart = i
+      for (; depth > 0; i++) {
+        if (css[i] === '{') depth++
+        if (css[i] === '}') depth--
+      }
+      return css.slice(bodyStart, i - 1).replace(/\/\*[\s\S]*?\*\//g, '')
+    })()
+    const rules = [...reducedMotionBlock.matchAll(/([^{}]+)\{([^}]*)\}/g)].map(([, sel, body]) => ({
+      selectors: sel.split(',').map(s => s.trim()),
+      body,
+    }))
+    const declFor = (selector, prop) => {
+      const hits = rules.filter(r => r.selectors.includes(selector))
+      const decls = hits.map(r => r.body.match(new RegExp(`(?:^|[;\\s])${prop}:\\s*([^;]+)`))?.[1]?.trim()).filter(Boolean)
+      return decls[decls.length - 1]
+    }
+
+    it.each([
+      '.fightButton:before', '.musicBlock:before', '.speakerButton:before', '.volumeSliderWrapper:before',
+      '.hamburgerButton:before', '.levelButton:before', '.musicBlock2:before', '.musicBlock3:before',
+      '.helpButton:before', '.retryButton:before', '.gotItButton:before',
+    ])('stops the rotating glow on %s', selector => {
+      expect(declFor(selector, 'animation')).toBe('none')
+    })
+
+    it('stops the pulse aura on the selected level button', () => {
+      expect(declFor('.levelButton.levelActive', 'animation')).toBe('none')
+    })
+
+    it.each([
+      '.musicBlock:hover', '.speakerButton:hover', '.hamburgerButton:hover',
+      '.topColumn1 .navStackButton:hover', '.topColumn3 .navStackButton:hover',
+    ])('stops the one-shot hover grow on %s', selector => {
+      expect(declFor(selector, 'animation')).toBe('none')
+    })
+
+    it.each([
+      '.fightButton', '.levelButton', '.topColumn1 .navStackButton', '.topColumn3 .navStackButton',
+      '.retryButton', '.gotItButton',
+    ])('drops the transform transition on %s', selector => {
+      expect(declFor(selector, 'transition')).toBe('none')
+    })
+
+    it.each([
+      '.fightButton:hover', '.fightButton:active',
+      '.topColumn1 .navStackButton:hover', '.topColumn1 .navStackButton:active',
+      '.topColumn3 .navStackButton:hover', '.topColumn3 .navStackButton:active',
+      '.retryButton:hover', '.retryButton:active', '.gotItButton:hover', '.gotItButton:active',
+    ])('removes the hover/press scale on %s', selector => {
+      expect(declFor(selector, 'transform')).toBe('none')
+    })
+
+    it('holds level buttons at their resting scale on hover and press', () => {
+      expect(declFor('.levelButton:hover', 'transform')).toBe('scale(0.96)')
+      expect(declFor('.levelButton:active', 'transform')).toBe('scale(0.96)')
+      expect(declFor('.levelButton.levelActive:hover', 'transform')).toBe('scale(1.12)')
+      expect(declFor('.levelButton.levelActive:active', 'transform')).toBe('scale(1.12)')
+    })
+
+    it('never hides or recolors a glow — no opacity, color, or size overrides inside the block', () => {
+      expect(reducedMotionBlock).not.toMatch(/(?:^|[;\s{])(opacity|background|color|width|height|box-shadow)\s*:/)
+    })
+  })
+
   it('nimbus-float keyframe 50% frame uses only translateY with no rotation so the cloud bobs vertically', () => {
     const start = css.indexOf('@keyframes nimbus-float')
     const end = css.indexOf('\n}', start) + 2
