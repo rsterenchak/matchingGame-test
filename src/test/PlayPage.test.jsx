@@ -874,9 +874,10 @@ describe('PlayPage nav controls form a uniform vertical stack in the upper-left 
     expect(desktopBlock()).not.toMatch(/\.topColumn3\s+\.navStackButton:hover\s*\{[^}]*change-color2/)
   })
 
-  it('all three nav triggers (music, background, help) carry the shared navStackButton class', () => {
+  it('all four nav triggers (music, background, help, high scores) carry the shared navStackButton class', () => {
     render(<PlayPage {...defaultProps} />)
-    expect(document.querySelectorAll('.navStackButton')).toHaveLength(3)
+    expect(document.querySelectorAll('.navStackButton')).toHaveLength(4)
+    expect(document.querySelector('.scoresButton.navStackButton')).not.toBeNull()
     expect(document.querySelector('.musicBlock2.navStackButton')).not.toBeNull()
     expect(document.querySelector('.musicBlock3.navStackButton')).not.toBeNull()
     expect(document.querySelector('.helpButton.navStackButton')).not.toBeNull()
@@ -1000,7 +1001,7 @@ describe('End-game popup: name entry and saved high scores', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Save' }))
 
     expect(JSON.parse(localStorage.getItem('matchingGame_highScores'))).toEqual([
-      { name: 'Goku', score: finalScore },
+      { name: 'Goku', score: finalScore, level: 'easy' },
     ])
     const ownRow = document.querySelector('.highScoresRow.ownRow')
     expect(ownRow).not.toBeNull()

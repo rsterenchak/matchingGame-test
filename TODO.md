@@ -279,7 +279,7 @@
   - Completed: 2026-10-10
   <!-- id: 1acea5c6-a6d7-4700-9b39-64a743aa6c06 -->
 
-- [ ] **[MEDIUM]** Add a high scores button to the HomePage and PlayPage nav stacks
+- [x] **[MEDIUM]** Add a high scores button to the HomePage and PlayPage nav stacks
   - Type: feature
   - Description: Saved runs already persist in `localStorage` under `matchingGame_highScores` (`highScoresKey` in `src/PlayPage.jsx`, entries `{name, score}`, sorted by `sortHighScores`, rendered by the `.highScoresBlock` list in the end-game popup) but are only visible after a game ends. Add a trophy button that opens the list from either page.
   - Behavior:
@@ -295,4 +295,5 @@
   - Out of scope: changing how runs are saved or ranked, clearing scores, and any desktop-only placement; no new dependencies.
   - File: `src/MainSection.jsx`, `src/HomePage.jsx`, `src/PlayPage.jsx`, `src/MobileMenu.jsx`, `src/highScores.js`, `src/assets/trophy.svg`, `src/style.css`
   - Verify: 1300x900, 390x844 → /
+  - Completed: 2026-10-10
   <!-- id: f6fde93d-96ce-40de-9974-a4ef7ed9a648 -->

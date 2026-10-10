@@ -30,10 +30,11 @@ Two pages: a `HomePage` title screen with a "Fight" button, and a `PlayPage` wit
 All source lives in `src/`. Each file has a defined responsibility — stay within it:
 
 - `src/index.jsx` — React entry point. Mounts `<MainSection />` into `#app` inside `<StrictMode>`. Owns nothing else.
-- `src/MainSection.jsx` — Top-level component. Owns the page boolean (`isCurrentPage`), the audio-on/off boolean (`isCurrentAudio`), the API fetch for character data, and the four `Handle*Audio` helper components that play/pause the home and play tracks. Renders `HomePage` or `PlayPage`.
+- `src/MainSection.jsx` — Top-level component. Owns the page boolean (`isCurrentPage`), the audio-on/off boolean (`isCurrentAudio`), the API fetch for character data, the four `Handle*Audio` helper components that play/pause the home and play tracks, and the `HighScoresModal` (with its `activeScoresModal` boolean) opened by the trophy button on either page. Renders `HomePage` or `PlayPage`.
 - `src/HomePage.jsx` — Title screen. Renders the logo, "Fight" button, music toggle, and the Goku gif. No game state.
 - `src/PlayPage.jsx` — Game screen. Owns all game state: shown cards, picked cards, current score, high score, the popup, the card-flip interval, the position pool, and the shuffle logic. Renders two rows of `Card` (or `CardBack` while flipped). Renders the end-game popup.
 - `src/Card.jsx` — One face-up card. Owns the click handler that decides whether the click was a hit (incrementing score, adding to picked) or a miss (ending the game). Calls `shuffleNow` from props to trigger the next round.
+- `src/highScores.js` — Pure (non-React) helpers for the saved-runs list in `localStorage` (`highScoresKey`, `sortHighScores`, `loadHighScores`, `levelLabel`), shared by `PlayPage`'s end-game popup and `MainSection`'s `HighScoresModal`.
 - `src/CardBack.jsx` — One face-down card. Purely presentational; takes no meaningful props.
 - `src/style.css` — All styling. No inline `style` props in JSX unless computed dynamically (e.g., the background-image URL, the popup blur).
 

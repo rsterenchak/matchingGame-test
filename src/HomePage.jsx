@@ -6,6 +6,7 @@ import gitIcon from './assets/github.svg'
 import gokuGif from './assets/goku-gif.gif'
 import guyGif from './assets/dbzMoving.png'
 import memoryGameTitleSvg from './assets/MemoryGameTitle.svg'
+import trophyIcon from './assets/trophy.svg'
 import { levelSettings } from './PlayPage.jsx'
 
 export default function HomePage({
@@ -18,7 +19,8 @@ export default function HomePage({
   onVolumeChange,
   isLevel = 'easy',
   setLevel,
-  levelLimits
+  levelLimits,
+  openScores
 }) {
 
   console.log('HomePage re-rendered');
@@ -136,6 +138,13 @@ export default function HomePage({
                     </svg>
                   </div>
 
+                  <div
+                    className='scoresButton navStackButton'
+                    onClick={() => openScores()}
+                  >
+                    <img src={trophyIcon} alt="High scores" />
+                  </div>
+
                   <div className={`volumeSliderWrapper${sliderOpen ? ' sliderOpen' : ''}`}>
                     <input
                       type="range"
@@ -158,6 +167,8 @@ export default function HomePage({
                   gitIcon={gitIcon}
                   isVolume={isVolume}
                   onVolumeChange={onVolumeChange}
+                  openScores={openScores}
+                  trophyIcon={trophyIcon}
                   buttonClassName='navStackButton'
                 />
 

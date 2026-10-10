@@ -7,6 +7,8 @@ export default function MobileMenu({
   setupPage,
   planetIcon,
   openInstructions,
+  openScores,
+  trophyIcon,
   gitIcon,
   isVolume,
   onVolumeChange,
@@ -103,6 +105,19 @@ export default function MobileMenu({
                 >
                   <span className='mobileMenuIconText'>?</span>
                   <span className='mobileMenuLabel'>How to Play</span>
+                </div>
+              </>
+            )}
+
+            {openScores && (
+              <>
+                <div className='mobileMenuDivider' />
+                <div
+                  className='mobileMenuRow'
+                  onClick={() => { setIsOpen(false); openScores(); }}
+                >
+                  <img className='mobileMenuIcon' src={trophyIcon} alt="" />
+                  <span className='mobileMenuLabel'>High scores</span>
                 </div>
               </>
             )}
