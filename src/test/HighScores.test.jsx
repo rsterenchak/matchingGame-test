@@ -37,11 +37,28 @@ describe('highScores helpers', () => {
     expect(loadHighScores()).toEqual([])
   })
 
-  it('labels each level, treating entries without a level as Easy', () => {
+  it('labels each level from the saved level field', () => {
     expect(levelLabel({ level: 'easy' })).toBe('Easy')
     expect(levelLabel({ level: 'hard' })).toBe('Hard')
     expect(levelLabel({ level: 'hardest' })).toBe('Hardest')
-    expect(levelLabel({})).toBe('Easy')
+  })
+
+  it('infers a missing level from the score only when unambiguous, otherwise no label', () => {
+    expect(levelLabel({ score: 20 })).toBe('Hard')
+    expect(levelLabel({ score: 24 })).toBe('Hard')
+    expect(levelLabel({ score: 25 })).toBe('Hardest')
+    expect(levelLabel({ score: 30 })).toBe('Hardest')
+    expect(levelLabel({ score: 16 })).toBe('')
+    expect(levelLabel({ score: 12 })).toBe('')
+    expect(levelLabel({})).toBe('')
+  })
+
+  it('keeps entries whose level is missing or unrecognised', () => {
+    localStorage.setItem(highScoresKey, JSON.stringify([
+      { name: 'Gohan', score: 30 },
+      { name: 'Piccolo', score: 4, level: 'insane' },
+    ]))
+    expect(loadHighScores().map(e => e.name)).toEqual(['Gohan', 'Piccolo'])
   })
 })
 
@@ -158,7 +175,8 @@ describe('HighScoresModal in MainSection', () => {
     expect(rows[0].querySelector('.highScoresName').textContent).toBe('P11')
     expect(rows[0].querySelector('.highScoresLevel').textContent).toBe('Hardest')
     expect(rows[0].querySelector('.highScoresScore').textContent).toBe('11')
-    expect(rows[1].querySelector('.highScoresLevel').textContent).toBe('Easy')
+    // A run saved without a level and a score that fits any level gets no badge.
+    expect(rows[1].querySelector('.highScoresLevel').textContent).toBe('')
   })
 
   it('re-reads storage on each open so a newly saved run shows without a reload', () => {

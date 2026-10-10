@@ -33,9 +33,24 @@ export function loadHighScores(){
 
 }
 
-// Runs saved before levels were recorded have no level field; they were Easy.
+// Runs saved before levels were recorded have no level field, but the level
+// selector shipped first, so they may have been played on any level. Infer the
+// level only where the score rules the others out (Easy wins at 16, Hard at 24);
+// otherwise return '' so the row shows no badge rather than a wrong one.
 export function levelLabel(entry){
 
-  return levelLabels[entry.level] ?? 'Easy';
+  if(levelLabels[entry.level]){
+    return levelLabels[entry.level];
+  }
+
+  if(entry.score > 24){
+    return 'Hardest';
+  }
+
+  if(entry.score > 16){
+    return 'Hard';
+  }
+
+  return '';
 
 }

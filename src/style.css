@@ -2160,6 +2160,12 @@ body {
   font-size: 11px;
 }
 
+/* Runs whose level can't be known get no badge, not an empty pill. */
+.highScoresLevel:empty {
+  padding: 0;
+  border: none;
+}
+
 /* The high scores modal blurs the page behind it, like the end-game popup. */
 .scoresBackdrop {
   -webkit-backdrop-filter: blur(5px);
