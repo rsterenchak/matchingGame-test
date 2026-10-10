@@ -808,18 +808,7 @@ describe('Goku gif and Fight button share one positioned container (regression: 
 })
 
 describe('Fight button shifted down relative to the Goku gif so more of the gif shows above it', () => {
-  const media320 = css.match(/@media\s*\(min-width:\s*320px\)\s*\{([\s\S]*?)(?=@media)/)?.[1] ?? ''
   const media961 = css.match(/@media\s*\(min-width:\s*961px\)[^{]*\{([\s\S]*?)(?=@media|\*\/|$)/)?.[1] ?? ''
-
-  it('320px .fightButton uses a positive downward top offset (~30% of the 20vh gif, a cumulative two-nudge shift) so it sits lower behind the gif', () => {
-    const ruleMatch = media320.match(/\.fightButton\s*\{([^}]+)\}/)
-    expect(ruleMatch).not.toBeNull()
-    const top = ruleMatch[1].match(/top:\s*([\d.]+)vh/)
-    expect(top).not.toBeNull()
-    const v = parseFloat(top[1])
-    expect(v).toBeGreaterThan(3)
-    expect(v).toBeLessThanOrEqual(9)
-  })
 
   it('961px desktop resets the .fightButton top offset so the desktop button position is unchanged (gif sits in the corner there)', () => {
     const ruleMatch = media961.match(/\.fightButton\s*\{([^}]+)\}/)
@@ -1177,5 +1166,67 @@ describe('HomePage buttons have depth and pressed states', () => {
     const icon = rule(/\.musicIcon\s*\{([^}]+)\}/)
     expect(icon).toMatch(/position:\s*relative/)
     expect(icon).toMatch(/z-index:\s*1/)
+  })
+})
+
+describe('Fight button stays above the browser chrome on phones (regression: button ran under Safari and in-app webview toolbars)', () => {
+  // Every @media block opened with the given needle, cut at its matching
+  // closing brace and concatenated, so a breakpoint split across several blocks
+  // is read as a whole without picking up the base rules between them.
+  const mediaBlocks = (needle) => {
+    let out = ''
+    let start = css.indexOf(needle)
+    while (start !== -1) {
+      let i = css.indexOf('{', start)
+      let depth = 0
+      for (; i < css.length; i++) {
+        if (css[i] === '{') depth++
+        else if (css[i] === '}' && --depth === 0) break
+      }
+      out += css.slice(start, i + 1)
+      start = css.indexOf(needle, i)
+    }
+    return out
+  }
+  const rule = (block, selector) =>
+    block.match(new RegExp(`(?:^|[\\s}])${selector.replace('.', '\\.')}\\s*\\{([^}]+)\\}`))?.[1] ?? ''
+
+  const media320 = mediaBlocks('@media (min-width:320px){')
+  const phone = mediaBlocks('@media (max-width:640px)')
+
+  it('320px block no longer nudges the Fight button down, since the Goku gif is hidden there', () => {
+    expect(rule(media320, '.fightButton')).not.toMatch(/top:\s*6vh/)
+    expect(rule(media320, '.levelInfo')).not.toMatch(/6vh/)
+  })
+
+  it('no breakpoint nudges the Fight button down, so desktop keeps the 961px top: 0 position', () => {
+    expect(css).not.toMatch(/\.fightButton\s*\{[^}]*top:\s*6vh/)
+    expect(css).not.toMatch(/calc\(12px - 6vh\)/)
+  })
+
+  it('phone block sizes the grid to the viewport with content rows, a flexible cloud row and a collapsed gif row', () => {
+    const outer = rule(phone, '.outerSection')
+    expect(outer).toMatch(/min-height:\s*100dvh/)
+    expect(outer).toMatch(/grid-template-rows:\s*auto auto minmax\(0, 1fr\) 0 auto;/)
+  })
+
+  it('phone block anchors the controls to the bottom with safe-area spacing', () => {
+    const input = rule(phone, '.inputSection')
+    expect(input).toMatch(/justify-content:\s*flex-end/)
+    expect(input).toMatch(/padding-bottom:\s*calc\(env\(safe-area-inset-bottom\) \+ 16px\)/)
+  })
+
+  it('phone block lets the cloud shrink to its row instead of overflowing it', () => {
+    expect(rule(phone, '.logoSection2')).toMatch(/min-height:\s*0/)
+    const cloud = rule(phone, '.logoContainer2')
+    expect(cloud).toMatch(/max-height:\s*100%/)
+    expect(cloud).toMatch(/height:\s*auto/)
+    expect(cloud).toMatch(/object-fit:\s*contain/)
+  })
+
+  it('phone block comes after the 320px and 481px blocks so it wins the cascade', () => {
+    const phoneAt = css.lastIndexOf('@media (max-width:640px)')
+    expect(phoneAt).toBeGreaterThan(css.indexOf('@media (min-width:320px){'))
+    expect(phoneAt).toBeGreaterThan(css.indexOf('@media (min-width:481px)'))
   })
 })

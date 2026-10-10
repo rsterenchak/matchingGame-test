@@ -909,24 +909,6 @@ body {
     object-fit: contain;
   }
 
-  /* Nudge the Fight button down ~30% of the 20vh gif height (≈6vh) relative to
-     the gif so more of the gif peeks above the button — a cumulative shift of
-     two ~15% nudges. The button stays in normal flow within .fightStage (so the
-     absolutely-positioned gif still anchors to it and renders behind it via the
-     lowered z-index); a relative top offset shifts only the button, not the gif.
-     Reset at 961px where the gif moves to the desktop bottom-right corner. */
-  .fightButton {
-    top: 6vh;
-  }
-
-  /* The info line takes up the gap the Fight button's 6vh offset leaves below
-     it, so it doesn't grow the input row (and with it every fr row of the
-     grid). Its bottom margin cancels the offset, keeping a 12px visual gap
-     above Fight. Reset at 961px along with the offset. */
-  .levelInfo {
-    margin-bottom: calc(12px - 6vh);
-  }
-
   .navSection {
     display: flex;
     flex-direction: row;
@@ -1097,6 +1079,42 @@ body {
 
 
 
+}
+
+/* Phones: anchor the controls to the bottom of the screen. The nav and logo
+   rows size to their content, the cloud row takes whatever height is left, the
+   empty gif row collapses, and the level row, info line and Fight button hug
+   the bottom. The cloud shrinks to fit its row on short screens (in-app
+   webviews with tall chrome) instead of pushing Fight under the browser bar;
+   .homeSection still scrolls as the fallback for very short viewports. */
+@media (max-width:640px) {
+  .outerSection {
+    height: 100dvh;
+    min-height: 100dvh;
+    grid-template-rows: auto auto minmax(0, 1fr) 0 auto;
+  }
+
+  .inputSection {
+    justify-content: flex-end;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 16px);
+  }
+
+  /* Center the cloud in the leftover height rather than pinning it to the top
+     of its row, which now starts right under the content-sized logo row. */
+  .logoSection2 {
+    min-height: 0;
+    justify-content: center;
+  }
+
+  /* The -5vh pull-up was sized for the old fr logo row; with the logo row at
+     its content height it would push the cloud over the title. The translate
+     lift and the floatCloud bob stay. */
+  .logoContainer2 {
+    max-height: 100%;
+    height: auto;
+    margin-top: 0;
+    object-fit: contain;
+  }
 }
 
 @media (min-width:641px) {
