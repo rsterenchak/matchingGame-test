@@ -839,6 +839,19 @@ describe('PlayPage nav controls form a uniform vertical stack in the upper-left 
     expect(Number(w)).toBeGreaterThan(34)
   })
 
+  it('the trophy glyph has an explicit size so its viewBox-only SVG does not overflow the circle', () => {
+    const base = css.match(/^\.scoresButton img\s*\{([^}]+)\}/m)
+    expect(base).not.toBeNull()
+    expect(base[1]).toMatch(/width:\s*26px/)
+    expect(base[1]).toMatch(/height:\s*26px/)
+    expect(base[1]).toMatch(/margin:\s*0/)
+
+    const override = desktopBlock().match(/\.scoresButton img\s*\{([^}]+)\}/)
+    expect(override).not.toBeNull()
+    expect(override[1]).toMatch(/width:\s*30px/)
+    expect(override[1]).toMatch(/height:\s*30px/)
+  })
+
   it('the desktop help "?" glyph scales up so it stays proportional in the larger button', () => {
     // The base .helpButton rule is un-indented (column 0); media-query and
     // .topColumn3-scoped rules are indented, so anchor to start-of-line.
@@ -1128,10 +1141,12 @@ describe('Mobile Safari safe areas: scroll roots, insets, and the phone bottom d
     const nav = standaloneRule(phone, '.navSection2')[1]
     const panel = standaloneRule(phone, '.scorePanel')[1]
     expect(nav).toMatch(/position:\s*sticky/)
-    expect(nav).toMatch(/bottom:\s*calc\(76px \+ env\(safe-area-inset-bottom\)\)/)
+    // The panel's 76px height plus its 16px bottom margin.
+    expect(nav).toMatch(/bottom:\s*calc\(92px \+ env\(safe-area-inset-bottom\)\)/)
     expect(panel).toMatch(/position:\s*sticky/)
     expect(panel).toMatch(/bottom:\s*0/)
-    expect(panel).toMatch(/margin:\s*0 10px;/)
+    // 16px gap so the panel's bottom corners clear Safari's expanded toolbar.
+    expect(panel).toMatch(/margin:\s*0 10px 16px;/)
     expect(panel).toMatch(/padding-bottom:\s*calc\(10px \+ env\(safe-area-inset-bottom\)\)/)
   })
 
