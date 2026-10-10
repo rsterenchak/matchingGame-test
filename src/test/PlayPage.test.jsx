@@ -529,17 +529,11 @@ describe('Music toggle hover does not shift card rows (regression: hover grew bo
     expect(match[1]).toMatch(/height:\s*55px/)
   })
 
-  it('.musicBlock2:hover:before reveals the glow without a size-growing animation', () => {
-    const match = css.match(/\.musicBlock2:hover:before\s*\{([^}]+)\}/)
+  it('the nav circles grow on hover by transform only — never by changing width or height', () => {
+    const match = css.match(/\.topColumn3\s+\.navStackButton:hover\s*\{([^}]+)\}/)
     expect(match).not.toBeNull()
-    // The glow appears purely by fading the :before layer in — no box-model change.
-    expect(match[1]).toMatch(/opacity:\s*1/)
-    expect(match[1]).not.toMatch(/change-color3/)
-  })
-
-  it('.musicBlock2:hover:before never changes width or height on hover', () => {
-    const match = css.match(/\.musicBlock2:hover:before\s*\{([^}]+)\}/)
-    expect(match).not.toBeNull()
+    // transform: scale leaves the box model untouched, so card rows never shift.
+    expect(match[1]).toMatch(/transform:\s*scale\(1\.08\)/)
     expect(match[1]).not.toMatch(/\bwidth:/)
     expect(match[1]).not.toMatch(/\bheight:/)
   })
@@ -549,49 +543,73 @@ describe('Music toggle hover does not shift card rows (regression: hover grew bo
   })
 })
 
-describe('Nav icons in .navSection2 share HomePage\'s rotating glow on hover (replaces scale-on-hover)', () => {
+describe('PlayPage buttons share HomePage\'s depth treatment', () => {
   const icons = ['.musicBlock2', '.musicBlock3', '.helpButton']
-
-  it.each(icons)('%s no longer uses transform: scale on hover or active', (sel) => {
-    const escaped = sel.replace('.', '\\.')
-    const hover = css.match(new RegExp(`${escaped}:hover\\s*\\{([^}]+)\\}`))
-    if (hover) expect(hover[1]).not.toMatch(/transform:\s*scale/)
-    const active = css.match(new RegExp(`${escaped}:active\\s*\\{([^}]+)\\}`))
-    if (active) expect(active[1]).not.toMatch(/transform:\s*scale/)
-  })
-
-  it.each(icons)('%s has a blurred rotating :before glow layer hidden by default', (sel) => {
-    const escaped = sel.replace('.', '\\.')
-    const match = css.match(new RegExp(`${escaped}:before\\s*\\{([^}]+)\\}`))
+  const pills = ['.retryButton', '.gotItButton']
+  const gradient = /background-image:\s*radial-gradient\(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%\)/
+  const esc = (sel) => sel.replace('.', '\\.')
+  const rule = (sel, suffix = '') => {
+    const match = css.match(new RegExp(`^${esc(sel)}${suffix}\\s*\\{([^}]+)\\}`, 'm'))
     expect(match).not.toBeNull()
-    expect(match[1]).toMatch(/filter:\s*blur/)
-    expect(match[1]).toMatch(/animation:\s*glowing2/)
-    expect(match[1]).toMatch(/background-size:\s*400%/)
-    expect(match[1]).toMatch(/opacity:\s*0/)
-    expect(match[1]).toMatch(/border-radius:\s*15px/)
+    return match[1]
+  }
+
+  it.each([...icons, ...pills])('%s has the gradient face, layered shadow, isolation, and transition', (sel) => {
+    const base = rule(sel)
+    expect(base).toMatch(gradient)
+    expect(base).toMatch(/0 0 0 2px rgb\(179, 179, 0\)/)
+    expect(base).toMatch(/inset 0 0 0 2px rgba\(255, 255, 255, 0\.35\)/)
+    expect(base).toMatch(/isolation:\s*isolate/)
+    expect(base).toMatch(/transition:\s*transform \.2s, box-shadow \.2s/)
   })
 
-  it.each(icons)('%s reveals the glow on hover via :hover:before opacity 1', (sel) => {
-    const escaped = sel.replace('.', '\\.')
-    const match = css.match(new RegExp(`${escaped}:hover:before\\s*\\{([^}]+)\\}`))
-    expect(match).not.toBeNull()
-    expect(match[1]).toMatch(/opacity:\s*1/)
+  it.each([...icons, ...pills])('%s keeps a blurred rotating :before glow that is always on', (sel) => {
+    const before = rule(sel, ':before')
+    expect(before).toMatch(/filter:\s*blur/)
+    expect(before).toMatch(/animation:\s*glowing[257] 20s/)
+    expect(before).toMatch(/opacity:\s*1/)
+    expect(css).not.toMatch(new RegExp(`${esc(sel)}:hover:before`))
   })
 
-  it.each(icons)('%s has a black :after backing layer with border-radius 20px', (sel) => {
-    const escaped = sel.replace('.', '\\.')
-    const match = css.match(new RegExp(`${escaped}:after\\s*\\{([^}]+)\\}`))
-    expect(match).not.toBeNull()
-    expect(match[1]).toMatch(/background:\s*#111/)
-    expect(match[1]).toMatch(/border-radius:\s*20px/)
+  it.each([
+    ...icons.map((sel) => [sel, '50%']),
+    ...pills.map((sel) => [sel, '17px']),
+  ])('%s:after is a click-through bevelled face with border-radius %s, not the #111 backing', (sel, radius) => {
+    const after = rule(sel, ':after')
+    expect(after).toMatch(/inset:\s*-3px/)
+    expect(after).toMatch(/border:\s*3px solid black/)
+    expect(after).toMatch(new RegExp(`border-radius:\\s*${radius}`))
+    expect(after).toMatch(/inset 0 3px 5px rgba\(120, 120, 0, 0\.45\)/)
+    expect(after).toMatch(/inset 0 -2px 0 rgba\(255, 255, 255, 0\.6\)/)
+    expect(after).toMatch(/pointer-events:\s*none/)
+    expect(after).not.toMatch(/#111/)
+    const pressed = rule(sel, ':active:after')
+    expect(pressed).toMatch(/inset 0 4px 10px rgba\(120, 120, 0, 0\.6\)/)
+    expect(pressed).not.toMatch(/transparent/)
   })
 
-  it.each(icons)('%s stays visually static on hover — no size-grow change-color2 animation', (sel) => {
-    const escaped = sel.replace('.', '\\.')
-    const match = css.match(new RegExp(`${escaped}:hover\\s*\\{([^}]+)\\}`))
-    // The glow lives on :hover:before (matched separately); any plain :hover
-    // rule must not re-introduce the size-grow animation.
-    if (match) expect(match[1]).not.toMatch(/change-color2/)
+  it('nav circles scale up on hover and down on :active', () => {
+    expect(css).toMatch(/\.topColumn3\s+\.navStackButton:hover\s*\{[^}]*transform:\s*scale\(1\.08\)/)
+    expect(css).toMatch(/\.topColumn3\s+\.navStackButton:active\s*\{[^}]*transform:\s*scale\(0\.95\)/)
+    expect(css).not.toMatch(/\.topColumn3\s+\.navStackButton:hover\s*\{[^}]*change-color2/)
+  })
+
+  it.each(pills)('%s scales on hover and press instead of the width/height keyframes', (sel) => {
+    expect(rule(sel, ':hover')).toMatch(/transform:\s*scale\(1\.036\)/)
+    expect(rule(sel, ':active')).toMatch(/transform:\s*scale\(0\.98\)/)
+    expect(css).not.toMatch(/change-color5|change-color7/)
+  })
+
+  it.each(pills)('%s keeps its 160x55 size', (sel) => {
+    const base = rule(sel)
+    expect(base).toMatch(/width:\s*160px/)
+    expect(base).toMatch(/height:\s*55px/)
+  })
+
+  it('mobile holds the PlayPage nav circles at their touch size on hover', () => {
+    const start = css.indexOf('@media (max-width:480px) {')
+    const block = css.slice(start, css.indexOf('@media', start + 1))
+    expect(block).toMatch(/\.topColumn3\s+\.navStackButton:hover:not\(:active\)\s*\{[^}]*transform:\s*none/)
   })
 })
 
@@ -809,16 +827,10 @@ describe('PlayPage nav controls form a uniform vertical stack in the upper-left 
     expect(top[1]).toBe(homeTop)
   })
 
-  it('at desktop the nav buttons grow on hover like HomePage — via the change-color2 width/height keyframes, not transform: scale (which blackens the button)', () => {
-    const hover = desktopBlock().match(/\.topColumn3\s+\.navStackButton:hover\s*\{([^}]+)\}/)
-    expect(hover).not.toBeNull()
-    // HomePage's .musicBlock grows via the change-color2 width/height keyframes.
-    // transform: scale creates a stacking context that flips the negative
-    // z-index black :after (#111) above the yellow background, blackening the
-    // button — so the grow must reuse HomePage's animation and must NOT use
-    // transform: scale.
-    expect(hover[1]).toMatch(/animation:[^;]*change-color2/)
-    expect(hover[1]).not.toMatch(/transform:\s*scale/)
+  it('at desktop the nav buttons no longer grow via the change-color2 width/height keyframes', () => {
+    // The shared transform: scale hover replaces the keyframe grow; the yellow
+    // :after face under isolation: isolate keeps the button from blackening.
+    expect(desktopBlock()).not.toMatch(/\.topColumn3\s+\.navStackButton:hover\s*\{[^}]*change-color2/)
   })
 
   it('all three nav triggers (music, background, help) carry the shared navStackButton class', () => {
