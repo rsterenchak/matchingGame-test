@@ -195,9 +195,9 @@
   - Completed: 2026-10-09
   <!-- id: b060f626-a867-432c-bd12-57aff612ad57 -->
 
-- [ ] **[MEDIUM]** Restyle the `.levelInfo` difficulty readout from a yellow pill into subtle plain text
+- [x] **[MEDIUM]** Restyle the `.levelInfo` difficulty readout from a yellow pill into subtle plain text
   - Type: feature
   - Description: The `.levelInfo` line under the difficulty buttons currently renders as a yellow gradient pill — `background-color`/`background-image`, a 3px black border, 20px `border-radius`, and the three-layer glow `box-shadow` — so a static `aria-live` readout reads as a tappable button. Remove those button-like properties (`background-color`, `background-image`, `border`, `border-radius`, `box-shadow`) along with the now-unneeded horizontal pill padding, and set the text to a muted, lower-contrast color at the existing `customFont1` / 13px / `line-height: 1.25` sizing. Keep the flex wrap and `column-gap: 6px` on `.levelInfo` and `white-space: nowrap` on `.levelInfoLine` so the two-line wrap is unchanged, and keep `max-width`, `box-sizing`, `text-align`, `cursor`, `user-select`, `position`, and `z-index` intact. Preserve `margin-bottom: 12px` as well as the `calc(12px - 6vh)` override in the ~line 896 breakpoint block and the `margin-bottom: 12px` at >=961px (~line 1236) so the gap above the Fight button is unaffected at every breakpoint. No JSX changes are needed — the existing `.levelInfo` / `.levelInfoLine` markup in the PlayPage renders the new styling directly.
   - File: `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-10-09
   <!-- id: c6824f8d-4144-4d66-96ed-3a3a577c221e -->
