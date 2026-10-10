@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-10T07:32:06.084Z",
-  "sha": "66ed75cc90b65c8198c7b09abce146caae326120",
+  "generatedAt": "2026-10-10T08:30:51.525Z",
+  "sha": "a66418333f3dfddee6815d703e8e58222ee99cd0",
   "files": [
     "Card.jsx",
     "CardBack.jsx",
@@ -260,15 +260,15 @@
       "selector": ".gotItButton",
       "label": "Got It Button",
       "file": "PlayPage.jsx",
-      "line": 948,
+      "line": 949,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 948
+          "line": 949
         },
         {
           "file": "style.css",
-          "line": 3772
+          "line": 3829
         }
       ]
     },
@@ -477,8 +477,8 @@
       ]
     },
     {
-      "selector": ".instructionsList",
-      "label": "Instructions List",
+      "selector": ".instructionsGoal",
+      "label": "Instructions Goal",
       "file": "PlayPage.jsx",
       "line": 942,
       "files": [
@@ -488,7 +488,39 @@
         },
         {
           "file": "style.css",
-          "line": 3763
+          "line": 3768
+        }
+      ]
+    },
+    {
+      "selector": ".instructionsIcon",
+      "label": "Instructions Icon",
+      "file": "PlayPage.jsx",
+      "line": 944,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 944
+        },
+        {
+          "file": "style.css",
+          "line": 3806
+        }
+      ]
+    },
+    {
+      "selector": ".instructionsList",
+      "label": "Instructions List",
+      "file": "PlayPage.jsx",
+      "line": 943,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 943
+        },
+        {
+          "file": "style.css",
+          "line": 3782
         }
       ]
     },
@@ -504,7 +536,7 @@
         },
         {
           "file": "style.css",
-          "line": 3758
+          "line": 3763
         }
       ]
     },
