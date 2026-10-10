@@ -551,13 +551,20 @@ export default function MainSection() {
 
   const [activeData, setActiveData] = useState([]);
 
+  // Difficulty level picked on the HomePage. Each level pulls a different number
+  // of characters from the API, and keeps its own high score.
+  const [isLevel, setLevel] = useState('easy');
+  const [activeHighScores, setActiveHighScores] = useState({easy: 0, hard: 0, hardest: 0});
+
+  const levelLimits = {easy: 16, hard: 24, hardest: 32};
+
   function handleVolumeChange(newVolume) {
     setVolume(newVolume);
     localStorage.setItem('matchingGame_volume', String(newVolume));
   }
 
-  async function fetchData() {
-    let url = 'https://dragonball-api.com/api/characters?page=1&limit=16';
+  async function fetchData(level, isStale) {
+    let url = 'https://dragonball-api.com/api/characters?page=1&limit=' + levelLimits[level];
     // let url = process.env.DBZ_KEY;
 
     // issue getting new fetch calls
@@ -573,6 +580,13 @@ export default function MainSection() {
       }
 
       let forecast = await response.json();
+
+      // A newer level was picked while this request was in flight — drop it so
+      // the previous level's pool never reaches the board.
+      if(isStale()){
+        return;
+      }
+
       setActiveData(forecast.items);
 
       console.log(forecast.items);
@@ -591,9 +605,16 @@ export default function MainSection() {
 
     console.log('Runs effect');
 
-    fetchData();   
+    let stale = false;
 
-  }, [])
+    setActiveData([]);
+    fetchData(isLevel, () => stale);
+
+    return () => {
+      stale = true;
+    };
+
+  }, [isLevel])
 
 
 
@@ -651,11 +672,16 @@ export default function MainSection() {
         activeCurrentAudio={isCurrentAudio}
         isVolume={isVolume}
         onVolumeChange={handleVolumeChange}
+        isLevel={isLevel}
+        setLevel={setLevel}
       />
       
       ) : (
       
       <PlayPage
+        // Keyed on the level and its pool size so a fresh game (fresh shown,
+        // picked, and score state) starts whenever the level's data changes.
+        key={isLevel + '-' + activeData.length}
         background={playBackground}
         setHomePage={() => setCurrentPage(true)}
         setAudioPause={() => setCurrentAudio(false)}
@@ -664,6 +690,9 @@ export default function MainSection() {
         isActiveData={activeData}
         isVolume={isVolume}
         onVolumeChange={handleVolumeChange}
+        isLevel={isLevel}
+        isHighScore={activeHighScores[isLevel]}
+        setHighScore={score => setActiveHighScores(prev => ({...prev, [isLevel]: score}))}
       />  
     )}
 

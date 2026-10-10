@@ -19,7 +19,10 @@ export default function PlayPage({
   activeCurrentAudio,
   isActiveData,
   isVolume,
-  onVolumeChange
+  onVolumeChange,
+  isLevel = 'easy',
+  isHighScore = 0,
+  setHighScore
 
 }) {
 
@@ -171,8 +174,22 @@ export default function PlayPage({
 
   const [activePopUp, setActivePopUp] = useState(false);
 
+  // Per-level board settings: how many cards are shown each round, and how many
+  // unique picks win the game (the size of the level's pool).
+  const levelSettings = {
+    easy: {shownCount: 8, winCount: 16},
+    hard: {shownCount: 8, winCount: 24},
+    hardest: {shownCount: 12, winCount: 32}
+  };
+
+  const {shownCount, winCount} = levelSettings[isLevel];
+
   const [activeScore, setActiveScore] = useState(0);
-  const [activeHighScore, setActiveHighScore] = useState(0);
+
+  // The high score lives in MainSection, one value per level, so it survives
+  // trips back to the HomePage to switch difficulty.
+  const activeHighScore = isHighScore;
+  const setActiveHighScore = setHighScore;
 
   const [isSide, setSide] = useState(false); // regular array
 
@@ -180,7 +197,7 @@ export default function PlayPage({
 
   const [isInitialTurn, setInitialTurn] = useState(false);
 
-  const [activePositions, setActivePositions] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
+  const [activePositions, setActivePositions] = useState(() => Array.from({length: winCount}, (_, i) => i));
 
   const [isOver, setOver] = useState(false);
 
@@ -298,7 +315,7 @@ export default function PlayPage({
 
     let newlyShownArray = activeShown;
 
-    // activePositions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    // activePositions = [0, 1, ..., winCount - 1] minus the picked cards
 
     let currentlyAvailablePositions = activePositions; 
 
@@ -338,8 +355,12 @@ export default function PlayPage({
 
     let randomArrayPositions = [];
 
+    // Cards dealt this round — capped by the pool so an empty board (data still
+    // loading, or the fetch failed) never spins this loop forever.
+    let roundSize = Math.min(shownCount, activeStandardArray.length);
+
     // Generates non-duplicate array positions - ***** Needs to keep track of unpicked array positions *****
-    while((counter < ((activeStandardArray.length)/2))){
+    while((counter < roundSize)){
 
       let newPos = randomIntFromInterval(0, activeStandardArray.length - 1); 
 
@@ -361,7 +382,7 @@ export default function PlayPage({
         console.log(activePositions);
         console.log(activeStandardArray); */
 
-        if((counter === (((activeStandardArray.length)/2) - 1)) && (result === false)){
+        if((counter === (roundSize - 1)) && (result === false)){
 
           console.log('Renew digits array');
 
@@ -491,6 +512,7 @@ export default function PlayPage({
       setPositions={setActivePositions}
       isResult={isOver}
       setResult={setOver}
+      winCount={winCount}
     />
     
   );
@@ -516,7 +538,8 @@ export default function PlayPage({
       isPositions={activePositions}
       setPositions={setActivePositions} 
       isResult={isOver}
-      setResult={setOver}           
+      setResult={setOver}
+      winCount={winCount}
     />
     
   );
@@ -596,7 +619,7 @@ export default function PlayPage({
         style={boxStyle}
       >
 
-        <div className='outerSection2'>
+        <div className={`outerSection2${shownCount > 8 ? ' hardestBoard' : ''}`}>
               
           <div className='navSection2'>
 
@@ -700,10 +723,7 @@ export default function PlayPage({
             </>
             ) : (
               <>
-                <CardBack />
-                <CardBack />
-                <CardBack />
-                <CardBack />
+                {Array.from({length: shownCount / 2}, (_, i) => <CardBack key={i} />)}
               </>
             )
 
@@ -719,10 +739,7 @@ export default function PlayPage({
               </>
               ) : (
                 <>
-                  <CardBack />
-                  <CardBack />
-                  <CardBack />
-                  <CardBack />
+                  {Array.from({length: shownCount / 2}, (_, i) => <CardBack key={i} />)}
                 </>
               )
 
@@ -737,12 +754,12 @@ export default function PlayPage({
             <div className='scorePanelRow'>
               <div className='scorePanelScoreGroup'>
                 <span className='scorePanelLabel'>Score</span>
-                <span className='scorePanelValue'>{activeScore} / 16</span>
+                <span className='scorePanelValue'>{activeScore} / {winCount}</span>
               </div>
               <div className='scorePanelBestChip'>Best {activeHighScore}</div>
             </div>
             <div className='scorePanelPips'>
-              {Array.from({length: 16}, (_, i) => (
+              {Array.from({length: winCount}, (_, i) => (
                 <div key={i} className={`scorePanelPip${i < activeScore ? ' lit' : ''}`}></div>
               ))}
             </div>
@@ -803,7 +820,7 @@ export default function PlayPage({
             <li>Pick a Z Fighter you haven't picked before.</li>
             <li>Cards reshuffle after every turn.</li>
             <li>Picking a repeated fighter ends the game.</li>
-            <li>Pick all 16 unique fighters to win!</li>
+            <li>Pick all {winCount} unique fighters to win!</li>
           </ul>
           <div className='gotItButton' onClick={closeInstructions}>Got it!</div>
         </div>
