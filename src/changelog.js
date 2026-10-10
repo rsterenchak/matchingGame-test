@@ -9,7 +9,7 @@ export const changelog = [
       'On phones, the home screen\'s Nimbus cloud now sits a little lower so it no longer overlaps the Dragon Ball Z title.',
     ],
     changed: [
-      'The home screen\'s Fight and menu buttons now look raised and glossy, grow slightly when hovered, and visibly press in when clicked.',
+      'The game screen\'s menu, Retry, and Got it! buttons now share the home screen\'s raised, glossy look with an always-on glow, grow slightly when hovered, and visibly press in when clicked.',
     ],
   },
 ];

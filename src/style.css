@@ -1287,6 +1287,16 @@ body {
   justify-content: center;
   border: 3px solid black;
   background-color: yellow;
+  background-image: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 10px rgba(179, 179, 0, 0.6),
+    0 5px 9px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  /* Own stacking context so the :before glow and the :after face layer the
+     same way at rest and while a hover/press transform is applied. */
+  isolation: isolate;
+  transition: transform .2s, box-shadow .2s;
   cursor: pointer;
   grid-area: musicBlock2;
 }
@@ -1296,11 +1306,8 @@ body {
 
 }
 
-/* PlayPage nav buttons stay visually static on hover — no size grow.
-   Only the rotating glow (:hover:before) responds to hover. */
-
-/* HomePage's rotating glow effect (see .musicBlock) replaces the old
-   transform: scale hover feedback so PlayPage's nav matches HomePage's. */
+/* Rotating glow, always on at rest like .fightButton:before; the hover grow and
+   press feedback live on the shared .topColumn3 .navStackButton rules. */
 .musicBlock2:before {
   content: '';
   background: linear-gradient(45deg, yellow, rgb(179, 179, 0), yellow,  rgb(179, 179, 0), yellow,  rgb(179, 179, 0));
@@ -1313,25 +1320,28 @@ body {
   width: calc(100% + 4px);
   height: calc(100% + 4px);
   animation: glowing2 20s linear infinite;
-  opacity: 0;
+  opacity: 1;
   transition: opacity .2s ease-in-out;
   border-radius: 15px;
 }
 
-.musicBlock2:hover:before {
-  opacity: 1;
-}
-
+/* Dimensional face: sits above the :before glow and below the content,
+   re-drawing the black border so the glow never bleeds over it, with an inner
+   bevel and a white bottom edge. */
 .musicBlock2:after {
   z-index: -1;
   content: '';
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #111;
-  left: 0;
-  top: 0;
-  border-radius: 20px;
+  inset: -3px;
+  border: 3px solid black;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
+  box-shadow:
+    inset 0 3px 5px rgba(120, 120, 0, 0.45),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.6),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  transition: box-shadow .2s;
 }
 
 .musicBlock2:active {
@@ -1339,7 +1349,9 @@ body {
 }
 
 .musicBlock2:active:after {
-  background: transparent;
+  box-shadow:
+    inset 0 4px 10px rgba(120, 120, 0, 0.6),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.3);
 }
 
 
@@ -1354,6 +1366,16 @@ body {
   justify-content: center;
   border: 3px solid black;
   background-color: yellow;
+  background-image: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 10px rgba(179, 179, 0, 0.6),
+    0 5px 9px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  /* Own stacking context so the :before glow and the :after face layer the
+     same way at rest and while a hover/press transform is applied. */
+  isolation: isolate;
+  transition: transform .2s, box-shadow .2s;
   cursor: pointer;
   grid-area: musicBlock3;
 }
@@ -1363,11 +1385,8 @@ body {
 
 }
 
-/* PlayPage nav buttons stay visually static on hover — no size grow.
-   Only the rotating glow (:hover:before) responds to hover. */
-
-/* HomePage's rotating glow effect (see .musicBlock) replaces the old
-   transform: scale hover feedback so PlayPage's nav matches HomePage's. */
+/* Rotating glow, always on at rest like .fightButton:before; the hover grow and
+   press feedback live on the shared .topColumn3 .navStackButton rules. */
 .musicBlock3:before {
   content: '';
   background: linear-gradient(45deg, yellow, rgb(179, 179, 0), yellow,  rgb(179, 179, 0), yellow,  rgb(179, 179, 0));
@@ -1380,25 +1399,28 @@ body {
   width: calc(100% + 4px);
   height: calc(100% + 4px);
   animation: glowing2 20s linear infinite;
-  opacity: 0;
+  opacity: 1;
   transition: opacity .2s ease-in-out;
   border-radius: 15px;
 }
 
-.musicBlock3:hover:before {
-  opacity: 1;
-}
-
+/* Dimensional face: sits above the :before glow and below the content,
+   re-drawing the black border so the glow never bleeds over it, with an inner
+   bevel and a white bottom edge. */
 .musicBlock3:after {
   z-index: -1;
   content: '';
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #111;
-  left: 0;
-  top: 0;
-  border-radius: 20px;
+  inset: -3px;
+  border: 3px solid black;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
+  box-shadow:
+    inset 0 3px 5px rgba(120, 120, 0, 0.45),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.6),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  transition: box-shadow .2s;
 }
 
 .musicBlock3:active {
@@ -1406,7 +1428,9 @@ body {
 }
 
 .musicBlock3:active:after {
-  background: transparent;
+  box-shadow:
+    inset 0 4px 10px rgba(120, 120, 0, 0.6),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.3);
 }
 
 
@@ -1439,6 +1463,27 @@ body {
   height: 34px;
   margin: 0;
   flex: 0 0 auto;
+}
+
+/* PlayPage nav circles share HomePage's hover grow and pressed state (see
+   .topColumn1 .navStackButton); the max-width:480px block holds them at their
+   touch size on hover. */
+.topColumn3 .navStackButton:hover {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 18px rgba(179, 179, 0, 0.9),
+    0 8px 14px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+}
+
+.topColumn3 .navStackButton:active {
+  transform: scale(0.95);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 8px rgba(179, 179, 0, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
 }
 
 /* HomePage nav controls (music toggle, speaker, hamburger) share PlayPage's
@@ -1823,6 +1868,16 @@ body {
   justify-content: center;
   border: 3px solid black;
   background-color: yellow;
+  background-image: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 14px rgba(179, 179, 0, 0.6),
+    0 8px 14px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  /* Own stacking context so the :before glow and the :after face layer the
+     same way at rest and while a hover/press transform is applied. */
+  isolation: isolate;
+  transition: transform .2s, box-shadow .2s;
   cursor: pointer;
   grid-area: musicBlock3;
   
@@ -1830,24 +1885,12 @@ body {
 
 
 .retryButton:hover {
-
-
-  animation: 0.5s change-color5 1 normal forwards; 
-  
-}
-
-@keyframes change-color5 {
-  from {
-    background-color: yellow;
-  }
-
-  to {
-    font-size: 28px;
-    width: 170px;
-    height: 65px;  
-    background-color: yellow;
-
-  }
+  transform: scale(1.036);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 22px rgba(179, 179, 0, 0.9),
+    0 12px 20px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
 }
 
 .retryButton:before {
@@ -1865,7 +1908,7 @@ body {
   animation: glowing5 20s linear infinite;
 
 
-  opacity: 0;
+  opacity: 1;
   transition: opacity .2s ease-in-out;
   border-radius: 15px;
   
@@ -1873,30 +1916,37 @@ body {
 
 .retryButton:active {
   color: #000;
-  
+  transform: scale(0.98);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 10px rgba(179, 179, 0, 0.6),
+    0 3px 6px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
 }
 
 .retryButton:active:after {
-  background: transparent;
-  
+  box-shadow:
+    inset 0 4px 10px rgba(120, 120, 0, 0.6),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.3);
 }
 
-.retryButton:hover:before {
-  opacity: 1;
-}
-
+/* Dimensional face: sits above the :before glow and below the content,
+   re-drawing the black border so the glow never bleeds over it, with an inner
+   bevel and a white bottom edge. */
 .retryButton:after {
   z-index: -1;
   content: '';
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #111;
-  left: 0;
-  top: 0;
-  border-radius: 20px;
-  
-  
+  inset: -3px;
+  border: 3px solid black;
+  border-radius: 17px;
+  background: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
+  box-shadow:
+    inset 0 3px 5px rgba(120, 120, 0, 0.45),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.6),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  transition: box-shadow .2s;
 }
 
 @keyframes glowing5 {
@@ -2377,10 +2427,10 @@ body {
     height: 48px;
   }
 
-  /* Hold the HomePage buttons at their 48px touch size instead of growing on
-     hover, matching PlayPage where the hover grow is desktop-only. The pressed
-     scale-down still applies. */
-  .topColumn1 .navStackButton:hover:not(:active) {
+  /* Hold the HomePage and PlayPage nav buttons at their 48px touch size
+     instead of growing on hover. The pressed scale-down still applies. */
+  .topColumn1 .navStackButton:hover:not(:active),
+  .topColumn3 .navStackButton:hover:not(:active) {
     transform: none;
   }
 
@@ -3107,15 +3157,10 @@ body {
     height: 55px;
   }
 
-  /* Match HomePage's nav button hover feedback: .musicBlock grows on hover via
-     the change-color2 width/height keyframes. A transform: scale would create a
-     stacking context that flips the negative z-index black :after (#111) above
-     the yellow background, blackening the button — so the grow reuses HomePage's
-     animation instead, keeping the yellow face and the rotating :before glow.
-     Desktop-only so mobile/tablet sizing is unaffected. */
-  .topColumn3 .navStackButton:hover {
-    animation: 0.5s change-color2 1 normal forwards;
-  }
+  /* Hover feedback is the shared transform: scale on .topColumn3 .navStackButton.
+     The :after is now the yellow gradient face inside an isolation: isolate
+     stacking context (the .topColumn1 .navStackButton pattern), so the scale no
+     longer flips a black backing above the button. */
 
   /* Offset the stack from the top-left border to match HomePage's nav button,
      whose .musicIconWrapper sits 10px in from the corner (the PlayPage stack is
@@ -3328,6 +3373,16 @@ body {
   align-items: center;
   border: 3px solid black;
   background-color: yellow;
+  background-image: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 10px rgba(179, 179, 0, 0.6),
+    0 5px 9px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  /* Own stacking context so the :before glow and the :after face layer the
+     same way at rest and while a hover/press transform is applied. */
+  isolation: isolate;
+  transition: transform .2s, box-shadow .2s;
   cursor: pointer;
   grid-area: helpBlock;
   font-size: 22px;
@@ -3336,12 +3391,8 @@ body {
   color: black;
 }
 
-/* PlayPage nav buttons stay visually static on hover — no size grow,
-   matching .musicBlock2 / .musicBlock3 so every nav icon behaves uniformly.
-   Only the rotating glow (:hover:before) responds to hover. */
-
-/* HomePage's rotating glow effect (see .musicBlock) replaces the old
-   transform: scale hover feedback so PlayPage's nav matches HomePage's. */
+/* Rotating glow, always on at rest like .fightButton:before; the hover grow and
+   press feedback live on the shared .topColumn3 .navStackButton rules. */
 .helpButton:before {
   content: '';
   background: linear-gradient(45deg, yellow, rgb(179, 179, 0), yellow,  rgb(179, 179, 0), yellow,  rgb(179, 179, 0));
@@ -3354,25 +3405,28 @@ body {
   width: calc(100% + 4px);
   height: calc(100% + 4px);
   animation: glowing2 20s linear infinite;
-  opacity: 0;
+  opacity: 1;
   transition: opacity .2s ease-in-out;
   border-radius: 15px;
 }
 
-.helpButton:hover:before {
-  opacity: 1;
-}
-
+/* Dimensional face: sits above the :before glow and below the content,
+   re-drawing the black border so the glow never bleeds over it, with an inner
+   bevel and a white bottom edge. */
 .helpButton:after {
   z-index: -1;
   content: '';
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #111;
-  left: 0;
-  top: 0;
-  border-radius: 20px;
+  inset: -3px;
+  border: 3px solid black;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
+  box-shadow:
+    inset 0 3px 5px rgba(120, 120, 0, 0.45),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.6),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  transition: box-shadow .2s;
 }
 
 .helpButton:active {
@@ -3380,7 +3434,9 @@ body {
 }
 
 .helpButton:active:after {
-  background: transparent;
+  box-shadow:
+    inset 0 4px 10px rgba(120, 120, 0, 0.6),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.3);
 }
 
 /* Instructions modal */
@@ -3438,23 +3494,26 @@ body {
   height: 55px;
   border: 3px solid black;
   background-color: yellow;
+  background-image: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 14px rgba(179, 179, 0, 0.6),
+    0 8px 14px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  /* Own stacking context so the :before glow and the :after face layer the
+     same way at rest and while a hover/press transform is applied. */
+  isolation: isolate;
+  transition: transform .2s, box-shadow .2s;
   cursor: pointer;
 }
 
 .gotItButton:hover {
-  animation: 0.5s change-color7 1 normal forwards;
-}
-
-@keyframes change-color7 {
-  from {
-    background-color: yellow;
-  }
-  to {
-    font-size: 23px;
-    width: 170px;
-    height: 65px;
-    background-color: yellow;
-  }
+  transform: scale(1.036);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 22px rgba(179, 179, 0, 0.9),
+    0 12px 20px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
 }
 
 .gotItButton:before {
@@ -3469,33 +3528,44 @@ body {
   width: calc(100% + 4px);
   height: calc(100% + 4px);
   animation: glowing7 20s linear infinite;
-  opacity: 0;
+  opacity: 1;
   transition: opacity .2s ease-in-out;
   border-radius: 15px;
 }
 
 .gotItButton:active {
   color: #000;
+  transform: scale(0.98);
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 0 10px rgba(179, 179, 0, 0.6),
+    0 3px 6px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
 }
 
 .gotItButton:active:after {
-  background: transparent;
+  box-shadow:
+    inset 0 4px 10px rgba(120, 120, 0, 0.6),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.3);
 }
 
-.gotItButton:hover:before {
-  opacity: 1;
-}
-
+/* Dimensional face: sits above the :before glow and below the content,
+   re-drawing the black border so the glow never bleeds over it, with an inner
+   bevel and a white bottom edge. */
 .gotItButton:after {
   z-index: -1;
   content: '';
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #111;
-  left: 0;
-  top: 0;
-  border-radius: 20px;
+  inset: -3px;
+  border: 3px solid black;
+  border-radius: 17px;
+  background: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
+  box-shadow:
+    inset 0 3px 5px rgba(120, 120, 0, 0.45),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.6),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  transition: box-shadow .2s;
 }
 
 @keyframes glowing7 {
