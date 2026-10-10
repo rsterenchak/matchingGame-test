@@ -65,6 +65,26 @@ describe('HomePage difficulty selector', () => {
     expect(glow).not.toBeNull()
     expect(glow[1]).toMatch(/animation:\s*glowing\s/)
   })
+
+  it('charges the picked level with a pulsing aura and dims the others', () => {
+    const base = css.match(/\.levelButton\s*\{([^}]+)\}/)
+    expect(base[1]).toMatch(/opacity:\s*0?\.5;/)
+    expect(base[1]).toMatch(/filter:\s*saturate\(0?\.55\) brightness\(0?\.85\);/)
+    expect(base[1]).toMatch(/transform:\s*scale\(0?\.96\);/)
+    const hover = css.match(/\.levelButton:hover\s*\{([^}]+)\}/)
+    expect(hover[1]).toMatch(/opacity:\s*0?\.9;/)
+    const active = css.match(/\.levelButton\.levelActive\s*\{([^}]+)\}/)
+    expect(active).not.toBeNull()
+    expect(active[1]).toMatch(/opacity:\s*1;/)
+    expect(active[1]).toMatch(/filter:\s*none;/)
+    expect(active[1]).toMatch(/transform:\s*scale\(1\.12\);/)
+    expect(active[1]).toContain('0 0 14px 4px #ff0')
+    expect(active[1]).toContain('0 0 38px 12px rgba(255, 255, 0, 0.6)')
+    expect(active[1]).toContain('0 0 72px 26px rgba(179, 179, 0, 0.4)')
+    expect(active[1]).toContain('inset 0 0 0 2px rgba(255, 255, 255, 0.5)')
+    expect(active[1]).toMatch(/animation:\s*pulse 1\.6s ease-in-out infinite;/)
+    expect(css).toMatch(/@keyframes pulse\s*\{[\s\S]*?50%\s*\{/)
+  })
 })
 
 describe('PlayPage per-level parameters', () => {

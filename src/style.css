@@ -674,13 +674,15 @@ body {
     0 0 0 2px rgb(179, 179, 0),
     0 6px 10px rgba(0, 0, 0, 0.45),
     inset 0 0 0 2px rgba(255, 255, 255, 0.35);
-  opacity: 0.7;
+  opacity: 0.5;
+  filter: saturate(0.55) brightness(0.85);
+  transform: scale(0.96);
   isolation: isolate;
-  transition: transform .2s, box-shadow .2s, opacity .2s;
+  transition: transform .2s, box-shadow .2s, opacity .2s, filter .2s;
 }
 
 .levelButton:hover {
-  opacity: 1;
+  opacity: 0.9;
   transform: scale(1.06);
 }
 
@@ -725,13 +727,38 @@ body {
   pointer-events: none;
 }
 
+/* The picked level reads as a Super Saiyan charge: scaled up, full colour, and
+   wrapped in a layered yellow aura that breathes via the pulse keyframe. */
 .levelButton.levelActive {
   opacity: 1;
+  filter: none;
+  transform: scale(1.12);
   box-shadow:
     0 0 0 2px rgb(179, 179, 0),
-    0 0 18px rgba(179, 179, 0, 0.9),
-    0 6px 10px rgba(0, 0, 0, 0.45),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+    0 0 14px 4px #ff0,
+    0 0 38px 12px rgba(255, 255, 0, 0.6),
+    0 0 72px 26px rgba(179, 179, 0, 0.4),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 2px rgb(179, 179, 0),
+      0 0 14px 4px #ff0,
+      0 0 38px 12px rgba(255, 255, 0, 0.6),
+      0 0 72px 26px rgba(179, 179, 0, 0.4),
+      inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px rgb(179, 179, 0),
+      0 0 20px 7px #ff0,
+      0 0 50px 18px rgba(255, 255, 0, 0.8),
+      0 0 90px 34px rgba(179, 179, 0, 0.55),
+      inset 0 0 0 2px rgba(255, 255, 255, 0.7);
+  }
 }
 
 .levelButton.levelActive:after {
@@ -2640,6 +2667,12 @@ body {
    moves the nav row between the cards and the score panel without changing
    the JSX order. */
 @media (max-width:480px) {
+  /* Trim the side padding so the scaled-up active level button (e.g. Hardest
+     at the end of the row) still fits on narrow phones. */
+  .levelButton {
+    padding: 0 10px;
+  }
+
   .outerSection2 {
     grid-template-rows: 1fr 1fr auto auto;
   }

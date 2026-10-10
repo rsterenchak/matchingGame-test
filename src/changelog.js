@@ -1,10 +1,14 @@
 export const changelog = [
   {
     version: '1.0',
-    date: '2026-10-09',
-    added: [
-      'When a game ends you can now enter your name and save your score to a High scores list that is kept between visits, with your own run highlighted.',
+    date: '2026-10-10',
+    changed: [
+      'The selected difficulty button now glows with a pulsing Super Saiyan–style aura and grows larger, while the unselected ones dim, so the picked level is obvious at a glance.',
     ],
+  },
+  {
+    version: '1.0',
+    date: '2026-10-09',
     fixed: [
       'On tablet-width and narrow desktop windows that are short, the home screen can now scroll so the Fight button is always reachable.',
       'After scrolling a short home screen down to the Fight button, the game screen now opens at the top with its menu buttons fully in view.',
