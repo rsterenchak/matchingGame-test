@@ -238,3 +238,90 @@ describe('MainSection fetches a level-sized pool', () => {
     vi.useRealTimers()
   })
 })
+
+describe('HomePage selected-level info line', () => {
+  const baseProps = {
+    background: 'bg.jpg',
+    setPlayPage: vi.fn(),
+    setAudioPause: vi.fn(),
+    setAudioPlay: vi.fn(),
+    activeCurrentAudio: false,
+    isVolume: 0.5,
+    onVolumeChange: vi.fn(),
+    setLevel: vi.fn(),
+  }
+
+  afterEach(() => cleanup())
+
+  it('sits between the level selector and the Fight button', () => {
+    render(<HomePage {...baseProps} isLevel='easy' />)
+    const stage = document.querySelector('.fightStage')
+    const select = stage.querySelector('.levelSelect')
+    const info = stage.querySelector('.levelInfo')
+    const fight = stage.querySelector('.fightButton')
+    expect(info).not.toBeNull()
+    expect(select.compareDocumentPosition(info) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+    expect(info.compareDocumentPosition(fight) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+  })
+
+  it.each([
+    ['easy', '16 characters', '8 cards shown per round'],
+    ['hard', '24 characters', '8 cards shown per round'],
+    ['hardest', '32 characters', '12 cards shown per round'],
+  ])('describes %s', (level, characters, shown) => {
+    render(<HomePage {...baseProps} isLevel={level} />)
+    const info = document.querySelector('.levelInfo')
+    expect(info).toHaveTextContent(characters)
+    expect(info).toHaveTextContent(shown)
+  })
+
+  it('reads the character count from the levelLimits passed in', () => {
+    render(<HomePage {...baseProps} isLevel='hard' levelLimits={{ easy: 10, hard: 20, hardest: 30 }} />)
+    expect(document.querySelector('.levelInfo')).toHaveTextContent('20 characters')
+  })
+
+  it('tapping the info line does not start the game', () => {
+    const setPlayPage = vi.fn()
+    render(<HomePage {...baseProps} setPlayPage={setPlayPage} isLevel='easy' />)
+    fireEvent.click(document.querySelector('.levelInfo'))
+    expect(setPlayPage).not.toHaveBeenCalled()
+  })
+
+  it('uses the DBZ face with a default cursor', () => {
+    const rule = css.match(/\.levelInfo\s*\{([^}]+)\}/)
+    expect(rule).not.toBeNull()
+    expect(rule[1]).toContain('border: 3px solid black')
+    expect(rule[1]).toContain('border-radius: 20px')
+    expect(rule[1]).toContain("font-family: 'customFont1'")
+    expect(rule[1]).toContain('font-size: 13px')
+    expect(rule[1]).toContain('cursor: default')
+  })
+})
+
+describe('MainSection level info updates with the picked level', () => {
+  let MainSection
+
+  beforeEach(async () => {
+    vi.resetModules()
+    vi.spyOn(window.HTMLMediaElement.prototype, 'play').mockImplementation(() => Promise.resolve())
+    vi.spyOn(window.HTMLMediaElement.prototype, 'pause').mockImplementation(() => {})
+    MainSection = (await import('../MainSection.jsx')).default
+  })
+
+  afterEach(() => {
+    cleanup()
+    vi.restoreAllMocks()
+  })
+
+  it('switches the info copy immediately when a level is picked', async () => {
+    globalThis.fetch = vi.fn(() => Promise.resolve({ ok: true, json: () => Promise.resolve({ items: [] }) }))
+    render(<MainSection />)
+    await act(async () => {})
+    expect(document.querySelector('.levelInfo')).toHaveTextContent('16 characters')
+
+    await act(async () => { fireEvent.click(screen.getByText('Hardest')) })
+    const info = document.querySelector('.levelInfo')
+    expect(info).toHaveTextContent('32 characters')
+    expect(info).toHaveTextContent('12 cards shown per round')
+  })
+})

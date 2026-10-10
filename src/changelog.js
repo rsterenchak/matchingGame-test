@@ -3,7 +3,7 @@ export const changelog = [
     version: '1.0',
     date: '2026-10-09',
     added: [
-      'The home screen now has Easy, Hard, and Hardest difficulty buttons above Fight: Easy keeps 16 fighters, Hard plays with 24, and Hardest deals 12 cards a round from 32, each with its own best score.',
+      'The home screen now shows how many characters and cards per round the selected difficulty uses, right under the difficulty buttons.',
     ],
     fixed: [
       'On tablet-width and narrow desktop windows that are short, the home screen can now scroll so the Fight button is always reachable.',

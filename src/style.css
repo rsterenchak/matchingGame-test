@@ -740,6 +740,43 @@ body {
     inset 0 -2px 0 rgba(255, 255, 255, 0.3);
 }
 
+/* Info line under the level selector describing the picked level. Same face as
+   the level buttons, but static: no glow, no hover, and a default cursor so it
+   doesn't read as something that starts the game. Each half stays whole and
+   wraps onto its own line when the column is too narrow for both. */
+.levelInfo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 6px;
+  max-width: calc(100vw - 32px);
+  box-sizing: border-box;
+  padding: 4px 14px;
+  margin-bottom: 12px;
+  border-radius: 20px;
+  background-color: yellow;
+  background-image: radial-gradient(ellipse at 50% 0%, #ffff55 0%, #ff0 55%, #e8e800 100%);
+  border: 3px solid black;
+  box-shadow:
+    0 0 0 2px rgb(179, 179, 0),
+    0 6px 10px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  font-family: 'customFont1';
+  font-size: 13px;
+  line-height: 1.25;
+  color: black;
+  text-align: center;
+  cursor: default;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+}
+
+.levelInfoLine {
+  white-space: nowrap;
+}
+
 
 
 
@@ -850,6 +887,14 @@ body {
      Reset at 961px where the gif moves to the desktop bottom-right corner. */
   .fightButton {
     top: 6vh;
+  }
+
+  /* The info line takes up the gap the Fight button's 6vh offset leaves below
+     it, so it doesn't grow the input row (and with it every fr row of the
+     grid). Its bottom margin cancels the offset, keeping a 12px visual gap
+     above Fight. Reset at 961px along with the offset. */
+  .levelInfo {
+    margin-bottom: calc(12px - 6vh);
   }
 
   .navSection {
@@ -1186,6 +1231,10 @@ body {
 
   .fightButton {
     top: 0;
+  }
+
+  .levelInfo {
+    margin-bottom: 12px;
   }
 
 
