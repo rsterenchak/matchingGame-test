@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-10T10:52:36.430Z",
-  "sha": "5e37d74e651bca5d2657c0e53209fc235cd41dfc",
+  "generatedAt": "2026-10-10T11:11:35.247Z",
+  "sha": "9da184f30f91e99fb7560fd11d0f3aab1f0509af",
   "files": [
     "Card.jsx",
     "CardBack.jsx",
@@ -9,10 +9,12 @@
     "MobileMenu.jsx",
     "PlayPage.jsx",
     "changelog.js",
+    "highScores.js",
     "index.jsx",
     "style.css",
     "test/Card.test.jsx",
     "test/Difficulty.test.jsx",
+    "test/HighScores.test.jsx",
     "test/HomePage.test.jsx",
     "test/MainSection.test.jsx",
     "test/MainSectionGain.test.jsx",
@@ -28,11 +30,11 @@
       "selector": ".animationSection",
       "label": "Animation Section",
       "file": "HomePage.jsx",
-      "line": 208,
+      "line": 219,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 208
+          "line": 219
         },
         {
           "file": "style.css",
@@ -56,7 +58,7 @@
         },
         {
           "file": "style.css",
-          "line": 1833
+          "line": 1844
         }
       ]
     },
@@ -72,7 +74,7 @@
         },
         {
           "file": "style.css",
-          "line": 1881
+          "line": 1892
         }
       ]
     },
@@ -88,7 +90,7 @@
         },
         {
           "file": "style.css",
-          "line": 1863
+          "line": 1874
         }
       ]
     },
@@ -104,7 +106,7 @@
         },
         {
           "file": "style.css",
-          "line": 1875
+          "line": 1886
         }
       ]
     },
@@ -112,15 +114,15 @@
       "selector": ".currentScoreSection",
       "label": "Current Score Section",
       "file": "PlayPage.jsx",
-      "line": 893,
+      "line": 877,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 893
+          "line": 877
         },
         {
           "file": "style.css",
-          "line": 1891
+          "line": 1902
         }
       ]
     },
@@ -128,15 +130,15 @@
       "selector": ".endGame",
       "label": "End Game",
       "file": "PlayPage.jsx",
-      "line": 923,
+      "line": 907,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 923
+          "line": 907
         },
         {
           "file": "style.css",
-          "line": 2046
+          "line": 2057
         }
       ]
     },
@@ -144,15 +146,15 @@
       "selector": ".endGameButtons",
       "label": "End Game Buttons",
       "file": "PlayPage.jsx",
-      "line": 729,
+      "line": 701,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 729
+          "line": 701
         },
         {
           "file": "style.css",
-          "line": 2138
+          "line": 2173
         }
       ]
     },
@@ -160,15 +162,15 @@
       "selector": ".endGameNameInput",
       "label": "End Game Name Input",
       "file": "PlayPage.jsx",
-      "line": 694,
+      "line": 666,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 694
+          "line": 666
         },
         {
           "file": "style.css",
-          "line": 2066
+          "line": 2077
         }
       ]
     },
@@ -176,11 +178,11 @@
       "selector": ".fightButton",
       "label": "Fight Button",
       "file": "HomePage.jsx",
-      "line": 243,
+      "line": 254,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 243
+          "line": 254
         },
         {
           "file": "style.css",
@@ -192,11 +194,11 @@
       "selector": ".fightStage",
       "label": "Fight Stage",
       "file": "HomePage.jsx",
-      "line": 206,
+      "line": 217,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 206
+          "line": 217
         },
         {
           "file": "style.css",
@@ -208,15 +210,15 @@
       "selector": ".gameOverTitle",
       "label": "Game Over Title",
       "file": "PlayPage.jsx",
-      "line": 925,
+      "line": 909,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 925
+          "line": 909
         },
         {
           "file": "style.css",
-          "line": 2173
+          "line": 2208
         }
       ]
     },
@@ -224,15 +226,15 @@
       "selector": ".gitIcon",
       "label": "Git Icon",
       "file": "HomePage.jsx",
-      "line": 174,
+      "line": 185,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 174
+          "line": 185
         },
         {
           "file": "PlayPage.jsx",
-          "line": 847
+          "line": 831
         },
         {
           "file": "style.css",
@@ -244,11 +246,11 @@
       "selector": ".gokuGif",
       "label": "Goku Gif",
       "file": "HomePage.jsx",
-      "line": 212,
+      "line": 223,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 212
+          "line": 223
         },
         {
           "file": "style.css",
@@ -259,16 +261,20 @@
     {
       "selector": ".gotItButton",
       "label": "Got It Button",
-      "file": "PlayPage.jsx",
-      "line": 962,
+      "file": "MainSection.jsx",
+      "line": 411,
       "files": [
         {
+          "file": "MainSection.jsx",
+          "line": 411
+        },
+        {
           "file": "PlayPage.jsx",
-          "line": 962
+          "line": 946
         },
         {
           "file": "style.css",
-          "line": 3901
+          "line": 3944
         }
       ]
     },
@@ -276,11 +282,11 @@
       "selector": ".guyGif",
       "label": "Guy Gif",
       "file": "HomePage.jsx",
-      "line": 210,
+      "line": 221,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 210
+          "line": 221
         },
         {
           "file": "style.css",
@@ -292,11 +298,11 @@
       "selector": ".helpButton",
       "label": "Help Button",
       "file": "PlayPage.jsx",
-      "line": 813,
+      "line": 785,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 813
+          "line": 785
         },
         {
           "file": "style.css",
@@ -307,108 +313,168 @@
     {
       "selector": ".highScoresBlock",
       "label": "High Scores Block",
-      "file": "PlayPage.jsx",
-      "line": 706,
+      "file": "MainSection.jsx",
+      "line": 391,
       "files": [
         {
+          "file": "MainSection.jsx",
+          "line": 391
+        },
+        {
           "file": "PlayPage.jsx",
-          "line": 706
+          "line": 678
         },
         {
           "file": "style.css",
-          "line": 2086
+          "line": 2097
         }
       ]
     },
     {
       "selector": ".highScoresEmpty",
       "label": "High Scores Empty",
-      "file": "PlayPage.jsx",
-      "line": 724,
+      "file": "MainSection.jsx",
+      "line": 407,
       "files": [
         {
+          "file": "MainSection.jsx",
+          "line": 407
+        },
+        {
           "file": "PlayPage.jsx",
-          "line": 724
+          "line": 696
         },
         {
           "file": "style.css",
-          "line": 2132
+          "line": 2143
+        }
+      ]
+    },
+    {
+      "selector": ".highScoresLevel",
+      "label": "High Scores Level",
+      "file": "MainSection.jsx",
+      "line": 401,
+      "files": [
+        {
+          "file": "MainSection.jsx",
+          "line": 401
+        },
+        {
+          "file": "style.css",
+          "line": 2155
         }
       ]
     },
     {
       "selector": ".highScoresList",
       "label": "High Scores List",
-      "file": "PlayPage.jsx",
-      "line": 711,
+      "file": "MainSection.jsx",
+      "line": 396,
       "files": [
         {
+          "file": "MainSection.jsx",
+          "line": 396
+        },
+        {
           "file": "PlayPage.jsx",
-          "line": 711
+          "line": 683
         },
         {
           "file": "style.css",
-          "line": 2100
+          "line": 2111
         }
       ]
     },
     {
       "selector": ".highScoresName",
       "label": "High Scores Name",
-      "file": "PlayPage.jsx",
-      "line": 718,
+      "file": "MainSection.jsx",
+      "line": 400,
       "files": [
         {
+          "file": "MainSection.jsx",
+          "line": 400
+        },
+        {
           "file": "PlayPage.jsx",
-          "line": 718
+          "line": 690
         },
         {
           "file": "style.css",
-          "line": 2122
+          "line": 2133
         }
       ]
     },
     {
       "selector": ".highScoresRank",
       "label": "High Scores Rank",
-      "file": "PlayPage.jsx",
-      "line": 717,
+      "file": "MainSection.jsx",
+      "line": 399,
       "files": [
         {
+          "file": "MainSection.jsx",
+          "line": 399
+        },
+        {
           "file": "PlayPage.jsx",
-          "line": 717
+          "line": 689
+        }
+      ]
+    },
+    {
+      "selector": ".highScoresRow",
+      "label": "High Scores Row",
+      "file": "MainSection.jsx",
+      "line": 398,
+      "files": [
+        {
+          "file": "MainSection.jsx",
+          "line": 398
+        },
+        {
+          "file": "style.css",
+          "line": 2117
         }
       ]
     },
     {
       "selector": ".highScoresScore",
       "label": "High Scores Score",
-      "file": "PlayPage.jsx",
-      "line": 719,
+      "file": "MainSection.jsx",
+      "line": 402,
       "files": [
         {
+          "file": "MainSection.jsx",
+          "line": 402
+        },
+        {
           "file": "PlayPage.jsx",
-          "line": 719
+          "line": 691
         },
         {
           "file": "style.css",
-          "line": 2128
+          "line": 2139
         }
       ]
     },
     {
       "selector": ".highScoresTitle",
       "label": "High Scores Title",
-      "file": "PlayPage.jsx",
-      "line": 708,
+      "file": "MainSection.jsx",
+      "line": 393,
       "files": [
         {
+          "file": "MainSection.jsx",
+          "line": 393
+        },
+        {
           "file": "PlayPage.jsx",
-          "line": 708
+          "line": 680
         },
         {
           "file": "style.css",
-          "line": 2094
+          "line": 2105
         }
       ]
     },
@@ -416,11 +482,11 @@
       "selector": ".homeSection",
       "label": "Home Section",
       "file": "HomePage.jsx",
-      "line": 108,
+      "line": 110,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 108
+          "line": 110
         },
         {
           "file": "style.css",
@@ -432,11 +498,11 @@
       "selector": ".inputSection",
       "label": "Input Section",
       "file": "HomePage.jsx",
-      "line": 199,
+      "line": 210,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 199
+          "line": 210
         },
         {
           "file": "style.css",
@@ -447,32 +513,40 @@
     {
       "selector": ".instructionsBackdrop",
       "label": "Instructions Backdrop",
-      "file": "PlayPage.jsx",
-      "line": 952,
+      "file": "MainSection.jsx",
+      "line": 389,
       "files": [
         {
+          "file": "MainSection.jsx",
+          "line": 389
+        },
+        {
           "file": "PlayPage.jsx",
-          "line": 952
+          "line": 936
         },
         {
           "file": "style.css",
-          "line": 3803
+          "line": 3846
         }
       ]
     },
     {
       "selector": ".instructionsCard",
       "label": "Instructions Card",
-      "file": "PlayPage.jsx",
-      "line": 953,
+      "file": "MainSection.jsx",
+      "line": 390,
       "files": [
         {
+          "file": "MainSection.jsx",
+          "line": 390
+        },
+        {
           "file": "PlayPage.jsx",
-          "line": 953
+          "line": 937
         },
         {
           "file": "style.css",
-          "line": 3816
+          "line": 3859
         }
       ]
     },
@@ -480,15 +554,15 @@
       "selector": ".instructionsGoal",
       "label": "Instructions Goal",
       "file": "PlayPage.jsx",
-      "line": 955,
+      "line": 939,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 955
+          "line": 939
         },
         {
           "file": "style.css",
-          "line": 3840
+          "line": 3883
         }
       ]
     },
@@ -496,11 +570,43 @@
       "selector": ".instructionsIcon",
       "label": "Instructions Icon",
       "file": "PlayPage.jsx",
-      "line": 957,
+      "line": 941,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 957
+          "line": 941
+        },
+        {
+          "file": "style.css",
+          "line": 3921
+        }
+      ]
+    },
+    {
+      "selector": ".instructionsList",
+      "label": "Instructions List",
+      "file": "PlayPage.jsx",
+      "line": 940,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 940
+        },
+        {
+          "file": "style.css",
+          "line": 3897
+        }
+      ]
+    },
+    {
+      "selector": ".instructionsTitle",
+      "label": "Instructions Title",
+      "file": "PlayPage.jsx",
+      "line": 938,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 938
         },
         {
           "file": "style.css",
@@ -509,46 +615,14 @@
       ]
     },
     {
-      "selector": ".instructionsList",
-      "label": "Instructions List",
-      "file": "PlayPage.jsx",
-      "line": 956,
-      "files": [
-        {
-          "file": "PlayPage.jsx",
-          "line": 956
-        },
-        {
-          "file": "style.css",
-          "line": 3854
-        }
-      ]
-    },
-    {
-      "selector": ".instructionsTitle",
-      "label": "Instructions Title",
-      "file": "PlayPage.jsx",
-      "line": 954,
-      "files": [
-        {
-          "file": "PlayPage.jsx",
-          "line": 954
-        },
-        {
-          "file": "style.css",
-          "line": 3835
-        }
-      ]
-    },
-    {
       "selector": ".levelInfo",
       "label": "Level Info",
       "file": "HomePage.jsx",
-      "line": 235,
+      "line": 246,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 235
+          "line": 246
         },
         {
           "file": "style.css",
@@ -560,11 +634,11 @@
       "selector": ".levelInfoLine",
       "label": "Level Info Line",
       "file": "HomePage.jsx",
-      "line": 239,
+      "line": 250,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 239
+          "line": 250
         },
         {
           "file": "style.css",
@@ -576,11 +650,11 @@
       "selector": ".levelSelect",
       "label": "Level Select",
       "file": "HomePage.jsx",
-      "line": 216,
+      "line": 227,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 216
+          "line": 227
         },
         {
           "file": "style.css",
@@ -592,11 +666,11 @@
       "selector": ".logoContainer",
       "label": "Logo Container",
       "file": "HomePage.jsx",
-      "line": 188,
+      "line": 199,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 188
+          "line": 199
         },
         {
           "file": "style.css",
@@ -608,11 +682,11 @@
       "selector": ".logoContainer2",
       "label": "Logo Container2",
       "file": "HomePage.jsx",
-      "line": 194,
+      "line": 205,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 194
+          "line": 205
         },
         {
           "file": "style.css",
@@ -624,11 +698,11 @@
       "selector": ".logoSection",
       "label": "Logo Section",
       "file": "HomePage.jsx",
-      "line": 186,
+      "line": 197,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 186
+          "line": 197
         },
         {
           "file": "style.css",
@@ -640,11 +714,11 @@
       "selector": ".logoSection2",
       "label": "Logo Section2",
       "file": "HomePage.jsx",
-      "line": 192,
+      "line": 203,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 192
+          "line": 203
         },
         {
           "file": "style.css",
@@ -656,6 +730,22 @@
       "selector": ".logoSection3",
       "label": "Logo Section3",
       "file": "PlayPage.jsx",
+      "line": 844,
+      "files": [
+        {
+          "file": "PlayPage.jsx",
+          "line": 844
+        },
+        {
+          "file": "style.css",
+          "line": 1835
+        }
+      ]
+    },
+    {
+      "selector": ".logoSection4",
+      "label": "Logo Section4",
+      "file": "PlayPage.jsx",
       "line": 860,
       "files": [
         {
@@ -664,141 +754,13 @@
         },
         {
           "file": "style.css",
-          "line": 1824
-        }
-      ]
-    },
-    {
-      "selector": ".logoSection4",
-      "label": "Logo Section4",
-      "file": "PlayPage.jsx",
-      "line": 876,
-      "files": [
-        {
-          "file": "PlayPage.jsx",
-          "line": 876
-        },
-        {
-          "file": "style.css",
-          "line": 1851
+          "line": 1862
         }
       ]
     },
     {
       "selector": ".mobileMenuBackdrop",
       "label": "Mobile Menu Backdrop",
-      "file": "MobileMenu.jsx",
-      "line": 48,
-      "files": [
-        {
-          "file": "MobileMenu.jsx",
-          "line": 48
-        },
-        {
-          "file": "style.css",
-          "line": 2347
-        }
-      ]
-    },
-    {
-      "selector": ".mobileMenuCloseButton",
-      "label": "Mobile Menu Close Button",
-      "file": "MobileMenu.jsx",
-      "line": 52,
-      "files": [
-        {
-          "file": "MobileMenu.jsx",
-          "line": 52
-        },
-        {
-          "file": "style.css",
-          "line": 2382
-        }
-      ]
-    },
-    {
-      "selector": ".mobileMenuDivider",
-      "label": "Mobile Menu Divider",
-      "file": "MobileMenu.jsx",
-      "line": 57,
-      "files": [
-        {
-          "file": "MobileMenu.jsx",
-          "line": 57
-        },
-        {
-          "file": "style.css",
-          "line": 2427
-        }
-      ]
-    },
-    {
-      "selector": ".mobileMenuIcon",
-      "label": "Mobile Menu Icon",
-      "file": "MobileMenu.jsx",
-      "line": 63,
-      "files": [
-        {
-          "file": "MobileMenu.jsx",
-          "line": 63
-        },
-        {
-          "file": "style.css",
-          "line": 2433
-        }
-      ]
-    },
-    {
-      "selector": ".mobileMenuIconText",
-      "label": "Mobile Menu Icon Text",
-      "file": "MobileMenu.jsx",
-      "line": 104,
-      "files": [
-        {
-          "file": "MobileMenu.jsx",
-          "line": 104
-        },
-        {
-          "file": "style.css",
-          "line": 2446
-        }
-      ]
-    },
-    {
-      "selector": ".mobileMenuLabel",
-      "label": "Mobile Menu Label",
-      "file": "MobileMenu.jsx",
-      "line": 64,
-      "files": [
-        {
-          "file": "MobileMenu.jsx",
-          "line": 64
-        },
-        {
-          "file": "style.css",
-          "line": 2439
-        }
-      ]
-    },
-    {
-      "selector": ".mobileMenuModal",
-      "label": "Mobile Menu Modal",
-      "file": "MobileMenu.jsx",
-      "line": 49,
-      "files": [
-        {
-          "file": "MobileMenu.jsx",
-          "line": 49
-        },
-        {
-          "file": "style.css",
-          "line": 2360
-        }
-      ]
-    },
-    {
-      "selector": ".mobileMenuModalHeader",
-      "label": "Mobile Menu Modal Header",
       "file": "MobileMenu.jsx",
       "line": 50,
       "files": [
@@ -808,13 +770,93 @@
         },
         {
           "file": "style.css",
-          "line": 2369
+          "line": 2382
         }
       ]
     },
     {
-      "selector": ".mobileMenuModalTitle",
-      "label": "Mobile Menu Modal Title",
+      "selector": ".mobileMenuCloseButton",
+      "label": "Mobile Menu Close Button",
+      "file": "MobileMenu.jsx",
+      "line": 54,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 54
+        },
+        {
+          "file": "style.css",
+          "line": 2417
+        }
+      ]
+    },
+    {
+      "selector": ".mobileMenuDivider",
+      "label": "Mobile Menu Divider",
+      "file": "MobileMenu.jsx",
+      "line": 59,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 59
+        },
+        {
+          "file": "style.css",
+          "line": 2462
+        }
+      ]
+    },
+    {
+      "selector": ".mobileMenuIcon",
+      "label": "Mobile Menu Icon",
+      "file": "MobileMenu.jsx",
+      "line": 65,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 65
+        },
+        {
+          "file": "style.css",
+          "line": 2468
+        }
+      ]
+    },
+    {
+      "selector": ".mobileMenuIconText",
+      "label": "Mobile Menu Icon Text",
+      "file": "MobileMenu.jsx",
+      "line": 106,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 106
+        },
+        {
+          "file": "style.css",
+          "line": 2481
+        }
+      ]
+    },
+    {
+      "selector": ".mobileMenuLabel",
+      "label": "Mobile Menu Label",
+      "file": "MobileMenu.jsx",
+      "line": 66,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 66
+        },
+        {
+          "file": "style.css",
+          "line": 2474
+        }
+      ]
+    },
+    {
+      "selector": ".mobileMenuModal",
+      "label": "Mobile Menu Modal",
       "file": "MobileMenu.jsx",
       "line": 51,
       "files": [
@@ -824,7 +866,39 @@
         },
         {
           "file": "style.css",
-          "line": 2376
+          "line": 2395
+        }
+      ]
+    },
+    {
+      "selector": ".mobileMenuModalHeader",
+      "label": "Mobile Menu Modal Header",
+      "file": "MobileMenu.jsx",
+      "line": 52,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 52
+        },
+        {
+          "file": "style.css",
+          "line": 2404
+        }
+      ]
+    },
+    {
+      "selector": ".mobileMenuModalTitle",
+      "label": "Mobile Menu Modal Title",
+      "file": "MobileMenu.jsx",
+      "line": 53,
+      "files": [
+        {
+          "file": "MobileMenu.jsx",
+          "line": 53
+        },
+        {
+          "file": "style.css",
+          "line": 2411
         }
       ]
     },
@@ -832,15 +906,15 @@
       "selector": ".mobileMenuRow",
       "label": "Mobile Menu Row",
       "file": "MobileMenu.jsx",
-      "line": 60,
+      "line": 62,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 60
+          "line": 62
         },
         {
           "file": "style.css",
-          "line": 2400
+          "line": 2435
         }
       ]
     },
@@ -848,15 +922,15 @@
       "selector": ".mobileMenuVolumeSlider",
       "label": "Mobile Menu Volume Slider",
       "file": "MobileMenu.jsx",
-      "line": 72,
+      "line": 74,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 72
+          "line": 74
         },
         {
           "file": "style.css",
-          "line": 2458
+          "line": 2493
         }
       ]
     },
@@ -864,15 +938,15 @@
       "selector": ".mobileMenuWrapper",
       "label": "Mobile Menu Wrapper",
       "file": "MobileMenu.jsx",
-      "line": 35,
+      "line": 37,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 35
+          "line": 37
         },
         {
           "file": "style.css",
-          "line": 2291
+          "line": 2326
         }
       ]
     },
@@ -880,11 +954,11 @@
       "selector": ".musicBlock",
       "label": "Music Block",
       "file": "HomePage.jsx",
-      "line": 122,
+      "line": 124,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 122
+          "line": 124
         },
         {
           "file": "style.css",
@@ -896,11 +970,11 @@
       "selector": ".musicBlock2",
       "label": "Music Block2",
       "file": "PlayPage.jsx",
-      "line": 773,
+      "line": 745,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 773
+          "line": 745
         },
         {
           "file": "style.css",
@@ -912,11 +986,11 @@
       "selector": ".musicBlock3",
       "label": "Music Block3",
       "file": "PlayPage.jsx",
-      "line": 803,
+      "line": 775,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 803
+          "line": 775
         },
         {
           "file": "style.css",
@@ -928,11 +1002,11 @@
       "selector": ".musicIcon",
       "label": "Music Icon",
       "file": "HomePage.jsx",
-      "line": 126,
+      "line": 128,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 126
+          "line": 128
         },
         {
           "file": "style.css",
@@ -944,11 +1018,11 @@
       "selector": ".musicIcon2",
       "label": "Music Icon2",
       "file": "PlayPage.jsx",
-      "line": 783,
+      "line": 755,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 783
+          "line": 755
         },
         {
           "file": "style.css",
@@ -960,11 +1034,11 @@
       "selector": ".musicIcon3",
       "label": "Music Icon3",
       "file": "PlayPage.jsx",
-      "line": 808,
+      "line": 780,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 808
+          "line": 780
         },
         {
           "file": "style.css",
@@ -976,15 +1050,15 @@
       "selector": ".musicIconWrapper",
       "label": "Music Icon Wrapper",
       "file": "HomePage.jsx",
-      "line": 119,
+      "line": 121,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 119
+          "line": 121
         },
         {
           "file": "PlayPage.jsx",
-          "line": 770
+          "line": 742
         },
         {
           "file": "style.css",
@@ -996,11 +1070,11 @@
       "selector": ".navSection",
       "label": "Nav Section",
       "file": "HomePage.jsx",
-      "line": 115,
+      "line": 117,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 115
+          "line": 117
         },
         {
           "file": "style.css",
@@ -1012,11 +1086,11 @@
       "selector": ".navSection2",
       "label": "Nav Section2",
       "file": "PlayPage.jsx",
-      "line": 766,
+      "line": 738,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 766
+          "line": 738
         },
         {
           "file": "style.css",
@@ -1028,11 +1102,11 @@
       "selector": ".outerSection",
       "label": "Outer Section",
       "file": "HomePage.jsx",
-      "line": 113,
+      "line": 115,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 113
+          "line": 115
         },
         {
           "file": "style.css",
@@ -1044,11 +1118,11 @@
       "selector": ".playSection",
       "label": "Play Section",
       "file": "PlayPage.jsx",
-      "line": 760,
+      "line": 732,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 760
+          "line": 732
         },
         {
           "file": "style.css",
@@ -1060,11 +1134,11 @@
       "selector": ".portfolioBlock",
       "label": "Portfolio Block",
       "file": "HomePage.jsx",
-      "line": 168,
+      "line": 179,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 168
+          "line": 179
         },
         {
           "file": "style.css",
@@ -1076,15 +1150,15 @@
       "selector": ".portfolioBlock2",
       "label": "Portfolio Block2",
       "file": "PlayPage.jsx",
-      "line": 838,
+      "line": 822,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 838
+          "line": 822
         },
         {
           "file": "style.css",
-          "line": 1796
+          "line": 1807
         }
       ]
     },
@@ -1092,11 +1166,11 @@
       "selector": ".portfolioIcon",
       "label": "Portfolio Icon",
       "file": "HomePage.jsx",
-      "line": 172,
+      "line": 183,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 172
+          "line": 183
         },
         {
           "file": "style.css",
@@ -1108,15 +1182,15 @@
       "selector": ".portfolioIcon2",
       "label": "Portfolio Icon2",
       "file": "PlayPage.jsx",
-      "line": 843,
+      "line": 827,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 843
+          "line": 827
         },
         {
           "file": "style.css",
-          "line": 1815
+          "line": 1826
         }
       ]
     },
@@ -1124,11 +1198,11 @@
       "selector": ".portfolioText",
       "label": "Portfolio Text",
       "file": "HomePage.jsx",
-      "line": 170,
+      "line": 181,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 170
+          "line": 181
         },
         {
           "file": "style.css",
@@ -1140,15 +1214,15 @@
       "selector": ".portfolioText2",
       "label": "Portfolio Text2",
       "file": "PlayPage.jsx",
-      "line": 840,
+      "line": 824,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 840
+          "line": 824
         },
         {
           "file": "style.css",
-          "line": 1807
+          "line": 1818
         }
       ]
     },
@@ -1156,15 +1230,15 @@
       "selector": ".retryButton",
       "label": "Retry Button",
       "file": "PlayPage.jsx",
-      "line": 732,
+      "line": 704,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 732
+          "line": 704
         },
         {
           "file": "style.css",
-          "line": 2177
+          "line": 2212
         }
       ]
     },
@@ -1172,15 +1246,15 @@
       "selector": ".saveButton",
       "label": "Save Button",
       "file": "PlayPage.jsx",
-      "line": 738,
+      "line": 710,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 738
+          "line": 710
         },
         {
           "file": "style.css",
-          "line": 2146
+          "line": 2181
         }
       ]
     },
@@ -1188,15 +1262,15 @@
       "selector": ".scorePanel",
       "label": "Score Panel",
       "file": "PlayPage.jsx",
-      "line": 895,
+      "line": 879,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 895
+          "line": 879
         },
         {
           "file": "style.css",
-          "line": 1979
+          "line": 1990
         }
       ]
     },
@@ -1204,15 +1278,15 @@
       "selector": ".scorePanelBestChip",
       "label": "Score Panel Best Chip",
       "file": "PlayPage.jsx",
-      "line": 901,
+      "line": 885,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 901
+          "line": 885
         },
         {
           "file": "style.css",
-          "line": 2016
+          "line": 2027
         }
       ]
     },
@@ -1220,15 +1294,15 @@
       "selector": ".scorePanelLabel",
       "label": "Score Panel Label",
       "file": "PlayPage.jsx",
-      "line": 898,
+      "line": 882,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 898
+          "line": 882
         },
         {
           "file": "style.css",
-          "line": 2004
+          "line": 2015
         }
       ]
     },
@@ -1236,15 +1310,15 @@
       "selector": ".scorePanelPips",
       "label": "Score Panel Pips",
       "file": "PlayPage.jsx",
-      "line": 903,
+      "line": 887,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 903
+          "line": 887
         },
         {
           "file": "style.css",
-          "line": 2026
+          "line": 2037
         }
       ]
     },
@@ -1252,15 +1326,15 @@
       "selector": ".scorePanelRow",
       "label": "Score Panel Row",
       "file": "PlayPage.jsx",
-      "line": 896,
+      "line": 880,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 896
+          "line": 880
         },
         {
           "file": "style.css",
-          "line": 1991
+          "line": 2002
         }
       ]
     },
@@ -1268,15 +1342,15 @@
       "selector": ".scorePanelScoreGroup",
       "label": "Score Panel Score Group",
       "file": "PlayPage.jsx",
-      "line": 897,
+      "line": 881,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 897
+          "line": 881
         },
         {
           "file": "style.css",
-          "line": 1998
+          "line": 2009
         }
       ]
     },
@@ -1284,15 +1358,35 @@
       "selector": ".scorePanelValue",
       "label": "Score Panel Value",
       "file": "PlayPage.jsx",
-      "line": 899,
+      "line": 883,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 899
+          "line": 883
         },
         {
           "file": "style.css",
-          "line": 2010
+          "line": 2021
+        }
+      ]
+    },
+    {
+      "selector": ".scoresButton",
+      "label": "Scores Button",
+      "file": "HomePage.jsx",
+      "line": 142,
+      "files": [
+        {
+          "file": "HomePage.jsx",
+          "line": 142
+        },
+        {
+          "file": "PlayPage.jsx",
+          "line": 793
+        },
+        {
+          "file": "style.css",
+          "line": 1786
         }
       ]
     },
@@ -1300,11 +1394,11 @@
       "selector": ".speakerButton",
       "label": "Speaker Button",
       "file": "HomePage.jsx",
-      "line": 131,
+      "line": 133,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 131
+          "line": 133
         },
         {
           "file": "style.css",
@@ -1316,11 +1410,11 @@
       "selector": ".svg-element",
       "label": "Svg Element",
       "file": "HomePage.jsx",
-      "line": 245,
+      "line": 256,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 245
+          "line": 256
         },
         {
           "file": "style.css",
@@ -1332,11 +1426,11 @@
       "selector": ".svg-text",
       "label": "Svg Text",
       "file": "HomePage.jsx",
-      "line": 246,
+      "line": 257,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 246
+          "line": 257
         },
         {
           "file": "style.css",
@@ -1348,11 +1442,11 @@
       "selector": ".topColumn1",
       "label": "Top Column1",
       "file": "HomePage.jsx",
-      "line": 117,
+      "line": 119,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 117
+          "line": 119
         },
         {
           "file": "style.css",
@@ -1364,11 +1458,11 @@
       "selector": ".topColumn2",
       "label": "Top Column2",
       "file": "HomePage.jsx",
-      "line": 165,
+      "line": 176,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 165
+          "line": 176
         },
         {
           "file": "style.css",
@@ -1380,11 +1474,11 @@
       "selector": ".topColumn3",
       "label": "Top Column3",
       "file": "PlayPage.jsx",
-      "line": 768,
+      "line": 740,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 768
+          "line": 740
         },
         {
           "file": "style.css",
@@ -1396,15 +1490,15 @@
       "selector": ".topColumn4",
       "label": "Top Column4",
       "file": "PlayPage.jsx",
-      "line": 835,
+      "line": 819,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 835
+          "line": 819
         },
         {
           "file": "style.css",
-          "line": 1789
+          "line": 1800
         }
       ]
     },
@@ -1412,15 +1506,15 @@
       "selector": ".volumeSliderInput",
       "label": "Volume Slider Input",
       "file": "HomePage.jsx",
-      "line": 142,
+      "line": 151,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 142
+          "line": 151
         },
         {
           "file": "PlayPage.jsx",
-          "line": 790
+          "line": 762
         },
         {
           "file": "style.css",
