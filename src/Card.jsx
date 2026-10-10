@@ -23,7 +23,8 @@ export default function Card({
   isPositions,
   setPositions,
   isResult,
-  setResult
+  setResult,
+  winCount
 
 }) {
 
@@ -185,7 +186,7 @@ export default function Card({
         setScore(incrementedScore);
         
 
-        if(incrementedScore === 16){
+        if(incrementedScore === winCount){
           setResult(true);
           setPopUp(true);
 

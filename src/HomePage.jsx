@@ -14,7 +14,9 @@ export default function HomePage({
   setAudioPlay,
   activeCurrentAudio,
   isVolume,
-  onVolumeChange
+  onVolumeChange,
+  isLevel = 'easy',
+  setLevel
 }) {
 
   console.log('HomePage re-rendered');
@@ -50,6 +52,21 @@ export default function HomePage({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
+  }
+
+  const levels = [
+    {key: 'easy', label: 'Easy'},
+    {key: 'hard', label: 'Hard'},
+    {key: 'hardest', label: 'Hardest'}
+  ];
+
+  function pickLevel(e, level){
+
+    // The whole input section starts the game on click — picking a level must
+    // not also fire Fight.
+    e.stopPropagation();
+    setLevel(level);
+
   }
 
   function setupPage(){
@@ -186,6 +203,22 @@ export default function HomePage({
                 {/* <img className='guyGif' src={guyGif}></img>
  */}
                 <img className='gokuGif' src={gokuGif}></img>
+
+              </div>
+
+              <div className='levelSelect' role='group' aria-label='Difficulty'>
+
+                {levels.map(level => (
+                  <div
+                    key={level.key}
+                    className={`levelButton${isLevel === level.key ? ' levelActive' : ''}`}
+                    role='button'
+                    aria-pressed={isLevel === level.key}
+                    onClick={e => pickLevel(e, level.key)}
+                  >
+                    {level.label}
+                  </div>
+                ))}
 
               </div>
 
