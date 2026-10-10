@@ -4,7 +4,7 @@ Guidance for Claude when writing or reviewing code in this repo. Rules here are 
 
 ## Project overview
 
-A single-page Dragon Ball Z–themed memory/matching game. The player sees a grid of 8 character cards drawn from a pool of 16, clicks one, the cards reshuffle (with the previously-clicked card guaranteed to be unpicked among the new 8), and the player tries to click each of the 16 unique characters exactly once without repeating. Clicking a card that has already been picked, or that wasn't shown in any previous round, ends the game. Reaching 16 wins. A high score persists across retries within the session. Character data (names, images) is pulled from the public Dragon Ball API.
+A single-page Dragon Ball Z–themed memory/matching game. The player sees a grid of 8 character cards drawn from a pool of 16, clicks one, the cards reshuffle (with the previously-clicked card guaranteed to be unpicked among the new 8), and the player tries to click each of the 16 unique characters exactly once without repeating. Clicking a card that has already been picked, or that was never dealt onto the board, ends the game. Reaching 16 wins. A high score persists across retries within the session. Character data (names, images) is pulled from the public Dragon Ball API.
 
 Two pages: a `HomePage` title screen with a "Fight" button, and a `PlayPage` with the card grid, score, and high score. Background music differs per page and is toggleable via the music icon.
 
@@ -44,7 +44,7 @@ Do not move game logic out of `PlayPage.jsx` and `Card.jsx` into new "manager" o
 ## Game logic conventions
 
 - A "turn" is one card click. The shuffle that follows produces a new 8-card subset of the 16-card pool, and that subset is guaranteed to include at least one not-yet-picked card. The `verifyArray` + `randomArrayPositions` loop in `PlayPage.shuffleArray` enforces this — do not remove that guard.
-- The `activeShown` array is cumulative: once a card has appeared in any round, it stays in `activeShown` for the rest of the game. Clicking a card that is *not* in `activeShown` is a loss (the user couldn't have known about it). Preserve this rule.
+- The `activeShown` array is cumulative: a card joins `activeShown` the moment it is dealt, and stays there for the rest of the game. Clicking a card that is *not* in `activeShown` is a loss — after a deal every rendered card is in it, so this check is a defensive guard against a state bug. Preserve this rule.
 - `activePickedArray` is the win-tracking set. Length 16 = win; clicking a card already in this set = loss.
 - High score updates only at game end (win or loss), not on every click. Keep it that way — updating mid-game would let an in-progress run set a high score that the player hasn't actually completed.
 - The popup (`activePopUp`) blurs the game board behind it via the `boxStyle` filter. Keep destructive popups (game over, win) using the same `.endGame` container so styling stays consistent.

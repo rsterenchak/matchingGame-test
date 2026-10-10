@@ -329,45 +329,9 @@ export default function PlayPage({
 
     let counter = 0;
 
-    let newlyShownArray = activeShown;
-
     // activePositions = [0, 1, ..., winCount - 1] minus the picked cards
 
     let currentlyAvailablePositions = activePositions; 
-
-    // pre-add cards
-    if(isInitialTurn){
-
-      // Adds previous set of cards 
-      while(counter < activeShuffledArray.length){
-
-
-        // if card is not already in the newlyShownArray push it onto the array
-        if(newlyShownArray.includes(activeShuffledArray[counter])){
-
-          // console.log('Already exists on array');
-
-        }
-        else{
-
-          newlyShownArray.push(activeShuffledArray[counter]);
-
-        }
-
-        counter += 1;
-
-
-      }    
-
-
-      setActiveShown(newlyShownArray);
-
-      // console.log('Cards from after initial set up');
-      // console.log(newlyShownArray);
-
-      counter = 0;
-
-    }
 
     let randomArrayPositions = [];
 
@@ -453,43 +417,14 @@ export default function PlayPage({
     setActiveShuffledArray(newlyShuffledArray);
 
 
-    counter = 0;
+    // Every dealt card counts as shown the moment it hits the board — a new
+    // array so React sees the change.
+    setActiveShown(prevShown => [
+      ...prevShown,
+      ...newlyShuffledArray.filter(card => !prevShown.includes(card))
+    ]);
 
-    // Initial set up for shown cards
-    if(isInitialTurn === false){
-
-      newlyShownArray = activeShown;
-
-
-    // Adds previous set of cards 
-      while(counter < newlyShuffledArray.length){
-
-
-        // if card is not already in the newlyShownArray push it onto the array
-        if(newlyShownArray.includes(newlyShuffledArray[counter])){
-
-          // console.log('Already exists on array');
-
-        }
-        else{
-
-          newlyShownArray.push(newlyShuffledArray[counter]);
-
-        }
-
-        counter += 1;
-
-
-      }    
-
-      setActiveShown(newlyShownArray);
-
-      setInitialTurn(true);
-
-      // console.log('Cards from initial set up');
-      // console.log(newlyShownArray);
-
-    }
+    setInitialTurn(true);
 
     let topRowArray =[];
     let bottomRowArray =[];

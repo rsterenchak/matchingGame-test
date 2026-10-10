@@ -1374,3 +1374,79 @@ describe('Win celebration layer', () => {
     expect(css.match(/^\.winFlash\s*\{([^}]+)\}/m)[1]).toMatch(/opacity:\s*0\.6/)
   })
 })
+
+describe('Newly dealt cards are fair game', () => {
+  const characters = Array.from({ length: 16 }, (_, i) => ({
+    id: i + 1,
+    name: `Fighter ${i + 1}`,
+    image: `fighter-${i + 1}.png`,
+  }))
+
+  const defaultProps = {
+    background: 'fake-bg.jpg',
+    setHomePage: vi.fn(),
+    setAudioPause: vi.fn(),
+    setAudioPlay: vi.fn(),
+    activeCurrentAudio: false,
+    isActiveData: characters,
+    isVolume: 0.5,
+    onVolumeChange: vi.fn(),
+    setHighScore: vi.fn(),
+  }
+
+  beforeEach(() => {
+    localStorage.clear()
+    vi.useFakeTimers()
+    // Deal positions 0, 1, 2, … in order, so the first board is fighters 1–8
+    // and the second is fighters 9–16 — none of them on the first board.
+    let draws = 0
+    vi.spyOn(Math, 'random').mockImplementation(() => ((draws++ % 16) + 0.5) / 16)
+  })
+
+  afterEach(() => {
+    vi.clearAllTimers()
+    vi.useRealTimers()
+    vi.restoreAllMocks()
+    localStorage.clear()
+  })
+
+  const boardImages = () =>
+    [...document.querySelectorAll('.card .cardImage')].map(img => img.getAttribute('src'))
+
+  function clickImage(src) {
+    fireEvent.click(document.querySelectorAll('.card')[boardImages().indexOf(src)])
+  }
+
+  it('clicking a card dealt for the first time this round scores instead of ending the game', () => {
+    render(<PlayPage {...defaultProps} />)
+    act(() => { vi.advanceTimersByTime(1000) })
+    const firstBoard = boardImages()
+    clickImage(firstBoard[0])
+
+    act(() => { vi.advanceTimersByTime(1000) })
+    const fresh = boardImages().find(src => !firstBoard.includes(src))
+    expect(fresh).toBeDefined()
+    clickImage(fresh)
+
+    expect(screen.getByText('2 / 16')).toBeInTheDocument()
+    expect(document.querySelector('.endGame')).not.toBeInTheDocument()
+  })
+
+  it('clicking an already-picked card still ends the game', () => {
+    render(<PlayPage {...defaultProps} />)
+    act(() => { vi.advanceTimersByTime(1000) })
+    const first = boardImages()[0]
+    clickImage(first)
+
+    // Keep scoring fresh cards until the first pick is dealt again.
+    for (let turn = 0; turn < 16 && !boardImages().includes(first); turn++) {
+      act(() => { vi.advanceTimersByTime(1000) })
+      if (boardImages().includes(first)) break
+      clickImage(boardImages()[boardImages().length - 1])
+    }
+    expect(document.querySelector('.endGame')).not.toBeInTheDocument()
+    clickImage(first)
+
+    expect(document.querySelector('.endGame')).toBeInTheDocument()
+  })
+})
