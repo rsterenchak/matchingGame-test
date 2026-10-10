@@ -333,6 +333,24 @@ describe('Nimbus cloud upsize and float animation', () => {
     expect(ruleMatch[1]).toMatch(/translate:\s*-10%\s+-10%/)
   })
 
+  it('961px breakpoint logoContainer2 resets the 641px translateX centering so the static nimbus matches the animated rest position', () => {
+    const ruleMatch = sliceMediaBlock('@media (min-width:961px)').match(/\.logoContainer2\s*\{([\s\S]*?)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/transform:\s*none\s*;/)
+  })
+
+  it('1281px breakpoint logoContainer2 does not reintroduce a transform over the 961px reset', () => {
+    const ruleMatch = sliceMediaBlock('@media (min-width:1281px)').match(/\.logoContainer2\s*\{([\s\S]*?)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).not.toMatch(/(^|[^-])transform:/)
+  })
+
+  it('641px breakpoint logoContainer2 keeps its translateX mobile centering', () => {
+    const ruleMatch = sliceMediaBlock('@media (min-width:641px) {').match(/\.logoContainer2\s*\{([\s\S]*?)\}/)
+    expect(ruleMatch).not.toBeNull()
+    expect(ruleMatch[1]).toMatch(/transform:\s*translateX\(12\.3%\)/)
+  })
+
   it('1281px breakpoint logoContainer2 shifts the nimbus 10% left and 10% down via translate(-10% -10%)', () => {
     const ruleMatch = sliceMediaBlock('@media (min-width:1281px)').match(/\.logoContainer2\s*\{([\s\S]*?)\}/)
     expect(ruleMatch).not.toBeNull()
