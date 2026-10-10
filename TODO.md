@@ -181,9 +181,9 @@
   - Completed: 2026-10-09
   <!-- id: b640625c-4e58-4618-8168-83c59ba5a9f9 -->
 
-- [ ] **[MEDIUM]** Add Easy/Hard/Hardest difficulty selector to HomePage and parameterize PlayPage game logic per level
+- [x] **[MEDIUM]** Add Easy/Hard/Hardest difficulty selector to HomePage and parameterize PlayPage game logic per level
   - Type: feature
   - Description: Add an Easy/Hard/Hardest selector to `HomePage.jsx` in the `.fightStage` region above the `.fightButton`, reusing the existing DBZ button family (yellow radial-gradient, 3px black border, 20px radius, `customFont1`, glow via `:before` + `glowing` keyframe) — no new breakpoints. Add the level state in `MainSection.jsx`, pass it to `PlayPage.jsx`, and make `MainSection.fetchData` request a level-dependent limit (Easy 16 / Hard 24 / Hardest 32); fetch per level change. In `PlayPage.jsx` parameterize `shuffleArray`'s `verifyArray` + `randomArrayPositions` guard so exactly one unpicked card is guaranteed per round at every level, and parameterize the shown count (Easy 8 / Hard 8 / Hardest 12) and win threshold (Easy 16 / Hard 24 / Hardest 32) off the level prop. High score must be tracked per level (a separate value per difficulty, updated only at game end per the existing rule), and switching difficulty mid-game must not leak the previous level's pool, shown cards, picked cards, or score. Preserve the cumulative `activeShown` rule and the "click an unseen card = loss" rule at all levels, and thread `popUpStyle` through any new interactive selector elements.
   - File: `src/HomePage.jsx`, `src/MainSection.jsx`, `src/PlayPage.jsx`, `src/style.css`
-  - Completed: YYYY-MM-DD (PR #<number>)
+  - Completed: 2026-10-09
   <!-- id: c38e726e-9aa5-49e3-9c75-b77bd51bd99a -->
