@@ -208,3 +208,10 @@
   - File: `src/PlayPage.jsx`, `src/style.css`, `test/PlayPage.test.jsx`
   - Completed: 2026-10-09
   <!-- id: 063bbeca-80e2-42b0-85b5-e8f89206248c -->
+
+- [ ] **[MEDIUM]** Strengthen the selected difficulty button's glow into a Super Saiyan–style charge
+  - Type: feature
+  - Description: The `.levelActive` state on `.levelButton` is currently barely distinguishable from the unselected buttons — both sit at similar opacity/size with only a modest `0 0 18px` glow, so it's hard to tell which difficulty is picked. Make the active button read as a charged-up selection: scale it up to `transform: scale(1.12)` with `opacity: 1` and `filter: none`, give it a layered yellow aura (`0 0 14px 4px #ff0`, `0 0 38px 12px rgba(255,255,0,.6)`, `0 0 72px 26px rgba(179,179,0,.4)`, plus a brighter `inset 0 0 0 2px rgba(255,255,255,.5)`), and add a `pulse` keyframe (`1.6s ease-in-out infinite`, larger/brighter shadow at 50%) so the glow breathes like a charging aura. Simultaneously push the inactive `.levelButton` down (`opacity: .5`, `filter: saturate(.55) brightness(.85)`, `transform: scale(.96)`) with an `opacity: .9` hover, so the contrast between selected and unselected is obvious at a glance. All changes are in `.levelButton`, `.levelButton:hover`, `.levelButton.levelActive`, and a new `@keyframes pulse` in `src/style.css`; the existing `.levelButton:before` glow animation and the `levelActive` class logic in the markup stay untouched, and the effect must hold up at the existing 320px breakpoint where card/button space is tightest. Keep the yellow/black DBZ button family (3px black border, radius 20px, `customFont1` 13px) unchanged.
+  - File: `src/style.css`
+  - Completed: YYYY-MM-DD (PR #<number>)
+  <!-- id: 323a86a9-94fe-4ed1-8338-0995616d0f9d -->
