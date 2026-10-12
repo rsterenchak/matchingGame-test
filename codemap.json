@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "areas": [
+    {
+      "id": "screens",
+      "name": "Screens",
+      "purpose": "The app shell and title screen: page switching, level choice, music state and the character fetch.",
+      "pos": [0.30, 0.30],
+      "files": ["index.jsx", "MainSection.jsx", "HomePage.jsx", "MobileMenu.jsx"]
+    },
+    {
+      "id": "game",
+      "name": "Game",
+      "purpose": "The play screen, where cards are dealt, clicked, scored and celebrated.",
+      "pos": [0.70, 0.35],
+      "files": ["PlayPage.jsx", "Card.jsx", "CardBack.jsx", "WinCelebration.jsx"]
+    },
+    {
+      "id": "support",
+      "name": "Sound & scores",
+      "purpose": "Plain helpers for synthesized sounds, saved high scores and the release notes.",
+      "pos": [0.50, 0.75],
+      "files": ["sfx.js", "highScores.js", "changelog.js"]
+    },
+    {
+      "id": "tests",
+      "name": "Tests",
+      "purpose": "The Vitest suite and its setup file, which check the screens, game rules, sounds and layout.",
+      "pos": [0.15, 0.80],
+      "files": [
+        "test/Card.test.jsx",
+        "test/Difficulty.test.jsx",
+        "test/HighScores.test.jsx",
+        "test/codeMap.test.js",
+        "test/HomePage.test.jsx",
+        "test/MainSection.test.jsx",
+        "test/MainSectionGain.test.jsx",
+        "test/MemoryGameTitle.test.js",
+        "test/MobileMenu.test.jsx",
+        "test/PlayPage.test.jsx",
+        "test/placeholder.test.js",
+        "test/setup.js",
+        "test/sfx.test.js"
+      ]
+    }
+  ]
+}

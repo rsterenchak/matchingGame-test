@@ -1,3 +1,4 @@
+// Tests that the Memory Game title SVG text is centered on the cloud artwork.
 import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'fs'
 import { join } from 'path'

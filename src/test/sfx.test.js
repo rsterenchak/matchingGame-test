@@ -1,3 +1,4 @@
+// Tests for the synthesized button and card sounds, using a fake AudioContext.
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 
 // jsdom has no Web Audio, so a minimal fake records the oscillator and gain

@@ -1,3 +1,4 @@
+// Tests that the Easy / Hard / Hardest levels set the pool size, cards shown and win threshold.
 import { render, screen, fireEvent, act, cleanup } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { readFileSync } from 'fs'

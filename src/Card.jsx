@@ -1,3 +1,4 @@
+// One face-up card: its click decides a hit (score up, deal again) or a miss (game over), and it tilts toward the cursor.
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './style.css';

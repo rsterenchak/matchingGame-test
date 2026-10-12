@@ -1,4 +1,4 @@
-// build trigger
+// App entry point: mounts MainSection into #app inside React StrictMode.
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';

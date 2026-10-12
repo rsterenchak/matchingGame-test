@@ -1,3 +1,4 @@
+// Tests for the background music: volume, one persistent Audio per track, and no overlapping playback.
 import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'fs'
 import { resolve, dirname } from 'path'

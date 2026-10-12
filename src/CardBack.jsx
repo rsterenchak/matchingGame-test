@@ -1,3 +1,4 @@
+// One face-down card, shown while a new deal flips over; purely presentational.
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './style.css';

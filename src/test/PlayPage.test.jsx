@@ -1,3 +1,4 @@
+// Tests for PlayPage's layout, score panel, volume slider and instructions modal.
 import { render, screen, fireEvent, act, cleanup } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { readFileSync } from 'fs'

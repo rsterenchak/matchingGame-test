@@ -39,6 +39,7 @@ All source lives in `src/`. Each file has a defined responsibility — stay with
 - `src/WinCelebration.jsx` — The one-shot Dragon Ball flash-and-rise layer `PlayPage` renders behind the win popup (more waves on harder levels). Presentational only; removes itself when the animation ends.
 - `src/CardBack.jsx` — One face-down card. Purely presentational; takes no meaningful props.
 - `src/style.css` — All styling. No inline `style` props in JSX unless computed dynamically (e.g., the background-image URL, the popup blur).
+- New source files (tests included) open with a `//` purpose comment whose first sentence says what the file owns, and are added to an area in `codemap.json`. A change that renames or moves code a step in `codetour.json` anchors to (its `symbol`, `parent` or `match` lines) updates that step in the same PR; `src/test/codeMap.test.js` fails when either drifts.
 
 Do not move game logic out of `PlayPage.jsx` and `Card.jsx` into new "manager" or "service" files unless the task explicitly asks for a refactor. Do not lift game state up into `MainSection.jsx`.
 

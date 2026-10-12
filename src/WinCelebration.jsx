@@ -1,3 +1,4 @@
+// The Dragon Ball flash-and-rise animation PlayPage shows behind the win popup.
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './style.css';

@@ -1,3 +1,4 @@
+// Tests for the mobile menu modal, its volume slider and the nav button styling around it.
 import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect, vi } from 'vitest'
 import { readFileSync } from 'fs'

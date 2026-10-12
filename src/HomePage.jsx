@@ -1,3 +1,4 @@
+// Title screen: logo, level picker, Fight button, and the music, volume and high scores controls.
 import React, { useEffect, useRef, useState } from 'react';
 import './style.css';
 import MobileMenu from './MobileMenu.jsx';

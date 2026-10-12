@@ -1,3 +1,4 @@
+// Player-facing release notes, newest entry first.
 export const changelog = [
   {
     version: '1.0',
