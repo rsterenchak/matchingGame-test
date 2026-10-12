@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-10T15:16:15.450Z",
-  "sha": "48848a0672e20189cf74528ee6010c146cfca9de",
+  "generatedAt": "2026-10-12T03:00:59.666Z",
+  "sha": "4322ea7371bb8c7b560b1c1b549034d8ad5e0e4b",
   "files": [
     "Card.jsx",
     "CardBack.jsx",
@@ -1575,5 +1575,215 @@
     }
   ],
   "hasDom": true,
-  "lens": "ui"
+  "lens": "ui",
+  "modules": [
+    {
+      "path": "Card.jsx",
+      "lines": 276,
+      "imports": [
+        "assets/dbzCardBack.png",
+        "assets/github.svg",
+        "assets/musical-notes.svg",
+        "assets/planet.svg",
+        "sfx.js"
+      ],
+      "purpose": null
+    },
+    {
+      "path": "CardBack.jsx",
+      "lines": 40,
+      "imports": [
+        "assets/dbzCardBack.png",
+        "assets/github.svg",
+        "assets/musical-notes.svg",
+        "assets/planet.svg"
+      ],
+      "purpose": null
+    },
+    {
+      "path": "HomePage.jsx",
+      "lines": 273,
+      "imports": [
+        "MobileMenu.jsx",
+        "PlayPage.jsx",
+        "assets/MemoryGameTitle.svg",
+        "assets/dbzMoving.png",
+        "assets/github.svg",
+        "assets/goku-gif.gif",
+        "assets/musical-notes.svg",
+        "assets/trophy.svg",
+        "sfx.js"
+      ],
+      "purpose": null
+    },
+    {
+      "path": "MainSection.jsx",
+      "lines": 878,
+      "imports": [
+        "HomePage.jsx",
+        "PlayPage.jsx",
+        "assets/DragonBallZ.mp3",
+        "assets/NamekTheme.mp3",
+        "assets/kame-house.jpg",
+        "assets/namek-background.svg",
+        "highScores.js",
+        "sfx.js"
+      ],
+      "purpose": null
+    },
+    {
+      "path": "MobileMenu.jsx",
+      "lines": 142,
+      "imports": [
+        "sfx.js"
+      ],
+      "purpose": null
+    },
+    {
+      "path": "PlayPage.jsx",
+      "lines": 1022,
+      "imports": [
+        "Card.jsx",
+        "CardBack.jsx",
+        "MobileMenu.jsx",
+        "WinCelebration.jsx",
+        "assets/dbzCardBack.png",
+        "assets/github.svg",
+        "assets/musical-notes.svg",
+        "assets/planet.svg",
+        "assets/trophy.svg",
+        "highScores.js",
+        "sfx.js"
+      ],
+      "purpose": null
+    },
+    {
+      "path": "WinCelebration.jsx",
+      "lines": 74,
+      "imports": [],
+      "purpose": null
+    },
+    {
+      "path": "changelog.js",
+      "lines": 15,
+      "imports": [],
+      "purpose": null
+    },
+    {
+      "path": "highScores.js",
+      "lines": 68,
+      "imports": [],
+      "purpose": "Saved runs persist across reloads as a JSON array of { name, score, level }."
+    },
+    {
+      "path": "index.jsx",
+      "lines": 15,
+      "imports": [
+        "MainSection.jsx"
+      ],
+      "purpose": "build trigger"
+    },
+    {
+      "path": "sfx.js",
+      "lines": 95,
+      "imports": [],
+      "purpose": "Button and card sounds synthesized with the Web Audio API, so there are no audio files to ship."
+    },
+    {
+      "path": "test/Card.test.jsx",
+      "lines": 148,
+      "imports": [
+        "Card.jsx"
+      ],
+      "purpose": null
+    },
+    {
+      "path": "test/Difficulty.test.jsx",
+      "lines": 348,
+      "imports": [
+        "Card.jsx",
+        "HomePage.jsx",
+        "MainSection.jsx",
+        "PlayPage.jsx"
+      ],
+      "purpose": null
+    },
+    {
+      "path": "test/HighScores.test.jsx",
+      "lines": 296,
+      "imports": [
+        "HomePage.jsx",
+        "MainSection.jsx",
+        "MobileMenu.jsx",
+        "PlayPage.jsx",
+        "highScores.js"
+      ],
+      "purpose": null
+    },
+    {
+      "path": "test/HomePage.test.jsx",
+      "lines": 1232,
+      "imports": [
+        "HomePage.jsx"
+      ],
+      "purpose": null
+    },
+    {
+      "path": "test/MainSection.test.jsx",
+      "lines": 108,
+      "imports": [],
+      "purpose": null
+    },
+    {
+      "path": "test/MainSectionGain.test.jsx",
+      "lines": 121,
+      "imports": [
+        "MainSection.jsx"
+      ],
+      "purpose": null
+    },
+    {
+      "path": "test/MemoryGameTitle.test.js",
+      "lines": 19,
+      "imports": [],
+      "purpose": null
+    },
+    {
+      "path": "test/MobileMenu.test.jsx",
+      "lines": 181,
+      "imports": [
+        "MobileMenu.jsx"
+      ],
+      "purpose": null
+    },
+    {
+      "path": "test/PlayPage.test.jsx",
+      "lines": 1467,
+      "imports": [
+        "PlayPage.jsx",
+        "WinCelebration.jsx"
+      ],
+      "purpose": null
+    },
+    {
+      "path": "test/placeholder.test.js",
+      "lines": 9,
+      "imports": [],
+      "purpose": null
+    },
+    {
+      "path": "test/setup.js",
+      "lines": 7,
+      "imports": [],
+      "purpose": null
+    },
+    {
+      "path": "test/sfx.test.js",
+      "lines": 134,
+      "imports": [
+        "sfx.js"
+      ],
+      "purpose": null
+    }
+  ]
 }
