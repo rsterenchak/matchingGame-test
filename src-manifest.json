@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-12T03:00:59.666Z",
-  "sha": "4322ea7371bb8c7b560b1c1b549034d8ad5e0e4b",
+  "generatedAt": "2026-10-12T03:12:00.662Z",
+  "sha": "58bcb8ef9f2e302bba185c03ec7efb7a0b686eb5",
   "files": [
     "Card.jsx",
     "CardBack.jsx",
@@ -23,6 +23,7 @@
     "test/MemoryGameTitle.test.js",
     "test/MobileMenu.test.jsx",
     "test/PlayPage.test.jsx",
+    "test/codeMap.test.js",
     "test/placeholder.test.js",
     "test/setup.js",
     "test/sfx.test.js"
@@ -33,11 +34,11 @@
       "selector": ".animationSection",
       "label": "Animation Section",
       "file": "HomePage.jsx",
-      "line": 222,
+      "line": 223,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 222
+          "line": 223
         },
         {
           "file": "style.css",
@@ -49,15 +50,15 @@
       "selector": ".card",
       "label": "Card",
       "file": "Card.jsx",
-      "line": 256,
+      "line": 257,
       "files": [
         {
           "file": "Card.jsx",
-          "line": 256
+          "line": 257
         },
         {
           "file": "CardBack.jsx",
-          "line": 28
+          "line": 29
         },
         {
           "file": "style.css",
@@ -69,11 +70,11 @@
       "selector": ".cardBack",
       "label": "Card Back",
       "file": "CardBack.jsx",
-      "line": 30,
+      "line": 31,
       "files": [
         {
           "file": "CardBack.jsx",
-          "line": 30
+          "line": 31
         },
         {
           "file": "style.css",
@@ -85,11 +86,11 @@
       "selector": ".cardFront",
       "label": "Card Front",
       "file": "Card.jsx",
-      "line": 263,
+      "line": 264,
       "files": [
         {
           "file": "Card.jsx",
-          "line": 263
+          "line": 264
         },
         {
           "file": "style.css",
@@ -101,11 +102,11 @@
       "selector": ".cardImage",
       "label": "Card Image",
       "file": "Card.jsx",
-      "line": 264,
+      "line": 265,
       "files": [
         {
           "file": "Card.jsx",
-          "line": 264
+          "line": 265
         },
         {
           "file": "style.css",
@@ -117,11 +118,11 @@
       "selector": ".currentScoreSection",
       "label": "Current Score Section",
       "file": "PlayPage.jsx",
-      "line": 815,
+      "line": 816,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 815
+          "line": 816
         },
         {
           "file": "style.css",
@@ -133,11 +134,11 @@
       "selector": ".dragonBall",
       "label": "Dragon Ball",
       "file": "WinCelebration.jsx",
-      "line": 54,
+      "line": 55,
       "files": [
         {
           "file": "WinCelebration.jsx",
-          "line": 54
+          "line": 55
         },
         {
           "file": "style.css",
@@ -149,11 +150,11 @@
       "selector": ".endGame",
       "label": "End Game",
       "file": "PlayPage.jsx",
-      "line": 849,
+      "line": 850,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 849
+          "line": 850
         },
         {
           "file": "style.css",
@@ -165,11 +166,11 @@
       "selector": ".endGameButtons",
       "label": "End Game Buttons",
       "file": "PlayPage.jsx",
-      "line": 639,
+      "line": 640,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 639
+          "line": 640
         },
         {
           "file": "style.css",
@@ -181,11 +182,11 @@
       "selector": ".endGameNameInput",
       "label": "End Game Name Input",
       "file": "PlayPage.jsx",
-      "line": 604,
+      "line": 605,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 604
+          "line": 605
         },
         {
           "file": "style.css",
@@ -197,11 +198,11 @@
       "selector": ".fightButton",
       "label": "Fight Button",
       "file": "HomePage.jsx",
-      "line": 257,
+      "line": 258,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 257
+          "line": 258
         },
         {
           "file": "style.css",
@@ -213,11 +214,11 @@
       "selector": ".fightStage",
       "label": "Fight Stage",
       "file": "HomePage.jsx",
-      "line": 220,
+      "line": 221,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 220
+          "line": 221
         },
         {
           "file": "style.css",
@@ -229,11 +230,11 @@
       "selector": ".gameOverTitle",
       "label": "Game Over Title",
       "file": "PlayPage.jsx",
-      "line": 851,
+      "line": 852,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 851
+          "line": 852
         },
         {
           "file": "style.css",
@@ -245,15 +246,15 @@
       "selector": ".gitIcon",
       "label": "Git Icon",
       "file": "HomePage.jsx",
-      "line": 188,
+      "line": 189,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 188
+          "line": 189
         },
         {
           "file": "PlayPage.jsx",
-          "line": 769
+          "line": 770
         },
         {
           "file": "style.css",
@@ -265,11 +266,11 @@
       "selector": ".gokuGif",
       "label": "Goku Gif",
       "file": "HomePage.jsx",
-      "line": 226,
+      "line": 227,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 226
+          "line": 227
         },
         {
           "file": "style.css",
@@ -281,15 +282,15 @@
       "selector": ".gotItButton",
       "label": "Got It Button",
       "file": "MainSection.jsx",
-      "line": 445,
+      "line": 446,
       "files": [
         {
           "file": "MainSection.jsx",
-          "line": 445
+          "line": 446
         },
         {
           "file": "PlayPage.jsx",
-          "line": 890
+          "line": 891
         },
         {
           "file": "style.css",
@@ -301,11 +302,11 @@
       "selector": ".guyGif",
       "label": "Guy Gif",
       "file": "HomePage.jsx",
-      "line": 224,
+      "line": 225,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 224
+          "line": 225
         },
         {
           "file": "style.css",
@@ -317,11 +318,11 @@
       "selector": ".helpButton",
       "label": "Help Button",
       "file": "PlayPage.jsx",
-      "line": 723,
+      "line": 724,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 723
+          "line": 724
         },
         {
           "file": "style.css",
@@ -333,15 +334,15 @@
       "selector": ".highScoresBlock",
       "label": "High Scores Block",
       "file": "MainSection.jsx",
-      "line": 405,
+      "line": 406,
       "files": [
         {
           "file": "MainSection.jsx",
-          "line": 405
+          "line": 406
         },
         {
           "file": "PlayPage.jsx",
-          "line": 616
+          "line": 617
         },
         {
           "file": "style.css",
@@ -353,15 +354,15 @@
       "selector": ".highScoresEmpty",
       "label": "High Scores Empty",
       "file": "MainSection.jsx",
-      "line": 437,
+      "line": 438,
       "files": [
         {
           "file": "MainSection.jsx",
-          "line": 437
+          "line": 438
         },
         {
           "file": "PlayPage.jsx",
-          "line": 634
+          "line": 635
         },
         {
           "file": "style.css",
@@ -373,15 +374,15 @@
       "selector": ".highScoresList",
       "label": "High Scores List",
       "file": "MainSection.jsx",
-      "line": 427,
+      "line": 428,
       "files": [
         {
           "file": "MainSection.jsx",
-          "line": 427
+          "line": 428
         },
         {
           "file": "PlayPage.jsx",
-          "line": 621
+          "line": 622
         },
         {
           "file": "style.css",
@@ -392,58 +393,6 @@
     {
       "selector": ".highScoresName",
       "label": "High Scores Name",
-      "file": "MainSection.jsx",
-      "line": 431,
-      "files": [
-        {
-          "file": "MainSection.jsx",
-          "line": 431
-        },
-        {
-          "file": "PlayPage.jsx",
-          "line": 628
-        },
-        {
-          "file": "style.css",
-          "line": 2231
-        }
-      ]
-    },
-    {
-      "selector": ".highScoresRank",
-      "label": "High Scores Rank",
-      "file": "MainSection.jsx",
-      "line": 430,
-      "files": [
-        {
-          "file": "MainSection.jsx",
-          "line": 430
-        },
-        {
-          "file": "PlayPage.jsx",
-          "line": 627
-        }
-      ]
-    },
-    {
-      "selector": ".highScoresRow",
-      "label": "High Scores Row",
-      "file": "MainSection.jsx",
-      "line": 429,
-      "files": [
-        {
-          "file": "MainSection.jsx",
-          "line": 429
-        },
-        {
-          "file": "style.css",
-          "line": 2215
-        }
-      ]
-    },
-    {
-      "selector": ".highScoresScore",
-      "label": "High Scores Score",
       "file": "MainSection.jsx",
       "line": 432,
       "files": [
@@ -457,6 +406,58 @@
         },
         {
           "file": "style.css",
+          "line": 2231
+        }
+      ]
+    },
+    {
+      "selector": ".highScoresRank",
+      "label": "High Scores Rank",
+      "file": "MainSection.jsx",
+      "line": 431,
+      "files": [
+        {
+          "file": "MainSection.jsx",
+          "line": 431
+        },
+        {
+          "file": "PlayPage.jsx",
+          "line": 628
+        }
+      ]
+    },
+    {
+      "selector": ".highScoresRow",
+      "label": "High Scores Row",
+      "file": "MainSection.jsx",
+      "line": 430,
+      "files": [
+        {
+          "file": "MainSection.jsx",
+          "line": 430
+        },
+        {
+          "file": "style.css",
+          "line": 2215
+        }
+      ]
+    },
+    {
+      "selector": ".highScoresScore",
+      "label": "High Scores Score",
+      "file": "MainSection.jsx",
+      "line": 433,
+      "files": [
+        {
+          "file": "MainSection.jsx",
+          "line": 433
+        },
+        {
+          "file": "PlayPage.jsx",
+          "line": 630
+        },
+        {
+          "file": "style.css",
           "line": 2237
         }
       ]
@@ -465,15 +466,15 @@
       "selector": ".highScoresTitle",
       "label": "High Scores Title",
       "file": "MainSection.jsx",
-      "line": 407,
+      "line": 408,
       "files": [
         {
           "file": "MainSection.jsx",
-          "line": 407
+          "line": 408
         },
         {
           "file": "PlayPage.jsx",
-          "line": 618
+          "line": 619
         },
         {
           "file": "style.css",
@@ -485,11 +486,11 @@
       "selector": ".highScoresUnknown",
       "label": "High Scores Unknown",
       "file": "MainSection.jsx",
-      "line": 441,
+      "line": 442,
       "files": [
         {
           "file": "MainSection.jsx",
-          "line": 441
+          "line": 442
         },
         {
           "file": "style.css",
@@ -501,11 +502,11 @@
       "selector": ".homeSection",
       "label": "Home Section",
       "file": "HomePage.jsx",
-      "line": 113,
+      "line": 114,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 113
+          "line": 114
         },
         {
           "file": "style.css",
@@ -517,11 +518,11 @@
       "selector": ".inputSection",
       "label": "Input Section",
       "file": "HomePage.jsx",
-      "line": 213,
+      "line": 214,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 213
+          "line": 214
         },
         {
           "file": "style.css",
@@ -532,26 +533,6 @@
     {
       "selector": ".instructionsBackdrop",
       "label": "Instructions Backdrop",
-      "file": "MainSection.jsx",
-      "line": 403,
-      "files": [
-        {
-          "file": "MainSection.jsx",
-          "line": 403
-        },
-        {
-          "file": "PlayPage.jsx",
-          "line": 880
-        },
-        {
-          "file": "style.css",
-          "line": 3978
-        }
-      ]
-    },
-    {
-      "selector": ".instructionsCard",
-      "label": "Instructions Card",
       "file": "MainSection.jsx",
       "line": 404,
       "files": [
@@ -565,6 +546,26 @@
         },
         {
           "file": "style.css",
+          "line": 3978
+        }
+      ]
+    },
+    {
+      "selector": ".instructionsCard",
+      "label": "Instructions Card",
+      "file": "MainSection.jsx",
+      "line": 405,
+      "files": [
+        {
+          "file": "MainSection.jsx",
+          "line": 405
+        },
+        {
+          "file": "PlayPage.jsx",
+          "line": 882
+        },
+        {
+          "file": "style.css",
           "line": 3991
         }
       ]
@@ -573,11 +574,11 @@
       "selector": ".instructionsGoal",
       "label": "Instructions Goal",
       "file": "PlayPage.jsx",
-      "line": 883,
+      "line": 884,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 883
+          "line": 884
         },
         {
           "file": "style.css",
@@ -589,11 +590,11 @@
       "selector": ".instructionsIcon",
       "label": "Instructions Icon",
       "file": "PlayPage.jsx",
-      "line": 885,
+      "line": 886,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 885
+          "line": 886
         },
         {
           "file": "style.css",
@@ -605,11 +606,11 @@
       "selector": ".instructionsList",
       "label": "Instructions List",
       "file": "PlayPage.jsx",
-      "line": 884,
+      "line": 885,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 884
+          "line": 885
         },
         {
           "file": "style.css",
@@ -621,11 +622,11 @@
       "selector": ".instructionsTitle",
       "label": "Instructions Title",
       "file": "PlayPage.jsx",
-      "line": 882,
+      "line": 883,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 882
+          "line": 883
         },
         {
           "file": "style.css",
@@ -637,11 +638,11 @@
       "selector": ".levelInfo",
       "label": "Level Info",
       "file": "HomePage.jsx",
-      "line": 249,
+      "line": 250,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 249
+          "line": 250
         },
         {
           "file": "style.css",
@@ -653,11 +654,11 @@
       "selector": ".levelInfoLine",
       "label": "Level Info Line",
       "file": "HomePage.jsx",
-      "line": 253,
+      "line": 254,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 253
+          "line": 254
         },
         {
           "file": "style.css",
@@ -669,11 +670,11 @@
       "selector": ".levelSelect",
       "label": "Level Select",
       "file": "HomePage.jsx",
-      "line": 230,
+      "line": 231,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 230
+          "line": 231
         },
         {
           "file": "style.css",
@@ -685,11 +686,11 @@
       "selector": ".logoContainer",
       "label": "Logo Container",
       "file": "HomePage.jsx",
-      "line": 202,
+      "line": 203,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 202
+          "line": 203
         },
         {
           "file": "style.css",
@@ -701,11 +702,11 @@
       "selector": ".logoContainer2",
       "label": "Logo Container2",
       "file": "HomePage.jsx",
-      "line": 208,
+      "line": 209,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 208
+          "line": 209
         },
         {
           "file": "style.css",
@@ -717,11 +718,11 @@
       "selector": ".logoSection",
       "label": "Logo Section",
       "file": "HomePage.jsx",
-      "line": 200,
+      "line": 201,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 200
+          "line": 201
         },
         {
           "file": "style.css",
@@ -733,11 +734,11 @@
       "selector": ".logoSection2",
       "label": "Logo Section2",
       "file": "HomePage.jsx",
-      "line": 206,
+      "line": 207,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 206
+          "line": 207
         },
         {
           "file": "style.css",
@@ -749,11 +750,11 @@
       "selector": ".logoSection3",
       "label": "Logo Section3",
       "file": "PlayPage.jsx",
-      "line": 782,
+      "line": 783,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 782
+          "line": 783
         },
         {
           "file": "style.css",
@@ -765,11 +766,11 @@
       "selector": ".logoSection4",
       "label": "Logo Section4",
       "file": "PlayPage.jsx",
-      "line": 798,
+      "line": 799,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 798
+          "line": 799
         },
         {
           "file": "style.css",
@@ -781,11 +782,11 @@
       "selector": ".mobileMenuBackdrop",
       "label": "Mobile Menu Backdrop",
       "file": "MobileMenu.jsx",
-      "line": 51,
+      "line": 52,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 51
+          "line": 52
         },
         {
           "file": "style.css",
@@ -797,11 +798,11 @@
       "selector": ".mobileMenuCloseButton",
       "label": "Mobile Menu Close Button",
       "file": "MobileMenu.jsx",
-      "line": 55,
+      "line": 56,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 55
+          "line": 56
         },
         {
           "file": "style.css",
@@ -813,11 +814,11 @@
       "selector": ".mobileMenuDivider",
       "label": "Mobile Menu Divider",
       "file": "MobileMenu.jsx",
-      "line": 60,
+      "line": 61,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 60
+          "line": 61
         },
         {
           "file": "style.css",
@@ -829,11 +830,11 @@
       "selector": ".mobileMenuIcon",
       "label": "Mobile Menu Icon",
       "file": "MobileMenu.jsx",
-      "line": 66,
+      "line": 67,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 66
+          "line": 67
         },
         {
           "file": "style.css",
@@ -845,11 +846,11 @@
       "selector": ".mobileMenuIconText",
       "label": "Mobile Menu Icon Text",
       "file": "MobileMenu.jsx",
-      "line": 107,
+      "line": 108,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 107
+          "line": 108
         },
         {
           "file": "style.css",
@@ -861,11 +862,11 @@
       "selector": ".mobileMenuLabel",
       "label": "Mobile Menu Label",
       "file": "MobileMenu.jsx",
-      "line": 67,
+      "line": 68,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 67
+          "line": 68
         },
         {
           "file": "style.css",
@@ -877,11 +878,11 @@
       "selector": ".mobileMenuModal",
       "label": "Mobile Menu Modal",
       "file": "MobileMenu.jsx",
-      "line": 52,
+      "line": 53,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 52
+          "line": 53
         },
         {
           "file": "style.css",
@@ -893,11 +894,11 @@
       "selector": ".mobileMenuModalHeader",
       "label": "Mobile Menu Modal Header",
       "file": "MobileMenu.jsx",
-      "line": 53,
+      "line": 54,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 53
+          "line": 54
         },
         {
           "file": "style.css",
@@ -909,11 +910,11 @@
       "selector": ".mobileMenuModalTitle",
       "label": "Mobile Menu Modal Title",
       "file": "MobileMenu.jsx",
-      "line": 54,
+      "line": 55,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 54
+          "line": 55
         },
         {
           "file": "style.css",
@@ -925,11 +926,11 @@
       "selector": ".mobileMenuRow",
       "label": "Mobile Menu Row",
       "file": "MobileMenu.jsx",
-      "line": 63,
+      "line": 64,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 63
+          "line": 64
         },
         {
           "file": "style.css",
@@ -941,11 +942,11 @@
       "selector": ".mobileMenuVolumeSlider",
       "label": "Mobile Menu Volume Slider",
       "file": "MobileMenu.jsx",
-      "line": 75,
+      "line": 76,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 75
+          "line": 76
         },
         {
           "file": "style.css",
@@ -957,11 +958,11 @@
       "selector": ".mobileMenuWrapper",
       "label": "Mobile Menu Wrapper",
       "file": "MobileMenu.jsx",
-      "line": 38,
+      "line": 39,
       "files": [
         {
           "file": "MobileMenu.jsx",
-          "line": 38
+          "line": 39
         },
         {
           "file": "style.css",
@@ -973,11 +974,11 @@
       "selector": ".musicBlock",
       "label": "Music Block",
       "file": "HomePage.jsx",
-      "line": 127,
+      "line": 128,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 127
+          "line": 128
         },
         {
           "file": "style.css",
@@ -989,11 +990,11 @@
       "selector": ".musicBlock2",
       "label": "Music Block2",
       "file": "PlayPage.jsx",
-      "line": 683,
+      "line": 684,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 683
+          "line": 684
         },
         {
           "file": "style.css",
@@ -1005,11 +1006,11 @@
       "selector": ".musicBlock3",
       "label": "Music Block3",
       "file": "PlayPage.jsx",
-      "line": 713,
+      "line": 714,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 713
+          "line": 714
         },
         {
           "file": "style.css",
@@ -1021,11 +1022,11 @@
       "selector": ".musicIcon",
       "label": "Music Icon",
       "file": "HomePage.jsx",
-      "line": 131,
+      "line": 132,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 131
+          "line": 132
         },
         {
           "file": "style.css",
@@ -1037,11 +1038,11 @@
       "selector": ".musicIcon2",
       "label": "Music Icon2",
       "file": "PlayPage.jsx",
-      "line": 693,
+      "line": 694,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 693
+          "line": 694
         },
         {
           "file": "style.css",
@@ -1053,11 +1054,11 @@
       "selector": ".musicIcon3",
       "label": "Music Icon3",
       "file": "PlayPage.jsx",
-      "line": 718,
+      "line": 719,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 718
+          "line": 719
         },
         {
           "file": "style.css",
@@ -1069,15 +1070,15 @@
       "selector": ".musicIconWrapper",
       "label": "Music Icon Wrapper",
       "file": "HomePage.jsx",
-      "line": 124,
+      "line": 125,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 124
+          "line": 125
         },
         {
           "file": "PlayPage.jsx",
-          "line": 680
+          "line": 681
         },
         {
           "file": "style.css",
@@ -1089,11 +1090,11 @@
       "selector": ".navSection",
       "label": "Nav Section",
       "file": "HomePage.jsx",
-      "line": 120,
+      "line": 121,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 120
+          "line": 121
         },
         {
           "file": "style.css",
@@ -1105,11 +1106,11 @@
       "selector": ".navSection2",
       "label": "Nav Section2",
       "file": "PlayPage.jsx",
-      "line": 676,
+      "line": 677,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 676
+          "line": 677
         },
         {
           "file": "style.css",
@@ -1121,11 +1122,11 @@
       "selector": ".outerSection",
       "label": "Outer Section",
       "file": "HomePage.jsx",
-      "line": 118,
+      "line": 119,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 118
+          "line": 119
         },
         {
           "file": "style.css",
@@ -1137,11 +1138,11 @@
       "selector": ".playSection",
       "label": "Play Section",
       "file": "PlayPage.jsx",
-      "line": 670,
+      "line": 671,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 670
+          "line": 671
         },
         {
           "file": "style.css",
@@ -1153,11 +1154,11 @@
       "selector": ".portfolioBlock",
       "label": "Portfolio Block",
       "file": "HomePage.jsx",
-      "line": 182,
+      "line": 183,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 182
+          "line": 183
         },
         {
           "file": "style.css",
@@ -1169,11 +1170,11 @@
       "selector": ".portfolioBlock2",
       "label": "Portfolio Block2",
       "file": "PlayPage.jsx",
-      "line": 760,
+      "line": 761,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 760
+          "line": 761
         },
         {
           "file": "style.css",
@@ -1185,11 +1186,11 @@
       "selector": ".portfolioIcon",
       "label": "Portfolio Icon",
       "file": "HomePage.jsx",
-      "line": 186,
+      "line": 187,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 186
+          "line": 187
         },
         {
           "file": "style.css",
@@ -1201,11 +1202,11 @@
       "selector": ".portfolioIcon2",
       "label": "Portfolio Icon2",
       "file": "PlayPage.jsx",
-      "line": 765,
+      "line": 766,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 765
+          "line": 766
         },
         {
           "file": "style.css",
@@ -1217,11 +1218,11 @@
       "selector": ".portfolioText",
       "label": "Portfolio Text",
       "file": "HomePage.jsx",
-      "line": 184,
+      "line": 185,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 184
+          "line": 185
         },
         {
           "file": "style.css",
@@ -1233,11 +1234,11 @@
       "selector": ".portfolioText2",
       "label": "Portfolio Text2",
       "file": "PlayPage.jsx",
-      "line": 762,
+      "line": 763,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 762
+          "line": 763
         },
         {
           "file": "style.css",
@@ -1249,11 +1250,11 @@
       "selector": ".retryButton",
       "label": "Retry Button",
       "file": "PlayPage.jsx",
-      "line": 642,
+      "line": 643,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 642
+          "line": 643
         },
         {
           "file": "style.css",
@@ -1265,11 +1266,11 @@
       "selector": ".saveButton",
       "label": "Save Button",
       "file": "PlayPage.jsx",
-      "line": 648,
+      "line": 649,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 648
+          "line": 649
         },
         {
           "file": "style.css",
@@ -1281,11 +1282,11 @@
       "selector": ".scorePanel",
       "label": "Score Panel",
       "file": "PlayPage.jsx",
-      "line": 817,
+      "line": 818,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 817
+          "line": 818
         },
         {
           "file": "style.css",
@@ -1297,11 +1298,11 @@
       "selector": ".scorePanelBestChip",
       "label": "Score Panel Best Chip",
       "file": "PlayPage.jsx",
-      "line": 823,
+      "line": 824,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 823
+          "line": 824
         },
         {
           "file": "style.css",
@@ -1313,11 +1314,11 @@
       "selector": ".scorePanelLabel",
       "label": "Score Panel Label",
       "file": "PlayPage.jsx",
-      "line": 820,
+      "line": 821,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 820
+          "line": 821
         },
         {
           "file": "style.css",
@@ -1329,11 +1330,11 @@
       "selector": ".scorePanelPips",
       "label": "Score Panel Pips",
       "file": "PlayPage.jsx",
-      "line": 825,
+      "line": 826,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 825
+          "line": 826
         },
         {
           "file": "style.css",
@@ -1345,11 +1346,11 @@
       "selector": ".scorePanelRow",
       "label": "Score Panel Row",
       "file": "PlayPage.jsx",
-      "line": 818,
+      "line": 819,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 818
+          "line": 819
         },
         {
           "file": "style.css",
@@ -1361,11 +1362,11 @@
       "selector": ".scorePanelScoreGroup",
       "label": "Score Panel Score Group",
       "file": "PlayPage.jsx",
-      "line": 819,
+      "line": 820,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 819
+          "line": 820
         },
         {
           "file": "style.css",
@@ -1377,11 +1378,11 @@
       "selector": ".scorePanelValue",
       "label": "Score Panel Value",
       "file": "PlayPage.jsx",
-      "line": 821,
+      "line": 822,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 821
+          "line": 822
         },
         {
           "file": "style.css",
@@ -1393,15 +1394,15 @@
       "selector": ".scoresButton",
       "label": "Scores Button",
       "file": "HomePage.jsx",
-      "line": 145,
+      "line": 146,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 145
+          "line": 146
         },
         {
           "file": "PlayPage.jsx",
-          "line": 731
+          "line": 732
         },
         {
           "file": "style.css",
@@ -1413,11 +1414,11 @@
       "selector": ".scoresTabs",
       "label": "Scores Tabs",
       "file": "MainSection.jsx",
-      "line": 409,
+      "line": 410,
       "files": [
         {
           "file": "MainSection.jsx",
-          "line": 409
+          "line": 410
         },
         {
           "file": "style.css",
@@ -1429,11 +1430,11 @@
       "selector": ".speakerButton",
       "label": "Speaker Button",
       "file": "HomePage.jsx",
-      "line": 136,
+      "line": 137,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 136
+          "line": 137
         },
         {
           "file": "style.css",
@@ -1445,11 +1446,11 @@
       "selector": ".svg-element",
       "label": "Svg Element",
       "file": "HomePage.jsx",
-      "line": 259,
+      "line": 260,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 259
+          "line": 260
         },
         {
           "file": "style.css",
@@ -1461,11 +1462,11 @@
       "selector": ".svg-text",
       "label": "Svg Text",
       "file": "HomePage.jsx",
-      "line": 260,
+      "line": 261,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 260
+          "line": 261
         },
         {
           "file": "style.css",
@@ -1477,11 +1478,11 @@
       "selector": ".topColumn1",
       "label": "Top Column1",
       "file": "HomePage.jsx",
-      "line": 122,
+      "line": 123,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 122
+          "line": 123
         },
         {
           "file": "style.css",
@@ -1493,11 +1494,11 @@
       "selector": ".topColumn2",
       "label": "Top Column2",
       "file": "HomePage.jsx",
-      "line": 179,
+      "line": 180,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 179
+          "line": 180
         },
         {
           "file": "style.css",
@@ -1509,11 +1510,11 @@
       "selector": ".topColumn3",
       "label": "Top Column3",
       "file": "PlayPage.jsx",
-      "line": 678,
+      "line": 679,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 678
+          "line": 679
         },
         {
           "file": "style.css",
@@ -1525,11 +1526,11 @@
       "selector": ".topColumn4",
       "label": "Top Column4",
       "file": "PlayPage.jsx",
-      "line": 757,
+      "line": 758,
       "files": [
         {
           "file": "PlayPage.jsx",
-          "line": 757
+          "line": 758
         },
         {
           "file": "style.css",
@@ -1541,15 +1542,15 @@
       "selector": ".volumeSliderInput",
       "label": "Volume Slider Input",
       "file": "HomePage.jsx",
-      "line": 154,
+      "line": 155,
       "files": [
         {
           "file": "HomePage.jsx",
-          "line": 154
+          "line": 155
         },
         {
           "file": "PlayPage.jsx",
-          "line": 700
+          "line": 701
         },
         {
           "file": "style.css",
@@ -1561,11 +1562,11 @@
       "selector": ".winFlash",
       "label": "Win Flash",
       "file": "WinCelebration.jsx",
-      "line": 68,
+      "line": 69,
       "files": [
         {
           "file": "WinCelebration.jsx",
-          "line": 68
+          "line": 69
         },
         {
           "file": "style.css",
@@ -1579,7 +1580,7 @@
   "modules": [
     {
       "path": "Card.jsx",
-      "lines": 276,
+      "lines": 277,
       "imports": [
         "assets/dbzCardBack.png",
         "assets/github.svg",
@@ -1587,22 +1588,22 @@
         "assets/planet.svg",
         "sfx.js"
       ],
-      "purpose": null
+      "purpose": "One face-up card: its click decides a hit (score up, deal again) or a miss (game over), and it tilts toward the cursor."
     },
     {
       "path": "CardBack.jsx",
-      "lines": 40,
+      "lines": 41,
       "imports": [
         "assets/dbzCardBack.png",
         "assets/github.svg",
         "assets/musical-notes.svg",
         "assets/planet.svg"
       ],
-      "purpose": null
+      "purpose": "One face-down card, shown while a new deal flips over; purely presentational."
     },
     {
       "path": "HomePage.jsx",
-      "lines": 273,
+      "lines": 274,
       "imports": [
         "MobileMenu.jsx",
         "PlayPage.jsx",
@@ -1614,11 +1615,11 @@
         "assets/trophy.svg",
         "sfx.js"
       ],
-      "purpose": null
+      "purpose": "Title screen: logo, level picker, Fight button, and the music, volume and high scores controls."
     },
     {
       "path": "MainSection.jsx",
-      "lines": 878,
+      "lines": 879,
       "imports": [
         "HomePage.jsx",
         "PlayPage.jsx",
@@ -1629,19 +1630,19 @@
         "highScores.js",
         "sfx.js"
       ],
-      "purpose": null
+      "purpose": "Top-level component: owns the page switch, level, music and volume state, fetches the characters, and renders HomePage or PlayPage."
     },
     {
       "path": "MobileMenu.jsx",
-      "lines": 142,
+      "lines": 143,
       "imports": [
         "sfx.js"
       ],
-      "purpose": null
+      "purpose": "Hamburger button and modal that holds the nav controls (music, volume, home, how to play, high scores, GitHub) on narrow screens."
     },
     {
       "path": "PlayPage.jsx",
-      "lines": 1022,
+      "lines": 1023,
       "imports": [
         "Card.jsx",
         "CardBack.jsx",
@@ -1655,19 +1656,19 @@
         "highScores.js",
         "sfx.js"
       ],
-      "purpose": null
+      "purpose": "Game screen: owns the game state, deals each round of cards, and shows the score, instructions and end-game popup."
     },
     {
       "path": "WinCelebration.jsx",
-      "lines": 74,
+      "lines": 75,
       "imports": [],
-      "purpose": null
+      "purpose": "The Dragon Ball flash-and-rise animation PlayPage shows behind the win popup."
     },
     {
       "path": "changelog.js",
-      "lines": 15,
+      "lines": 16,
       "imports": [],
-      "purpose": null
+      "purpose": "Player-facing release notes, newest entry first."
     },
     {
       "path": "highScores.js",
@@ -1681,7 +1682,7 @@
       "imports": [
         "MainSection.jsx"
       ],
-      "purpose": "build trigger"
+      "purpose": "App entry point: mounts MainSection into #app inside React StrictMode."
     },
     {
       "path": "sfx.js",
@@ -1691,26 +1692,26 @@
     },
     {
       "path": "test/Card.test.jsx",
-      "lines": 148,
+      "lines": 149,
       "imports": [
         "Card.jsx"
       ],
-      "purpose": null
+      "purpose": "Tests for Card's 3D hover tilt and the CSS that supports it."
     },
     {
       "path": "test/Difficulty.test.jsx",
-      "lines": 348,
+      "lines": 349,
       "imports": [
         "Card.jsx",
         "HomePage.jsx",
         "MainSection.jsx",
         "PlayPage.jsx"
       ],
-      "purpose": null
+      "purpose": "Tests that the Easy / Hard / Hardest levels set the pool size, cards shown and win threshold."
     },
     {
       "path": "test/HighScores.test.jsx",
-      "lines": 296,
+      "lines": 297,
       "imports": [
         "HomePage.jsx",
         "MainSection.jsx",
@@ -1718,72 +1719,148 @@
         "PlayPage.jsx",
         "highScores.js"
       ],
-      "purpose": null
+      "purpose": "Tests for the saved high scores helpers, the trophy buttons and the high scores modal."
     },
     {
       "path": "test/HomePage.test.jsx",
-      "lines": 1232,
+      "lines": 1233,
       "imports": [
         "HomePage.jsx"
       ],
-      "purpose": null
+      "purpose": "Tests for HomePage rendering, its volume slider and its background layout CSS."
     },
     {
       "path": "test/MainSection.test.jsx",
-      "lines": 108,
+      "lines": 109,
       "imports": [],
-      "purpose": null
+      "purpose": "Tests for the background music: volume, one persistent Audio per track, and no overlapping playback."
     },
     {
       "path": "test/MainSectionGain.test.jsx",
-      "lines": 121,
+      "lines": 122,
       "imports": [
         "MainSection.jsx"
       ],
-      "purpose": null
+      "purpose": "Tests that the volume slider drives music through a Web Audio gain node, the iOS volume fix."
     },
     {
       "path": "test/MemoryGameTitle.test.js",
-      "lines": 19,
+      "lines": 20,
       "imports": [],
-      "purpose": null
+      "purpose": "Tests that the Memory Game title SVG text is centered on the cloud artwork."
     },
     {
       "path": "test/MobileMenu.test.jsx",
-      "lines": 181,
+      "lines": 182,
       "imports": [
         "MobileMenu.jsx"
       ],
-      "purpose": null
+      "purpose": "Tests for the mobile menu modal, its volume slider and the nav button styling around it."
     },
     {
       "path": "test/PlayPage.test.jsx",
-      "lines": 1467,
+      "lines": 1468,
       "imports": [
         "PlayPage.jsx",
         "WinCelebration.jsx"
       ],
-      "purpose": null
+      "purpose": "Tests for PlayPage's layout, score panel, volume slider and instructions modal."
+    },
+    {
+      "path": "test/codeMap.test.js",
+      "lines": 54,
+      "imports": [],
+      "purpose": "Tests that every source file has a purpose comment and an area in codemap.json, and that codetour.json still compiles."
     },
     {
       "path": "test/placeholder.test.js",
-      "lines": 9,
+      "lines": 10,
       "imports": [],
-      "purpose": null
+      "purpose": "Smoke test that confirms the Vitest pipeline runs."
     },
     {
       "path": "test/setup.js",
-      "lines": 7,
+      "lines": 8,
       "imports": [],
-      "purpose": null
+      "purpose": "Vitest setup: loads the jest-dom matchers and stubs window.scrollTo, which jsdom lacks."
     },
     {
       "path": "test/sfx.test.js",
-      "lines": 134,
+      "lines": 135,
       "imports": [
         "sfx.js"
       ],
-      "purpose": null
+      "purpose": "Tests for the synthesized button and card sounds, using a fake AudioContext."
+    }
+  ],
+  "areas": [
+    {
+      "id": "screens",
+      "name": "Screens",
+      "purpose": "The app shell and title screen: page switching, level choice, music state and the character fetch.",
+      "pos": [
+        0.3,
+        0.3
+      ],
+      "files": [
+        "index.jsx",
+        "MainSection.jsx",
+        "HomePage.jsx",
+        "MobileMenu.jsx"
+      ]
+    },
+    {
+      "id": "game",
+      "name": "Game",
+      "purpose": "The play screen, where cards are dealt, clicked, scored and celebrated.",
+      "pos": [
+        0.7,
+        0.35
+      ],
+      "files": [
+        "PlayPage.jsx",
+        "Card.jsx",
+        "CardBack.jsx",
+        "WinCelebration.jsx"
+      ]
+    },
+    {
+      "id": "support",
+      "name": "Sound & scores",
+      "purpose": "Plain helpers for synthesized sounds, saved high scores and the release notes.",
+      "pos": [
+        0.5,
+        0.75
+      ],
+      "files": [
+        "sfx.js",
+        "highScores.js",
+        "changelog.js"
+      ]
+    },
+    {
+      "id": "tests",
+      "name": "Tests",
+      "purpose": "The Vitest suite and its setup file, which check the screens, game rules, sounds and layout.",
+      "pos": [
+        0.15,
+        0.8
+      ],
+      "files": [
+        "test/Card.test.jsx",
+        "test/Difficulty.test.jsx",
+        "test/HighScores.test.jsx",
+        "test/codeMap.test.js",
+        "test/HomePage.test.jsx",
+        "test/MainSection.test.jsx",
+        "test/MainSectionGain.test.jsx",
+        "test/MemoryGameTitle.test.js",
+        "test/MobileMenu.test.jsx",
+        "test/PlayPage.test.jsx",
+        "test/placeholder.test.js",
+        "test/setup.js",
+        "test/sfx.test.js"
+      ]
     }
   ]
 }
