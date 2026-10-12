@@ -1,3 +1,4 @@
+// Smoke test that confirms the Vitest pipeline runs.
 import { describe, it, expect } from 'vitest'
 
 // Placeholder test: confirms Vitest is configured and the test pipeline runs

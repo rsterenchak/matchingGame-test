@@ -374,7 +374,7 @@
   - Completed: 2026-10-10
   <!-- id: 2537e367-d551-4abb-976c-164cc5f9da06 -->
 
-- [ ] **[MEDIUM]** Add a code map and starter code tours for the Structure tab
+- [x] **[MEDIUM]** Add a code map and starter code tours for the Structure tab
   - Type: feature
   - Description: The Void dashboard's Structure tab can show a Map of a repo (areas → files → code) and guided code tours (a START HERE card plus step-by-step walkthroughs with Back / Next), but only for repos that commit a `codemap.json` and a `codetour.json` at the repo root. This repo has neither. Almost none of its source files open with a purpose comment either, and the Map shows that comment as each file's one-line description. Add all three, so someone new to the game can understand how it fits together in a few minutes. This is content plus comments only: no gameplay, styling or behaviour changes. `scripts/gen-src-manifest.cjs` was already refreshed (commit 4322ea7) and reads both files.
   - Behavior:
@@ -397,4 +397,5 @@
     - `CLAUDE.md` › **Source file organization** gains one bullet: new source files open with a `//` purpose comment and are added to an area in `codemap.json`; a change that renames or moves code a step in `codetour.json` anchors to updates that step in the same PR.
     - No gameplay or styling changes; the existing suite passes unchanged.
   - File: `codemap.json`, `codetour.json`, `src/index.jsx`, `src/MainSection.jsx`, `src/HomePage.jsx`, `src/MobileMenu.jsx`, `src/PlayPage.jsx`, `src/Card.jsx`, `src/CardBack.jsx`, `src/WinCelebration.jsx`, `src/changelog.js`, `src/test/codeMap.test.js`, `CLAUDE.md`
+  - Completed: 2026-10-11
   <!-- id: 56ba66cc-2d50-4166-b469-d773d088f0e9 -->

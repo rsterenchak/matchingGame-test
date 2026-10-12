@@ -1,3 +1,4 @@
+// Vitest setup: loads the jest-dom matchers and stubs window.scrollTo, which jsdom lacks.
 import '@testing-library/jest-dom'
 
 

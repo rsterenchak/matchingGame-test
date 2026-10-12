@@ -1,3 +1,4 @@
+// Tests for the saved high scores helpers, the trophy buttons and the high scores modal.
 import { render, screen, fireEvent, act, cleanup } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { highScoresKey, sortHighScores, loadHighScores, levelLabel, entryLevel, levelWinCounts } from '../highScores.js'

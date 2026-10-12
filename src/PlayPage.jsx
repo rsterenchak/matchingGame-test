@@ -1,3 +1,4 @@
+// Game screen: owns the game state, deals each round of cards, and shows the score, instructions and end-game popup.
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import './style.css';

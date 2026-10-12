@@ -1,0 +1,313 @@
+{
+  "version": 1,
+  "sections": [
+    { "id": "foundations", "title": "Start here" },
+    { "id": "gameplay", "title": "Gameplay" },
+    { "id": "more", "title": "Sound & scores" }
+  ],
+  "tours": [
+    {
+      "id": "app-starts",
+      "section": "foundations",
+      "title": "How the game starts",
+      "steps": [
+        {
+          "file": "index.jsx",
+          "symbol": "@file",
+          "match": ["root.render(", "<MainSection />"],
+          "title": "React mounts one component",
+          "why": "The entry point renders MainSection into the #app element, inside StrictMode. Everything else hangs off it."
+        },
+        {
+          "file": "MainSection.jsx",
+          "symbol": "MainSection",
+          "match": ["const [isCurrentPage, setCurrentPage]", "const [isCurrentAudio, setCurrentAudio]", "const [isLevel, setLevel]"],
+          "title": "MainSection holds the app-wide state",
+          "why": "Which page is showing, whether music is on, and the picked level all live here and flow down as props."
+        },
+        {
+          "file": "MainSection.jsx",
+          "symbol": "fetchData",
+          "match": ["levelLimits[level]", "if(isStale()){", "setActiveData(forecast.items);"],
+          "title": "fetchData pulls a level-sized batch",
+          "why": "It asks the Dragon Ball API for as many characters as the level needs and ignores replies for a level no longer picked."
+        },
+        {
+          "file": "MainSection.jsx",
+          "symbol": "fetchData",
+          "match": ["catch(err) {", "console.log(err);"],
+          "title": "A failed fetch is only logged",
+          "why": "Errors are caught and logged, never thrown, so a failed request leaves an empty board instead of a crash."
+        },
+        {
+          "file": "MainSection.jsx",
+          "symbol": "MainSection",
+          "match": ["setActiveData([]);", "fetchData(isLevel, () => stale);", "stale = true;"],
+          "title": "A new level means a new fetch",
+          "why": "This effect clears the old cards and fetches again whenever the level changes, marking the old request stale."
+        },
+        {
+          "file": "HomePage.jsx",
+          "symbol": "pickLevel",
+          "match": ["e.stopPropagation();", "setLevel(level);"],
+          "title": "Picking a level on the title screen",
+          "why": "A level button stores the choice in MainSection, and stops the click from also pressing Fight."
+        },
+        {
+          "file": "HomePage.jsx",
+          "symbol": "setupPage",
+          "match": ["playSfx('fight');", "setPlayPage();", "setAudioPlay();"],
+          "title": "Fight switches to the game",
+          "why": "Fight plays its sound, flips MainSection to the play page and turns the music on."
+        }
+      ],
+      "recap": [
+        "index.jsx only mounts MainSection.",
+        "MainSection owns page, music and level state.",
+        "Characters come from the API, sized by the level.",
+        "Fight on the title screen opens the play page."
+      ]
+    },
+    {
+      "id": "play-round",
+      "section": "gameplay",
+      "title": "How a round is dealt",
+      "steps": [
+        {
+          "file": "PlayPage.jsx",
+          "symbol": "PlayPage",
+          "match": ["const {shownCount, winCount} = levelSettings[isLevel];"],
+          "title": "Each level sets the board size",
+          "why": "levelSettings gives how many cards a round shows and how many unique picks win the level."
+        },
+        {
+          "file": "PlayPage.jsx",
+          "symbol": "shuffleArray",
+          "match": ["let roundSize = Math.min(shownCount, activeStandardArray.length);", "let newPos = randomIntFromInterval(0, activeStandardArray.length - 1);", "setActiveShuffledArray(newlyShuffledArray);"],
+          "title": "shuffleArray picks this round's cards",
+          "why": "It draws distinct random positions from the pool until the round is full, then stores the dealt cards."
+        },
+        {
+          "file": "PlayPage.jsx",
+          "symbol": "shuffleArray",
+          "match": ["let result = verifyArray(randomArrayPositions, activePositions);", "counter = 0;", "randomArrayPositions = [];"],
+          "title": "A deal with nothing new is redrawn",
+          "why": "If the full deal holds no unpicked card, it starts over, so there is always a safe card to click."
+        },
+        {
+          "file": "PlayPage.jsx",
+          "symbol": "verifyArray",
+          "match": ["if(random.includes(available[counter])){", "return true;", "return false;"],
+          "title": "verifyArray is the unpicked-card guard",
+          "why": "It returns true as soon as one dealt position is still in the unpicked list."
+        },
+        {
+          "file": "PlayPage.jsx",
+          "symbol": "randomIntFromInterval",
+          "match": ["return Math.floor(Math.random() * (max - min + 1) + min)"],
+          "title": "randomIntFromInterval rolls one position",
+          "why": "A whole number between min and max, both included. shuffleArray calls it once per card slot."
+        },
+        {
+          "file": "Card.jsx",
+          "symbol": "Card",
+          "match": ["className='cardFront'", "src={item.image}"],
+          "title": "Card shows a dealt character",
+          "why": "A face-up card draws the character's image from the API data."
+        },
+        {
+          "file": "CardBack.jsx",
+          "symbol": "CardBack",
+          "match": ["src={cardBack}"],
+          "title": "CardBack covers the board between deals",
+          "why": "While the board flips, PlayPage draws a face-down card in each slot."
+        }
+      ],
+      "recap": [
+        "The level decides how many cards show and how many win.",
+        "shuffleArray deals random, distinct cards each round.",
+        "verifyArray makes sure every deal has an unpicked card.",
+        "Card is face up, CardBack is face down."
+      ]
+    },
+    {
+      "id": "pick-card",
+      "section": "gameplay",
+      "title": "Picking a card: hit or miss",
+      "steps": [
+        {
+          "file": "Card.jsx",
+          "symbol": "handleCardClick",
+          "match": ["if(isShown.includes(item)){", "if(isPickedArray.includes(item)){"],
+          "title": "Every click lands in handleCardClick",
+          "why": "It first checks the card was dealt, then whether it was already picked this run."
+        },
+        {
+          "file": "Card.jsx",
+          "symbol": "handleCardClick",
+          "match": ["playSfx('hit');", "newlyPickedArray.push(item);", "setScore(incrementedScore);"],
+          "title": "A new pick scores a point",
+          "why": "A card not picked before plays the hit sound, is recorded as picked, and adds one to the score."
+        },
+        {
+          "file": "Card.jsx",
+          "symbol": "handleCardClick",
+          "match": ["console.log('Game is over...exists in the picked array');", "playSfx('miss');", "setPopUp(true);", "setHighScore(isScore);"],
+          "title": "A repeat pick ends the run",
+          "why": "Clicking a card twice plays the miss sound, opens the game-over popup and raises the best score if beaten."
+        },
+        {
+          "file": "Card.jsx",
+          "symbol": "handleCardClick",
+          "match": ["if(incrementedScore === winCount){", "setResult(true);", "setPopUp(true);"],
+          "title": "Reaching winCount wins",
+          "why": "When the score hits the level's win count, the run is marked won and the popup opens."
+        },
+        {
+          "file": "WinCelebration.jsx",
+          "symbol": "WinCelebration",
+          "match": ["const waves = wavesByLevel[isLevel] ?? 1;", "if(isDone){"],
+          "title": "WinCelebration plays behind the win popup",
+          "why": "Dragon Balls rise in one to three waves depending on the level, then the layer removes itself."
+        },
+        {
+          "file": "Card.jsx",
+          "symbol": "handleCardClick",
+          "match": ["shuffleNow();"],
+          "title": "Otherwise, deal again",
+          "why": "If the run goes on, the card asks PlayPage to shuffle and deal the next round."
+        },
+        {
+          "file": "PlayPage.jsx",
+          "symbol": "resetGame",
+          "match": ["setActiveScore(0);", "setActivePickedArray([]);", "setActivePopUp(false);"],
+          "title": "Retry starts a fresh run",
+          "why": "resetGame zeroes the score, clears the picked cards and closes the popup."
+        }
+      ],
+      "recap": [
+        "A new card scores; a repeat card ends the run.",
+        "Hitting the level's win count wins.",
+        "Each surviving click deals a new round.",
+        "Retry resets the score and picked cards."
+      ]
+    },
+    {
+      "id": "high-scores",
+      "section": "more",
+      "title": "How high scores are saved",
+      "steps": [
+        {
+          "file": "PlayPage.jsx",
+          "symbol": "saveHighScore",
+          "match": ["let name = activePlayerName.trim();", "if(name === '' || activeSavedEntry !== null){"],
+          "title": "Saving needs a name, once per run",
+          "why": "The end-game popup saves only when a name was typed and this run hasn't been saved yet."
+        },
+        {
+          "file": "highScores.js",
+          "symbol": "sortHighScores",
+          "match": ["return [...list].sort((a, b) => b.score - a.score);"],
+          "title": "sortHighScores ranks runs",
+          "why": "It returns a new list with the highest score first, leaving the original untouched."
+        },
+        {
+          "file": "PlayPage.jsx",
+          "symbol": "saveHighScore",
+          "match": ["let newHighScores = sortHighScores([...activeHighScores, newEntry]);", "localStorage.setItem(highScoresKey, JSON.stringify(newHighScores));"],
+          "title": "The list is written to localStorage",
+          "why": "The new run joins the sorted list, which is stored as JSON under highScoresKey."
+        },
+        {
+          "file": "highScores.js",
+          "symbol": "loadHighScores",
+          "match": ["JSON.parse(localStorage.getItem(highScoresKey))", "if(!Array.isArray(parsed)){", "return [];"],
+          "title": "loadHighScores reads it back",
+          "why": "It parses the stored list and falls back to an empty list when it is missing or corrupt."
+        },
+        {
+          "file": "highScores.js",
+          "symbol": "entryLevel",
+          "match": ["if(levelLabels[entry.level]){", "if(entry.score > levelWinCounts.hard){", "return null;"],
+          "title": "entryLevel works out a run's level",
+          "why": "It uses the saved level, or infers one only when the score rules the others out, else null."
+        },
+        {
+          "file": "highScores.js",
+          "symbol": "levelLabel",
+          "match": ["return levelLabels[entryLevel(entry)] ?? '';"],
+          "title": "levelLabel names the badge",
+          "why": "It turns a run into a label like Hard, or an empty string when the level can't be known."
+        },
+        {
+          "file": "MainSection.jsx",
+          "symbol": "HighScoresModal",
+          "match": ["const [highScores] = useState(() => loadHighScores());", "const tabScores = sortHighScores(highScores.filter(entry => entryLevel(entry) === activeTab));"],
+          "title": "The trophy modal shows one tab per level",
+          "why": "It reloads saved runs on open and lists only the runs of the selected level's tab."
+        }
+      ],
+      "recap": [
+        "A run is saved once, under a typed name.",
+        "Runs are stored sorted, highest score first.",
+        "A missing or broken list loads as empty.",
+        "The trophy modal ranks runs per level."
+      ]
+    },
+    {
+      "id": "sound",
+      "section": "more",
+      "title": "How music and sound effects play",
+      "steps": [
+        {
+          "file": "MainSection.jsx",
+          "symbol": "HandleHomeAudio",
+          "match": ["const a = new Audio(homeSong);", "a.loop = true;", "var playPromise = audioRef.current.play();"],
+          "title": "HandleHomeAudio plays the title track",
+          "why": "It keeps one looping Audio for the home song in a ref and plays it while the music is on."
+        },
+        {
+          "file": "MainSection.jsx",
+          "symbol": "HandlePlayAudio",
+          "match": ["const a = new Audio(playSong);", "var playPromise = audioRef.current.play();"],
+          "title": "HandlePlayAudio plays the game track",
+          "why": "The same pattern with the Namek theme, used on the play page."
+        },
+        {
+          "file": "MainSection.jsx",
+          "symbol": "routeThroughGain",
+          "match": ["const sharedAudioContext = getAudioContext();", "const gainNode = sharedAudioContext.createGain();", "gainNode.gain.value = volumeLevel ** 2;"],
+          "title": "routeThroughGain sets volume with a gain node",
+          "why": "iOS ignores an Audio element's volume, so each track runs through a gain node whose gain follows the slider."
+        },
+        {
+          "file": "MainSection.jsx",
+          "symbol": "handleVolumeChange",
+          "match": ["setVolume(newVolume);", "localStorage.setItem('matchingGame_volume', String(newVolume));"],
+          "title": "The volume is remembered",
+          "why": "Moving the slider updates the volume and saves it as matchingGame_volume for the next visit."
+        },
+        {
+          "file": "sfx.js",
+          "symbol": "getAudioContext",
+          "match": ["if(audioContext === null){", "audioContext = new AudioCtx();"],
+          "title": "One shared AudioContext",
+          "why": "Made on first use and reused by both the music gain and the sound effects."
+        },
+        {
+          "file": "sfx.js",
+          "symbol": "playSfx",
+          "match": ["if(!sfxEnabled || !sound) return;", "const oscillator = ctx.createOscillator();", "oscillator.stop(end);"],
+          "title": "playSfx synthesizes a short sound",
+          "why": "Taps, hits and misses are one oscillator each, silent while the music toggle is off."
+        }
+      ],
+      "recap": [
+        "Each page has its own looping music track.",
+        "Volume goes through a gain node so it works on iOS.",
+        "The volume setting survives a reload.",
+        "Button and card sounds are synthesized, not files."
+      ]
+    }
+  ]
+}

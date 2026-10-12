@@ -1,3 +1,4 @@
+// Hamburger button and modal that holds the nav controls (music, volume, home, how to play, high scores, GitHub) on narrow screens.
 import React, { useState, useEffect } from 'react';
 import { playSfx } from './sfx.js';
 

@@ -1,3 +1,4 @@
+// Tests that the volume slider drives music through a Web Audio gain node, the iOS volume fix.
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, fireEvent, act, cleanup } from '@testing-library/react'
 

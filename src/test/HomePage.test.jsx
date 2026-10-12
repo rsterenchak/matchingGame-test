@@ -1,3 +1,4 @@
+// Tests for HomePage rendering, its volume slider and its background layout CSS.
 import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect, vi } from 'vitest'
 import { readFileSync } from 'fs'

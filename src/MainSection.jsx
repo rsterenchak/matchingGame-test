@@ -1,3 +1,4 @@
+// Top-level component: owns the page switch, level, music and volume state, fetches the characters, and renders HomePage or PlayPage.
 import React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import './style.css';
