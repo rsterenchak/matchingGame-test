@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-12T03:12:00.662Z",
-  "sha": "58bcb8ef9f2e302bba185c03ec7efb7a0b686eb5",
+  "generatedAt": "2026-10-15T05:29:22.001Z",
+  "sha": "556c1c0769247bc4fe1f472c498b6be5bb454d94",
   "files": [
     "Card.jsx",
     "CardBack.jsx",
@@ -1768,7 +1768,7 @@
     },
     {
       "path": "test/codeMap.test.js",
-      "lines": 54,
+      "lines": 70,
       "imports": [],
       "purpose": "Tests that every source file has a purpose comment and an area in codemap.json, and that codetour.json still compiles."
     },
