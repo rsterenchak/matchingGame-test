@@ -400,11 +400,12 @@
   - Completed: 2026-10-11
   <!-- id: 56ba66cc-2d50-4166-b469-d773d088f0e9 -->
 
-- [ ] **[MEDIUM]** Convert code-tour recaps to title/body cards
+- [x] **[MEDIUM]** Convert code-tour recaps to title/body cards
   - Type: bug
   - Description: The Void dashboard's tour player renders each tour's `recap` as cards built from `{ "title", "body" }` objects. Every tour in `codetour.json` stores its recap as plain strings instead, so the recap screen at the end of each tour shows empty cards. Rewrite each tour's `recap` as 3–5 objects: `title` is the short building block (≤ 60 characters) and `body` is one sentence expanding it (≤ 140 characters), keeping the meaning of the existing strings and checking each against the code. Content only; no other files change except the test.
   - Acceptance criteria:
     - Every `recap` item in `codetour.json` is an object with a non-empty `title` (≤ 60) and `body` (≤ 140).
     - `src/test/codeMap.test.js` gains an assertion for that shape on the compiled tours, so a string recap can't ship again.
   - File: `codetour.json`, `src/test/codeMap.test.js`
+  - Completed: 2026-10-15
   <!-- id: a0eca286-b8f5-4547-9583-982b85b36ac3 -->
