@@ -51,4 +51,20 @@ describe('Code tours', () => {
       })
     })
   })
+
+  it('give every tour a recap of title/body cards', () => {
+    tours.tours.forEach(tour => {
+      expect(tour.recap.length, tour.id).toBeGreaterThanOrEqual(3)
+      expect(tour.recap.length, tour.id).toBeLessThanOrEqual(5)
+      tour.recap.forEach(card => {
+        expect(card, tour.id).toBeTypeOf('object')
+        expect(typeof card.title, tour.id).toBe('string')
+        expect(typeof card.body, tour.id).toBe('string')
+        expect(card.title.trim().length, card.title).toBeGreaterThan(0)
+        expect(card.body.trim().length, card.body).toBeGreaterThan(0)
+        expect(card.title.length, card.title).toBeLessThanOrEqual(60)
+        expect(card.body.length, card.body).toBeLessThanOrEqual(140)
+      })
+    })
+  })
 })

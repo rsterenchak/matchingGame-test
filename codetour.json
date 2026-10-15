@@ -62,10 +62,22 @@
         }
       ],
       "recap": [
-        "index.jsx only mounts MainSection.",
-        "MainSection owns page, music and level state.",
-        "Characters come from the API, sized by the level.",
-        "Fight on the title screen opens the play page."
+        {
+          "title": "index.jsx only mounts MainSection",
+          "body": "The entry point renders MainSection inside StrictMode and owns nothing else."
+        },
+        {
+          "title": "MainSection owns page, music and level state",
+          "body": "Which page shows, whether music is on and the picked level live here and flow down as props."
+        },
+        {
+          "title": "Characters come from the API, sized by the level",
+          "body": "fetchData asks for as many characters as the level needs; a failed fetch is logged, not thrown."
+        },
+        {
+          "title": "Fight on the title screen opens the play page",
+          "body": "Fight plays its sound, switches MainSection to the play page and turns the music on."
+        }
       ]
     },
     {
@@ -124,10 +136,22 @@
         }
       ],
       "recap": [
-        "The level decides how many cards show and how many win.",
-        "shuffleArray deals random, distinct cards each round.",
-        "verifyArray makes sure every deal has an unpicked card.",
-        "Card is face up, CardBack is face down."
+        {
+          "title": "The level sets the board size",
+          "body": "levelSettings gives how many cards a round shows and how many unique picks win the level."
+        },
+        {
+          "title": "shuffleArray deals random, distinct cards",
+          "body": "Each round it draws distinct random positions from the pool until the board is full."
+        },
+        {
+          "title": "verifyArray guards every deal",
+          "body": "A deal with no unpicked card is redrawn, so there is always a safe card to click."
+        },
+        {
+          "title": "Card is face up, CardBack is face down",
+          "body": "Card draws the character's image; CardBack fills each slot while the board flips."
+        }
       ]
     },
     {
@@ -186,10 +210,26 @@
         }
       ],
       "recap": [
-        "A new card scores; a repeat card ends the run.",
-        "Hitting the level's win count wins.",
-        "Each surviving click deals a new round.",
-        "Retry resets the score and picked cards."
+        {
+          "title": "A new card scores a point",
+          "body": "A card not picked before plays the hit sound, joins the picked list and adds one to the score."
+        },
+        {
+          "title": "A repeat card ends the run",
+          "body": "Clicking a card twice plays the miss sound and opens the game-over popup."
+        },
+        {
+          "title": "Hitting the level's win count wins",
+          "body": "The run is marked won, the popup opens and WinCelebration plays behind it."
+        },
+        {
+          "title": "Each surviving click deals a new round",
+          "body": "If the run goes on, the card asks PlayPage to shuffle and deal again."
+        },
+        {
+          "title": "Retry starts a fresh run",
+          "body": "resetGame zeroes the score, clears the picked cards and closes the popup."
+        }
       ]
     },
     {
@@ -248,10 +288,22 @@
         }
       ],
       "recap": [
-        "A run is saved once, under a typed name.",
-        "Runs are stored sorted, highest score first.",
-        "A missing or broken list loads as empty.",
-        "The trophy modal ranks runs per level."
+        {
+          "title": "A run is saved once, under a typed name",
+          "body": "The end-game popup saves only when a name was typed and this run hasn't been saved yet."
+        },
+        {
+          "title": "Runs are stored sorted, highest score first",
+          "body": "sortHighScores ranks the list, which is written as JSON to localStorage under highScoresKey."
+        },
+        {
+          "title": "A missing or broken list loads as empty",
+          "body": "loadHighScores falls back to an empty list when the stored value is missing or corrupt."
+        },
+        {
+          "title": "The trophy modal ranks runs per level",
+          "body": "HighScoresModal reloads saved runs on open and shows one tab per level."
+        }
       ]
     },
     {
@@ -303,10 +355,22 @@
         }
       ],
       "recap": [
-        "Each page has its own looping music track.",
-        "Volume goes through a gain node so it works on iOS.",
-        "The volume setting survives a reload.",
-        "Button and card sounds are synthesized, not files."
+        {
+          "title": "Each page has its own looping music track",
+          "body": "The title screen and the game each keep one looping Audio in a ref, played while music is on."
+        },
+        {
+          "title": "Volume goes through a gain node",
+          "body": "iOS ignores an Audio element's volume, so each track runs through a gain node instead."
+        },
+        {
+          "title": "The volume setting survives a reload",
+          "body": "Moving the slider saves the volume as matchingGame_volume for the next visit."
+        },
+        {
+          "title": "Button and card sounds are synthesized",
+          "body": "playSfx builds each tap, hit and miss from one oscillator; no audio files ship for them."
+        }
       ]
     }
   ]
